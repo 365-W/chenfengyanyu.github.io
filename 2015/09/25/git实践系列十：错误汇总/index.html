@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="kSkNABjumn" />
+    <meta name="generator" content="Jartto&#39;s blog">
+    <title>git实践系列十：错误汇总 - Jartto&#39;s blog</title>
+    <meta name="author" content="Jartto">
+    
+    
+        <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="每当我新学一门语言或者技术的时候，都会碰到或多或少的问题，有的问题我们可以很容易查到并解决，但是有时候却是很难。当我们一遍遍百度的时候，发现都是同一篇文章被转来钻去，来转去，转去，去～">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="git实践系列十：错误汇总">
+<meta property="og:url" content="http://jartto.wang/2015/09/25/git实践系列十：错误汇总/index.html">
+<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:description" content="每当我新学一门语言或者技术的时候，都会碰到或多或少的问题，有的问题我们可以很容易查到并解决，但是有时候却是很难。当我们一遍遍百度的时候，发现都是同一篇文章被转来钻去，来转去，转去，去～">
+<meta property="og:updated_time" content="2016-06-22T14:16:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git实践系列十：错误汇总">
+<meta name="twitter:description" content="每当我新学一门语言或者技术的时候，都会碰到或多或少的问题，有的问题我们可以很容易查到并解决，但是有时候却是很难。当我们一遍遍百度的时候，发现都是同一篇文章被转来钻去，来转去，转去，去～">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_20150723024349836.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_20150723024349836.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-amswellqtyheubmlz8etcaxxnc5dvbfw49m4rvjaocb7nstambtlprry5pr8.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-79715416-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</script>
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Jartto&#39;s blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture st-search-show-outputs"
+                href="#about">
+        
+        
+            <img class="header-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+            </a>
+            <span class="sidebar-profile-name">Jartto</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">分类</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">关于</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:Jartto@qq.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Email</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/chenfengyanyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/6487971/jartto" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/sitemap.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-sitemap"></i>
+                    <span class="sidebar-button-desc">Sitemap</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            git实践系列十：错误汇总
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2015-09-25T22:02:04+08:00">
+	
+		    2015/9月/25 22:02:04
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>每当我新学一门语言或者技术的时候，都会碰到或多或少的问题，有的问题我们可以很容易查到并解决，但是有时候却是很难。当我们一遍遍百度的时候，发现都是同一篇文章被转来钻去，来转去，转去，去～<br><a id="more"></a><br>可恶的是它并不能解决我们的问题，反而浪费了宝贵的时间。因此，除了google和stack overflow以外，我又想到了第三种解决方案。</p>
+<p>对，把学习过程中的错误以及踩过的坑，整理出来，供初学者参考。</p>
+<p>所以，就有了本篇文章。快来快来数一数，我到底碰到了多少坑。</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/git/">git</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/26/git实践系列十一：常用技巧/"  data-tooltip="git实践系列十一：常用技巧">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/22/git实践系列九：撤销操作/" data-tooltip="git实践系列九：撤销操作">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" height="250px" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<div id="busuanzi_container_site_pv">
+	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
+	</div>
+	<br>
+    <span class="copyrights">
+        Copyrights &copy; 2016 Jartto. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/26/git实践系列十一：常用技巧/"  data-tooltip="git实践系列十一：常用技巧">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/09/22/git实践系列九：撤销操作/" data-tooltip="git实践系列九：撤销操作">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2015/09/25/git实践系列十：错误汇总/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+            <h4 id="about-card-name">Jartto</h4>
+        
+            <h5 id="about-card-bio"><blockquote>
+<p>最遗憾的不是把梦想丢在路上，</br>而是梦想从未上路!</br>Just do IT</p>
+</blockquote>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>jartto@qq.com</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                北京－海淀
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xvi3w.com1.z0.glb.clouddn.com/layout_cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://jartto.wang/2015/09/25/git实践系列十：错误汇总/';
+                 
+                    this.page.identifier = '2015/09/25/git实践系列十：错误汇总/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'jartto';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>
