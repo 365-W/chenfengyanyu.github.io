@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2016/09/04/final-solution-of-the-web-font/</loc>
+    
+    <lastmod>2016-09-06T04:23:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2016/08/23/js-animation-library-recommendation/</loc>
+    
+    <lastmod>2016-09-06T02:13:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2016/08/18/detect-page-scroll-and-execute-animation/</loc>
+    
+    <lastmod>2016-09-05T15:03:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2016/08/11/convert-html-into-markdown/</loc>
     
     <lastmod>2016-09-01T02:55:25.000Z</lastmod>
