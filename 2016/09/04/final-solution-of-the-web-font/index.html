@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/webfont4.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/webfont5.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/webfont6.png">
-<meta property="og:updated_time" content="2016-09-07T02:30:13.000Z">
+<meta property="og:updated_time" content="2016-09-08T15:36:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web font 终极解决方案">
 <meta name="twitter:description" content="绝大多数情况下，我们在网页开发中都要使用web安全字体。高傲的设计师肯定不局限于安全字体，那么问题来了：我们如何保证客户端对字体的显示一致性，本文对此进行深入探讨。">
@@ -273,7 +273,7 @@
             <p>绝大多数情况下，我们在网页开发中都要使用web安全字体。高傲的设计师肯定不局限于安全字体，那么问题来了：我们如何保证客户端对字体的显示一致性，本文对此进行深入探讨。<br><a id="more"></a><br>我们从头说起，设计师要求使用苹方字体，可是这并不是一个web安全字体。这意味着，如果客户端没有该字体库，那么我们的用户将看到一些默认字体，这违背了我们最初“显示一致性”的美好愿景。</p>
 <p>怎么办，关于这个问题，我做出了以下尝试。</p>
 <h4 id="一、查找方案"><a href="#一、查找方案" class="headerlink" title="一、查找方案"></a>一、查找方案</h4><p>不是什么大问题，先百度一下，很快我查到了某中文字库，大致用法如下：<br>先引入js类库<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>嵌入如下js代码片段：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">   $youziku.load(<span class="string">"body"</span>, <span class="string">"e1a2967b916d487f9814ebca91628dc1"</span>, <span class="string">"PingFangSC_L"</span>);</div><div class="line">   $youziku.draw();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>嵌入如下js代码片段：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">   $youziku.load("body", "e1a2967b916d487f9814ebca91628dc1", "PingFangSC_L");</div><div class="line">   $youziku.draw();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>效果是达到了，可是当看到要收费的时候，我已经不爱你了👻。</p>
 <p>第三方的方案还要收费，显然并不完美。那怎么办，一定还有其他方案，我们继续搜索。</p>
 <h4 id="二、下载字体"><a href="#二、下载字体" class="headerlink" title="二、下载字体"></a>二、下载字体</h4><p>找个免费的试试？好吧，去下载苹方字体，我自己引入字体包。结果却找不到下载的链接😅，全是广告，广告，广告。。。</p>
@@ -299,7 +299,7 @@
 <p>我们先来安装：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install font-spider -g</div></pre></td></tr></table></figure></p>
 <p>找到html文件目录，运行：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-spider zh/*.html</div></pre></td></tr></table></figure></p>
 <p>来看看效果：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/webfont2.png" alt="font_console"><br>压缩前后，文件大小对比<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/webfont3.png" alt="font_console"></p>
-<div class="alert info"><p>注意：字蛛会分析页面使用的webfont，也就意味着他会抓取静态页面的font</p>
+<div class="alert info"><p>注意：字蛛会分析页面使用的webfont，也就意味着他只抓取静态页面的font</p>
 </div>
 <p>看起来不错，可是，这又是什么鬼：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/webfont4.png" alt="webfont"><br>部分空格被替换成了！号，这肯定是零容忍啊，怎么办?</p>
 <h4 id="六、意外收获"><a href="#六、意外收获" class="headerlink" title="六、意外收获"></a>六、意外收获</h4><p>解决方案：<a href="https://github.com/aui/font-spider/issues/102" target="_blank" rel="external">https://github.com/aui/font-spider/issues/102</a></p>
@@ -323,7 +323,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/08/exception-of-the-homebrew-installation/"  data-tooltip="安装Homebrew异常处理">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -410,7 +410,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/08/exception-of-the-homebrew-installation/"  data-tooltip="安装Homebrew异常处理">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
