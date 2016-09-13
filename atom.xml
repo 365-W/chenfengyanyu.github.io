@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jartto.wang/"/>
-  <updated>2016-09-08T16:00:21.000Z</updated>
+  <updated>2016-09-13T02:30:22.000Z</updated>
   <id>http://jartto.wang/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机会推荐</title>
+    <link href="http://jartto.wang/2016/09/10/jobs/"/>
+    <id>http://jartto.wang/2016/09/10/jobs/</id>
+    <published>2016-09-10T12:45:50.000Z</published>
+    <updated>2016-09-13T02:30:22.000Z</updated>
+    
+    <content type="html">&lt;p&gt;帮猎头朋友挂几条职位消息，感兴趣的朋友可以联系我哦～jartto@qq.com&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;职位一：高级web前端开发工程师&quot;&gt;&lt;a href=&quot;#职位一：高级web前端开发工程师&quot; class=&quot;headerlink&quot; title=&quot;职位一：高级web前端开发工程师&quot;&gt;&lt;/a&gt;职位一：高级web前端开发工程师&lt;/h4&gt;&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;职位描述：&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;负责活动平台的前端框架的设计。&lt;/li&gt;
+&lt;li&gt;确保通过搭建的活动平台产出的活动页面，具有兼容性和高性能。&lt;/li&gt;
+&lt;li&gt;跟踪前端技术发展方向，研究和掌握最新前端开发技术，带领团队出色完成任务并帮助团队成员成长。&lt;/li&gt;
+&lt;li&gt;能够开发、搭建一些开发工具，提高整个团队的开发效率&lt;/li&gt;
+&lt;li&gt;对一些常见的项目类型（如手机端H5/PC端电商平台，单页应用，内部系统等）能够给出完整的解决方案&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;任职要求：&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;5年以上相关工作经验，精通各种前端技术，包括HTML/CSS/DOM、JavaScript、Ajax，熟悉 DIV CSS/CSS3布局、熟练传统dom主流框架及mvvm框架，而又不依赖框架。&lt;/li&gt;
+&lt;li&gt;熟练使用各种脚本调试器、DOM查看器等定位问题，熟练使用各种工具检测web服务的性能和定位瓶颈。&lt;/li&gt;
+&lt;li&gt;精通JS以及主流JS框架，熟悉jQuery, Angular JS, React JS等，熟悉SASS, LESS, Require JS, grunt, gulp 等工具，有Node JS 经验者优先考虑。&lt;/li&gt;
+&lt;li&gt;具有对CSS/JavaScript性能优化、解决多浏览器兼容性的经验；能够对现有的前端架构提出优化建议和改进方案。&lt;/li&gt;
+&lt;li&gt;有网页编辑器（如CKEditor）有开发经验者优先考虑。 &lt;/li&gt;
+&lt;li&gt;对canvas,svg,vml,webgl有一定经验者优先考虑。&lt;/li&gt;
+&lt;li&gt;有浏览器插件，gulp插件，sublime插件开发经验者优先考虑。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;职位二：高级JAVA工程师&quot;&gt;&lt;a href=&quot;#职位二：高级JAVA工程师&quot; class=&quot;headerlink&quot; title=&quot;职位二：高级JAVA工程师&quot;&gt;&lt;/a&gt;职位二：高级JAVA工程师&lt;/h4&gt;&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;职位描述：&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;负责互联网产品后端服务架构设计，要求系统具有可扩展性， 能够支持大量并发用户；&lt;/li&gt;
+&lt;li&gt;根据产品需求完成服务端架构和模块设计、编码、测试以及文档编写等工作；&lt;/li&gt;
+&lt;li&gt;解决规模增长带来的技术和业务问题，确保提供高可靠数据服务，保证系统稳定、高效运行；&lt;/li&gt;
+&lt;li&gt;优化系统性能，保证服务器质量和性能。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;任职要求：&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;精通java编程，熟悉java sdk提供的主要能力;&lt;/li&gt;
+&lt;li&gt;理解java运行时工作原理，熟悉jvm性能调优，能够充分利用java特性支持框架与程序库的设计开发;&lt;/li&gt;
+&lt;li&gt;熟悉多线程编程，熟练使用java并发包下的各项常用基础设施;&lt;/li&gt;
+&lt;li&gt;熟悉分布式系统的设计和应用，熟悉分布式、缓存、消息等机制；深入了解微服务架构；&lt;/li&gt;
+&lt;li&gt;掌握多线程及高性能的设计与编码及性能调优；有高并发应用开发经验；&lt;/li&gt;
+&lt;li&gt;能够熟练使用linux，能够利用常用的工具对程序进行跟踪诊断;&lt;/li&gt;
+&lt;li&gt;有大数据应用开发经验，熟悉hadoop/hbase/hive/kafka/flume优先；&lt;/li&gt;
+&lt;li&gt;喜欢去看及尝试最新的技术，追求编写优雅的代码，从技术趋势和思路上能影响技术团队;&lt;/li&gt;
+&lt;li&gt;有知名互联网公司工作经验者优先。&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;帮猎头朋友挂几条职位消息，感兴趣的朋友可以联系我哦～jartto@qq.com&lt;br&gt;
+    
+    </summary>
+    
+      <category term="职位推荐" scheme="http://jartto.wang/categories/%E8%81%8C%E4%BD%8D%E6%8E%A8%E8%8D%90/"/>
+    
+    
+      <category term="job" scheme="http://jartto.wang/tags/job/"/>
+    
+  </entry>
   
   <entry>
     <title>安装Homebrew异常处理</title>
@@ -68,7 +132,7 @@
     <content type="html">&lt;p&gt;绝大多数情况下，我们在网页开发中都要使用web安全字体。高傲的设计师肯定不局限于安全字体，那么问题来了：我们如何保证客户端对字体的显示一致性，本文对此进行深入探讨。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;我们从头说起，设计师要求使用苹方字体，可是这并不是一个web安全字体。这意味着，如果客户端没有该字体库，那么我们的用户将看到一些默认字体，这违背了我们最初“显示一致性”的美好愿景。&lt;/p&gt;
 &lt;p&gt;怎么办，关于这个问题，我做出了以下尝试。&lt;/p&gt;
 &lt;h4 id=&quot;一、查找方案&quot;&gt;&lt;a href=&quot;#一、查找方案&quot; class=&quot;headerlink&quot; title=&quot;一、查找方案&quot;&gt;&lt;/a&gt;一、查找方案&lt;/h4&gt;&lt;p&gt;不是什么大问题，先百度一下，很快我查到了某中文字库，大致用法如下：&lt;br&gt;先引入js类库&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;//cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;嵌入如下js代码片段：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   $youziku.load(&quot;body&quot;, &quot;e1a2967b916d487f9814ebca91628dc1&quot;, &quot;PingFangSC_L&quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   $youziku.draw();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;嵌入如下js代码片段：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   $youziku.load(&lt;span class=&quot;string&quot;&gt;&quot;body&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;e1a2967b916d487f9814ebca91628dc1&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;PingFangSC_L&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   $youziku.draw();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;效果是达到了，可是当看到要收费的时候，我已经不爱你了👻。&lt;/p&gt;
 &lt;p&gt;第三方的方案还要收费，显然并不完美。那怎么办，一定还有其他方案，我们继续搜索。&lt;/p&gt;
 &lt;h4 id=&quot;二、下载字体&quot;&gt;&lt;a href=&quot;#二、下载字体&quot; class=&quot;headerlink&quot; title=&quot;二、下载字体&quot;&gt;&lt;/a&gt;二、下载字体&lt;/h4&gt;&lt;p&gt;找个免费的试试？好吧，去下载苹方字体，我自己引入字体包。结果却找不到下载的链接😅，全是广告，广告，广告。。。&lt;/p&gt;
@@ -992,54 +1056,6 @@
     
     
       <category term="js" scheme="http://jartto.wang/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CORS解决方案</title>
-    <link href="http://jartto.wang/2016/06/27/solutions-to-CORS/"/>
-    <id>http://jartto.wang/2016/06/27/solutions-to-CORS/</id>
-    <published>2016-06-27T07:03:14.000Z</published>
-    <updated>2016-06-27T07:36:22.000Z</updated>
-    
-    <content type="html">&lt;p&gt;同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之的，浏览器只是针对同源策略的一种实现。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;div class=&quot;alert success&quot;&gt;&lt;p&gt;主机名+协议+端口三者相同，被认为是同源。&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;
-&lt;h4 id=&quot;一、问题重现&quot;&gt;&lt;a href=&quot;#一、问题重现&quot; class=&quot;headerlink&quot; title=&quot;一、问题重现&quot;&gt;&lt;/a&gt;一、问题重现&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/cors_FD8DA08A-E4CC-45CB-9E76-9D4EF37AEEB9.png&quot; alt=&quot;cors&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/cors_1FBAD133-35C5-4AC4-8329-B3B433A062BA.png&quot; alt=&quot;cors&quot;&gt;&lt;/p&gt;
-&lt;p&gt;一般出现以上错误，基本可以认定，网站出现了同源策略问题，也就是出现了未经允许的跨域请求。那么如何解决此类问题呢，下面我来一一阐述。&lt;/p&gt;
-&lt;h4 id=&quot;二、解决方案&quot;&gt;&lt;a href=&quot;#二、解决方案&quot; class=&quot;headerlink&quot; title=&quot;二、解决方案&quot;&gt;&lt;/a&gt;二、解决方案&lt;/h4&gt;&lt;p&gt;①客户端和服务器设置&lt;br&gt;这里以iis服务器为例，&lt;a href=&quot;http://enable-cors.org/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;更多请移步&lt;/a&gt;&lt;br&gt;虽然都是iis服务器，但是版本的不同，设置也不尽相同。&lt;br&gt;对于iis6：&lt;br&gt;打开iis管理器，选择需要设置CORS的站点，右键属性；&lt;br&gt;选择HTTP Headers 页签；&lt;br&gt;点击添加按钮，输入命令，点击确定；&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Access-Control-Allow-Origin：*&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;对于iis7：&lt;br&gt;新建文件命名：web.config&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;system.webServer&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;httpProtocol&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;customHeaders&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;*&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;customHeaders&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;httpProtocol&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;system.webServer&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;②JSONP&lt;br&gt;&lt;div class=&quot;alert success&quot;&gt;&lt;p&gt;JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。通俗的讲，JSONP就是动态的去加载js文件，为其src属性指定一个跨域URL。&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;script type=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showPrice&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;data&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        alert(&lt;span class=&quot;string&quot;&gt;&quot;Symbol:&quot;&lt;/span&gt; + data.symbol + &lt;span class=&quot;string&quot;&gt;&quot;, Price:&quot;&lt;/span&gt; + data.price);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url = &lt;span class=&quot;string&quot;&gt;&quot;ticker.js&quot;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//Outer JS URL&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; script = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.createElement(&lt;span class=&quot;string&quot;&gt;&#39;script&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    script.setAttribute(&lt;span class=&quot;string&quot;&gt;&#39;src&#39;&lt;/span&gt;, url);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//load javascript&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementsByTagName(&lt;span class=&quot;string&quot;&gt;&#39;head&#39;&lt;/span&gt;)[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].appendChild(script);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;ticker.js中&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; data = &amp;#123;symbol:&lt;span class=&quot;string&quot;&gt;&#39;IBM&#39;&lt;/span&gt;, price:&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;showPrice(data);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;缺点：JSONP是get形式的，承载的信息量有限。&lt;/p&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;三、本地测试如何进行&quot;&gt;&lt;a href=&quot;#三、本地测试如何进行&quot; class=&quot;headerlink&quot; title=&quot;三、本地测试如何进行&quot;&gt;&lt;/a&gt;三、本地测试如何进行&lt;/h4&gt;&lt;p&gt;当然，如果我们仅仅是为了进行本地测试，那么大可不必如此麻烦，看看如下的设置吧。&lt;br&gt;首先，我们先来看windows系统下的设置：桌面创建Chrome，右键属性，在目标栏空格后输入&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;--disable-web-security&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/cors_CFE74C5D-058B-468C-9D0A-8AD9931214B9.png&quot; alt=&quot;cors&quot;&gt;&lt;br&gt;打开Chrome浏览器，出现以下警告，则配置成功。下面就可以进行轻松愉快的本地开发测试啦！&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/cors_Image.png&quot; alt=&quot;cors&quot;&gt;&lt;/p&gt;
-&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;注意：此处打开的浏览器一定是你配置好属性的快捷方式，否则可能无效哦！&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Mac下就简单多了，我们需要输入以下命令：&lt;br&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#老版本：&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;open &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Google Chrome&quot;&lt;/span&gt; --args --disable-web-security&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#新版本：&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;open &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Google Chrome&quot;&lt;/span&gt; --args --disable-web-security --user-data-dir&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;很多人发现Mac版本的CORS不起作用了，可能的原因就是你的chrome浏览器升级了，需要新的命令来禁用CORS。&lt;/p&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;四、补充&quot;&gt;&lt;a href=&quot;#四、补充&quot; class=&quot;headerlink&quot; title=&quot;四、补充&quot;&gt;&lt;/a&gt;四、补充&lt;/h4&gt;&lt;p&gt;CORS与JSONP相比，更为先进、方便和可靠。&lt;br&gt;① JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。&lt;br&gt;②使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。&lt;br&gt;③JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS。&lt;/p&gt;
-&lt;p&gt;对一个简单的请求，没有自定义头部，要么使用GET，要么使用POST，它的主体是text/plain,请求用一个名叫Orgin的额外的头部发送。Origin头部包含请求页面的头部（协议，域名，端口），这样服务器可以很容易的决定它是否应该提供响应。&lt;/p&gt;
-&lt;p&gt;服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来进行的。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Header set Access-Control-Allow-Origin *&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;为了防止XSS攻击我们的服务器， 我们可以限制域，比如&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Access-Control-Allow-Origin: http://jartto.wang/&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;很多服务都已经提供了CORS支持，比如 AWS 支持跨域资源分享功能CORS，向S3上传不需要代理。&lt;/p&gt;
-&lt;h4 id=&quot;五、CORS相关资源推荐&quot;&gt;&lt;a href=&quot;#五、CORS相关资源推荐&quot; class=&quot;headerlink&quot; title=&quot;五、CORS相关资源推荐&quot;&gt;&lt;/a&gt;五、CORS相关资源推荐&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://enable-cors.org/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;1.官方网站&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://my.oschina.net/dongwq/blog/137147&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2.CORS(Cross-Origin Resource Sharing) 跨域资源共享&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/cloudcraft/article/details/8986798&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;3.跨域请求解决方法(JSONP, CORS)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.360doc.com/content/14/0106/11/15643_343005039.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;4.ajax post&amp;amp;跨域解决方案&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/hfahe/article/details/7730944&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;5.html5安全：CORS（跨域资源共享）简介&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;参考：&lt;br&gt;百度百科：&lt;a href=&quot;http://baike.baidu.com/cors&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://baike.baidu.com/cors&lt;/a&gt;&lt;br&gt;Enable CORS：&lt;a href=&quot;http://enable-cors.org/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://enable-cors.org/index.html&lt;/a&gt;&lt;br&gt;跨域请求解决方法：&lt;a href=&quot;http://blog.csdn.net/cloudcraft/article/details/8986798&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/cloudcraft/article/details/8986798&lt;/a&gt;&lt;br&gt;javascript 之 跨域技术 CORS：&lt;a href=&quot;http://www.xuebuyuan.com/1744068.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.xuebuyuan.com/1744068.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/35432749/disable-web-security-in-chrome-48-and-49&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/35432749/disable-web-security-in-chrome-48-and-49&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之的，浏览器只是针对同源策略的一种实现。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术博文" scheme="http://jartto.wang/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/"/>
-    
-    
-      <category term="cors" scheme="http://jartto.wang/tags/cors/"/>
     
   </entry>
   
