@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="baidu-site-verification" content="bJPvLdWAu8" />
+    <meta name="generator" content="Jartto&#39;s blog">
+    <title>grasp a js template engine - Jartto&#39;s blog</title>
+    <meta name="author" content="Jartto">
+    
+        <meta name="keywords" content="Jartto,web前端开发,博客,">
+    
+    
+        <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="最近要做一个小项目，不管是使用angularjs还是reactjs，都觉得大材小用了。其实我可能只需要引入一个jquery，但想到jquery对dom的操作，对于早已习惯了双向绑定模式的我，何尝不是一种痛苦。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="grasp a js template engine">
+<meta property="og:url" content="http://jartto.wang/2016/09/15/grasp-a-js-template-engine/index.html">
+<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:description" content="最近要做一个小项目，不管是使用angularjs还是reactjs，都觉得大材小用了。其实我可能只需要引入一个jquery，但想到jquery对dom的操作，对于早已习惯了双向绑定模式的我，何尝不是一种痛苦。">
+<meta property="og:updated_time" content="2016-12-01T06:51:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="grasp a js template engine">
+<meta name="twitter:description" content="最近要做一个小项目，不管是使用angularjs还是reactjs，都觉得大材小用了。其实我可能只需要引入一个jquery，但想到jquery对dom的操作，对于早已习惯了双向绑定模式的我，何尝不是一种痛苦。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/js_2.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/js_2.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-amswellqtyheubmlz8etcaxxnc5dvbfw49m4rvjaocb7nstambtlprry5pr8.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-79715416-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</script>
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Jartto&#39;s blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture st-search-show-outputs"
+                href="#about">
+        
+        
+            <img class="header-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+            </a>
+            <span class="sidebar-profile-name">Jartto</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">分类</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">关于</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:Jartto@qq.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Email</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/chenfengyanyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/sitemap.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-sitemap"></i>
+                    <span class="sidebar-button-desc">Sitemap</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            grasp a js template engine
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-09-15T11:16:10+08:00">
+	
+		    2016/9月/15 11:16:10
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>最近要做一个小项目，不管是使用angularjs还是reactjs，都觉得大材小用了。其实我可能只需要引入一个jquery，但想到jquery对dom的操作，对于早已习惯了双向绑定模式的我，何尝不是一种痛苦。<br><a id="more"></a><br>听过这样一句话：“技术没有缺席，只有姗姗来迟”，很多技术自己不知道，并非没有。今天我想介绍的就是一个简单的js模版引擎artTemplate，让我们扬帆起航吧～</p>
+<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>artTemplate 是新一代 javascript 模板引擎，它采用预编译方式让性能有了质的飞跃，并且充分利用 javascript 引擎特性，使得其性能无论在前端还是后端都有极其出色的表现。</p>
+<h4 id="二、我的痛点"><a href="#二、我的痛点" class="headerlink" title="二、我的痛点"></a>二、我的痛点</h4><p>我们先来看一段代码，当我用ajax从后台拿到一堆json数据，要填充进页面的时候，可能会这么做：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type: <span class="string">'GET'</span>,</div><div class="line">    url: <span class="string">'/server/list.json'</span>,</div><div class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> lists = <span class="string">''</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;data.content.rows.length;i++)&#123;</div><div class="line">          lists += <span class="string">'&lt;li&gt;&lt;div class="lititle"&gt;'</span>+data.content.rows[i].leaveRuleName+<span class="string">'（共计 '</span>+data.content.rows[i].durationStr+<span class="string">'）&lt;/div&gt;&lt;div class="timer"&gt;&lt;span&gt;开始时间：'</span>+data.content.rows[i].startTime+<span class="string">'&lt;/span&gt;&lt;span&gt;结束时间：'</span>+data.content.rows[i].endTime+<span class="string">'&lt;/span&gt;&lt;/div&gt;&lt;div class="btns"&gt;&lt;p&gt;&lt;a href="#" class="button button-round blue"&gt;'</span>+data.content.rows[i].customApprovalStatus+<span class="string">'&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class="info"&gt;刚刚申请&lt;/div&gt;&lt;/li&gt;'</span>;</div><div class="line">         &#125;</div><div class="line">         $(<span class="string">'#myList'</span>).append(lists);</div><div class="line">    &#125;,</div><div class="line">    error: <span class="function"><span class="keyword">function</span>(<span class="params">xhr, type</span>) </span>&#123;<span class="comment">//此处省略&#125;</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"list-container"</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这段代码，功能上可能并没有什么问题。但是我们来看lists变量，这里面的信息已经爆炸了，html结构以及data填充，写完我就不想维护了。<br>正应了那句话：“此时我写的代码，只有我和天知道。半个月后，恐怕只有天知道了！”</p>
+<h4 id="三、处理痛点"><a href="#三、处理痛点" class="headerlink" title="三、处理痛点"></a>三、处理痛点</h4><p>这岂止是一场噩梦，简直就是在挖坑埋雷🙈。好了，不再矫情了，我们换artTemplate来试试，代码可能是这样：<br><div class="alert info"><p>注意：记得提前引入template.js哦～</p>
+</div><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type: <span class="string">'GET'</span>,</div><div class="line">    url: <span class="string">'/server/list.json'</span>,</div><div class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">          $(<span class="string">'#myList'</span>).append(template(<span class="string">'myListTpl'</span>, &#123; lists: data.content.rows&#125;));</div><div class="line">    &#125;,</div><div class="line">    error: <span class="function"><span class="keyword">function</span>(<span class="params">xhr, type</span>) </span>&#123;<span class="comment">//此处省略&#125;</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"myListTpl"</span>&gt;</span><span class="xml"></span></div><div class="line">    &#123;&#123;each lists&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-id</span>=<span class="string">"&#123;&#123;$value.id&#125;&#125;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"lititle"</span>&gt;</span>&#123;&#123;$value.overtimeRuleName&#125;&#125;（共计 &#123;&#123;$value.durationStr&#125;&#125;）<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"timer"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>开始时间：&#123;&#123;$value.startTime&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>结束时间：&#123;&#123;$value.endTime&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btns"</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"button button-round &#123;&#123;!$value.isEnsure?'blue':($value.isEffective?'green':'red')&#125;&#125;"</span>&gt;</span>&#123;&#123;!$value.isEnsure?'待确认':($value.isEffective?'已确认':'已失效')&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info"</span>&gt;</span>&#123;&#123;$value.applyTime | timeFormat&#125;&#125;申请<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    &#123;&#123;/each&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"list-container"</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<div class="alert info"><p>注意：script中的type=”text/html”</p>
+</div>
+<p>这段代码很清晰，我们建立了myListTpl作为模版，里面的html结构清晰，变量包在了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>中。那么lists中的值是怎么来的，细心的你可能看到了这个：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#myList'</span>).append(template(<span class="string">'myListTpl'</span>, &#123; lists: data.content.rows&#125;));</div></pre></td></tr></table></figure></p>
+<p>对，我们用template去预编译模版，同时将数据塞进了lists中。就这样，js中不需要很复杂的逻辑，html也保存了原有的结构。<br>～嗡～嗡，嗯，整个世界都清静了！</p>
+<h4 id="四、用法示例"><a href="#四、用法示例" class="headerlink" title="四、用法示例"></a>四、用法示例</h4><p>1.template(id,data)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script id="test" type="text/html"&gt;</div><div class="line">&lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;ul&gt;</div><div class="line">    &#123;&#123;each list as value i&#125;&#125;</div><div class="line">        &lt;li&gt;索引 &#123;&#123;i + 1&#125;&#125; ：&#123;&#123;value&#125;&#125;&lt;/li&gt;</div><div class="line">    &#123;&#123;/each&#125;&#125;</div><div class="line">&lt;/ul&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="五、原理剖析"><a href="#五、原理剖析" class="headerlink" title="五、原理剖析"></a>五、原理剖析</h4><h4 id="六、负荷测试"><a href="#六、负荷测试" class="headerlink" title="六、负荷测试"></a>六、负荷测试</h4><p><a href="http://7xvi3w.com1.z0.glb.clouddn.com/js_1.png" target="_blank" rel="external">!负荷测试</a><br>在 chrome 下渲染效率测试中分别是知名引擎 Mustache 与 micro tmpl 的 25 、 32 倍。<br>除了性能优势外，调试功能也值得一提。模板调试器可以精确定位到引发渲染错误的模板语句，解决了编写模板过程中无法调试的痛苦，让开发变得高效，也避免了因为单个模板出错导致整个应用崩溃的情况发生。</p>
+<h4 id="七、意外收获"><a href="#七、意外收获" class="headerlink" title="七、意外收获"></a>七、意外收获</h4><p>原本我以为artTemplate会是最快的，结果又发现了doT，很好，你已经成功引起了我的注意。<br><a href="http://7xvi3w.com1.z0.glb.clouddn.com/js_3.png" target="_blank" rel="external">!doT</a><br>正如大家所见，js模版引擎五花八门，如果每个引擎写一篇文章，我想几年内我应该不用干其他事了（我才不会这么无聊呢👻）。so，不要纠结到底使用哪个模版引擎。请记住，适合自己的才是最好的。</p>
+<h4 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h4><h4 id="九、参考文章"><a href="#九、参考文章" class="headerlink" title="九、参考文章"></a>九、参考文章</h4><p>1.官方实例：<br><a href="https://github.com/aui/artTemplate/tree/master/demo" target="_blank" rel="external">https://github.com/aui/artTemplate/tree/master/demo</a><br>2.快速上手：<br><a href="https://github.com/aui/artTemplate" target="_blank" rel="external">https://github.com/aui/artTemplate</a><br>3.原理解析：<br><a href="http://cdc.tencent.com/2012/06/15/高性能javascript模板引擎原理解析/" target="_blank" rel="external">http://cdc.tencent.com/2012/06/15/高性能javascript模板引擎原理解析/</a></p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/js/">js</a> <a class="tag tag--primary tag--small t-link" href="/tags/template/">template</a> <a class="tag tag--primary tag--small t-link" href="/tags/模版引擎/">模版引擎</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/13/jobs/" data-tooltip="机会推荐">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<div id="busuanzi_container_site_pv">
+	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
+	</div>
+	<br>
+    <span class="copyrights">
+        Copyrights &copy; 2016 Jartto. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/13/jobs/" data-tooltip="机会推荐">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/15/grasp-a-js-template-engine/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+            <h4 id="about-card-name">Jartto</h4>
+        
+            <h5 id="about-card-bio"><blockquote>
+<p>最遗憾的不是把梦想丢在路上，</br>而是梦想从未上路!</br>Just do IT</p>
+</blockquote>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>jartto@qq.com</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                北京－海淀
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xvi3w.com1.z0.glb.clouddn.com/layout_cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://jartto.wang/2016/09/15/grasp-a-js-template-engine/';
+                 
+                    this.page.identifier = '2016/09/15/grasp-a-js-template-engine/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'jartto';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>
