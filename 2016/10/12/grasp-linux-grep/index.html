@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>Mac下查看端口占用情况 - Jartto&#39;s blog</title>
+    <title>掌握linux命令grep - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web前端开发,博客,">
@@ -18,16 +18,13 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="Mac下查看端口占用情况">
-<meta property="og:url" content="http://jartto.wang/2016/09/28/check-the-system-port-of-mac/index.html">
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="掌握linux命令grep">
+<meta property="og:url" content="http://jartto.wang/2016/10/12/grasp-linux-grep/index.html">
 <meta property="og:site_name" content="Jartto's blog">
-<meta property="og:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
-<meta property="og:updated_time" content="2016-12-01T14:48:36.000Z">
+<meta property="og:updated_time" content="2016-12-06T15:32:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下查看端口占用情况">
-<meta name="twitter:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
+<meta name="twitter:title" content="掌握linux命令grep">
     
     
         
@@ -36,8 +33,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/mac.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/mac.png" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/20161206_html.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/20161206_html.png" />
     
     
     
@@ -233,13 +230,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            Mac下查看端口占用情况
+            掌握linux命令grep
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-28T20:08:32+08:00">
+    <time itemprop="datePublished" datetime="2016-10-12T23:31:28+08:00">
 	
-		    2016/9月/28 20:08:32
+		    2016/10月/12 23:31:28
     	
     </time>
     
@@ -255,23 +252,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。<br><a id="more"></a></p>
-<h4 id="一、问题由来："><a href="#一、问题由来：" class="headerlink" title="一、问题由来："></a>一、问题由来：</h4><p>当我想在本地启动一个http-server来查看静态网页的时候，发现服务并不能被启动。查看原因后，得知：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: listen EADDRINUSE 0.0.0.0:8080</div></pre></td></tr></table></figure></p>
-<h4 id="二、分析问题："><a href="#二、分析问题：" class="headerlink" title="二、分析问题："></a>二、分析问题：</h4><div class="alert info"><p>看到错误，我们很容易就判断出来了，很明显，8080端口被占用了。</p>
-</div>
-<p>解决思路有两个：<br>其一，修改http-server服务器端口号；<br><a href="http://www.cnblogs.com/lucker/p/4108838.html" target="_blank" rel="external">查阅文档</a>命令行直接输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http-server -p 6666</div></pre></td></tr></table></figure></p>
-<p>好的，http-server不能启动的问题解决了，可是我并不打算收手👻</p>
-<p>其二，我想查看8080端口被谁占用了。</p>
-<p>那么问题来了，mac下如何查看端口被占用情况呢？众所周知，mac os是Unix内核的桌面版操作系统，Linux是类Unix操作系统。</p>
-<div class="alert success"><p>bingo！问题转嫁了，如何查看linux端口号情况？</p>
-</div>
-<h4 id="三、查看端口号"><a href="#三、查看端口号" class="headerlink" title="三、查看端口号"></a>三、查看端口号</h4><p>我查到了这个：<br>可以使用netstat命令。netstat命令可以显示网络连接，路由表，接口状态，伪装连接，网络链路信息和组播成员组等信息。<br>命令格式：netstat [选项]<br>常用参数：<br>-a, –all 显示所有正在或不在侦听的套接字。<br>-p, –program 显示套接字所属进程的PID和名称。<br>-n, –numeric 显示数字形式地址而不是去解析主机、端口或用户名。<br>用法示例：查看所有的进程和端口使用情况。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ netstat –apn</div></pre></td></tr></table></figure></p>
-<p>好的，那我来试试，控制台说：滚！<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat: n: unknown or uninstrumented protocol</div></pre></td></tr></table></figure></p>
-<p>这就尴尬了，为什么命令用不了？找到netstat的使用说明，我们先看一下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">netstat [-AaLlnW] [<span class="_">-f</span> address_family | -p protocol]</div><div class="line">netstat [-gilns] [<span class="_">-f</span> address_family]</div><div class="line">netstat -i | -I interface [-w <span class="built_in">wait</span>] [-abdgRt]</div><div class="line">netstat <span class="_">-s</span> [<span class="_">-s</span>] [<span class="_">-f</span> address_family | -p protocol] [-w <span class="built_in">wait</span>]</div><div class="line">netstat -i | -I interface <span class="_">-s</span> [<span class="_">-f</span> address_family | -p protocol]</div><div class="line">netstat -m [-m]</div><div class="line">netstat -r [-Aaln] [<span class="_">-f</span> address_family]</div><div class="line">netstat -rs [<span class="_">-s</span>]</div></pre></td></tr></table></figure></p>
-<p>都是什么意思呢，一不做二不休，我来一个个试一下。</p>
-<h4 id="四、查看某一端口占用情况："><a href="#四、查看某一端口占用情况：" class="headerlink" title="四、查看某一端口占用情况："></a>四、查看某一端口占用情况：</h4><p>进一步可以使用lsof命令显示占用该端口的进程情况 。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#命令格式：lsof -i :端口</span></div><div class="line">lsof -i:8080</div></pre></td></tr></table></figure></p>
-<p>控制台输出如下信息：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">COMMAND   PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME</div><div class="line">nginx     634 Jartto    6u  IPv4 0x8800c1295e443e43      0t0  TCP *:http-alt (LISTEN)</div><div class="line">nginx     635 Jartto    6u  IPv4 0x8800c1295e443e43      0t0  TCP *:http-alt (LISTEN)</div><div class="line">WeChat  93768 Jartto  119u  IPv6 0x8800c12977474f33      0t0  TCP 192.168.1.*</div></pre></td></tr></table></figure></p>
-<h4 id="五、如何杀掉进程？"><a href="#五、如何杀掉进程？" class="headerlink" title="五、如何杀掉进程？"></a>五、如何杀掉进程？</h4><h4 id="六、数据太多，使用awk？"><a href="#六、数据太多，使用awk？" class="headerlink" title="六、数据太多，使用awk？"></a>六、数据太多，使用awk？</h4><p>在尝试netstat的各种命令过程中，控制台给出的都是满满的一屏。有没有更好的展现方式，或过滤选项呢？<br><a href="http://man.linuxde.net/awk" target="_blank" rel="external">http://man.linuxde.net/awk</a><br>文本处理工具</p>
+            <a id="more"></a>
 
             
         </div>
@@ -281,7 +262,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/linux/">linux</a> <a class="tag tag--primary tag--small t-link" href="/tags/mac/">mac</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/grep/">grep</a> <a class="tag tag--primary tag--small t-link" href="/tags/linux/">linux</a>
 
             </div>
         
@@ -290,7 +271,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/"  data-tooltip="关于html中的base标签">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/06/talk-about-ie-compatible-over-again/"  data-tooltip="再谈ie浏览器兼容问题">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -298,7 +279,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/15/grasp-a-js-template-engine/" data-tooltip="掌握js模板引擎">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/" data-tooltip="关于html中的base标签">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -313,17 +294,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -377,7 +358,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/"  data-tooltip="关于html中的base标签">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/06/talk-about-ie-compatible-over-again/"  data-tooltip="再谈ie浏览器兼容问题">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -385,7 +366,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/15/grasp-a-js-template-engine/" data-tooltip="掌握js模板引擎">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/" data-tooltip="关于html中的base标签">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -400,17 +381,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -436,17 +417,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/10/12/grasp-linux-grep/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -505,9 +486,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://jartto.wang/2016/09/28/check-the-system-port-of-mac/';
+                 this.page.url = 'http://jartto.wang/2016/10/12/grasp-linux-grep/';
                  
-                    this.page.identifier = '2016/09/28/check-the-system-port-of-mac/';
+                    this.page.identifier = '2016/10/12/grasp-linux-grep/';
                                   
              };
             (function() {

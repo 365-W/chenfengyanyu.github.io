@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2016/10/01/about-html-base-tag/</loc>
+    
+    <lastmod>2016-12-07T05:01:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2016/10/12/grasp-linux-grep/</loc>
+    
+    <lastmod>2016-12-06T15:32:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2016/12/06/talk-about-ie-compatible-over-again/</loc>
     
     <lastmod>2016-12-06T10:41:02.000Z</lastmod>
