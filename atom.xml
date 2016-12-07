@@ -92,7 +92,7 @@
     <link href="http://jartto.wang/2016/10/12/grasp-linux-grep/"/>
     <id>http://jartto.wang/2016/10/12/grasp-linux-grep/</id>
     <published>2016-10-12T15:31:28.000Z</published>
-    <updated>2016-12-07T05:34:37.000Z</updated>
+    <updated>2016-12-07T05:40:08.000Z</updated>
     
     <content type="html">&lt;p&gt;test&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -117,7 +117,7 @@
     <link href="http://jartto.wang/2016/10/01/about-html-base-tag/"/>
     <id>http://jartto.wang/2016/10/01/about-html-base-tag/</id>
     <published>2016-10-01T13:59:20.000Z</published>
-    <updated>2016-12-07T05:01:57.000Z</updated>
+    <updated>2016-12-07T05:45:47.000Z</updated>
     
     <content type="html">&lt;p&gt;日常工作中，我们可能会更改项目文件的目录结构，这样的话，就引发了一个问题，静态资源的路径如何处理？&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;一、问题由来&quot;&gt;&lt;a href=&quot;#一、问题由来&quot; class=&quot;headerlink&quot; title=&quot;一、问题由来&quot;&gt;&lt;/a&gt;一、问题由来&lt;/h4&gt;&lt;p&gt;因为项目要根据浏览器语言版本切中英文网站，所以需要将静态资源放到各自语言版本目录中，所以我不得不更改目录结构。导致的问题就是，静态资源路径异常，图片，css以及js无法正常加载。&lt;/p&gt;
@@ -136,11 +136,12 @@
 &lt;/div&gt;
 &lt;p&gt;这是因为 base 元素的 target 属性已经被设置为 ‘_blank’ 了。&lt;/p&gt;
 &lt;h4 id=&quot;四、注意事项&quot;&gt;&lt;a href=&quot;#四、注意事项&quot; class=&quot;headerlink&quot; title=&quot;四、注意事项&quot;&gt;&lt;/a&gt;四、注意事项&lt;/h4&gt;&lt;p&gt;一行代码就搞定了我大量重复替换的工作，真是不错！但是，别高兴的太早，这里有一点需要我们注意。&lt;br&gt;&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;base适合于全路径或者相对路径，如果你写的绝对路径，那么base路径将会失效。&lt;/p&gt;
-&lt;/div&gt;&lt;br&gt;我们来看下面这个栗子：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;/zh&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;link(rel=&#39;stylesheet&#39;, href=&#39;/assets/lib/swiper.min.css&#39;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;我们来看下面这个栗子：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;/zh&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&#39;stylesheet&#39;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&#39;/assets/lib/swiper.min.css&#39;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;如上所示，解析出来结果是：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;href=&#39;http://jartto.wang/assets/lib/swiper.min.css&#39;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;而我想要的是：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;href=&#39;http://jartto.wang/zh/assets/lib/swiper.min.css&#39;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;所以，这里是需要特别注意的。好了，问题结束！&lt;/p&gt;
-&lt;p&gt;参考：&lt;br&gt;html base标签：&lt;br&gt;&lt;a href=&quot;http://www.w3school.com.cn/tags/tag_base.asp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.w3school.com.cn/tags/tag_base.asp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;所以，这里是需要特别注意的。&lt;/p&gt;
+&lt;p&gt;当然，根据不同的项目需求，此类问题也会存在其他最优解。一个字总结：具体问题具体对待！&lt;/p&gt;
+&lt;h4 id=&quot;五、参考&quot;&gt;&lt;a href=&quot;#五、参考&quot; class=&quot;headerlink&quot; title=&quot;五、参考&quot;&gt;&lt;/a&gt;五、参考&lt;/h4&gt;&lt;p&gt;html base标签：&lt;br&gt;&lt;a href=&quot;http://www.w3school.com.cn/tags/tag_base.asp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.w3school.com.cn/tags/tag_base.asp&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
