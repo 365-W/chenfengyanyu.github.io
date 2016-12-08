@@ -24,7 +24,7 @@
 <meta property="og:url" content="http://jartto.wang/2016/12/08/does-js-guarantee-object-property-order/index.html">
 <meta property="og:site_name" content="Jartto's blog">
 <meta property="og:description" content="碰到了一个很有意思的问题，js中对象属性的输出是有序的吗？如果有的话，那又遵循怎样的规则呢？">
-<meta property="og:updated_time" content="2016-12-08T11:03:21.000Z">
+<meta property="og:updated_time" content="2016-12-08T11:06:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js能够保证object属性的输出顺序吗？">
 <meta name="twitter:description" content="碰到了一个很有意思的问题，js中对象属性的输出是有序的吗？如果有的话，那又遵循怎样的规则呢？">
@@ -276,10 +276,10 @@
 <h4 id="四、真相大白"><a href="#四、真相大白" class="headerlink" title="四、真相大白"></a>四、真相大白</h4><p>Chrome Opera 中使用 for-in 语句遍历对象属性时会遵循一个规律：<br><div class="alert success"><p>它们会先提取所有 key 的 parseFloat 值为非负整数的属性，然后根据数字顺序对属性排序首先遍历出来，然后按照对象定义的顺序遍历余下的所有属性。</p>
 </div><br>其它浏览器则完全按照对象定义的顺序遍历属性。</p>
 <p>这和我们上面例子中的数据结果是吻合的，嗯，这就是我想要的结果！</p>
-<h4 id="五、结案总结"><a href="#五、结案总结" class="headerlink" title="五、结案总结"></a>五、结案总结</h4><p>for-in语句无法保证遍历顺序，应尽量避免编写依赖对象属性顺序的代码。<br><div class="alert info"><p>如果想顺序遍历一组数据，请使用数组并使用 for 语句遍历。 </p>
-</div><br>如果想按照定义的次序遍历对象属性，请参考<a href="http://w3help.org/zh-cn/causes/SJ9011" target="_blank" rel="external">本文</a>针对各浏览器编写特殊代码。</p>
-<p>由于对象的输出是无序的，但是数组却是有序的，所以为了保证顺序，搞成数组再输出。</p>
-<p>嗯，就是这样！</p>
+<h4 id="五、结案总结"><a href="#五、结案总结" class="headerlink" title="五、结案总结"></a>五、结案总结</h4><div class="alert info"><p>如果想顺序遍历一组数据，请使用数组并使用 for 语句遍历。 </p>
+</div>
+<p>for-in语句无法保证遍历顺序，应尽量避免编写依赖对象属性顺序的代码。如果想按照定义的次序遍历对象属性，请参考<a href="http://w3help.org/zh-cn/causes/SJ9011" target="_blank" rel="external">这里</a>针对各浏览器编写特殊代码。</p>
+<p>由于对象的输出是无序的，但是数组却是有序的，所以为了保证顺序，搞成数组再输出。嗯，就是这样！</p>
 <h4 id="六、参考文档"><a href="#六、参考文档" class="headerlink" title="六、参考文档"></a>六、参考文档</h4><p>1.ASCII参照表<br><a href="http://baike.baidu.com/link?url=biyz3JjFtGX7OAA48C" target="_blank" rel="external">http://baike.baidu.com/link?url=biyz3JjFtGX7OAA48C</a><br>2.js对象输出顺序<br><a href="http://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order" target="_blank" rel="external">http://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order</a><br>3.遍历出的属性顺序与对象定义时不同<br><a href="http://w3help.org/zh-cn/causes/SJ9011" target="_blank" rel="external">http://w3help.org/zh-cn/causes/SJ9011</a><br>4.控制js中的对象顺序输出<br><a href="https://segmentfault.com/q/1010000000765467" target="_blank" rel="external">https://segmentfault.com/q/1010000000765467</a></p>
 
             
