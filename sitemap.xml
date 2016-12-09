@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2016/09/28/check-the-system-port-of-mac/</loc>
+    
+    <lastmod>2016-12-09T09:18:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2016/10/25/does-js-guarantee-object-property-order/</loc>
     
     <lastmod>2016-12-09T05:32:31.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://jartto.wang/2016/12/06/talk-about-ie-compatible-over-again/</loc>
     
     <lastmod>2016-12-06T10:41:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2016/09/28/check-the-system-port-of-mac/</loc>
-    
-    <lastmod>2016-12-01T14:48:36.000Z</lastmod>
     
   </url>
   
