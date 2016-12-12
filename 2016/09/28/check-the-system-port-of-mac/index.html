@@ -24,7 +24,7 @@
 <meta property="og:url" content="http://jartto.wang/2016/09/28/check-the-system-port-of-mac/index.html">
 <meta property="og:site_name" content="Jartto's blog">
 <meta property="og:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
-<meta property="og:updated_time" content="2016-12-09T09:18:14.000Z">
+<meta property="og:updated_time" content="2016-12-09T09:25:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下查看端口占用情况">
 <meta name="twitter:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
@@ -272,7 +272,7 @@
 <h4 id="五、如何杀掉进程？"><a href="#五、如何杀掉进程？" class="headerlink" title="五、如何杀掉进程？"></a>五、如何杀掉进程？</h4><p>查看进程，命令行输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | more</div></pre></td></tr></table></figure></p>
 <p>找到需要杀掉的进程，执行：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 pid</div></pre></td></tr></table></figure></p>
 <p>某种情况下，我们也可以根据进程名称来杀进程，如下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 name</div></pre></td></tr></table></figure></p>
-<h4 id="六、数据太多？"><a href="#六、数据太多？" class="headerlink" title="六、数据太多？"></a>六、数据太多？</h4><p>在尝试netstat的各种命令过程中，控制台给出的都是满满的一屏。有没有更好的展现方式，或过滤选项呢？可以试试<a href="">awk</a>和<a href="">grep</a>。</p>
+<h4 id="六、数据太多？"><a href="#六、数据太多？" class="headerlink" title="六、数据太多？"></a>六、数据太多？</h4><p>在尝试netstat的各种命令过程中，控制台给出的都是满满的一屏。有没有更好的展现方式，或过滤选项呢？可以试试<a href="">awk</a>和<a href="http://jartto.wang/2016/10/12/grasp-linux-grep/">grep</a>。</p>
 <p>这里就不展开讨论了，后续我会补充相关文章，此处先占个坑吧！</p>
 <h4 id="七、参考文档"><a href="#七、参考文档" class="headerlink" title="七、参考文档"></a>七、参考文档</h4><p>1.<a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html" target="_blank" rel="external">netstat详解</a><br>2.<a href="http://man.linuxde.net/netstat" target="_blank" rel="external">netstat命令</a></p>
 
