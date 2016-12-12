@@ -24,7 +24,7 @@
 <meta property="og:url" content="http://jartto.wang/2016/11/02/linux-common-command/index.html">
 <meta property="og:site_name" content="Jartto's blog">
 <meta property="og:description" content="对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。">
-<meta property="og:updated_time" content="2016-12-12T03:17:45.000Z">
+<meta property="og:updated_time" content="2016-12-12T03:29:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 实用命令">
 <meta name="twitter:description" content="对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。">
@@ -255,159 +255,73 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。<br><a id="more"></a></p>
-<ol>
-<li>更改档案拥有者<br>更改文件或者文件夹的拥有者<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown [-cfhvR] [--help] [--version] user[:group] file...</div></pre></td></tr></table></figure>
-</li>
-</ol>
+            <p>对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。</p>
+<a id="more"></a>
+<p>一、更改文件或者文件夹的拥有者<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown [-cfhvR] [--help] [--version] user[:group] file...</div></pre></td></tr></table></figure></p>
 <p>参数格式 :<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group)</div><div class="line">-c : 若该档案拥有者确实已经更改，才显示其更改动作</div><div class="line"><span class="_">-f</span> : 若该档案拥有者无法被更改也不要显示错误讯息</div><div class="line">-h : 只对于连结(link)进行变更，而非该 link 真正指向的档案</div><div class="line">-v : 显示拥有者变更的详细资料</div><div class="line">-R : 对目前目录下的所有档案与子目录进行相同的拥有者变更(即以递回的方式逐个变更)</div></pre></td></tr></table></figure></p>
 <p>如：更改目录拥有者为oracle<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R oracle:oinstall /oracle/u01/app/oracle</div></pre></td></tr></table></figure></p>
-<ol>
-<li>修改权限<br>改变文件的读写和执行权限。有符号法和八进制数字法。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod (change mode)</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>二、修改权限<br>改变文件的读写和执行权限，有符号法和八进制数字法。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod (change mode)</div></pre></td></tr></table></figure></p>
 <p>选项：<br>(1)符号法：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">chmod &#123;u|g|o|a&#125;&#123;+|-|=&#125;&#123;r|w|x&#125; filename</div><div class="line">          u (user)   表示用户本人。</div><div class="line">          g (group)  表示同组用户。</div><div class="line">          o (oher)   表示其他用户。</div><div class="line">          a (all)    表示所有用户。</div><div class="line">          +          用于给予指定用户的许可权限。</div><div class="line">          -          用于取消指定用户的许可权限。</div><div class="line">          =          将所许可的权限赋给文件。</div><div class="line">          r (<span class="built_in">read</span>)   读许可，表示可以拷贝该文件或目录的内容。</div><div class="line">          w (write)  写许可，表示可以修改该文件或目录的内容。</div><div class="line">          x (execute)执行许可，表示可以执行该文件或进入目录。</div></pre></td></tr></table></figure></p>
 <p>(2)八进制数字法：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">chmod abc file</div><div class="line">  其中a,b,c各为一个八进制数字，分别表示User、Group、及Other的权限。</div><div class="line">          4 (100)    表示可读。</div><div class="line">          2 (010)    表示可写。</div><div class="line">          1 (001)    表示可执行。</div><div class="line">  若要rwx属性则4+2+1=7；</div><div class="line">  若要rw-属性则4+2=6；</div><div class="line">  若要r-x属性则4+1=5。</div></pre></td></tr></table></figure></p>
 <p>举几个实用例子：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># chmod a+rx filename</span></div><div class="line">让所有用户可以读和执行文件filename。</div><div class="line"><span class="comment"># chmod go-rx filename</span></div><div class="line">取消同组和其他用户的读和执行文件filename的权限。</div><div class="line"><span class="comment"># chmod 741 filename</span></div><div class="line">让本人可读写执行、同组用户可读、其他用户可执行文件filename。</div><div class="line"><span class="comment"># chmod -R 755 /home/oracle</span></div><div class="line">递归更改目录权限，本人可读写执行、同组用户可读可执行、其他用户可读可执行</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>修改文件日期<br>改变文件的日期，不对文件的内容做改动，若文件不存在则建立新文件。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch filename</div></pre></td></tr></table></figure>
-</li>
-<li><p>链接文件<br>为文件或目录建立一个链。其中，filename和directory是源文件名和源目录名；<br>linkname和pathname分别表示与源文件或源目录名相链接的文件或目录。<br>选项 -s 为文件或目录建立符号链接。不加-s表示为文件或目录建立硬链接。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ln [option] filename linkname</div><div class="line">ln [option] directory pathname</div><div class="line">ln <span class="_">-s</span> filename linkname</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>三、修改文件日期<br>改变文件的日期，不对文件的内容做改动，若文件不存在则建立新文件。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch filename</div></pre></td></tr></table></figure></p>
+<p>四、链接文件<br>为文件或目录建立一个链。其中，filename和directory是源文件名和源目录名；<br>linkname和pathname分别表示与源文件或源目录名相链接的文件或目录。<br>选项 -s 为文件或目录建立符号链接。不加-s表示为文件或目录建立硬链接。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ln [option] filename linkname</div><div class="line">ln [option] directory pathname</div><div class="line">ln <span class="_">-s</span> filename linkname</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>链接的目地在于，对一个文件或目录赋予两个以上的名字，使其可以出现在不同的目录中，既可以使文件或目录共享，又可以节省磁盘空间。</p>
 </div>
-<ol>
-<li><p>显示日期</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date</div></pre></td></tr></table></figure>
-</li>
-<li><p>显示日历</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cal (calendar)</div><div class="line">cal [month] year</div><div class="line">cal 1998</div></pre></td></tr></table></figure>
-</li>
-<li><p>显示文件头部</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head [option] filename</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>五、显示日期<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date</div></pre></td></tr></table></figure></p>
+<p>六、显示日历<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cal (calendar)</div><div class="line">cal [month] year</div><div class="line">cal 1998</div></pre></td></tr></table></figure></p>
+<p>七、显示文件头部<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head [option] filename</div></pre></td></tr></table></figure></p>
 <p>选项：缺省  显示文件的头10行。<br>          -i    显示文件的开始 i行。</p>
-<ol>
-<li>显示文件尾部<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail [option] filename</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>选项：缺省  显示文件的末10行。<br>          -i    显示文件最后 i 行。<br>          +i    从文件的第i行开始显示。</p>
-<ol>
-<li>显示用户标识<br>显示用户标识及用户所属的所有组。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">id [option] [user]</div><div class="line">id username</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>选项：-a 显示用户名、用户标识及用户所属的所有组</p>
-<ol>
-<li><p>查看当前登录的用户</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">users</div></pre></td></tr></table></figure>
-</li>
-<li><p>显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">who</div></pre></td></tr></table></figure>
-</li>
-<li><p>显示出当前终端上使用的用户</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whoami</div></pre></td></tr></table></figure>
-</li>
-<li><p>寻找文件<br>在所给的路经名下寻找符合表达式相匹配的文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find pathname [option] expression</div><div class="line">find ./ -name <span class="string">'*abc*'</span> -print</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>八、显示文件尾部<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail [option] filename</div></pre></td></tr></table></figure></p>
+<p>选项：缺省  显示文件的末10行。<br>-i    显示文件最后 i 行。<br>+i    从文件的第i行开始显示。</p>
+<p>九、显示用户标识<br>显示用户标识及用户所属的所有组。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">id [option] [user]</div><div class="line">id username</div></pre></td></tr></table></figure></p>
+<p>选项：<br>-a 显示用户名、用户标识及用户所属的所有组</p>
+<p>十、查看当前登录的用户<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">users</div></pre></td></tr></table></figure></p>
+<p>十一、显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">who</div></pre></td></tr></table></figure></p>
+<p>十二、显示出当前终端上使用的用户<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whoami</div></pre></td></tr></table></figure></p>
+<p>十三、寻找文件<br>在所给的路经名下寻找符合表达式相匹配的文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find pathname [option] expression</div><div class="line">find ./ -name <span class="string">'*abc*'</span> -print</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-name     表示文件名<br>-user     用户名，选取该用户所属的文件<br>-size     按大小查找，以block为单位，一个block是512B<br>-mtime n  按最后一次修改时间查找，选取n天内被修改的文件<br>-perm     按权限查找<br>-type      按文件类型查找<br>-atime    按最后一次访问时间查找</p>
-<ol>
-<li>搜索文件中匹配符<br>逐行搜索所指定的文件或标准输入，并显示匹配模式的每一行。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grep [option] pattern filenames</div><div class="line">grep -i <span class="string">'error'</span> ./<span class="built_in">test</span>/test.log</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>选项：-i    匹配时忽略大小写<br>          -v 找出模式失配的行</p>
-<ol>
-<li>统计文件字数<br>统计文件中的文件行数、字数和字符数。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wc [option] filename</div><div class="line">wc -c ./<span class="built_in">test</span>/run.sh</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>选项：<br>-l 统计文件的行数<br>-w 统计文件的单词数<br>-c 统计文件的字符数</p>
-<p>注释：若缺省文件名则指标准输入</p>
-<ol>
-<li>显示磁盘空间<br>显示磁盘空间的使用情况，包括文件系统安装的目录名、块设备名、总字节数、已用字节数、剩余字节数占用百分比。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df [option]</div><div class="line">% df -hi</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>十四、搜索文件中匹配符<br>逐行搜索所指定的文件或标准输入，并显示匹配模式的每一行。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grep [option] pattern filenames</div><div class="line">grep -i <span class="string">'error'</span> ./<span class="built_in">test</span>/test.log</div></pre></td></tr></table></figure></p>
+<p>选项：<br>-i    匹配时忽略大小写<br>-v 找出模式失配的行</p>
+<p>十五、统计文件字数<br>统计文件中的文件行数、字数和字符数。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wc [option] filename</div><div class="line">wc -c ./<span class="built_in">test</span>/run.sh</div></pre></td></tr></table></figure></p>
+<p>选项：若缺省文件名则指标准输入<br>-l 统计文件的行数<br>-w 统计文件的单词数<br>-c 统计文件的字符数</p>
+<p>十六、显示磁盘空间<br>显示磁盘空间的使用情况，包括文件系统安装的目录名、块设备名、总字节数、已用字节数、剩余字节数占用百分比。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df [option]</div><div class="line">% df -hi</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-a：显示全部的档案系统和各分割区的磁盘使用情形<br>-i：显示i -nodes的使用量<br>-k：大小用k来表示 (默认值)<br>-t：显示某一个档案系统的所有分割区磁盘使用量<br>-x：显示不是某一个档案系统的所有分割区磁盘使用量<br>-T：显示每个分割区所属的档案系统名称<br>-h: 表示使用「Human-readable」的输出，也就是在档案系统大小使用 GB、MB 等易读的格式。</p>
-<ol>
-<li>查询档案或目录的磁盘使用空间<br>以指定的目录下的子目录为单位，显示每个目录内所有档案所占用的磁盘空间大小<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">du [option] [filename]</div><div class="line">% du <span class="_">-a</span></div><div class="line">% du -sh /etc 只显示该目录的总合</div><div class="line">% du /etc | sort -nr | more 统计结果用sort 指令进行排序，</div><div class="line">sort 的参数 -nr 表示要以数字排序法进行反向排序。</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>十七、查询档案或目录的磁盘使用空间<br>以指定的目录下的子目录为单位，显示每个目录内所有档案所占用的磁盘空间大小<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">du [option] [filename]</div><div class="line">% du <span class="_">-a</span></div><div class="line">% du -sh /etc 只显示该目录的总合</div><div class="line">% du /etc | sort -nr | more 统计结果用sort 指令进行排序，</div><div class="line">sort 的参数 -nr 表示要以数字排序法进行反向排序。</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-a：显示全部目录和其次目录下的每个档案所占的磁盘空间<br>-b：大小用bytes来表示 (默认值为k bytes)<br>-c：最后再加上总计 (默认值)<br>-s：只显示各档案大小的总合<br>-x：只计算同属同一个档案系统的档案<br>-L：计算所有的档案大小<br>-h: 表示档案系统大小使用 GB、MB 等易读的格式。</p>
-<ol>
-<li>显示进程<br>显示系统中进程的信息。包括进程ID、控制进程终端、执行时间和命令。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps [option]</div><div class="line">% ps -ef</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>十八、显示进程<br>显示系统中进程的信息。包括进程ID、控制进程终端、执行时间和命令。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps [option]</div><div class="line">% ps -ef</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-a 显示所有进程信息<br>-U uidlist 列出这个用户的所有进程<br>-e 显示当前运行的每一个进程信息<br>-f 显示一个完整的列表<br>-x 显示包括没有终端控制的进程状况 。</p>
-<ol>
-<li>终止进程<br>向指定的进程送信号或终止进程。kill指令的用途是送一个signal给某一个process，因为大部份送的都是用来杀掉 process 的 SIGKILL 或 SIGHUP ，因此称为 kill。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> [option] pid</div><div class="line"><span class="built_in">kill</span> -9 pid</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>十九、终止进程<br>向指定的进程送信号或终止进程。kill指令的用途是送一个signal给某一个process，因为大部份送的都是用来杀掉 process 的 SIGKILL 或 SIGHUP ，因此称为 kill。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> [option] pid</div><div class="line"><span class="built_in">kill</span> -9 pid</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-9  强行终止进程<br><div class="alert info"><p>pid标示进程号，可由ps命令得到。也可以用 kill -l 来察看可代替 signal 号码的数目字。</p>
 </div></p>
-<ol>
-<li><p>查看自己的IP地址</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig <span class="_">-a</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>查看路由表</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -rn</div></pre></td></tr></table></figure>
-</li>
-<li><p>远程登录</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">telnet hostname</div></pre></td></tr></table></figure>
-</li>
-<li><p>文件传输<br>网络文件传输及远程操作。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftp hostname</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>二十、查看自己的IP地址<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig <span class="_">-a</span></div></pre></td></tr></table></figure></p>
+<p>二十一、查看路由表<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -rn</div></pre></td></tr></table></figure></p>
+<p>二十二、远程登录<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">telnet hostname</div></pre></td></tr></table></figure></p>
+<p>二十三、文件传输<br>网络文件传输及远程操作。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftp hostname</div></pre></td></tr></table></figure></p>
 <p>选项：ftp命令：<br>cd [dirname]  进入远程机的目录<br>lcd [dirname] 设置本地机的目录<br>dir/ls        显示远程的目录文件<br>bin           以二进制方式进行传输<br>asc           以文本文件方式进行传输<br>get/mget      从远程机取一个或多个文件<br>put/mput      向远程机送一个或多个文件<br>prompt        打开或关闭多个文件传送时的交互提示<br>close         关闭与远程机的连接<br>quit          退出ftp<br>!/exit ftp登陆状态下，!表示暂时退出ftp状态回到本地目录，exit表示返回ftp状态</p>
-<ol>
-<li>查看自己的电子邮件<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mailx</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>选项：<br>delete  删除<br>next    下一个<br>quit    退出<br>reply   回复</p>
-<ol>
-<li><p>帮助用户回忆执行过的命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">history</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>网上对话</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">talk username</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>二十四、查看自己的电子邮件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mailx</div></pre></td></tr></table></figure></p>
+<p>选项：<br>-delete  删除<br>-next    下一个<br>-quit    退出<br>-reply   回复</p>
+<p>二十五、帮助用户回忆执行过的命令<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">history</span></div></pre></td></tr></table></figure></p>
+<p>二十六、网上对话<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">talk username</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>对话时系统把终端分为上下两部分，上半部显示自己键入信息，下半部显示对方用户键入的信息。键入delete或Ctrl+C则结束对话。</p>
 </div>
-<ol>
-<li>允许或拒绝其它用户向自己所用的终端发送信息<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mesg [n/y]</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>选项：<br>n 拒绝其它用户向自己所用的终端写信息<br>y 允许其它用户向自己所用的终端写信息（缺省值）</p>
-<ol>
-<li>给其他用户写信息<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">write username [ttyname]</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>二十七、允许或拒绝其它用户向自己所用的终端发送信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mesg [n/y]</div></pre></td></tr></table></figure></p>
+<p>选项：<br>-n 拒绝其它用户向自己所用的终端写信息<br>-y 允许其它用户向自己所用的终端写信息（缺省值）</p>
+<p>二十八、给其他用户写信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">write username [ttyname]</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>若对方没有拒绝，两用户可进行交谈，键入EOF或Ctrl+C则结束对话。</p>
 </div>
-<ol>
-<li>创建、修改、删除用户和群组<br>a. 创建群组：<br>例如： <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建群组名为oinstall的组</span></div><div class="line">groupadd oinstall    </div><div class="line"><span class="comment">#创建组号是344的组，此时在/etc/passwd文件中产生一个组ID（GID）是344的项目。</span></div><div class="line">groupadd -g 344 dba</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>二十九、创建、修改、删除用户和群组<br>a. 创建群组：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建群组名为oinstall的组</span></div><div class="line">groupadd oinstall    </div><div class="line"><span class="comment">#创建组号是344的组，此时在/etc/passwd文件中产生一个组ID（GID）是344的项目。</span></div><div class="line">groupadd -g 344 dba</div></pre></td></tr></table></figure></p>
 <p>b. 修改群组：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#改变用户组帐号的属性</span></div><div class="line">groupmod</div><div class="line"><span class="comment">#用户组帐号名</span></div><div class="line">groupmod –g 新的GID</div><div class="line"><span class="comment">#此命令由于改变用户组的名称</span></div><div class="line">groupmod –n 新组名 原组名</div></pre></td></tr></table></figure></p>
 <p>c. 删除群组：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#删除指定的组帐号</span></div><div class="line">groupdel 组名</div></pre></td></tr></table></figure></p>
 <p>d. 新建用户：<br>命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">useradd [－d home] [－s shell] [－c comment] [－m [－k template]]</div><div class="line">[－f inactive] [－e expire ] [－p passwd] [－r] name</div><div class="line"><span class="comment">#创建Oracle用户</span></div><div class="line">useradd -g oinstall -G dba oracle</div></pre></td></tr></table></figure></p>
 <p>主要参数<br>-c：加上备注文字，备注文字保存在passwd的备注栏中。<br>-d：指定用户登入时的启始目录。<br>-D：变更预设值。<br>-e：指定账号的有效期限，缺省表示永久有效。<br>-f：指定在密码过期后多少天即关闭该账号。<br>-g：指定用户所属的群组。<br>-G：指定用户所属的附加群组。<br>-m：自动建立用户的登入目录。<br>-M：不要自动建立用户的登入目录。<br>-n：取消建立以用户名称为名的群组。<br>-r：建立系统账号。<br>-s：指定用户登入后所使用的shell。<br>-u：指定用户ID号。</p>
 <p>e. 删除用户<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#删除指定的用户帐号</span></div><div class="line">userdel 用户名</div><div class="line"><span class="comment">#删除指定的用户帐号及宿主目录</span></div><div class="line">userdel –r 用户名(userdel 用户名;rm 用户名)</div><div class="line"><span class="comment">#把kkk用户加入root组里</span></div><div class="line">useradd -g root kkk</div></pre></td></tr></table></figure></p>
-<p>f. 修改用户<br>命令： usermod<br>修改已有用户的信息<br>usermod –l 旧用户名 新用户名： 修改用户名<br>usermod –L 用户名： 用于锁定指定用户账号，使其不能登陆系统<br>usermod –U 用户名： 对锁定的用户帐号进行解锁<br>passwd –d 用户名： 使帐号无口令，即用户不需要口令就能登录系统<br>例：#usermod -l user2 user1 //把用户user2改名为user1</p>
-<ol>
-<li>启动、关闭防火墙<br>永久打开或则关闭<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chkconfig iptables on</div><div class="line">chkconfig iptables off</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>f. 修改用户<br>修改已有用户的信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#把用户user2改名为user1</span></div><div class="line"><span class="comment">#usermod -l user2 user1</span></div></pre></td></tr></table></figure></p>
+<p>usermod –l 旧用户名 新用户名： 修改用户名<br>usermod –L 用户名： 用于锁定指定用户账号，使其不能登陆系统<br>usermod –U 用户名： 对锁定的用户帐号进行解锁<br>passwd –d 用户名： 使帐号无口令，即用户不需要口令就能登录系统</p>
+<p>三十、启动、关闭防火墙<br>永久打开或则关闭<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chkconfig iptables on</div><div class="line">chkconfig iptables off</div></pre></td></tr></table></figure></p>
 <p>即时生效：重启后还原<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service iptables start</div><div class="line">service iptables stop</div></pre></td></tr></table></figure></p>
 <p>或者：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/iptables start</div><div class="line">/etc/init.d/iptables stop</div></pre></td></tr></table></figure></p>
-<ol>
-<li>vi技巧<br>a. 进入输入模式<br>新增 (append)<br>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。<br>A：从光标所在列最後面的地方开始新增资料。</li>
-</ol>
+<p>三十一、vi技巧<br>a. 进入输入模式<br>新增 (append)<br>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。<br>A：从光标所在列最後面的地方开始新增资料。</p>
 <p>插入 (insert)<br>i：从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。<br>I ：从光标所在列的第一个非空白字元前面开始插入资料。</p>
 <p>开始 (open)<br>o ：在光标所在列下新增一列并进入输入模式。<br>O: 在光标所在列上方新增一列并进入输入模式。<br>b. 退出vi<br>在指令模式下键入:q,:q!,:wq或:x(注意:号），就会退出vi。其中:wq和:x是存盘退出，而:q是直接退出，如果文件已有新的变化，vi会提示你保存文件而:q命令也会失效，这时你可以用:w命令保存文件后再用:q 退出，或用:wq或:x命令退出，如果你不想保存改变后的文件，你就需要用:q!命令，这个命令将不保存文件而直接退出vi。</p>
 <p>c. 删除与修改文件的命令：<br>x：删除光标所在字符。<br>dd ：删除光标所在的列。<br>r ：修改光标所在字元，r 後接著要修正的字符。<br>R：进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。<br>s：删除光标所在字元，并进入输入模式。<br>S：删除光标所在的列，并进入输入模式。</p>
