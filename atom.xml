@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jartto.wang/"/>
-  <updated>2017-02-19T14:41:33.000Z</updated>
+  <updated>2017-02-19T14:46:42.000Z</updated>
   <id>http://jartto.wang/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>掌握 React 组件 Component</title>
     <link href="http://jartto.wang/2017/02/19/grasp-react-component/"/>
     <id>http://jartto.wang/2017/02/19/grasp-react-component/</id>
-    <published>2017-02-19T14:48:40.000Z</published>
-    <updated>2017-02-19T14:41:33.000Z</updated>
+    <published>2017-02-19T14:28:40.000Z</published>
+    <updated>2017-02-19T14:46:42.000Z</updated>
     
     <content type="html">&lt;p&gt;用 React 已经许久了，虽然可以熟练的书写业务逻辑，但对 Component 却一知半解。索性写篇笔记，系统的学习一下，嗯，是时候淬炼一下了👻&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;一、如何创建组件&quot;&gt;&lt;a href=&quot;#一、如何创建组件&quot; class=&quot;headerlink&quot; title=&quot;一、如何创建组件&quot;&gt;&lt;/a&gt;一、如何创建组件&lt;/h4&gt;&lt;p&gt;方式一：React.createClass&lt;br&gt;&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;用 React.createClass 构建组件是 React 最传统、也是兼容最好的方法。&lt;/p&gt;
