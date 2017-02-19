@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Jartto's blog">
 <meta property="og:description" content="用 React 已经许久了，虽然可以熟练的书写业务逻辑，但对 Component 却一知半解。索性写篇笔记，系统的学习一下，嗯，是时候淬炼一下了👻">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg">
-<meta property="og:updated_time" content="2017-02-19T14:35:19.000Z">
+<meta property="og:updated_time" content="2017-02-19T14:41:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 React 组件 Component">
 <meta name="twitter:description" content="用 React 已经许久了，虽然可以熟练的书写业务逻辑，但对 Component 却一知半解。索性写篇笔记，系统的学习一下，嗯，是时候淬炼一下了👻">
@@ -258,7 +258,7 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>用 React 已经许久了，虽然可以熟练的书写业务逻辑，但对 Component 却一知半解。索性写篇笔记，系统的学习一下，嗯，是时候淬炼一下了👻<br><a id="more"></a></p>
-<h4 id="一、如何创建组件"><a href="#一、如何创建组件" class="headerlink" title="一、如何创建组件"></a>一、如何创建组件</h4><p>方式一：React.createClass<br><div class="alert info"><p>用 React.createClass 构建组件是React最传统、也是兼容最好的方法。</p>
+<h4 id="一、如何创建组件"><a href="#一、如何创建组件" class="headerlink" title="一、如何创建组件"></a>一、如何创建组件</h4><p>方式一：React.createClass<br><div class="alert info"><p>用 React.createClass 构建组件是 React 最传统、也是兼容最好的方法。</p>
 </div><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Button = React.createClass(&#123;</div><div class="line">	getDefaultProps() &#123;</div><div class="line">		<span class="keyword">return</span> &#123;</div><div class="line">			color: <span class="string">'blue'</span>,</div><div class="line">			text: <span class="string">'Confirm'</span></div><div class="line">		&#125;;</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	render() &#123;</div><div class="line">		<span class="keyword">const</span> &#123; color, text &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> (</div><div class="line">			<span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&#123;</span>`<span class="attr">btn</span> <span class="attr">btn-</span>$&#123;<span class="attr">color</span>&#125;`&#125;&gt;</span></span></div><div class="line">				<span class="tag">&lt;<span class="name">em</span>&gt;</span>&#123;text&#125;<span class="tag">&lt;/<span class="name">em</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>React.createClass 方法就是构建一个组件对象。当另一个组件需要调用 Button 组件时，只用写成<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span>/&gt;</span></div></pre></td></tr></table></figure></p>
 <p> 就可以被解析成 React.createElement(Button) 方法来创建 Button实例，这意味着在一个应用中调用几次 Button，就会创建几次 Button 实例。</p>
@@ -301,7 +301,7 @@
 <li>componentDidUpdate 在组件完成更新后立即调用。在初始化时不会被调用。</li>
 </ul>
 <p>3.图示流程；<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg" alt="react-component"></p>
-<h4 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h4><p>React 中组件的使用不外乎文中写的这些，甚至在我们日常的项目中很多生命周期方法都用不到。但是作为一个开发者，我们要更深层次的理解这些，这样有助于我们使用最适当的方式去编程。</p>
+<h4 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h4><p>React 中组件的使用不外乎文中写的这些，甚至在我们日常的项目中很多生命周期方法都用不到。但是作为一个开发者，我们要更深层次的理解这些，这样有助于我们使用最适当的方式去高效编程。</p>
 <p>参考：<br>1.《深入 React 技术栈》<br>2.<a href="https://facebook.github.io/react/docs/state-and-lifecycle.html" target="_blank" rel="external">官方文档</a><br>3.<a href="http://www.runoob.com/react/react-component-life-cycle.html" target="_blank" rel="external">runoob</a><br>4.<a href="http://www.cnblogs.com/wonyun/p/5930333.html" target="_blank" rel="external">React创建组件</a></p>
 
             
