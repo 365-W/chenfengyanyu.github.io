@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="baidu-site-verification" content="bJPvLdWAu8" />
+    <meta name="generator" content="Jartto&#39;s blog">
+    <title>如何优化高德地图（AMap）Marker 动画 - Jartto&#39;s blog</title>
+    <meta name="author" content="Jartto">
+    
+        <meta name="keywords" content="Jartto,web前端开发,博客,">
+    
+    
+        <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="一般需要接入地图的应用，我们肯定会用到 Marker 即点标记对象。为了使点标记更新时有一些灵性，我尝试添加了掉落动画。然而，事与愿违，遂有此文。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="如何优化高德地图（AMap）Marker 动画">
+<meta property="og:url" content="http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/index.html">
+<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:description" content="一般需要接入地图的应用，我们肯定会用到 Marker 即点标记对象。为了使点标记更新时有一些灵性，我尝试添加了掉落动画。然而，事与愿违，遂有此文。">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker1">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker2">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker3">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker4">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker5">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker6">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker7">
+<meta property="og:updated_time" content="2017-08-29T00:11:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何优化高德地图（AMap）Marker 动画">
+<meta name="twitter:description" content="一般需要接入地图的应用，我们肯定会用到 Marker 即点标记对象。为了使点标记更新时有一些灵性，我尝试添加了掉落动画。然而，事与愿违，遂有此文。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker1">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-markert.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/amap-markert.jpg" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-amswellqtyheubmlz8etcaxxnc5dvbfw49m4rvjaocb7nstambtlprry5pr8.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-79715416-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</script>
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Jartto&#39;s blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture st-search-show-outputs"
+                href="#about">
+        
+        
+            <img class="header-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+            </a>
+            <span class="sidebar-profile-name">Jartto</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">分类</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">关于</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:Jartto@qq.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Email</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/chenfengyanyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/sitemap.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-sitemap"></i>
+                    <span class="sidebar-button-desc">Sitemap</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            如何优化高德地图（AMap）Marker 动画
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-08-28T23:56:28+08:00">
+	
+		    2017/8月/28 23:56:28
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>一般需要接入地图的应用，我们肯定会用到 Marker 即点标记对象。为了使点标记更新时有一些灵性，我尝试添加了掉落动画。然而，事与愿违，遂有此文。<br><a id="more"></a></p>
+<h4 id="一、更新Marker"><a href="#一、更新Marker" class="headerlink" title="一、更新Marker"></a>一、更新Marker</h4><p>我们先来看一下问题代码（因为项目原因，这里使用了 angular，当然你也可以使用 react，vue 以及其它你喜欢的 js 框架）：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$scope.updateMarkers = (data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(!$scope.myMarkers) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> content = <span class="string">`&lt;span class="marker"&gt;&lt;svg class="icon" aria-hidden="true"&gt;&lt;use xlink:href="#icon-jartto"&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;`</span>;</div><div class="line">  </div><div class="line">  $scope.myMarkers.map(item =&gt; &#123;</div><div class="line">    <span class="keyword">if</span>(data.sn === item.G.extData) &#123;</div><div class="line">      item.setAnimation(<span class="string">'AMAP_ANIMATION_DROP'</span>);</div><div class="line">      item.setContent(content); </div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这里我们实现的是，当有数据推送过来，调用 updateMarkers 方法。</p>
+<ol>
+<li>预先写好了 content 字符串；</li>
+<li>遍历所有点标记，找到当前点标记；</li>
+<li>setAnimation 为点标记设置动画；</li>
+<li>setContent 画点；</li>
+</ol>
+<div class="alert info"><p>完全按照<a href="http://lbs.amap.com/api/javascript-api/example/marker/custom-icon-content" target="_blank" rel="external">官方教程-自定义点标记</a>操作，看起来并没有什么问题，我们继续。</p>
+</div>
+<h4 id="二、性能被牺牲了，CPU居高不下？"><a href="#二、性能被牺牲了，CPU居高不下？" class="headerlink" title="二、性能被牺牲了，CPU居高不下？"></a>二、性能被牺牲了，CPU居高不下？</h4><p>很多用户反应地图页时间久了会变的卡顿，所以问题直接指向了 sockets 不定时更新 Marker 这里，请看下面这张图：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker1" alt="CPU高占用图示"><br><div class="alert warning"><p>如上述简单的四步更新点位，初步怀疑是 setAnimation 导致，我们来验证一下。</p>
+</div><br>我们试着关闭地图原生动画，注释掉 setAnimation 动画代码，代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$scope.updateMarkers = (data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(!$scope.myMarkers) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> content = <span class="string">`&lt;span class="marker"&gt;&lt;svg class="icon" aria-hidden="true"&gt;&lt;use xlink:href="#icon-jartto"&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;`</span>;</div><div class="line">  </div><div class="line">  $scope.myMarkers.map(item =&gt; &#123;</div><div class="line">    <span class="keyword">if</span>(data.sn === item.G.extData) &#123;</div><div class="line">      <span class="comment">// item.setAnimation('AMAP_ANIMATION_DROP');</span></div><div class="line">      item.setContent(content); </div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>准备工作完毕，再来监测一下，如下图：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker2" alt="CPU高占用图示"><br>这就夸张了，AMap的内置动画为什么如此耗费性能，究竟是什么原因呢？</p>
+<h4 id="三、页面性能检测（Performance）"><a href="#三、页面性能检测（Performance）" class="headerlink" title="三、页面性能检测（Performance）"></a>三、页面性能检测（Performance）</h4><p>打开 Chrome DevTools－Performance，我们来看一下，地图原生的 Marker 动画帧频截图：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker3" alt="地图原生动画帧频"><br>正如我们看到的，13.5 fps 的帧频，动画卡顿是必然的。那么其他数据呢，如下图：</p>
+<p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker4" alt="地图原生动画 Performance"><br>这里需要注意三个数据：</p>
+<ol>
+<li>Frame 的帧频一直处于较低水平，截图中为 9 fps；</li>
+<li>大片紫色区域，CPU使用率很高；</li>
+<li>绿色区域，Composite Layers ，复合层也不逊色，像林海；</li>
+</ol>
+<h4 id="四、重写动画"><a href="#四、重写动画" class="headerlink" title="四、重写动画"></a>四、重写动画</h4><p>既然可以确定原生动画对性能有影响，那么我们对代码做一些简单修改：</p>
+<ol>
+<li>去掉 setAnimation 动画；</li>
+<li>为content 添加 play_drop 动画类；</li>
+</ol>
+<p>代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$scope.updateMarkers = (data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span>(!$scope.myMarkers) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> content = <span class="string">`&lt;span class="marker play_drop"&gt;&lt;svg class="icon" aria-hidden="true"&gt;&lt;use xlink:href="#icon-jartto"&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;`</span>;</div><div class="line">  </div><div class="line">  $scope.myMarkers.map(item =&gt; &#123;</div><div class="line">    <span class="keyword">if</span>(data.sn === item.G.extData) &#123;</div><div class="line">      item.setContent(content); </div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>css 代码添加了我们自定义的一个动画效果，代码如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.play_drop</span>&#123;</div><div class="line">  <span class="attribute">-webkit-animation</span>: bounce <span class="number">1.5s</span> ease-in <span class="number">0s</span> <span class="number">1</span>;</div><div class="line">  <span class="attribute">animation</span>: bounce <span class="number">1.5s</span> ease-in <span class="number">0s</span> <span class="number">1</span>;</div><div class="line">  <span class="attribute">will-change</span>: transform;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> bounce &#123;</div><div class="line">  <span class="selector-tag">from</span>, 20%, 53%, 80%, <span class="selector-tag">to</span> &#123;</div><div class="line">    <span class="attribute">animation-timing-function</span>: <span class="built_in">cubic-bezier</span>(0.215, 0.610, 0.355, 1.000);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0,0,0);</div><div class="line">  &#125;</div><div class="line">  40%, 43% &#123;</div><div class="line">    <span class="attribute">animation-timing-function</span>: <span class="built_in">cubic-bezier</span>(0.755, 0.050, 0.855, 0.060);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, -76px, 0);</div><div class="line">  &#125;</div><div class="line">  70% &#123;</div><div class="line">    <span class="attribute">animation-timing-function</span>: <span class="built_in">cubic-bezier</span>(0.755, 0.050, 0.855, 0.060);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, -38px, 0);</div><div class="line">  &#125;</div><div class="line">  90% &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0,-10px,0);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>先上图，对比看看：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker5" alt="重写动画帧频"><br>太惊奇了，帧频已经到了 56.9 fps，这样基本很流畅了，如黄油般流畅（这个夸张了啊，不过我喜欢这个比喻😂）。再来看看 Performance ：</p>
+<p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker6" alt="地图原生动画 Performance"><br>很好，动画已经可以出现高帧渲染了，然而，别高兴的太早，后面这些东西搞什么？<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker7" alt="后面的低频动画"><br><div class="alert danger"><p>奇怪，为什么还是有低频动画，这又是什么影响的？越来越有意思，我们继续深入。</p>
+</div></p>
+<h4 id="五、新的问题"><a href="#五、新的问题" class="headerlink" title="五、新的问题"></a>五、新的问题</h4><p>这里其实已经有两个方向了，其一，查找为什么动画帧数不稳定；其二，什么导致了cpu过高；</p>
+<h4 id="六、Chrome-动画调试器（Animations）"><a href="#六、Chrome-动画调试器（Animations）" class="headerlink" title="六、Chrome 动画调试器（Animations）"></a>六、Chrome 动画调试器（Animations）</h4><h4 id="七、页面渲染情况（Rendering）"><a href="#七、页面渲染情况（Rendering）" class="headerlink" title="七、页面渲染情况（Rendering）"></a>七、页面渲染情况（Rendering）</h4><p>动画看来并没有什么大问题，我们来看看相关渲染：Chrome DevTools－more tools－Rendering</p>
+<p>影响页面重绘的因素，主要有2大类：<br>1、页面滚动<br>2、互动操作<br>1).Dom节点被Javascript改变，导致Chrome重新计算页面的layout。<br>2).动画不定期更新。<br>3).用户交互，如hover导致页面某些元素页面样式的变化。<br>4).调整窗口大小 和 改变字体<br>5).内容变化，比如用户在input框中输入文字<br>6).激活 CSS 伪类，比如 :hover<br>7).计算 offsetWidth 和 offsetHeight 属性<br>8).增加或者移除样式表</p>
+<h4 id="八、看看图层情况？（Layers）"><a href="#八、看看图层情况？（Layers）" class="headerlink" title="八、看看图层情况？（Layers）"></a>八、看看图层情况？（Layers）</h4><p>到这里，问题还没有解决，我们接着来看：Chrome DevTools－more tools－Layers</p>
+<h4 id="九、看看图层情况？（Layers）"><a href="#九、看看图层情况？（Layers）" class="headerlink" title="九、看看图层情况？（Layers）"></a>九、看看图层情况？（Layers）</h4><h4 id="十、优化-Dom"><a href="#十、优化-Dom" class="headerlink" title="十、优化 Dom"></a>十、优化 Dom</h4><h4 id="十一、总结"><a href="#十一、总结" class="headerlink" title="十一、总结"></a>十一、总结</h4><h4 id="十二、参考资料"><a href="#十二、参考资料" class="headerlink" title="十二、参考资料"></a>十二、参考资料</h4><ol>
+<li><a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Marker" target="_blank" rel="external">AMap Marker</a></li>
+<li><a href="http://lbs.amap.com/api/javascript-api/example/marker/custom-icon-content" target="_blank" rel="external">官方教程－自定义点标记</a></li>
+<li><a href="http://www.css88.com/doc/chrome-devtools/inspect-styles/animations/" target="_blank" rel="external"></a></li>
+<li><a href="http://www.cnblogs.com/foreverZ/p/5817855.html" target="_blank" rel="external"></a></li>
+<li><a href="http://zhangzhaoaaa.iteye.com/blog/2183196" target="_blank" rel="external"></a></li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/amap/">amap</a> <a class="tag tag--primary tag--small t-link" href="/tags/angular/">angular</a> <a class="tag tag--primary tag--small t-link" href="/tags/高德地图/">高德地图</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/19/use-AMap-in-React/" data-tooltip="在 React 中接入高德地图（AMap）">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<div id="busuanzi_container_site_pv">
+	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
+	</div>
+	<br>
+    <span class="copyrights">
+        Copyrights &copy; 2017 Jartto. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/19/use-AMap-in-React/" data-tooltip="在 React 中接入高德地图（AMap）">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+            <h4 id="about-card-name">Jartto</h4>
+        
+            <h5 id="about-card-bio"><blockquote>
+<p>最遗憾的不是把梦想丢在路上，</br>而是梦想从未上路!</br>Just do IT</p>
+</blockquote>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>jartto@qq.com</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                北京－海淀
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xvi3w.com1.z0.glb.clouddn.com/layout_cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/';
+                 
+                    this.page.identifier = '2017/08/28/how-to-optimize-marker-of-AMap/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'jartto';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>

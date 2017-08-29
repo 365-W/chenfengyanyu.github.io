@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Jartto's blog">
 <meta property="og:description" content="用 React 已经许久了，虽然可以熟练的书写业务逻辑，但对 Component 却一知半解。索性写篇笔记，系统的学习一下，嗯，是时候淬炼一下了👻">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg">
-<meta property="og:updated_time" content="2017-02-19T14:52:38.000Z">
+<meta property="og:updated_time" content="2017-02-20T03:40:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 React 组件 Component">
 <meta name="twitter:description" content="用 React 已经许久了，虽然可以熟练的书写业务逻辑，但对 Component 却一知半解。索性写篇笔记，系统的学习一下，嗯，是时候淬炼一下了👻">
@@ -286,6 +286,13 @@
 </ul>
 <p>从《深入 React 技术栈》中摘录到这样一句话：<br><div class="alert success"><p>在适合的情况下，我们都应该且必须使用无状态组件。无状态组件不像其他两种方法在调用时会创建新实例，它创建时始终保持了一个实例，避免了不必要的检查和内存分配，做到了内部优化。</p>
 </div></p>
+<p>对于有状态函数中的 React.createClass 和 ES6 classes 有如下区别：</p>
+<ul>
+<li>React.createClass会自绑定函数方法（不像ES6 classes只绑定需要关心的函数）导致不必要的性能开销，增加代码过时的可能性。</li>
+<li>React.createClass的mixins不够自然、直观；</li>
+<li>React.Component形式非常适合高阶组件（Higher Order Components–HOC）,它以更直观的形式展示了比mixins更强大的功能，并且HOC是纯净的JavaScript，不用担心他们会被废弃。</li>
+</ul>
+<p>更多且别请移步<a href="http://www.cnblogs.com/wonyun/p/5930333.html" target="_blank" rel="external">React.createClass与React.Component区别</a></p>
 <h4 id="三、组件生命周期"><a href="#三、组件生命周期" class="headerlink" title="三、组件生命周期"></a>三、组件生命周期</h4><p>关于组件生命周期，我们先来看几个概念：<br>1.挂载与卸载过程；<br>组件的挂载是最基本的过程，这个过程主要做组件状态的初始化。下面是一个模板：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component, PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">     <span class="comment">// 	static 定义的 propTypes 和 defaultProps 可以在类外面访问，如：App.propTypes</span></div><div class="line">	<span class="keyword">static</span> propTypes = &#123; <span class="comment">//props 类型检查 &#125;;</span></div><div class="line">	<span class="keyword">static</span> defaultProps = &#123; <span class="comment">//默认类型 &#125;;</span></div><div class="line">	<span class="keyword">constructor</span>(props) &#123;</div><div class="line">		<span class="keyword">super</span>(props);</div><div class="line">		<span class="keyword">this</span>.state = &#123; <span class="comment">//... &#125;;</span></div><div class="line">	&#125;</div><div class="line">	componentWillMount() &#123; <span class="comment">// render 方法之前执行&#125;</span></div><div class="line">	componentDidMount() &#123; <span class="comment">// render 方法之后执行&#125;</span></div><div class="line">	render() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>jartto's blog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>组件卸载非常简单，只有 componentWillUnmount 这一个卸载前状态：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component, PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">	componentWillUnmount() &#123; <span class="comment">//... &#125;</span></div><div class="line">	render() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>jartto's blog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>在 componentWillUnmount 方法中，我们常常会执行一些清理方法，如事件回收或者是清除定时器。</p>
@@ -321,7 +328,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/19/use-AMap-in-React/"  data-tooltip="在 React 中接入高德地图（AMap）">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -408,7 +415,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/19/use-AMap-in-React/"  data-tooltip="在 React 中接入高德地图（AMap）">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>

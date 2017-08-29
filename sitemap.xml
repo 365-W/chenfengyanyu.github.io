@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/</loc>
+    
+    <lastmod>2017-08-29T00:11:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/02/19/use-AMap-in-React/</loc>
+    
+    <lastmod>2017-08-28T16:11:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/02/19/grasp-react-component/</loc>
     
-    <lastmod>2017-02-19T14:52:38.000Z</lastmod>
+    <lastmod>2017-02-20T03:40:23.000Z</lastmod>
     
   </url>
   
