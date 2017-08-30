@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jartto.wang/"/>
-  <updated>2017-08-29T15:33:22.000Z</updated>
+  <updated>2017-08-30T00:04:42.000Z</updated>
   <id>http://jartto.wang/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/"/>
     <id>http://jartto.wang/2017/08/28/how-to-optimize-marker-of-AMap/</id>
     <published>2017-08-28T15:56:28.000Z</published>
-    <updated>2017-08-29T15:33:22.000Z</updated>
+    <updated>2017-08-30T00:04:42.000Z</updated>
     
     <content type="html">&lt;p&gt;一般需要接入地图的应用，我们肯定会用到 Marker 即点标记对象。为了使点标记更新时有一些灵性，我尝试添加了掉落动画。然而，事与愿违，遂有此文。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;一、更新Marker&quot;&gt;&lt;a href=&quot;#一、更新Marker&quot; class=&quot;headerlink&quot; title=&quot;一、更新Marker&quot;&gt;&lt;/a&gt;一、更新Marker&lt;/h4&gt;&lt;p&gt;我们先来看一下问题代码（因为项目原因，这里使用了 angular，当然你也可以使用 react，vue 以及其它你喜欢的 js 框架）：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$scope.updateMarkers = (data) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!$scope.myMarkers) &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; content = &lt;span class=&quot;string&quot;&gt;`&amp;lt;span class=&quot;marker&quot;&amp;gt;&amp;lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;use xlink:href=&quot;#icon-jartto&quot;&amp;gt;&amp;lt;/use&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;`&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  $scope.myMarkers.map(item =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(data.sn === item.G.extData) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      item.setAnimation(&lt;span class=&quot;string&quot;&gt;&#39;AMAP_ANIMATION_DROP&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      item.setContent(content); &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -59,7 +59,7 @@
 &lt;li&gt;通过减慢动画，重播动画，或查看源代码，来检查动画。&lt;/li&gt;
 &lt;li&gt;通过更改动画的时间，延迟，持续时间或关键帧偏移来修改动画。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;动画这里很直观，如果你需要深入了解，请查看&lt;a href=&quot;http://www.css88.com/doc/chrome-devtools/inspect-styles/animations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;检查动画&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;我们对动画再做一些细小的调整，如果你需要深入了解，请查看&lt;a href=&quot;http://www.css88.com/doc/chrome-devtools/inspect-styles/animations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;检查动画&lt;/a&gt;。&lt;/p&gt;
 &lt;h4 id=&quot;六、页面渲染情况（Rendering）&quot;&gt;&lt;a href=&quot;#六、页面渲染情况（Rendering）&quot; class=&quot;headerlink&quot; title=&quot;六、页面渲染情况（Rendering）&quot;&gt;&lt;/a&gt;六、页面渲染情况（Rendering）&lt;/h4&gt;&lt;p&gt;动画看来并没有什么大问题，我们接着来看相关渲染：Chrome DevTools - more tools - Rendering&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker9.png&quot; alt=&quot;Rendering 面板&quot;&gt;&lt;/p&gt;
 &lt;p&gt;页面渲染情况，我们用图来说明一下：&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker10.png&quot; alt=&quot;Rendering 面板&quot;&gt;&lt;br&gt;勾选Paint Flashing后，我们可以看到每次更新marker所重绘的区域，绿色框中的内容正是我们需要渲染的图层，这里就可以先排除图层渲染的问题了。&lt;/p&gt;
 &lt;p&gt;既然说到这里了，那么影响页面重绘的因素，都有哪些呢？&lt;br&gt;1、页面滚动&lt;br&gt;2、互动操作&lt;br&gt;1).Dom节点被Javascript改变，导致Chrome重新计算页面的layout。&lt;br&gt;2).动画不定期更新。&lt;br&gt;3).用户交互，如hover导致页面某些元素页面样式的变化。&lt;br&gt;4).调整窗口大小 和 改变字体&lt;br&gt;5).内容变化，比如用户在input框中输入文字&lt;br&gt;6).激活 CSS 伪类，比如 :hover&lt;br&gt;7).计算 offsetWidth 和 offsetHeight 属性&lt;br&gt;8).增加或者移除样式表&lt;/p&gt;
@@ -68,31 +68,55 @@
 &lt;li&gt;&lt;a href=&quot;http://zhangzhaoaaa.iteye.com/blog/2183196&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome渲染分析之Rendering工具使用&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/foreverZ/p/5817855.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome 的 Rendering 监听器&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&quot;七、看看图层情况？（Layers）&quot;&gt;&lt;a href=&quot;#七、看看图层情况？（Layers）&quot; class=&quot;headerlink&quot; title=&quot;七、看看图层情况？（Layers）&quot;&gt;&lt;/a&gt;七、看看图层情况？（Layers）&lt;/h4&gt;&lt;p&gt;到这里，问题还没有解决，我们接着来看：Chrome DevTools - more tools - Layers&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker11.png&quot; alt=&quot;Layers 面板&quot;&gt;&lt;br&gt;如上图，可以看到Layers板块分为三部分：&lt;/p&gt;
+&lt;h4 id=&quot;七、看看图层情况？（Layers）&quot;&gt;&lt;a href=&quot;#七、看看图层情况？（Layers）&quot; class=&quot;headerlink&quot; title=&quot;七、看看图层情况？（Layers）&quot;&gt;&lt;/a&gt;七、看看图层情况？（Layers）&lt;/h4&gt;&lt;p&gt;到这里，问题还没有解决，我们接着来看：Chrome DevTools - more tools - Layers&lt;br&gt;&lt;div class=&quot;alert success&quot;&gt;&lt;p&gt;一旦加载并解析页面，它就在浏览器中作为许多Web开发人员熟悉的结构来表示：DOM。然而，当呈现一个页面时，浏览器有一系列不直接暴露给开发者的中间表示。这些结构中最重要的是层。&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker11.png&quot; alt=&quot;Layers 面板&quot;&gt;&lt;br&gt;如上图，可以看到Layers板块分为三部分：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;dom树；&lt;/li&gt;
 &lt;li&gt;复合层边界显示；&lt;/li&gt;
 &lt;li&gt;详细信息&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;这里就有意思了我们先了解一下第三部分：&lt;br&gt;－Size：容器大小；&lt;br&gt;－Compositing Reasons：形成复合层原因&lt;br&gt;－Memory estimate：内存占用估算&lt;br&gt;－Paint count：绘制数量&lt;br&gt;－Slow scroll regions：缓慢滚动区域&lt;/p&gt;
-&lt;p&gt;检查了所有dom结构，找到如下几个原因：&lt;/p&gt;
+&lt;p&gt;这里就有意思了我们先了解一下第三个区域：&lt;br&gt;－Size：容器大小；&lt;br&gt;－Compositing Reasons：形成复合层原因&lt;br&gt;－Memory estimate：内存占用估算&lt;br&gt;－Paint count：绘制数量&lt;br&gt;－Slow scroll regions：缓慢滚动区域&lt;/p&gt;
+&lt;p&gt;检查了所有 dom 结构，找到如下几个原因：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;右下角按钮position:fixed属性，导致Paint count一直在增长；&lt;/li&gt;
-&lt;li&gt;与其他复合层相关联；&lt;/li&gt;
+&lt;li&gt;存在与其他复合层相互关联；&lt;/li&gt;
 &lt;li&gt;LayerForSquashingContents&lt;/li&gt;
 &lt;li&gt;backface-visibility:hidden属性&lt;/li&gt;
 &lt;li&gt;垂直滚动 layerForVerticalScrollbar&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;那就照着一项项优化呗，那么结果又如何呢？&lt;br&gt;&lt;img src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-marker12.png&quot; alt=&quot;复合层优化图示&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;八、什么是复合层？（Layers）&quot;&gt;&lt;a href=&quot;#八、什么是复合层？（Layers）&quot; class=&quot;headerlink&quot; title=&quot;八、什么是复合层？（Layers）&quot;&gt;&lt;/a&gt;八、什么是复合层？（Layers）&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://umaar.github.io/devtools-nov-2013/slides/#14&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Layers panel&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;八、GPU-与-复合层？（Layers）&quot;&gt;&lt;a href=&quot;#八、GPU-与-复合层？（Layers）&quot; class=&quot;headerlink&quot; title=&quot;八、GPU 与 复合层？（Layers）&quot;&gt;&lt;/a&gt;八、GPU 与 复合层？（Layers）&lt;/h4&gt;&lt;p&gt;在Chrome中其实有几种不同的类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RenderLayers渲染层，这是负责的DOM子树&lt;/li&gt;
+&lt;li&gt;GraphicsLayers图形层，这是负责的RenderLayers子树。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在这里，后者是最有趣的，因为GraphicsLayers被上传到GPU纹理。所以“层”的概念从这里出来说GraphicsLayer。&lt;/p&gt;
+&lt;p&gt;那么什么是GPU纹理？&lt;br&gt;把它作为一个位图图像，从主存储器（即内存）显存（即显存，GPU上）。一旦在GPU上，你可以把它映射到一个网状的几何体-在视频游戏或CAD程序中，这种技术被用来给骨骼3D模型“皮肤”。纹理可以被廉价地映射到不同的位置和转换，通过将它们应用到一个非常简单的矩形网格中。这就是3D CSS的工作原理，对于快速滚动也是很好的——但是这两方面都要更多。&lt;/p&gt;
+&lt;p&gt;影响GPU渲染的因素包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3D CSS 属性；&lt;/li&gt;
+&lt;li&gt;video／canvas 元素；&lt;/li&gt;
+&lt;li&gt;一些随时改变的元素；&lt;br&gt;&lt;a href=&quot;http://umaar.github.io/devtools-nov-2013/slides/#14&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Layers panel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;扩展阅读：&lt;br&gt;&lt;a href=&quot;https://www.html5rocks.com/en/tutorials/speed/layers/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Accelerated Rendering in Chrome&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正确的使用GPU动画&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;九、优化-Dom&quot;&gt;&lt;a href=&quot;#九、优化-Dom&quot; class=&quot;headerlink&quot; title=&quot;九、优化 Dom&quot;&gt;&lt;/a&gt;九、优化 Dom&lt;/h4&gt;&lt;p&gt;动画也重写了，图层渲染也检查了，复合层也优化了，是时候对dom做一些更改了。&lt;br&gt;&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;这里抛出一个问题，字符串 dom 渲染快还是创建的 dom 元素渲染快？&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;
-&lt;h4 id=&quot;十、总结&quot;&gt;&lt;a href=&quot;#十、总结&quot; class=&quot;headerlink&quot; title=&quot;十、总结&quot;&gt;&lt;/a&gt;十、总结&lt;/h4&gt;&lt;h4 id=&quot;十一、参考资料&quot;&gt;&lt;a href=&quot;#十一、参考资料&quot; class=&quot;headerlink&quot; title=&quot;十一、参考资料&quot;&gt;&lt;/a&gt;十一、参考资料&lt;/h4&gt;&lt;ol&gt;
+&lt;/div&gt;&lt;br&gt;正在试验，后续继续完善。&lt;/p&gt;
+&lt;h4 id=&quot;十、总结&quot;&gt;&lt;a href=&quot;#十、总结&quot; class=&quot;headerlink&quot; title=&quot;十、总结&quot;&gt;&lt;/a&gt;十、总结&lt;/h4&gt;&lt;p&gt;经过了一些列枯燥而又繁琐的处理，我们的优化也告一段落了。再来回答一下文章一开始跑出的两个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;动画不流程，耗 CPU；&lt;br&gt;我们优化了动画，帧数，复合层等问题，提升了性能；&lt;/li&gt;
+&lt;li&gt;CPU 使用率忽高忽低；&lt;br&gt;由于 sockets 推送的不确定性，导致消息爆炸式推送，短时间内拉升了 CPU 使用率。而我们的最终处理办法也包含对 sockets 的一些处理，例如：使 sockets 形成队列，平缓的推送，前端可以有足够的时间渲染，而不是急剧上升。不管是前端来平缓处理sockets，还是后端来处理，问题都会得到解决。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在网上找到了两张有意思的图，可以表达一下优化前后的差别：&lt;br&gt;优化前与优化后：&lt;div class=&quot;figure left&quot; style=&quot;width:200px;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-markerscreencasting-realisation-before.gif&quot; title=&quot;&quot; data-fancybox-group=&quot;travel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-markerscreencasting-realisation-before.gif&quot; style=&quot;width:200px;&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;figure left&quot; style=&quot;width:200px;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-markerscreencasting-realisation-after.gif&quot; title=&quot;&quot; data-fancybox-group=&quot;travel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;http://7xvi3w.com1.z0.glb.clouddn.com/amap-markerscreencasting-realisation-after.gif&quot; style=&quot;width:200px;&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/div&gt;&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;很高兴你能耐心看到这里，断断续续写了这么些内容，自己也是边研究边学习。感觉收获颇多，分享出来，大家共同进步吧。&lt;/p&gt;
+&lt;h4 id=&quot;十一、参考资料&quot;&gt;&lt;a href=&quot;#十一、参考资料&quot; class=&quot;headerlink&quot; title=&quot;十一、参考资料&quot;&gt;&lt;/a&gt;十一、参考资料&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;http://lbs.amap.com/api/javascript-api/reference/overlay#Marker&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AMap Marker&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://lbs.amap.com/api/javascript-api/example/marker/custom-icon-content&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方教程－自定义点标记&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.css88.com/doc/chrome-devtools/inspect-styles/animations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/foreverZ/p/5817855.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://zhangzhaoaaa.iteye.com/blog/2183196&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.css88.com/doc/chrome-devtools/inspect-styles/animations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;检查动画&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/foreverZ/p/5817855.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome 的 Rendering 监听器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://zhangzhaoaaa.iteye.com/blog/2183196&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chrome渲染分析之Rendering工具使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.html5rocks.com/en/tutorials/speed/layers/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Accelerated Rendering in Chrome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正确的使用GPU动画&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://umaar.github.io/devtools-nov-2013/slides/#14&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Layers panel&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>
     
@@ -143,11 +167,11 @@
       <category term="技术博文" scheme="http://jartto.wang/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E6%96%87/"/>
     
     
+      <category term="react" scheme="http://jartto.wang/tags/react/"/>
+    
       <category term="amap" scheme="http://jartto.wang/tags/amap/"/>
     
       <category term="高德地图" scheme="http://jartto.wang/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/"/>
-    
-      <category term="react" scheme="http://jartto.wang/tags/react/"/>
     
   </entry>
   
