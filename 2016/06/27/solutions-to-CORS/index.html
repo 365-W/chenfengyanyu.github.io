@@ -10,7 +10,7 @@
     <title>CORS解决方案 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之的，浏览器只是针对同源策略的一种实现。">
+<meta name="keywords" content="cors">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="CORS解决方案">
 <meta property="og:url" content="http://jartto.wang/2016/06/27/solutions-to-CORS/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之的，浏览器只是针对同源策略的一种实现。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/cors_FD8DA08A-E4CC-45CB-9E76-9D4EF37AEEB9.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/cors_1FBAD133-35C5-4AC4-8329-B3B433A062BA.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/cors_CFE74C5D-058B-468C-9D0A-8AD9931214B9.png">
@@ -268,15 +270,15 @@
 <p>对于iis7：<br>新建文件命名：web.config<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">httpProtocol</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">customHeaders</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">"Access-Control-Allow-Origin"</span> <span class="attr">value</span>=<span class="string">"*"</span> /&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">customHeaders</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">httpProtocol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>②JSONP<br><div class="alert success"><p>JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。通俗的讲，JSONP就是动态的去加载js文件，为其src属性指定一个跨域URL。</p>
 </div></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">showPrice</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        alert(<span class="string">"Symbol:"</span> + data.symbol + <span class="string">", Price:"</span> + data.price);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"ticker.js"</span>; <span class="comment">//Outer JS URL</span></div><div class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">    script.setAttribute(<span class="string">'src'</span>, url);</div><div class="line">    <span class="comment">//load javascript</span></div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>ticker.js中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;symbol:<span class="string">'IBM'</span>, price:<span class="number">100</span>&#125;;</div><div class="line">showPrice(data);</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">showPrice</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        alert(<span class="string">"Symbol:"</span> + data.symbol + <span class="string">", Price:"</span> + data.price);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"ticker.js"</span>; <span class="comment">//Outer JS URL</span></div><div class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">    script.setAttribute(<span class="string">'src'</span>, url);</div><div class="line">    <span class="comment">//load javascript</span></div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p>ticker.js中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123;<span class="attr">symbol</span>:<span class="string">'IBM'</span>, <span class="attr">price</span>:<span class="number">100</span>&#125;;</div><div class="line">showPrice(data);</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>缺点：JSONP是get形式的，承载的信息量有限。</p>
 </div>
 <h4 id="三、本地测试如何进行"><a href="#三、本地测试如何进行" class="headerlink" title="三、本地测试如何进行"></a>三、本地测试如何进行</h4><p>当然，如果我们仅仅是为了进行本地测试，那么大可不必如此麻烦，看看如下的设置吧。<br>首先，我们先来看windows系统下的设置：桌面创建Chrome，右键属性，在目标栏空格后输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--disable-web-security</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/cors_CFE74C5D-058B-468C-9D0A-8AD9931214B9.png" alt="cors"><br>打开Chrome浏览器，出现以下警告，则配置成功。下面就可以进行轻松愉快的本地开发测试啦！<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/cors_Image.png" alt="cors"></p>
 <div class="alert info"><p>注意：此处打开的浏览器一定是你配置好属性的快捷方式，否则可能无效哦！</p>
 </div>
-<p>Mac下就简单多了，我们需要输入以下命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#老版本：</span></div><div class="line">open <span class="_">-a</span> <span class="string">"Google Chrome"</span> --args --disable-web-security</div><div class="line"><span class="comment">#新版本：</span></div><div class="line">open <span class="_">-a</span> <span class="string">"Google Chrome"</span> --args --disable-web-security --user-data-dir</div></pre></td></tr></table></figure></p>
+<p>Mac下就简单多了，我们需要输入以下命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#老版本：</span></div><div class="line">open -a <span class="string">"Google Chrome"</span> --args --<span class="built_in">disable</span>-web-security</div><div class="line"><span class="comment">#新版本：</span></div><div class="line">open -a <span class="string">"Google Chrome"</span> --args --<span class="built_in">disable</span>-web-security --user-data-dir</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>很多人发现Mac版本的CORS不起作用了，可能的原因就是你的chrome浏览器升级了，需要新的命令来禁用CORS。</p>
 </div>
 <h4 id="四、补充"><a href="#四、补充" class="headerlink" title="四、补充"></a>四、补充</h4><p>CORS与JSONP相比，更为先进、方便和可靠。<br>① JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。<br>②使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。<br>③JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS。</p>
@@ -373,14 +375,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

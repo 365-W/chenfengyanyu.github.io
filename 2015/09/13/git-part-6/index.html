@@ -10,7 +10,7 @@
     <title>git实践系列六：分支 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="git强大之处就是分支的快速切换，那么分支怎么理解呢？git 中的分支，其实本质上仅仅是个指向 commit 对象的可变指针。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="git实践系列六：分支">
 <meta property="og:url" content="http://jartto.wang/2015/09/13/git-part-6/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="git强大之处就是分支的快速切换，那么分支怎么理解呢？git 中的分支，其实本质上仅仅是个指向 commit 对象的可变指针。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_E0DC03FF-25DB-4300-B571-5AD6D4F181D2.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CC5166DB-A59A-4162-A270-A1042E415B19.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_5BC4E2A5-044D-4C24-8583-C45F6B73EDF2.png">
@@ -271,7 +273,7 @@
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CC5166DB-A59A-4162-A270-A1042E415B19.png" alt="git"></p>
 <h4 id="三、创建并切换到新的分支"><a href="#三、创建并切换到新的分支" class="headerlink" title="三、创建并切换到新的分支"></a>三、创建并切换到新的分支</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b branch_test</div></pre></td></tr></table></figure>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_5BC4E2A5-044D-4C24-8583-C45F6B73EDF2.png" alt="git"></p>
-<h4 id="四、删除分支"><a href="#四、删除分支" class="headerlink" title="四、删除分支"></a>四、删除分支</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="_">-d</span> branch_test</div></pre></td></tr></table></figure>
+<h4 id="四、删除分支"><a href="#四、删除分支" class="headerlink" title="四、删除分支"></a>四、删除分支</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d branch_test</div></pre></td></tr></table></figure>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_D3D0A8AF-BAE9-4A41-8EAF-E4737471523C.png" alt="git"></p>
 <h4 id="五、分支重命名"><a href="#五、分支重命名" class="headerlink" title="五、分支重命名"></a>五、分支重命名</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -m <span class="built_in">test</span> branch_rename</div></pre></td></tr></table></figure>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_FD712638-9C5D-49DE-8F55-017DF2930DF9.png" alt="git"></p>
@@ -364,14 +366,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

@@ -10,7 +10,7 @@
     <title>git实践系列四：添加，提交以及推送 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="本节重点说明add，commit，push等命令。对了，log也很常用，我会在栗子中做出说明。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="git实践系列四：添加，提交以及推送">
 <meta property="og:url" content="http://jartto.wang/2015/09/11/git-part-4/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="本节重点说明add，commit，push等命令。对了，log也很常用，我会在栗子中做出说明。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_003B17B1-AB84-45B2-B335-0C429212CD82.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CD3333EC-1CD3-4DCC-B0E3-4ADB7F27B5D9.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CEB38EB9-4F5D-40C1-B7E0-CD03C60BD01C.png">
@@ -267,7 +269,7 @@
 <h4 id="一、clone远程仓库"><a href="#一、clone远程仓库" class="headerlink" title="一、clone远程仓库"></a>一、clone远程仓库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/askgreenstone/web.git</div></pre></td></tr></table></figure>
 <h4 id="二、添加tools到暂存区git-add-tools"><a href="#二、添加tools到暂存区git-add-tools" class="headerlink" title="二、添加tools到暂存区git add tools"></a>二、添加tools到暂存区git add tools</h4><p>添加所有文件可以用*<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add *</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_003B17B1-AB84-45B2-B335-0C429212CD82.png" alt="git"></p>
-<h4 id="三、提交到HEAD，执行"><a href="#三、提交到HEAD，执行" class="headerlink" title="三、提交到HEAD，执行"></a>三、提交到HEAD，执行</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m ‘jartto <span class="built_in">test</span>1<span class="string">'</span></div></pre></td></tr></table></figure>
+<h4 id="三、提交到HEAD，执行"><a href="#三、提交到HEAD，执行" class="headerlink" title="三、提交到HEAD，执行"></a>三、提交到HEAD，执行</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m ‘jartto test1<span class="string">'</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>要提交更改他用git的commit 命令-m选项。如果我们省略-m选项git会打开文本编辑器，在这里我们可以写多行提交信息。</p>
 </blockquote>
@@ -369,14 +371,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

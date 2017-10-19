@@ -10,7 +10,7 @@
     <title>git实践系列三：移动，移除与提交 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="本节主要围绕git中的mv，rm，以及commit命令来展开说明。为了方便理解，我贴上了自己在尝试过程中的代码，希望可以起到一些示例作用。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="git实践系列三：移动，移除与提交">
 <meta property="og:url" content="http://jartto.wang/2015/09/10/git-part-3/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="本节主要围绕git中的mv，rm，以及commit命令来展开说明。为了方便理解，我贴上了自己在尝试过程中的代码，希望可以起到一些示例作用。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_E235B93C-E6B1-42F0-A363-89F0AF0F7E4A.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_11637FD9-D87F-4228-8D65-5474302819FC.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_169DA700-6136-42C3-A18E-A6D79DB16A96.png">
@@ -267,12 +269,12 @@
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_E235B93C-E6B1-42F0-A363-89F0AF0F7E4A.png" alt="git"></p>
 <p>将文件移动到temp文件下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git mv home.html temp</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_11637FD9-D87F-4228-8D65-5474302819FC.png" alt="git"></p>
-<p>查看操作状态：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status <span class="_">-s</span></div></pre></td></tr></table></figure></p>
+<p>查看操作状态：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status -s</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_169DA700-6136-42C3-A18E-A6D79DB16A96.png" alt="git"></p>
 <p>关于status，这里需要补充说明一下，如下图：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_EEE66011-519C-4657-817E-4FF6D2042BA7.png" alt="git"></p>
 <h4 id="二、移除文件"><a href="#二、移除文件" class="headerlink" title="二、移除文件"></a>二、移除文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm index.html</div></pre></td></tr></table></figure>
 <p>这里我舍不得移除index.html，所以我移除了Mac中的.DS_Store文件，这里埋个点（很有意思），后续还要详细说明。<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_577EB4DA-5815-4588-A471-BBF4CF269BA8.png" alt="git"></p>
-<h4 id="三、提交"><a href="#三、提交" class="headerlink" title="三、提交"></a>三、提交</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit <span class="_">-a</span> -m <span class="string">'desc..’</span></div></pre></td></tr></table></figure>
+<h4 id="三、提交"><a href="#三、提交" class="headerlink" title="三、提交"></a>三、提交</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -a -m <span class="string">'desc..’</span></div></pre></td></tr></table></figure>
 <p>-a标志，这使得git提交自动检测修改过的文件<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_B1790D25-01CA-4C03-8F42-FEB402140EE7.png" alt="git"></p>
 <p>参考：<br><a href="http://git-scm.com/docs/git-status" target="_blank" rel="external">http://git-scm.com/docs/git-status</a></p>
 
@@ -362,14 +364,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

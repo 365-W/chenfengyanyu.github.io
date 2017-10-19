@@ -10,7 +10,7 @@
     <title>Mac下如何删除.DS_Store文件 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="8月份，拿到了我的第一台mac笔记本，欣喜之余，有点犯愁。多年的windows使用经验，让我觉得mac很不顺手，但这并不能影响我的积极性。不会我就多花点功夫琢磨呗，如果你也遇到了同样的困惑，那么恭喜你，我会逐步分享，大家共同进步嘛。">
+<meta name="keywords" content="mac">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Mac下如何删除.DS_Store文件">
 <meta property="og:url" content="http://jartto.wang/2015/10/05/how-to-delete-DS-Store-of-Mac/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="8月份，拿到了我的第一台mac笔记本，欣喜之余，有点犯愁。多年的windows使用经验，让我觉得mac很不顺手，但这并不能影响我的积极性。不会我就多花点功夫琢磨呗，如果你也遇到了同样的困惑，那么恭喜你，我会逐步分享，大家共同进步嘛。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_5AB68F13-9273-4918-8933-A32B950A1610.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_3DE50546-E2BF-4593-9966-8476D0963508.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CD809809-746A-4F93-BE18-FE38FC682290.png">
@@ -262,7 +264,7 @@
             <p>8月份，拿到了我的第一台mac笔记本，欣喜之余，有点犯愁。多年的windows使用经验，让我觉得mac很不顺手，但这并不能影响我的积极性。不会我就多花点功夫琢磨呗，如果你也遇到了同样的困惑，那么恭喜你，我会逐步分享，大家共同进步嘛。<br><a id="more"></a></p>
 <h4 id="一、DS-Store是什么？"><a href="#一、DS-Store是什么？" class="headerlink" title="一、DS_Store是什么？"></a>一、DS_Store是什么？</h4><p>在 Mac OS X 系统下，几乎绝大部分文件夹中都包含 .DS_Store 隐藏文件，这里保存着针对这个目录的特殊信息和设置配置，例如查看方式、图标大小以及这个目录的一些附属元数据。</p>
 <h4 id="二、我们需要删除的场景："><a href="#二、我们需要删除的场景：" class="headerlink" title="二、我们需要删除的场景："></a>二、我们需要删除的场景：</h4><p>ftp查看本地文件时<br>git提交本地代码时<br>hexo生成代码时<br>等等。。。<br>虽然我们有办法去移除它，譬如在git下，我们可以添加.gitignore文件来忽略它。但是我依然有删除他的冲动。<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_5AB68F13-9273-4918-8933-A32B950A1610.png" alt="mac"></p>
-<h4 id="三、查找解决方案：我们不想文件夹下有DS-Store文件，而且永远也不需要生成。"><a href="#三、查找解决方案：我们不想文件夹下有DS-Store文件，而且永远也不需要生成。" class="headerlink" title="三、查找解决方案：我们不想文件夹下有DS_Store文件，而且永远也不需要生成。"></a>三、查找解决方案：我们不想文件夹下有DS_Store文件，而且永远也不需要生成。</h4><p>执行命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo find / -name <span class="string">".DS_Store"</span> -depth -exec rm &#123;&#125; \;</div></pre></td></tr></table></figure></p>
+<h4 id="三、查找解决方案：我们不想文件夹下有DS-Store文件，而且永远也不需要生成。"><a href="#三、查找解决方案：我们不想文件夹下有DS-Store文件，而且永远也不需要生成。" class="headerlink" title="三、查找解决方案：我们不想文件夹下有DS_Store文件，而且永远也不需要生成。"></a>三、查找解决方案：我们不想文件夹下有DS_Store文件，而且永远也不需要生成。</h4><p>执行命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo find / -name <span class="string">".DS_Store"</span> -depth -<span class="built_in">exec</span> rm &#123;&#125; \;</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_3DE50546-E2BF-4593-9966-8476D0963508.png" alt="mac"></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">defaults write com.apple.desktopservices DSDontWriteNetworkStores <span class="literal">true</span></div></pre></td></tr></table></figure>
 <h4 id="四、重新查看：异常已经被处理了，这也就意味着我们的操作达到了目的，-DS-Store文件已经被删除了。"><a href="#四、重新查看：异常已经被处理了，这也就意味着我们的操作达到了目的，-DS-Store文件已经被删除了。" class="headerlink" title="四、重新查看：异常已经被处理了，这也就意味着我们的操作达到了目的，.DS_Store文件已经被删除了。"></a>四、重新查看：异常已经被处理了，这也就意味着我们的操作达到了目的，.DS_Store文件已经被删除了。</h4><p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CD809809-746A-4F93-BE18-FE38FC682290.png" alt="mac"></p>
@@ -355,14 +357,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

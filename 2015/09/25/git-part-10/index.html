@@ -10,7 +10,7 @@
     <title>git实践系列十：常用技巧 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="git的基本语法也说完了，具体实践也演示了，甚至连错误汇总都整理了，你以为完了？图样图森破！技巧我都留在后面了，当然，本着geek的精神，我还是要分享出来。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="git实践系列十：常用技巧">
 <meta property="og:url" content="http://jartto.wang/2015/09/25/git-part-10/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="git的基本语法也说完了，具体实践也演示了，甚至连错误汇总都整理了，你以为完了？图样图森破！技巧我都留在后面了，当然，本着geek的精神，我还是要分享出来。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_B160A3D5-EF83-4F70-9D73-7AF409C89BD4.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_9447163C-5A62-4A16-A3B0-9B16EAE46F4F.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_D38F4E88-C6AE-4744-AE9A-B08BB81DEA57.png">
@@ -264,7 +266,7 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>git的基本语法也说完了，具体实践也演示了，甚至连错误汇总都整理了，你以为完了？图样图森破！技巧我都留在后面了，当然，本着geek的精神，我还是要分享出来。<br><a id="more"></a></p>
-<h4 id="一、查看git全局配置"><a href="#一、查看git全局配置" class="headerlink" title="一、查看git全局配置"></a>一、查看git全局配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config <span class="_">-l</span></div></pre></td></tr></table></figure>
+<h4 id="一、查看git全局配置"><a href="#一、查看git全局配置" class="headerlink" title="一、查看git全局配置"></a>一、查看git全局配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
 <h4 id="二、如何忽略文件文件？"><a href="#二、如何忽略文件文件？" class="headerlink" title="二、如何忽略文件文件？"></a>二、如何忽略文件文件？</h4><p>vim 直接创建 .gitignore文件，然后写入规则，!wq保存并退出。</p>
 <h4 id="三、关于Mac环境中的-DS-Store文件"><a href="#三、关于Mac环境中的-DS-Store文件" class="headerlink" title="三、关于Mac环境中的.DS_Store文件"></a>三、关于Mac环境中的.DS_Store文件</h4><p>有两种方法：</p>
 <ul>
@@ -275,7 +277,7 @@
 <blockquote>
 <p>在 Mac OS X 系统下，几乎绝大部分文件夹中都包含 .DS_Store 隐藏文件，这里保存着针对这个目录的特殊信息和设置配置，例如查看方式、图标大小以及这个目录的一些附属元数据。</p>
 </blockquote>
-<p>执行如下命令，删除文件.DS_Store：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo find / -name <span class="string">".DS_Store"</span> -depth -exec rm &#123;&#125; \;</div></pre></td></tr></table></figure></p>
+<p>执行如下命令，删除文件.DS_Store：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo find / -name <span class="string">".DS_Store"</span> -depth -<span class="built_in">exec</span> rm &#123;&#125; \;</div></pre></td></tr></table></figure></p>
 <p>然后，不再生成.DS_Store：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">defaults write com.apple.desktopservices DSDontWriteNetworkStores <span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <p>原谅.DS_Store的乱入，欲知详情，请移步博文：<a href="http://jartto.wang/2015/10/05/how-to-delete-DS-Store-of-Mac/">《Mac下如何删除.DS_Store文件》</a></p>
 <h4 id="四、对比文件更改"><a href="#四、对比文件更改" class="headerlink" title="四、对比文件更改"></a>四、对比文件更改</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff &lt;file name&gt;</div></pre></td></tr></table></figure>
@@ -385,14 +387,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

@@ -10,7 +10,7 @@
     <title>安装Homebrew异常处理 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="mac上面安装程序一般都很顺畅，但是今天想借助homebrew安装mongodb的时候，却出现了罕见的问题。如果你恰巧碰到了这个问题，不用找了，正解在这里！">
+<meta name="keywords" content="homebrew">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="安装Homebrew异常处理">
 <meta property="og:url" content="http://jartto.wang/2016/09/08/exception-of-the-homebrew-installation/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="mac上面安装程序一般都很顺畅，但是今天想借助homebrew安装mongodb的时候，却出现了罕见的问题。如果你恰巧碰到了这个问题，不用找了，正解在这里！">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-09-08T16:00:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Homebrew异常处理">
@@ -256,11 +258,11 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>mac上面安装程序一般都很顺畅，但是今天想借助homebrew安装mongodb的时候，却出现了罕见的问题。如果你恰巧碰到了这个问题，不用找了，正解在这里！<br><a id="more"></a></p>
-<h4 id="一、安装homebrew"><a href="#一、安装homebrew" class="headerlink" title="一、安装homebrew"></a>一、安装homebrew</h4><p>打开<a href="http://brew.sh/index.html" target="_blank" rel="external">官网</a>，这里以mac环境示例，命令行输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></div></pre></td></tr></table></figure></p>
+<h4 id="一、安装homebrew"><a href="#一、安装homebrew" class="headerlink" title="一、安装homebrew"></a>一、安装homebrew</h4><p>打开<a href="http://brew.sh/index.html" target="_blank" rel="external">官网</a>，这里以mac环境示例，命令行输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></div></pre></td></tr></table></figure></p>
 <p>并没有预期中的成功，控制台出现了这样的错误：<br><div class="alert danger"><p>It appears Homebrew is already installed. If your intent is to reinstall you<br>should do the following before running this installer again:<br>    ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/uninstall" target="_blank" rel="external">https://raw.githubusercontent.com/Homebrew/install/master/uninstall</a>)”<br>The current contents of /usr/local are bin Cellar CODEOFCONDUCT.md etc git include lib Library LICENSE.txt mysql mysql-5.7.12-osx10.11-x86_64 opt README.md share var .git .github .gitignore</p>
 </div></p>
 <h4 id="二、尝试方案"><a href="#二、尝试方案" class="headerlink" title="二、尝试方案"></a>二、尝试方案</h4><p>有点莫名其妙😱，我之前是没有安装过homebrew。难道是我另一台电脑上迁移助手迁移过来的？</p>
-<p>不管那么多了，先按照提示的日志试一试：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)</span>"</span></div></pre></td></tr></table></figure></p>
+<p>不管那么多了，先按照提示的日志试一试：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)</span>"</span></div></pre></td></tr></table></figure></p>
 <p>执行之后，还是有错误，我们来看看细节：<br><div class="alert danger"><p>You may consider to remove them by yourself.<br>You may want to restore /usr/local’s original permissions<br>  sudo chmod 0755 /usr/local<br>  sudo chown root:wheel /usr/local</p>
 </div></p>
 <p>真是可恶，日志中又给出了解决方案，我这种性格肯定是要试试的：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chmod 0755 /usr/<span class="built_in">local</span></div><div class="line">sudo chown root:wheel /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure></p>
@@ -363,14 +365,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

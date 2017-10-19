@@ -10,7 +10,7 @@
     <title>Angularjs知识分享 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="在这个信息快速更替的时代，昨天还被人捧上了天，今天就会被某些人贬的一文不值。跟技术挂钩的话，你可能猜到我要说的就是Angularjs，对，一个我至今仍然非常喜欢的框架。">
+<meta name="keywords" content="angularjs">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Angularjs知识分享">
 <meta property="og:url" content="http://jartto.wang/2015/06/29/summarize-the-angularjs/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="在这个信息快速更替的时代，昨天还被人捧上了天，今天就会被某些人贬的一文不值。跟技术挂钩的话，你可能猜到我要说的就是Angularjs，对，一个我至今仍然非常喜欢的框架。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_793F7E26-4F0B-48F5-A6ED-4DDE8D95CF07.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_1.gif">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blgo_0C20BA8C-39FD-41B4-9131-9BC276F10420.png">
@@ -305,7 +307,7 @@
 </blockquote>
 <p>其一，它的依赖是能被创建的，一般用new操作符就行。<br>其二，能够通过全局变量查找依赖。<br>其三，依赖能在需要时被导入。</p>
 <p>前两种方式都不是很好，因为它们需要对依赖硬编码，使得修改依赖的时候变得困难。特别是在测试的时候不好办，因为对某个部分进行孤立的测试常常需要模拟它的依赖。第三种方式是最好的，因为它不必在组件中去主动需找和获取依赖，而是由外界将依赖传入。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloController</span>(<span class="params">$scope,$location</span>)</span>&#123;</div><div class="line">    $scope.greeting=&#123;text:<span class="string">'Hello'</span>&#125;;</div><div class="line">    <span class="comment">//这里可以使用$location对象来做一些很酷的事情</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloController</span>(<span class="params">$scope,$location</span>)</span>&#123;</div><div class="line">    $scope.greeting=&#123;<span class="attr">text</span>:<span class="string">'Hello'</span>&#125;;</div><div class="line">    <span class="comment">//这里可以使用$location对象来做一些很酷的事情</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这里我们想把数据绑定到用户浏览器中的URL地址上，可以使用$location对象，只要把$location对象放到我们的构造函数中就可以了。<br>这种神奇效果是通过angularjs的依赖注入机制实现的。依赖注入让我们遵守这样一种开发风格：<br>我们的类只是简单的获取它们所需要的东西，而不需要创建那些它们所依赖的东西。</p>
 <blockquote>
 <p>路由：AngularJS中应用的路由通过$routeProvider来声明，它是$route服务的提供者。这项服务使得控制器、视图模板与当前浏览器的URL可以轻易集成。应用这个特性我们就可以实现深链接，它允许我们使用浏览器的历史(回退或者前进导航)和书签。</p>
@@ -315,7 +317,7 @@
 <blockquote>
 <p>指令：Angular最强大的功能之一就是，你可以把模板编写成HTML的形式。之所以可以做到这一点，是因为angular引入了一款强大的DOM转换引擎，可以用它来扩展html的语法。<br>angular中已经添加了一些新的属性，这些属性不属于html规范。例如，<br>我们引入了双花括号用来实现数据绑定；<br>引入了ng-controller用来指定每个控制器负责监视视图中的哪一部分；<br>引入了ng-model，用来把输入数据绑定到模型中的一部分属性上；<br>我们把这些叫做html扩展指令。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myModule = angular.module(<span class="string">"myModule"</span> , []);</div><div class="line">myModule.directive(<span class="string">'namespaceDirectiveName'</span>, <span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">injectables</span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> directiveDefinitionObject = &#123;</div><div class="line">       restrict: string,</div><div class="line">       priority: number,</div><div class="line">       template: string,</div><div class="line">       templateUrl: string,</div><div class="line">       replace: bool,</div><div class="line">       transclude: bool,</div><div class="line">       scope: &#123;&#125;,</div><div class="line">       controller: <span class="function"><span class="keyword">function</span> <span class="title">controllerConstructor</span>(<span class="params"></span></span></div><div class="line">                                                                               $scope,</div><div class="line">                                                                               $element,</div><div class="line">                                                                               $attrs,</div><div class="line">                                                                               $transclude) &#123; &#125;,</div><div class="line">       <span class="built_in">require</span>: string,</div><div class="line">       link: <span class="function"><span class="keyword">function</span> <span class="title">postLink</span>(<span class="params">scope, iElement, iAttrs</span>) </span>&#123; &#125;,</div><div class="line">       compile: <span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">tElement, tAttrs, transclude</span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> &#123;</div><div class="line">               pre: <span class="function"><span class="keyword">function</span> <span class="title">preLink</span>(<span class="params">scope, iElement, iAttrs, controller</span>) </span>&#123; &#125;,</div><div class="line">               post: <span class="function"><span class="keyword">function</span> <span class="title">postLink</span>(<span class="params">scope, iElement, iAttrs, controller</span>) </span>&#123; &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;;</div><div class="line">   <span class="keyword">return</span> directiveDefinitionObject;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myModule = angular.module(<span class="string">"myModule"</span> , []);</div><div class="line">myModule.directive(<span class="string">'namespaceDirectiveName'</span>, <span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">injectables</span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> directiveDefinitionObject = &#123;</div><div class="line">       restrict: string,</div><div class="line">       priority: number,</div><div class="line">       template: string,</div><div class="line">       templateUrl: string,</div><div class="line">       replace: bool,</div><div class="line">       transclude: bool,</div><div class="line">       scope: &#123;&#125;,</div><div class="line">       controller: <span class="function"><span class="keyword">function</span> <span class="title">controllerConstructor</span>(<span class="params"></span></span></div><div class="line"><span class="function"><span class="params">                                                                               $scope,</span></span></div><div class="line"><span class="function"><span class="params">                                                                               $element,</span></span></div><div class="line"><span class="function"><span class="params">                                                                               $attrs,</span></span></div><div class="line"><span class="function"><span class="params">                                                                               $transclude</span>) </span>&#123; &#125;,</div><div class="line">       <span class="built_in">require</span>: string,</div><div class="line">       link: <span class="function"><span class="keyword">function</span> <span class="title">postLink</span>(<span class="params">scope, iElement, iAttrs</span>) </span>&#123; &#125;,</div><div class="line">       compile: <span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">tElement, tAttrs, transclude</span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> &#123;</div><div class="line">               pre: <span class="function"><span class="keyword">function</span> <span class="title">preLink</span>(<span class="params">scope, iElement, iAttrs, controller</span>) </span>&#123; &#125;,</div><div class="line">               post: <span class="function"><span class="keyword">function</span> <span class="title">postLink</span>(<span class="params">scope, iElement, iAttrs, controller</span>) </span>&#123; &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;;</div><div class="line">   <span class="keyword">return</span> directiveDefinitionObject;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>angular内置了很多指令，可以帮助你为你的应用定义视图。这些指令可以把常见的视图定义成模板，它们可以设置应用的运行方式，或者用来创建可复用的组件。同时，你并不会受限于angular内置的指令。你可以编写自己的指令用来扩展html模板的功能，从而实现你梦想中的任何东西。</p>
 <blockquote>
 <p>服务：在一个应用中，负责提供一个接口，把特定函数需要的方法放在一起。angular开发指南（<a href="http://www.angularjs.cn/A00L）中是这么说的，“服务是一种由服务器端带到客户端的特性，它由来已久。AngularJS应用中的服务是一些用依赖注入捆绑在一起的可替换的对象。服务是最常和依赖注入一起用的，它也是AngularJS中的关键特性”。" target="_blank" rel="external">http://www.angularjs.cn/A00L）中是这么说的，“服务是一种由服务器端带到客户端的特性，它由来已久。AngularJS应用中的服务是一些用依赖注入捆绑在一起的可替换的对象。服务是最常和依赖注入一起用的，它也是AngularJS中的关键特性”。</a></p>
@@ -422,14 +424,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

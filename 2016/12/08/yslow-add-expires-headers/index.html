@@ -10,7 +10,7 @@
     <title>yslow 优化之 add expires headers - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="相信很多前端童鞋都用过 yslow 来优化页面吧，不知道有多少人会被 add expires headers这一规则困扰，今天我来说道说道。">
+<meta name="keywords" content="优化,yslow">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="yslow 优化之 add expires headers">
 <meta property="og:url" content="http://jartto.wang/2016/12/08/yslow-add-expires-headers/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="相信很多前端童鞋都用过 yslow 来优化页面吧，不知道有多少人会被 add expires headers这一规则困扰，今天我来说道说道。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/yslow_test.png">
 <meta property="og:updated_time" content="2016-12-09T05:28:13.000Z">
 <meta name="twitter:card" content="summary">
@@ -281,7 +283,7 @@
 <p>基本清晰了，我们来开始：<br>进入test项目目录：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
 <p>创建 .htaccess 文件：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">''</span> &gt;&gt; .htaccess</div></pre></td></tr></table></figure></p>
 <p>打开 .htaccess 文件：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim .htaccess</div></pre></td></tr></table></figure></p>
-<p>拷贝如下代码：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;IfModule mod_expires.c&gt;</div><div class="line"><span class="comment"># Enable expirations</span></div><div class="line">ExpiresActive On </div><div class="line"><span class="comment"># Default directive</span></div><div class="line">ExpiresDefault <span class="string">"access plus 1 days"</span></div><div class="line"><span class="comment"># My favicon</span></div><div class="line">ExpiresByType image/x-icon <span class="string">"access plus 1 year"</span></div><div class="line"><span class="comment"># Images</span></div><div class="line">ExpiresByType image/gif <span class="string">"access plus 3 days"</span></div><div class="line">ExpiresByType image/png <span class="string">"access plus 3 days"</span></div><div class="line">ExpiresByType image/jpg <span class="string">"access plus 3 days"</span></div><div class="line">ExpiresByType image/jpeg <span class="string">"access plus 3 days"</span></div><div class="line"><span class="comment"># CSS</span></div><div class="line">ExpiresByType text/css <span class="string">"access plus 3 days"</span></div><div class="line"><span class="comment"># Javascript</span></div><div class="line">ExpiresByType application/javascript <span class="string">"access plus 3 days”</span></div><div class="line">FileETag none</div><div class="line">&lt;/IfModule&gt;</div></pre></td></tr></table></figure></p>
+<p>拷贝如下代码：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;IfModule mod_expires.c&gt;</div><div class="line"><span class="comment"># Enable expirations</span></div><div class="line">ExpiresActive On </div><div class="line"><span class="comment"># Default directive</span></div><div class="line">ExpiresDefault <span class="string">"access plus 1 days"</span></div><div class="line"><span class="comment"># My favicon</span></div><div class="line">ExpiresByType image/x-icon <span class="string">"access plus 1 year"</span></div><div class="line"><span class="comment"># Images</span></div><div class="line">ExpiresByType image/gif <span class="string">"access plus 3 days"</span></div><div class="line">ExpiresByType image/png <span class="string">"access plus 3 days"</span></div><div class="line">ExpiresByType image/jpg <span class="string">"access plus 3 days"</span></div><div class="line">ExpiresByType image/jpeg <span class="string">"access plus 3 days"</span></div><div class="line"><span class="comment"># CSS</span></div><div class="line">ExpiresByType text/css <span class="string">"access plus 3 days"</span></div><div class="line"><span class="comment"># Javascript</span></div><div class="line">ExpiresByType application/javascript <span class="string">"access plus 3 days”</span></div><div class="line"><span class="string">FileETag none</span></div><div class="line"><span class="string">&lt;/IfModule&gt;</span></div></pre></td></tr></table></figure></p>
 <p>保存并退出，搞定～</p>
 <p>如果你觉得还是不够用，来看看下 面这个超完整版：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">FileETag None</div><div class="line">&lt;IfModule mod_expires.c&gt;</div><div class="line">    ExpiresActive on</div><div class="line">    ExpiresDefault                                      <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType text/css                              <span class="string">"access plus 1 year"</span></div><div class="line">    ExpiresByType application/json                      <span class="string">"access plus 0 seconds"</span></div><div class="line">    ExpiresByType application/xml                       <span class="string">"access plus 0 seconds"</span></div><div class="line">    ExpiresByType text/xml                              <span class="string">"access plus 0 seconds"</span></div><div class="line">    ExpiresByType image/x-icon                          <span class="string">"access plus 1 week"</span></div><div class="line">    ExpiresByType text/x-component                      <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType text/html                             <span class="string">"access plus 0 seconds"</span></div><div class="line">    ExpiresByType application/javascript                <span class="string">"access plus 1 year"</span></div><div class="line">    ExpiresByType application/x-web-app-manifest+json   <span class="string">"access plus 0 seconds"</span></div><div class="line">    ExpiresByType text/cache-manifest                   <span class="string">"access plus 0 seconds"</span></div><div class="line">    ExpiresByType audio/ogg                             <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType image/gif                             <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType image/jpeg                            <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType image/png                             <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType video/mp4                             <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType video/ogg                             <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType video/webm                            <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType application/atom+xml                  <span class="string">"access plus 1 hour"</span></div><div class="line">    ExpiresByType application/rss+xml                   <span class="string">"access plus 1 hour"</span></div><div class="line">    ExpiresByType application/font-woff                 <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType application/vnd.ms-fontobject         <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType application/x-font-ttf                <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType font/opentype                         <span class="string">"access plus 1 month"</span></div><div class="line">    ExpiresByType image/svg+xml                         <span class="string">"access plus 1 month"</span></div><div class="line">&lt;/IfModule&gt;</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>友情提示：配置完，记得重启服务器哦～</p>
@@ -375,14 +377,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

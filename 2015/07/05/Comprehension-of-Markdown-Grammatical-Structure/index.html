@@ -10,7 +10,7 @@
     <title>Markdown语法浅析 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="不管是github上的readme，还是hexo中的page，都离不开一个后缀名为.md的文件。对，这就是Markdown语言。怎么总结呢，我们搬过来百度百科的一句话：[不好意思，这里要换行了😊]">
+<meta name="keywords" content="Markdown">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Markdown语法浅析">
 <meta property="og:url" content="http://jartto.wang/2015/07/05/Comprehension-of-Markdown-Grammatical-Structure/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="不管是github上的readme，还是hexo中的page，都离不开一个后缀名为.md的文件。对，这就是Markdown语言。怎么总结呢，我们搬过来百度百科的一句话：[不好意思，这里要换行了😊]">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-06-20T13:58:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown语法浅析">
@@ -279,7 +281,7 @@
 <h4 id="十一、图片"><a href="#十一、图片" class="headerlink" title="十一、图片"></a>十一、图片</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![Alt text](/path/to/img.jpg “Optional title&quot;)</div></pre></td></tr></table></figure>
 <h4 id="十二、换行"><a href="#十二、换行" class="headerlink" title="十二、换行"></a>十二、换行</h4><p>在插入处先按入两个以上的空格然后回车。</p>
 <h4 id="十三、嵌入代码"><a href="#十三、嵌入代码" class="headerlink" title="十三、嵌入代码"></a>十三、嵌入代码</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```sh</div><div class="line">npm install react react-dom</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="string">``</span><span class="string">`js</span></div><div class="line">var React = require('react');</div><div class="line">var ReactDOM = require('react-dom');</div><div class="line"></div><div class="line">class MyComponent extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return &lt;div&gt;Hello World&lt;/div&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(&lt;MyComponent /&gt;, node);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="string">``</span><span class="string">`js</span></div><div class="line"><span class="string">var React = require('react');</span></div><div class="line"><span class="string">var ReactDOM = require('react-dom');</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">class MyComponent extends React.Component &#123;</span></div><div class="line"><span class="string">  render() &#123;</span></div><div class="line"><span class="string">    return &lt;div&gt;Hello World&lt;/div&gt;;</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">&#125;</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">ReactDOM.render(&lt;MyComponent /&gt;, node);</span></div></pre></td></tr></table></figure>
 <h4 id="十四、也支持html语法"><a href="#十四、也支持html语法" class="headerlink" title="十四、也支持html语法"></a>十四、也支持html语法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.askgreenstone.com/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">height</span>=<span class="string">"300"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">src</span>=<span class="string">"http://transfer.green-stone.cn/greenStoneicon300.png"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>参考：<br><a href="http://www.appinn.com/markdown/" target="_blank" rel="external">http://www.appinn.com/markdown/</a><br><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">http://wowubuntu.com/markdown/</a></p>
 
@@ -369,14 +371,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

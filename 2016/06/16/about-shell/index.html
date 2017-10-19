@@ -10,7 +10,7 @@
     <title>关于shell脚本 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="为了搞一个代码自动化部署工具，我花时间简单的学习了一下shell脚本的基本语法。顺着思路缕，很快我就达到了目的，shell果然很是强大啊～">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="关于shell脚本">
 <meta property="og:url" content="http://jartto.wang/2016/06/16/about-shell/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="为了搞一个代码自动化部署工具，我花时间简单的学习了一下shell脚本的基本语法。顺着思路缕，很快我就达到了目的，shell果然很是强大啊～">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-07-26T06:27:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于shell脚本">
@@ -276,11 +278,11 @@
 </ul>
 <h4 id="四、输出变量"><a href="#四、输出变量" class="headerlink" title="四、输出变量"></a>四、输出变量</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">PERSON ＝ <span class="string">"jartto"</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"What is your name?"</span></div><div class="line"><span class="built_in">read</span> PERSON</div><div class="line"><span class="built_in">echo</span> <span class="string">"Hello, <span class="variable">$PERSON</span>"</span></div></pre></td></tr></table></figure>
 <p>输出变量${PERSON}<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PERSON ＝ <span class="string">"jartto"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$PERSON</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;PERSON&#125;</span> <span class="comment">#推荐</span></div></pre></td></tr></table></figure></p>
-<h4 id="五、重新定义变量"><a href="#五、重新定义变量" class="headerlink" title="五、重新定义变量"></a>五、重新定义变量</h4><p>已定义的变量，可以被重新定义，如：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MyB<span class="built_in">log</span>=<span class="string">"http://jartto.wang/"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;MyBlog&#125;</span></div><div class="line">MyB<span class="built_in">log</span>=<span class="string">"http://baidu.com/"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;MyBlog&#125;</span></div></pre></td></tr></table></figure></p>
+<h4 id="五、重新定义变量"><a href="#五、重新定义变量" class="headerlink" title="五、重新定义变量"></a>五、重新定义变量</h4><p>已定义的变量，可以被重新定义，如：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MyBlog=<span class="string">"http://jartto.wang/"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;MyBlog&#125;</span></div><div class="line">MyBlog=<span class="string">"http://baidu.com/"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;MyBlog&#125;</span></div></pre></td></tr></table></figure></p>
 <div class="alert warning"><p>这里需要注意，第二次赋值的时候我们不能写 $MyBlog=”baidu.com”，只有使用变量的时候才加（$）。</p>
 </div>
 <h4 id="六、只读变量"><a href="#六、只读变量" class="headerlink" title="六、只读变量"></a>六、只读变量</h4><p>使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。</p>
-<p>下面的例子尝试更改只读变量，结果报错：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">MyB<span class="built_in">log</span>=<span class="string">"http://jartto.wang/"</span></div><div class="line"><span class="built_in">readonly</span> MyB<span class="built_in">log</span></div><div class="line">MyB<span class="built_in">log</span>=<span class="string">"http://baidu.com/"</span></div></pre></td></tr></table></figure></p>
+<p>下面的例子尝试更改只读变量，结果报错：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">MyBlog=<span class="string">"http://jartto.wang/"</span></div><div class="line"><span class="built_in">readonly</span> MyBlog</div><div class="line">MyBlog=<span class="string">"http://baidu.com/"</span></div></pre></td></tr></table></figure></p>
 <p>运行脚本，结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/bin/sh: NAME: This variable is read only.</div></pre></td></tr></table></figure></p>
 <h4 id="七、删除变量"><a href="#七、删除变量" class="headerlink" title="七、删除变量"></a>七、删除变量</h4><p>使用 unset 命令可以删除变量。语法：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">unset</span> variable_name</div></pre></td></tr></table></figure></p>
 <div class="alert danger"><p>变量被删除后不能再次使用；unset 命令不能删除只读变量。</p>
@@ -377,14 +379,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

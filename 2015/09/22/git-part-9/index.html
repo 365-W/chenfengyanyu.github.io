@@ -10,7 +10,7 @@
     <title>git实践系列九：撤销操作 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="本节重点是如何使用git来撤销一次错误提交，那么我们来假设一种场景：你的本地代码已经修改，并提交到远程库中。突然发现提交有问题，此时需要回退到上一个版本，怎么办？oh , fuck !">
+<meta name="keywords" content="git">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="git实践系列九：撤销操作">
 <meta property="og:url" content="http://jartto.wang/2015/09/22/git-part-9/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="本节重点是如何使用git来撤销一次错误提交，那么我们来假设一种场景：你的本地代码已经修改，并提交到远程库中。突然发现提交有问题，此时需要回退到上一个版本，怎么办？oh , fuck !">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_70DE4C99-2A2B-41AE-92BC-343796CDBDF1.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_E03F2948-FB0C-4957-8866-45A80F34BAB9.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_7DB3138A-5622-4E3B-9C29-B8874C6E8EC8.png">
@@ -266,12 +268,12 @@
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_70DE4C99-2A2B-41AE-92BC-343796CDBDF1.png" alt="git"></p>
 <p>二、回退到最近的一个正常版本：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset  --hard 45af637</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_E03F2948-FB0C-4957-8866-45A80F34BAB9.png" alt="git"></p>
-<p>三、提交本地代码到远程库<br>执行<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status <span class="_">-s</span></div></pre></td></tr></table></figure></p>
-<p>发现暂存区为空，接着执行<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit <span class="_">-a</span> -m <span class="string">'bla~bla'</span></div></pre></td></tr></table></figure></p>
+<p>三、提交本地代码到远程库<br>执行<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status -s</div></pre></td></tr></table></figure></p>
+<p>发现暂存区为空，接着执行<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -a -m <span class="string">'bla~bla'</span></div></pre></td></tr></table></figure></p>
 <p>没法提交，怎么办？那么直接就用本地代码去覆盖远程<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin dev</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_7DB3138A-5622-4E3B-9C29-B8874C6E8EC8.png" alt="git"></p>
 <p>git给出提示，当前的代码是之后的，提示你去pull</p>
-<p>但是我们就是要恢复远程库到我改后的正常版本,所以，强制执行，<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span> origin dev</div></pre></td></tr></table></figure></p>
+<p>但是我们就是要恢复远程库到我改后的正常版本,所以，强制执行，<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -f origin dev</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_D70D6CF0-1A17-4C08-A4E4-86D2B79D6DE7.png" alt="git"></p>
 <p>ok，总算恢复了一次错误的提交。</p>
 
@@ -361,14 +363,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

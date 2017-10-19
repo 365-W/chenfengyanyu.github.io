@@ -10,7 +10,7 @@
     <title>Angularjs学习笔记04~过滤器 Filter - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="最近越来越懒了，说好的每天抽一点时间来总结笔记，可是却完全没有执行，后续还有好多笔记，想想都觉得头疼。之前已经把目录整理好了，回头发现，目录是全了，可是之前学习的笔记太过于零散，无法形成一套完整的笔记。">
+<meta name="keywords" content="angularjs">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Angularjs学习笔记04~过滤器 Filter">
 <meta property="og:url" content="http://jartto.wang/2014/04/14/angularjs-part-5/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="最近越来越懒了，说好的每天抽一点时间来总结笔记，可是却完全没有执行，后续还有好多笔记，想想都觉得头疼。之前已经把目录整理好了，回头发现，目录是全了，可是之前学习的笔记太过于零散，无法形成一套完整的笔记。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CB60244D-79F6-4B3C-A341-D7E2E24B5382.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_5DFA9C34-BCE6-4588-8A0B-D257CD4F8D86.png">
 <meta property="og:updated_time" content="2016-06-24T02:54:55.000Z">
@@ -268,7 +270,7 @@
 <p>效果如下：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_CB60244D-79F6-4B3C-A341-D7E2E24B5382.png" alt="angularjs"></p>
 <div class="alert info"><p>演示地址：<a href="http://jsfiddle.net/Au79V/13/" target="_blank" rel="external">http://jsfiddle.net/Au79V/13/</a></p>
 </div>
-<p>第二种，自定义过滤器：<br>当然，多数情况下angularjs的内置过滤器就可以满足我们的使用了。但是你需要定制或者一些特别的过滤器，那么也不用担心，我们可以写自己的过滤器。哈哈，规则完全由你定，听起来是不是感觉很过瘾。下面我引用一下开发指南中的自定义过滤器，来说明问题，首先来看看代码：<br>index.html:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">!</span> <span class="attr">doctype</span> <span class="attr">html</span> &gt;</span></div><div class="line"><span class="tag">&lt; <span class="attr">html</span> <span class="attr">ng-app</span> =<span class="string">"MyReverseModule"</span>&gt;</span></div><div class="line"><span class="tag">&lt; <span class="attr">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> =<span class="string">"http://code.angularjs.org/angular-1.0.2.min.js"</span>&gt;</span><span class="xml"><span class="tag">&lt;/ <span class="attr">script</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span>&gt;</span><span class="xml"><span class="tag">&lt;/ <span class="attr">script</span> &gt;</span></span></div><div class="line"><span class="tag">&lt;/ <span class="attr">head</span>&gt;</span></div><div class="line"><span class="tag">&lt; <span class="attr">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"Ctrl"</span>&gt;</span></div><div class="line">        <span class="tag">&lt; <span class="attr">input</span> <span class="attr">ng-model</span> =<span class="string">"greeting"</span> <span class="attr">type</span> =<span class="string">"greeting"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span> &gt;</span></div><div class="line">        No filter: &#123;&#123;greeting &#125;&#125; <span class="tag">&lt;<span class="name">br</span> &gt;</span></div><div class="line">        Reverse: &#123;&#123;greeting|reverse &#125;&#125; <span class="tag">&lt;<span class="name">br</span> &gt;</span></div><div class="line">        Reverse + uppercase: &#123;&#123;greeting|reverse:true &#125;&#125; <span class="tag">&lt;<span class="name">br</span> &gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span> &gt;</span></div><div class="line"><span class="tag">&lt;/ <span class="attr">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/ <span class="attr">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>第二种，自定义过滤器：<br>当然，多数情况下angularjs的内置过滤器就可以满足我们的使用了。但是你需要定制或者一些特别的过滤器，那么也不用担心，我们可以写自己的过滤器。哈哈，规则完全由你定，听起来是不是感觉很过瘾。下面我引用一下开发指南中的自定义过滤器，来说明问题，首先来看看代码：<br>index.html:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">!</span> <span class="attr">doctype</span> <span class="attr">html</span> &gt;</span></div><div class="line"><span class="tag">&lt; <span class="attr">html</span> <span class="attr">ng-app</span> =<span class="string">"MyReverseModule"</span>&gt;</span></div><div class="line"><span class="tag">&lt; <span class="attr">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> =<span class="string">"http://code.angularjs.org/angular-1.0.2.min.js"</span>&gt;</span><span class="xml"><span class="tag">&lt;/ <span class="attr">script</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span>&gt;</span><span class="xml"><span class="tag">&lt;/ <span class="attr">script</span> &gt;</span></span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/ <span class="attr">head</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt; <span class="attr">body</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"Ctrl"</span>&gt;</span></span></div><div class="line"><span class="xml">        <span class="tag">&lt; <span class="attr">input</span> <span class="attr">ng-model</span> =<span class="string">"greeting"</span> <span class="attr">type</span> =<span class="string">"greeting"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span> &gt;</span></span></div><div class="line"><span class="xml">        No filter: &#123;&#123;greeting &#125;&#125; <span class="tag">&lt;<span class="name">br</span> &gt;</span></span></div><div class="line"><span class="xml">        Reverse: &#123;&#123;greeting|reverse &#125;&#125; <span class="tag">&lt;<span class="name">br</span> &gt;</span></span></div><div class="line"><span class="javascript">        Reverse + uppercase: &#123;&#123;greeting|reverse:<span class="literal">true</span> &#125;&#125; &lt;br &gt;</span></div><div class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span> &gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/ <span class="attr">body</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/ <span class="attr">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>script.js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">angular.module( <span class="string">'MyReverseModule'</span>, []).</div><div class="line">    filter( <span class="string">'reverse'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">input, uppercase</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> out = <span class="string">""</span> ;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</div><div class="line">                out = input.charAt(i) + out;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// conditional based on optional argument</span></div><div class="line">            <span class="keyword">if</span> (uppercase) &#123;</div><div class="line">                out = out.toUpperCase();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> out;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Ctrl</span>(<span class="params">$scope</span>) </span>&#123;</div><div class="line">    $scope.greeting = <span class="string">'hello'</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>效果如下：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_5DFA9C34-BCE6-4588-8A0B-D257CD4F8D86.png" alt="angularjs"></p>
 <div class="alert info"><p>演示地址：<a href="http://jsfiddle.net/Au79V/14/" target="_blank" rel="external">http://jsfiddle.net/Au79V/14/</a></p>
@@ -366,14 +368,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

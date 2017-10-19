@@ -10,7 +10,7 @@
     <title>javascript中双叹号(!!)作用 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="经常看到这样的例子：12var a；var b=!!a;">
+<meta name="keywords" content="js">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="javascript中双叹号(!!)作用">
 <meta property="og:url" content="http://jartto.wang/2015/10/18/about-js-double-exclamation/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="经常看到这样的例子：12var a；var b=!!a;">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-06-26T11:51:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中双叹号(!!)作用">
@@ -270,7 +272,7 @@
 <blockquote>
 <p>对null与undefined等其他用隐式转换的值，用!操作符时都会产生true的结果，所以用两个感叹号的作用就在于将这些值转换为“等价”的布尔值；</p>
 </blockquote>
-<p>再来看看：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo;</div><div class="line">alert(!foo);<span class="comment">//undifined情况下，一个感叹号返回的是true;</span></div><div class="line">alert(!goo);<span class="comment">//null情况下，一个感叹号返回的也是true;</span></div><div class="line"><span class="keyword">var</span> o=&#123;flag:<span class="literal">true</span>&#125;;</div><div class="line"><span class="keyword">var</span> test=!!o.flag;<span class="comment">//等效于var test=o.flag||false;</span></div><div class="line">alert(test);</div></pre></td></tr></table></figure></p>
+<p>再来看看：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo;</div><div class="line">alert(!foo);<span class="comment">//undifined情况下，一个感叹号返回的是true;</span></div><div class="line">alert(!goo);<span class="comment">//null情况下，一个感叹号返回的也是true;</span></div><div class="line"><span class="keyword">var</span> o=&#123;<span class="attr">flag</span>:<span class="literal">true</span>&#125;;</div><div class="line"><span class="keyword">var</span> test=!!o.flag;<span class="comment">//等效于var test=o.flag||false;</span></div><div class="line">alert(test);</div></pre></td></tr></table></figure></p>
 <p>这段代码，演示了在undifined和null时，用一个感叹号返回的都是true,用两个感叹号返回的就是false,所以两个感叹号的作用就在于，如果明确设置了变量的值（非null/undifined/0/”“等值),结果就会根据变量的实际值来返回，如果没有设置，结果就会返回false。</p>
 <p>参考：<br><a href="http://www.css88.com/archives/4545" target="_blank" rel="external">http://www.css88.com/archives/4545</a></p>
 
@@ -360,14 +362,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

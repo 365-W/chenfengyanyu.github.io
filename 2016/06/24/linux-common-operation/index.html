@@ -10,7 +10,7 @@
     <title>linux常用操作 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="记得校招那会，我一个前端和一堆后台朋友去面试，经常被考到linux的相关知识。当时还总觉得，前端学这些都没用，所以一直也没有去了解一下，哪怕是简单的命令。腾讯一学长每逢聚会，都会语重心长的说：“有空学学linux吧，特别有用。”">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="linux常用操作">
 <meta property="og:url" content="http://jartto.wang/2016/06/24/linux-common-operation/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="记得校招那会，我一个前端和一堆后台朋友去面试，经常被考到linux的相关知识。当时还总觉得，前端学这些都没用，所以一直也没有去了解一下，哪怕是简单的命令。腾讯一学长每逢聚会，都会语重心长的说：“有空学学linux吧，特别有用。”">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-07-25T02:26:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常用操作">
@@ -260,13 +262,13 @@
 <h4 id="一、ps-命令用于查看当前正在运行的进程，grep-是搜索"><a href="#一、ps-命令用于查看当前正在运行的进程，grep-是搜索" class="headerlink" title="一、ps 命令用于查看当前正在运行的进程，grep 是搜索"></a>一、ps 命令用于查看当前正在运行的进程，grep 是搜索</h4><p>如下是查看所有进程里 cmd 是 java 的进程信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep java</div></pre></td></tr></table></figure></p>
 <p>-aux 显示所有状态<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -aux | grep java</div></pre></td></tr></table></figure></p>
 <h4 id="二、kill-命令用于终止进程"><a href="#二、kill-命令用于终止进程" class="headerlink" title="二、kill 命令用于终止进程"></a>二、kill 命令用于终止进程</h4><p>-9 表示强迫进程立即停止，通常用 ps 查看进程 PID ，用 kill 命令终止进程<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 [PID]</div></pre></td></tr></table></figure></p>
-<h4 id="三、查看linux系统版本"><a href="#三、查看linux系统版本" class="headerlink" title="三、查看linux系统版本"></a>三、查看linux系统版本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname <span class="_">-a</span></div></pre></td></tr></table></figure>
+<h4 id="三、查看linux系统版本"><a href="#三、查看linux系统版本" class="headerlink" title="三、查看linux系统版本"></a>三、查看linux系统版本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -a</div></pre></td></tr></table></figure>
 <h4 id="四、退出linux服务器"><a href="#四、退出linux服务器" class="headerlink" title="四、退出linux服务器"></a>四、退出linux服务器</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">exit</span></div></pre></td></tr></table></figure>
 <h4 id="五、创建目录"><a href="#五、创建目录" class="headerlink" title="五、创建目录"></a>五、创建目录</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir abc</div></pre></td></tr></table></figure>
 <h4 id="六、修改文件名"><a href="#六、修改文件名" class="headerlink" title="六、修改文件名"></a>六、修改文件名</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv abc abc_1</div></pre></td></tr></table></figure>
 <h4 id="七、删除文件件或者文件夹"><a href="#七、删除文件件或者文件夹" class="headerlink" title="七、删除文件件或者文件夹"></a>七、删除文件件或者文件夹</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf <span class="built_in">test</span></div></pre></td></tr></table></figure>
 <p>关于参数：<br>-f, –force    忽略不存在的文件，从不给出提示。<br>-i, –interactive 进行交互式删除<br>-r, -R, –recursive   指示rm将参数中列出的全部目录和子目录均递归地删除。<br>-v, –verbose    详细显示进行的步骤<br>–help     显示此帮助信息并退出<br>–version  输出版本信息并退出</p>
-<h4 id="八、执行拷贝"><a href="#八、执行拷贝" class="headerlink" title="八、执行拷贝"></a>八、执行拷贝</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -rb <span class="built_in">test</span> <span class="built_in">test</span>1</div></pre></td></tr></table></figure>
+<h4 id="八、执行拷贝"><a href="#八、执行拷贝" class="headerlink" title="八、执行拷贝"></a>八、执行拷贝</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -rb <span class="built_in">test</span> test1</div></pre></td></tr></table></figure>
 <p>格式如下：<br>cp [选项] 源文件或目录 目的文件或目录<br>关于参数：<br>-b 同名，备份原来文件<br>-f 强制覆盖同名文件<br>-r 按递归方式保留原目录结构复制文件</p>
 <h4 id="九、新建文件"><a href="#九、新建文件" class="headerlink" title="九、新建文件"></a>九、新建文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> jartto &gt; test.txt</div><div class="line">cat &gt; test.txt</div><div class="line">less &gt; test.txt</div><div class="line">vi test.txt</div><div class="line">touch test.txt</div><div class="line">cp &gt; test.txt</div><div class="line">mv &gt; test.txt</div></pre></td></tr></table></figure>
 <p>注意：</p>
@@ -370,14 +372,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

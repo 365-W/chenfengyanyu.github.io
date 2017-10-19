@@ -10,7 +10,7 @@
     <title>linux 实用命令 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。">
+<meta name="keywords" content="linux,api">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="linux 实用命令">
 <meta property="og:url" content="http://jartto.wang/2016/11/02/linux-common-command/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-12-12T03:36:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 实用命令">
@@ -257,15 +259,15 @@
         <div class="main-content-wrap">
             <p>对 linux 常用命令不熟，导致每次应用的时候都需要去查询。偶然看到一篇文章描述的比较全面，搜集过来，以备后续查看。</p>
 <a id="more"></a>
-<h4 id="一、更改文件或者文件夹的拥有者"><a href="#一、更改文件或者文件夹的拥有者" class="headerlink" title="一、更改文件或者文件夹的拥有者"></a>一、更改文件或者文件夹的拥有者</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown [-cfhvR] [--help] [--version] user[:group] file...</div></pre></td></tr></table></figure>
-<p>参数格式 :<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group)</div><div class="line">-c : 若该档案拥有者确实已经更改，才显示其更改动作</div><div class="line"><span class="_">-f</span> : 若该档案拥有者无法被更改也不要显示错误讯息</div><div class="line">-h : 只对于连结(link)进行变更，而非该 link 真正指向的档案</div><div class="line">-v : 显示拥有者变更的详细资料</div><div class="line">-R : 对目前目录下的所有档案与子目录进行相同的拥有者变更(即以递回的方式逐个变更)</div></pre></td></tr></table></figure></p>
+<h4 id="一、更改文件或者文件夹的拥有者"><a href="#一、更改文件或者文件夹的拥有者" class="headerlink" title="一、更改文件或者文件夹的拥有者"></a>一、更改文件或者文件夹的拥有者</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file...</div></pre></td></tr></table></figure>
+<p>参数格式 :<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群体(group)</div><div class="line">-c : 若该档案拥有者确实已经更改，才显示其更改动作</div><div class="line">-f : 若该档案拥有者无法被更改也不要显示错误讯息</div><div class="line">-h : 只对于连结(link)进行变更，而非该 link 真正指向的档案</div><div class="line">-v : 显示拥有者变更的详细资料</div><div class="line">-R : 对目前目录下的所有档案与子目录进行相同的拥有者变更(即以递回的方式逐个变更)</div></pre></td></tr></table></figure></p>
 <p>如：更改目录拥有者为oracle<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R oracle:oinstall /oracle/u01/app/oracle</div></pre></td></tr></table></figure></p>
 <h4 id="二、修改权限"><a href="#二、修改权限" class="headerlink" title="二、修改权限"></a>二、修改权限</h4><p>改变文件的读写和执行权限，有符号法和八进制数字法。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod (change mode)</div></pre></td></tr></table></figure></p>
 <p>选项：<br>(1)符号法：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">chmod &#123;u|g|o|a&#125;&#123;+|-|=&#125;&#123;r|w|x&#125; filename</div><div class="line">          u (user)   表示用户本人。</div><div class="line">          g (group)  表示同组用户。</div><div class="line">          o (oher)   表示其他用户。</div><div class="line">          a (all)    表示所有用户。</div><div class="line">          +          用于给予指定用户的许可权限。</div><div class="line">          -          用于取消指定用户的许可权限。</div><div class="line">          =          将所许可的权限赋给文件。</div><div class="line">          r (<span class="built_in">read</span>)   读许可，表示可以拷贝该文件或目录的内容。</div><div class="line">          w (write)  写许可，表示可以修改该文件或目录的内容。</div><div class="line">          x (execute)执行许可，表示可以执行该文件或进入目录。</div></pre></td></tr></table></figure></p>
 <p>(2)八进制数字法：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">chmod abc file</div><div class="line">  其中a,b,c各为一个八进制数字，分别表示User、Group、及Other的权限。</div><div class="line">          4 (100)    表示可读。</div><div class="line">          2 (010)    表示可写。</div><div class="line">          1 (001)    表示可执行。</div><div class="line">  若要rwx属性则4+2+1=7；</div><div class="line">  若要rw-属性则4+2=6；</div><div class="line">  若要r-x属性则4+1=5。</div></pre></td></tr></table></figure></p>
 <p>举几个实用例子：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># chmod a+rx filename</span></div><div class="line">让所有用户可以读和执行文件filename。</div><div class="line"><span class="comment"># chmod go-rx filename</span></div><div class="line">取消同组和其他用户的读和执行文件filename的权限。</div><div class="line"><span class="comment"># chmod 741 filename</span></div><div class="line">让本人可读写执行、同组用户可读、其他用户可执行文件filename。</div><div class="line"><span class="comment"># chmod -R 755 /home/oracle</span></div><div class="line">递归更改目录权限，本人可读写执行、同组用户可读可执行、其他用户可读可执行</div></pre></td></tr></table></figure></p>
 <h4 id="三、修改文件日期"><a href="#三、修改文件日期" class="headerlink" title="三、修改文件日期"></a>三、修改文件日期</h4><p>改变文件的日期，不对文件的内容做改动，若文件不存在则建立新文件。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch filename</div></pre></td></tr></table></figure></p>
-<h4 id="四、链接文件"><a href="#四、链接文件" class="headerlink" title="四、链接文件"></a>四、链接文件</h4><p>为文件或目录建立一个链。其中，filename和directory是源文件名和源目录名；<br>linkname和pathname分别表示与源文件或源目录名相链接的文件或目录。<br>选项 -s 为文件或目录建立符号链接。不加-s表示为文件或目录建立硬链接。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ln [option] filename linkname</div><div class="line">ln [option] directory pathname</div><div class="line">ln <span class="_">-s</span> filename linkname</div></pre></td></tr></table></figure></p>
+<h4 id="四、链接文件"><a href="#四、链接文件" class="headerlink" title="四、链接文件"></a>四、链接文件</h4><p>为文件或目录建立一个链。其中，filename和directory是源文件名和源目录名；<br>linkname和pathname分别表示与源文件或源目录名相链接的文件或目录。<br>选项 -s 为文件或目录建立符号链接。不加-s表示为文件或目录建立硬链接。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ln [option] filename linkname</div><div class="line">ln [option] directory pathname</div><div class="line">ln -s filename linkname</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>链接的目地在于，对一个文件或目录赋予两个以上的名字，使其可以出现在不同的目录中，既可以使文件或目录共享，又可以节省磁盘空间。</p>
 </div>
 <h4 id="五、显示日期"><a href="#五、显示日期" class="headerlink" title="五、显示日期"></a>五、显示日期</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date</div></pre></td></tr></table></figure>
@@ -279,7 +281,7 @@
 <h4 id="十、查看当前登录的用户"><a href="#十、查看当前登录的用户" class="headerlink" title="十、查看当前登录的用户"></a>十、查看当前登录的用户</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">users</div></pre></td></tr></table></figure>
 <h4 id="十一、显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。"><a href="#十一、显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。" class="headerlink" title="十一、显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。"></a>十一、显示当前正在系统中的所有用户名字，使用终端设备号，注册时间。</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">who</div></pre></td></tr></table></figure>
 <h4 id="十二、显示出当前终端上使用的用户"><a href="#十二、显示出当前终端上使用的用户" class="headerlink" title="十二、显示出当前终端上使用的用户"></a>十二、显示出当前终端上使用的用户</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whoami</div></pre></td></tr></table></figure>
-<h4 id="十三、寻找文件"><a href="#十三、寻找文件" class="headerlink" title="十三、寻找文件"></a>十三、寻找文件</h4><p>在所给的路经名下寻找符合表达式相匹配的文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find pathname [option] expression</div><div class="line">find ./ -name <span class="string">'*abc*'</span> -print</div></pre></td></tr></table></figure></p>
+<h4 id="十三、寻找文件"><a href="#十三、寻找文件" class="headerlink" title="十三、寻找文件"></a>十三、寻找文件</h4><p>在所给的路经名下寻找符合表达式相匹配的文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find pathname [option] expression</div><div class="line">find ./ -name <span class="string">'*abc*'</span> -<span class="built_in">print</span></div></pre></td></tr></table></figure></p>
 <p>选项：<br>-name     表示文件名<br>-user     用户名，选取该用户所属的文件<br>-size     按大小查找，以block为单位，一个block是512B<br>-mtime n  按最后一次修改时间查找，选取n天内被修改的文件<br>-perm     按权限查找<br>-type      按文件类型查找<br>-atime    按最后一次访问时间查找</p>
 <h4 id="十四、搜索文件中匹配符"><a href="#十四、搜索文件中匹配符" class="headerlink" title="十四、搜索文件中匹配符"></a>十四、搜索文件中匹配符</h4><p>逐行搜索所指定的文件或标准输入，并显示匹配模式的每一行。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grep [option] pattern filenames</div><div class="line">grep -i <span class="string">'error'</span> ./<span class="built_in">test</span>/test.log</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-i    匹配时忽略大小写<br>-v 找出模式失配的行</p>
@@ -287,14 +289,14 @@
 <p>选项：若缺省文件名则指标准输入<br>-l 统计文件的行数<br>-w 统计文件的单词数<br>-c 统计文件的字符数</p>
 <h4 id="十六、显示磁盘空间"><a href="#十六、显示磁盘空间" class="headerlink" title="十六、显示磁盘空间"></a>十六、显示磁盘空间</h4><p>显示磁盘空间的使用情况，包括文件系统安装的目录名、块设备名、总字节数、已用字节数、剩余字节数占用百分比。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df [option]</div><div class="line">df -hi</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-a：显示全部的档案系统和各分割区的磁盘使用情形<br>-i：显示i -nodes的使用量<br>-k：大小用k来表示 (默认值)<br>-t：显示某一个档案系统的所有分割区磁盘使用量<br>-x：显示不是某一个档案系统的所有分割区磁盘使用量<br>-T：显示每个分割区所属的档案系统名称<br>-h: 表示使用「Human-readable」的输出，也就是在档案系统大小使用 GB、MB 等易读的格式。</p>
-<h4 id="十七、查询档案或目录的磁盘使用空间"><a href="#十七、查询档案或目录的磁盘使用空间" class="headerlink" title="十七、查询档案或目录的磁盘使用空间"></a>十七、查询档案或目录的磁盘使用空间</h4><p>以指定的目录下的子目录为单位，显示每个目录内所有档案所占用的磁盘空间大小<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">du [option] [filename]</div><div class="line">du <span class="_">-a</span></div><div class="line">du -sh /etc 只显示该目录的总合</div><div class="line">du /etc | sort -nr | more 统计结果用sort 指令进行排序，</div><div class="line">sort 的参数 -nr 表示要以数字排序法进行反向排序。</div></pre></td></tr></table></figure></p>
+<h4 id="十七、查询档案或目录的磁盘使用空间"><a href="#十七、查询档案或目录的磁盘使用空间" class="headerlink" title="十七、查询档案或目录的磁盘使用空间"></a>十七、查询档案或目录的磁盘使用空间</h4><p>以指定的目录下的子目录为单位，显示每个目录内所有档案所占用的磁盘空间大小<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">du [option] [filename]</div><div class="line">du -a</div><div class="line">du -sh /etc 只显示该目录的总合</div><div class="line">du /etc | sort -nr | more 统计结果用sort 指令进行排序，</div><div class="line">sort 的参数 -nr 表示要以数字排序法进行反向排序。</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-a：显示全部目录和其次目录下的每个档案所占的磁盘空间<br>-b：大小用bytes来表示 (默认值为k bytes)<br>-c：最后再加上总计 (默认值)<br>-s：只显示各档案大小的总合<br>-x：只计算同属同一个档案系统的档案<br>-L：计算所有的档案大小<br>-h: 表示档案系统大小使用 GB、MB 等易读的格式。</p>
 <h4 id="十八、显示进程"><a href="#十八、显示进程" class="headerlink" title="十八、显示进程"></a>十八、显示进程</h4><p>显示系统中进程的信息。包括进程ID、控制进程终端、执行时间和命令。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps [option]</div><div class="line">% ps -ef</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-a 显示所有进程信息<br>-U uidlist 列出这个用户的所有进程<br>-e 显示当前运行的每一个进程信息<br>-f 显示一个完整的列表<br>-x 显示包括没有终端控制的进程状况 。</p>
 <h4 id="十九、终止进程"><a href="#十九、终止进程" class="headerlink" title="十九、终止进程"></a>十九、终止进程</h4><p>向指定的进程送信号或终止进程。kill指令的用途是送一个signal给某一个process，因为大部份送的都是用来杀掉 process 的 SIGKILL 或 SIGHUP ，因此称为 kill。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> [option] pid</div><div class="line"><span class="built_in">kill</span> -9 pid</div></pre></td></tr></table></figure></p>
 <p>选项：<br>-9  强行终止进程<br><div class="alert info"><p>pid标示进程号，可由ps命令得到。也可以用 kill -l 来察看可代替 signal 号码的数目字。</p>
 </div></p>
-<h4 id="二十、查看自己的IP地址"><a href="#二十、查看自己的IP地址" class="headerlink" title="二十、查看自己的IP地址"></a>二十、查看自己的IP地址</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig <span class="_">-a</span></div></pre></td></tr></table></figure>
+<h4 id="二十、查看自己的IP地址"><a href="#二十、查看自己的IP地址" class="headerlink" title="二十、查看自己的IP地址"></a>二十、查看自己的IP地址</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig -a</div></pre></td></tr></table></figure>
 <h4 id="二十一、查看路由表"><a href="#二十一、查看路由表" class="headerlink" title="二十一、查看路由表"></a>二十一、查看路由表</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -rn</div></pre></td></tr></table></figure>
 <h4 id="二十二、远程登录"><a href="#二十二、远程登录" class="headerlink" title="二十二、远程登录"></a>二十二、远程登录</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">telnet hostname</div></pre></td></tr></table></figure>
 <h4 id="二十三、文件传输"><a href="#二十三、文件传输" class="headerlink" title="二十三、文件传输"></a>二十三、文件传输</h4><p>网络文件传输及远程操作。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftp hostname</div></pre></td></tr></table></figure></p>
@@ -417,14 +419,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

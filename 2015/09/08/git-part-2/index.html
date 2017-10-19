@@ -10,7 +10,7 @@
     <title>git实践系列二：创建新仓库 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="本节主要介绍如何创建git仓库，以及git常用操作说明。如果你有时间，我建议最好实际去操作一下文中列举出的命令，git的用法不外乎如此。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="git实践系列二：创建新仓库">
 <meta property="og:url" content="http://jartto.wang/2015/09/08/git-part-2/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="本节主要介绍如何创建git仓库，以及git常用操作说明。如果你有时间，我建议最好实际去操作一下文中列举出的命令，git的用法不外乎如此。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_8DCAB4B8-F6A0-4BD2-88EF-09E5948B1521.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_7E48F42D-AB02-4E58-B6AB-2507AEA25434.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_68BFE499-42D4-460E-AB94-7E2F8A5455EB.png">
@@ -275,7 +277,7 @@
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/blog_68BFE499-42D4-460E-AB94-7E2F8A5455EB.png" alt="git分支"></p>
 <p>创建一个叫做“feature_x”的分支，并切换过去：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b feature_x</div></pre></td></tr></table></figure></p>
 <p>切换回主分支：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout master</div></pre></td></tr></table></figure></p>
-<p>再把新建的分支删掉：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="_">-d</span> feature_x</div></pre></td></tr></table></figure></p>
+<p>再把新建的分支删掉：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d feature_x</div></pre></td></tr></table></figure></p>
 <p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin &lt;branch&gt;</div></pre></td></tr></table></figure></p>
 <h4 id="七、更新与合并"><a href="#七、更新与合并" class="headerlink" title="七、更新与合并"></a>七、更新与合并</h4><p>要更新你的本地仓库至最新改动，执行：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure></p>
 <p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。<br>要合并其他分支到你的当前分支（例如 master），执行：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git merge &lt;branch&gt;</div></pre></td></tr></table></figure></p>
@@ -381,14 +383,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

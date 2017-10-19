@@ -10,7 +10,7 @@
     <title>javascript之浅拷贝和深拷贝 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="说点题外话，前两天拜读了某位前端大神的博客，内容是js设计模式。文中充满了各种比较风趣幽默的栗子，细细读起来又觉得很到位。">
+<meta name="keywords" content="js,深拷贝,浅拷贝">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="javascript之浅拷贝和深拷贝">
 <meta property="og:url" content="http://jartto.wang/2016/03/19/js-deep-copy/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="说点题外话，前两天拜读了某位前端大神的博客，内容是js设计模式。文中充满了各种比较风趣幽默的栗子，细细读起来又觉得很到位。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2016-06-20T14:03:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript之浅拷贝和深拷贝">
@@ -259,7 +261,7 @@
 <p>扯得有些远了，往回拉一拉，这就是承上启下段落了。</p>
 <p>继上一篇js基础概念总结后，陆续又发现了好多疏漏的知识点。那就花些时间搞搞基础吧，简称搞基。多么高大上的称呼啊，简直无法直视了。闹归闹，总结笔记还是不能停。<br>下面直接进入正题，我们来看看js中的浅拷贝和深拷贝：</p>
 <h4 id="1-什么是浅拷贝？"><a href="#1-什么是浅拷贝？" class="headerlink" title="1.什么是浅拷贝？"></a>1.什么是浅拷贝？</h4><p>js中的赋值都为引用传递，这也就是说，在把一个对象赋值给一个变量（对象）,那么这个变量（对象）所指向的仍就是原来对象的地址，引用就是浅拷贝。</p>
-<p>看概念我们可能不太容易理解，下面拿一个简单的栗子来说说吧：<br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1=&#123;name:<span class="string">'jartto'</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2=&#123;&#125;;</div><div class="line"><span class="comment">//复制obj1</span></div><div class="line">obj2=obj1;</div><div class="line"><span class="built_in">console</span>.log(obj2.name);<span class="comment">//jartto</span></div><div class="line"><span class="comment">//更改obj2.name</span></div><div class="line">obj2.name=<span class="string">'somebody'</span>;</div><div class="line"><span class="built_in">console</span>.log(obj2.name);<span class="comment">//somebody</span></div><div class="line"><span class="built_in">console</span>.log(obj1.name);<span class="comment">//somebody</span></div></pre></td></tr></table></figure></p>
+<p>看概念我们可能不太容易理解，下面拿一个简单的栗子来说说吧：<br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1=&#123;<span class="attr">name</span>:<span class="string">'jartto'</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2=&#123;&#125;;</div><div class="line"><span class="comment">//复制obj1</span></div><div class="line">obj2=obj1;</div><div class="line"><span class="built_in">console</span>.log(obj2.name);<span class="comment">//jartto</span></div><div class="line"><span class="comment">//更改obj2.name</span></div><div class="line">obj2.name=<span class="string">'somebody'</span>;</div><div class="line"><span class="built_in">console</span>.log(obj2.name);<span class="comment">//somebody</span></div><div class="line"><span class="built_in">console</span>.log(obj1.name);<span class="comment">//somebody</span></div></pre></td></tr></table></figure></p>
 <p>例子中可以看出，obj2更改了，obj1也被更改了。这说明name仍然存在公共的引用对象，我们的拷贝并不彻底，冒然的使用很有可能带来大的灾难。这时候深拷贝就该上场了，我们接着往下走。</p>
 <h4 id="2-什么是深拷贝？"><a href="#2-什么是深拷贝？" class="headerlink" title="2.什么是深拷贝？"></a>2.什么是深拷贝？</h4><p>深拷贝就是不仅复制对象的基本类,同时也复制原对象中的对象。就是说完全是新对象产生的，新对象所指向的不是原来对象的地址。</p>
 <p>同上面的队形，我们还拿栗子来说事：<br>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> arr2=arr1.concat();</div><div class="line"><span class="comment">//输出arr2</span></div><div class="line"><span class="built_in">console</span>.log(arr2)</div><div class="line"><span class="comment">//更改arr2的值</span></div><div class="line">arr2[<span class="number">0</span>]=<span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arr1);<span class="comment">//[1,2,3]</span></div><div class="line"><span class="built_in">console</span>.log(arr2);<span class="comment">//[5,2,3]</span></div></pre></td></tr></table></figure></p>
@@ -356,14 +358,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>

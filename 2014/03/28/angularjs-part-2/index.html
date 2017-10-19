@@ -10,7 +10,7 @@
     <title>Angularjs学习笔记01~作用域Scope - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web前端开发,博客,">
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -19,11 +19,13 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="要学习angularjs，首先我们要了解它的作用域，也就是angularjs中的scope。">
+<meta name="keywords" content="angularjs">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Angularjs学习笔记01~作用域Scope">
 <meta property="og:url" content="http://jartto.wang/2014/03/28/angularjs-part-2/index.html">
-<meta property="og:site_name" content="Jartto's blog">
+<meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="要学习angularjs，首先我们要了解它的作用域，也就是angularjs中的scope。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/blog_37AB7A5F-A7A7-4A74-A119-1FC04287883B.png">
 <meta property="og:updated_time" content="2016-06-23T14:42:58.000Z">
 <meta name="twitter:card" content="summary">
@@ -288,7 +290,7 @@
 </li>
 </ul>
 <p>本身是无意义的，除非把它放到指定username属性的作用域中。</p>
-<p>index.html：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.angularjs.org/angular-1.0.2.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span>&gt;</span><span class="xml"><span class="tag">&lt;/<span class="name">script</span> &gt;</span></span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"MyController"</span>&gt;</span></div><div class="line">            Your name:</div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">'sayHello()'</span>&gt;</span>greet <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">hr</span>&gt;</span></div><div class="line">            &#123;&#123;greeting&#125;&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span> &gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>index.html：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.angularjs.org/angular-1.0.2.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span>&gt;</span><span class="xml"><span class="tag">&lt;/<span class="name">script</span> &gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">head</span> &gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">body</span> &gt;</span></span></div><div class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"MyController"</span>&gt;</span></span></div><div class="line"><span class="undefined">            Your name:</span></div><div class="line"><span class="xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span>&gt;</span></span></div><div class="line"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">'sayHello()'</span>&gt;</span>greet <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></div><div class="line"><span class="xml">            <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span></div><div class="line"><span class="undefined">            &#123;&#123;greeting&#125;&#125;</span></div><div class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">body</span> &gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>script.js：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyController</span>(<span class="params">$scope</span>) </span>&#123;</div><div class="line">    $scope.username = <span class="string">'World'</span>;</div><div class="line">    $scope.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $scope.greeting = <span class="string">'Hello '</span> + $scope.username + <span class="string">'!'</span> ;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上例中MyController将值World赋给了作用域中的username。然后作用域将这个赋值的操作通知给input，然后input就会被渲染成预填充了值得样子。这展示控制器如何将数据写入到作用域。</p>
 <p>同样的，控制器能将行为添加到作用域，正如你看到的sayHello方法，这个方法是在用户点击“greet”按钮时被调用的。这展示了当属性绑定到HTMLinput元素上时，它会自动更新。</p>
@@ -382,14 +384,17 @@
 
 
                 <footer id="footer" class="main-content-wrap">
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<div id="busuanzi_container_site_pv">
-	   欢迎你，Jartto的第<span id="busuanzi_value_site_uv"></span>位朋友！
-	</div>
-	<br>
-    <span class="copyrights">
-        Copyrights &copy; 2017 Jartto. All Rights Reserved.
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
 </footer>
 
             </div>
