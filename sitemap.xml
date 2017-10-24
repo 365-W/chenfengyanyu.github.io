@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://jartto.wang/2017/10/10/html5-drag-and-drop/</loc>
+    <loc>http://jartto.wang/2017/10/23/html5-drag/</loc>
     
-    <lastmod>2017-10-19T09:38:16.000Z</lastmod>
+    <lastmod>2017-10-24T03:55:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2016/06/24/linux-common-operation/</loc>
+    
+    <lastmod>2017-10-19T22:27:39.000Z</lastmod>
     
   </url>
   
@@ -222,13 +229,6 @@
     <loc>http://jartto.wang/2016/07/15/grasp-sorting-algorithm/</loc>
     
     <lastmod>2016-07-25T05:46:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2016/06/24/linux-common-operation/</loc>
-    
-    <lastmod>2016-07-25T02:26:12.000Z</lastmod>
     
   </url>
   

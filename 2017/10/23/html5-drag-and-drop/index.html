@@ -18,20 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，这一切变的更加容易了。当然，我们在享受便利的同时，一定要巩固好基础，否则可能会在细节问题上栽跟头。">
+    <meta name="description" content="对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，让这一切变的更加容易了。本文旨在探讨 H5 拖拽方案、实现步骤，以及相关原理。">
 <meta name="keywords" content="HTML5,drag,drop,demo">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="HTML5 拖放实现">
-<meta property="og:url" content="http://jartto.wang/2017/10/10/html5-drag-and-drop/index.html">
+<meta property="og:url" content="http://jartto.wang/2017/10/23/html5-drag-and-drop/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，这一切变的更加容易了。当然，我们在享受便利的同时，一定要巩固好基础，否则可能会在细节问题上栽跟头。">
+<meta property="og:description" content="对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，让这一切变的更加容易了。本文旨在探讨 H5 拖拽方案、实现步骤，以及相关原理。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://badge.juejin.im/entry/59dc9aedf265da43200232f9/likes.svg?style=flat">
-<meta property="og:updated_time" content="2017-10-19T09:38:16.000Z">
+<meta property="og:updated_time" content="2017-10-23T15:41:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5 拖放实现">
-<meta name="twitter:description" content="对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，这一切变的更加容易了。当然，我们在享受便利的同时，一定要巩固好基础，否则可能会在细节问题上栽跟头。">
-<meta name="twitter:image" content="https://badge.juejin.im/entry/59dc9aedf265da43200232f9/likes.svg?style=flat">
+<meta name="twitter:description" content="对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，让这一切变的更加容易了。本文旨在探讨 H5 拖拽方案、实现步骤，以及相关原理。">
     
     
         
@@ -40,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/dragdrop.png-blog"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/dragdrop.png-blog" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/dragdrop.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/dragdrop.png" />
     
     
     
@@ -186,7 +184,7 @@
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="https://github.com/chenfengyanyu" target="_blank">
+                    <a  class="sidebar-button-link " href="https://github.com/chenfengyanyu/source" target="_blank">
                 
                     <i class="sidebar-button-icon fa fa-lg fa-github"></i>
                     <span class="sidebar-button-desc">GitHub</span>
@@ -241,9 +239,9 @@
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-10-10T20:10:15+08:00">
+    <time itemprop="datePublished" datetime="2017-10-23T23:10:15+08:00">
 	  
-		    2017/10月/10 20:10:15
+		    2017/10月/23 23:10:15
     	
     </time>
     
@@ -265,7 +263,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，这一切变的更加容易了。当然，我们在享受便利的同时，一定要巩固好基础，否则可能会在细节问题上栽跟头。<br><a id="more"></a><br><a href="https://juejin.im/entry/59dc9aedf265da43200232f9/detail" target="_blank" rel="external"><img src="https://badge.juejin.im/entry/59dc9aedf265da43200232f9/likes.svg?style=flat" alt=""></a></p>
+            <p>对于拖拽我们并不陌生，尤其是在 HTML5 支持拖拽后，让这一切变的更加容易了。本文旨在探讨 H5 拖拽方案、实现步骤，以及相关原理。<br><a id="more"></a></p>
 <h4 id="一、我理解的拖拽"><a href="#一、我理解的拖拽" class="headerlink" title="一、我理解的拖拽"></a>一、我理解的拖拽</h4><p>为了更好的说明，这里我强行分类，大致如下：</p>
 <ol>
 <li>操作类拖拽，譬如，拖拽上传；</li>
@@ -274,13 +272,21 @@
 </ol>
 <div class="alert info"><p>拖拽实现的思路都是一致的，唯一差别就是表现形式。</p>
 </div>
-<h4 id="二、直接上手"><a href="#二、直接上手" class="headerlink" title="二、直接上手"></a>二、直接上手</h4><p>让我们逐步深入，从示例开始吧！<br>1.首先，设置可拖动元素，我们使用 <code>draggable</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/1.png"</span> <span class="attr">width</span>=<span class="string">"250"</span> <span class="attr">draggable</span>=<span class="string">"true"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="二、直接上手"><a href="#二、直接上手" class="headerlink" title="二、直接上手"></a>二、直接上手</h4><p>让我们逐步深入，从示例开始吧！<br>1.首先，设置可拖动元素，我们使用 <span class="highlight-text yellow">draggable </span><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/1.png"</span> <span class="attr">width</span>=<span class="string">"250"</span> <span class="attr">draggable</span>=<span class="string">"true"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>为了方便下文具体说明，这里我添加了 <code>id</code> 和 <code>ondragstart</code> 事件，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"jartto"</span> <span class="attr">src</span>=<span class="string">"img/1.png"</span> <span class="attr">width</span>=<span class="string">"250"</span>  <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">ondragstart</span>=<span class="string">"drag(event)"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p>2.然后，规定当元素被拖动时，会发生什么。这里注意 <code>ondragstart</code> 和 <code>setData()</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.dataTransfer.setData(<span class="string">"Text"</span>,ev.target.id);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><code>ondragstart</code> 属性调用了一个函数，drag(event)，它规定了被拖动的数据。<code>dataTransfer.setData()</code> 方法设置被拖数据的数据类型和值。<br><div class="alert info"><p>这里需要注意 setData 的数据类型是 “Text”，值是可拖动元素的 id 。</p>
+<p><code>ondragstart</code> 属性调用了一个函数，drag(event)，它规定了被拖动的数据。</p>
+<p>2.然后，规定当元素被拖动时，会发生什么。这里注意 <code>setData()</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.dataTransfer.setData(<span class="string">"Text"</span>,ev.target.id);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>dataTransfer.setData()</code> 方法设置被拖数据的数据类型和值，后面我会详细说明。<br><div class="alert info"><p>这里需要注意 setData 的数据类型是 ‘Text’，值是可拖动元素的 id 。</p>
 </div></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span> <span class="attr">ondrop</span>=<span class="string">"drop(event)"</span> <span class="attr">ondragover</span>=<span class="string">"allowDrop(event)"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"jartto.gif"</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">ondragstart</span>=<span class="string">"drag(event)"</span> <span class="attr">id</span>=<span class="string">"drag1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span> <span class="attr">ondrop</span>=<span class="string">"drop(event)"</span> <span class="attr">ondragover</span>=<span class="string">"allowDrop(event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">allowDrop</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.preventDefault();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.dataTransfer.setData(<span class="string">"Text"</span>,ev.target.id);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.preventDefault();</div><div class="line">  <span class="keyword">var</span> data=ev.dataTransfer.getData(<span class="string">"Text"</span>);</div><div class="line">  ev.target.appendChild(<span class="built_in">document</span>.getElementById(data));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.最后，放到何处，<code>ondragover</code> 事件规定在何处放置被拖动的数据，当放置被拖数据时 <code>ondrop</code> 会被触发。<br><div class="alert info"><p>默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。</p>
+</div><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span> <span class="attr">ondrop</span>=<span class="string">"drop(event)"</span> <span class="attr">ondragover</span>=<span class="string">"allowDrop(event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.preventDefault();</div><div class="line">  <span class="keyword">var</span> data=ev.dataTransfer.getData(<span class="string">"Text"</span>);</div><div class="line">  ev.target.appendChild(<span class="built_in">document</span>.getElementById(data));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">allowDrop</span>(<span class="params">ev</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  ev.preventDefault();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里需要注意几个问题：</p>
+<ol>
+<li>默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式，即通过调用 ondragover 事件的 event.preventDefault() 方法；</li>
+<li>调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）；</li>
+<li>通过 dataTransfer.getData(‘Text’) 方法获得被拖的数据。该方法将返回在 setData() 方法中设置为相同类型的任何数据。</li>
+</ol>
 <p>demo<br><a href="https://stackoverflow.com/questions/42454576/implement-html5-drag-drop-in-angularjs" target="_blank" rel="external">https://stackoverflow.com/questions/42454576/implement-html5-drag-drop-in-angularjs</a><br><a href="https://jsfiddle.net/gangadharjannu/x7euwhhy/" target="_blank" rel="external">https://jsfiddle.net/gangadharjannu/x7euwhhy/</a></p>
 <p>w3school例子：<br><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_draganddrop2" target="_blank" rel="external">http://www.w3school.com.cn/tiy/t.asp?f=html5_draganddrop2</a></p>
 <h4 id="三、细节问题处理"><a href="#三、细节问题处理" class="headerlink" title="三、细节问题处理"></a>三、细节问题处理</h4><p>问题一：看起来没有问题，那为什么拖拽没有生效？<br>第一，fix定位；<br>第二，容器存在包含关系；<br>第三，需要阻止浏览器的默认行为，譬如重定向</p>
@@ -307,7 +313,7 @@
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap"> 
-        <div style="color:#757288;font-size:1.3rem;padding:2px 8px;border:1px solid #fba7a1;background:#ffecea;border-radius:3px;">
+        <div style="color:#757288;font-size:1.3rem;padding:2px 6px;border:1px solid #fad2d2;background:#ffecea;border-radius:3px;line-height:22px;">
           版权声明：<br/>文章首发于 <a href="http://jartto.wang"> Jartto's blog </a>，
           转载文章请务必以超链接形式标明文章出处，作者信息及本版权声明（<a href="http://jartto.wang"> http://jartto.wang </a>)。
         </div>
@@ -347,17 +353,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -437,17 +443,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -473,17 +479,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/10/10/html5-drag-and-drop/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/10/23/html5-drag-and-drop/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -526,7 +532,7 @@
             <h5 id="about-card-location">
                 <i class="fa fa-map-marker"></i>
                 <br/>
-                北京－海淀
+                北京－朝阳
             </h5>
         
     </div>
@@ -542,9 +548,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://jartto.wang/2017/10/10/html5-drag-and-drop/';
+                 this.page.url = 'http://jartto.wang/2017/10/23/html5-drag-and-drop/';
                  
-                    this.page.identifier = '2017/10/10/html5-drag-and-drop/';
+                    this.page.identifier = '2017/10/23/html5-drag-and-drop/';
                                   
              };
             (function() {
