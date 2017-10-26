@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-10-26T15:15:32.000Z">
+<meta property="og:updated_time" content="2017-10-26T15:20:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探路 Roadhog">
 <meta name="twitter:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
@@ -286,23 +286,12 @@
 <p>可以看到生成了。</p>
 <h4 id="六、打包完，启动服务器模拟一下部署环境"><a href="#六、打包完，启动服务器模拟一下部署环境" class="headerlink" title="六、打包完，启动服务器模拟一下部署环境"></a>六、打包完，启动服务器模拟一下部署环境</h4><p>你可以使用 <code>ngnix</code>，或者 <code>http-server</code> 启动：</p>
 <p>ok，访问链接，页面正常打开，没有问题。</p>
-<h4 id="七、其他异常："><a href="#七、其他异常：" class="headerlink" title="七、其他异常："></a>七、其他异常：</h4><ol>
-<li><p>Error in Cannot find module ‘less’<br>初步怀疑并没有添加 <code>less loader</code>，执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less —save</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用 <code>public</code> 目录<br>我们约定 <code>public</code> 目录下的文件会在 <code>server</code> 和 <code>build</code> 时被自动 <code>copy</code> 到输出目录（默认是 ./dist）下。所以可以在这里存放 <code>favicon</code>, <code>iconfont</code>, <code>html</code>, <code>html</code> 里引用的图片等。</p>
-</li>
-<li><p>图片路径访问不到，奇怪<br>需要放到 <code>public</code> 目录下，且访问不需要带 <code>public</code> 目录</p>
-</li>
-<li><p>Cannot find module ‘webpack/lib/removeAndDo’<br>出现如上提示，需要局部安装 <code>webpack</code>，执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i webpack --save-dev</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h4 id="七、其他异常："><a href="#七、其他异常：" class="headerlink" title="七、其他异常："></a>七、其他异常：</h4><p>1.Error in Cannot find module ‘less’<br>初步怀疑并没有添加 <code>less loader</code>，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less —save</div></pre></td></tr></table></figure></p>
+<p>2.使用 <code>public</code> 目录<br>我们约定 <code>public</code> 目录下的文件会在 <code>server</code> 和 <code>build</code> 时被自动 <code>copy</code> 到输出目录（默认是 ./dist）下。所以可以在这里存放 <code>favicon</code>, <code>iconfont</code>, <code>html</code>, <code>html</code> 里引用的图片等。</p>
+<p>3.图片路径访问不到，奇怪<br>需要放到 <code>public</code> 目录下，且访问不需要带 <code>public</code> 目录</p>
+<p>4.Cannot find module ‘webpack/lib/removeAndDo’<br>出现如上提示，需要局部安装 <code>webpack</code>，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i webpack --save-dev</div></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/webpack/webpack/issues/2131" target="_blank" rel="external">详情</a></p>
-<ol>
-<li>Chunk.entry was removed. Use hasRuntime()<br>执行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack-extract-text-plugin —save</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>5.Chunk.entry was removed. Use hasRuntime()<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack-extract-text-plugin —save</div></pre></td></tr></table></figure></p>
 <p>还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install extract-text-webpack-plugin@^2.0.0-beta --save-dev</div></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/webpack/webpack/issues/2764" target="_blank" rel="external">详情</a></p>
 <h4 id="八、打包慢怎么办"><a href="#八、打包慢怎么办" class="headerlink" title="八、打包慢怎么办"></a>八、打包慢怎么办</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">roadhog build --debug</div><div class="line">roadhog build --watch</div><div class="line">roadhog build -h</div></pre></td></tr></table></figure>
@@ -341,7 +330,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/06/beautiful-ui-kit/" data-tooltip="好看的管理后台 UI kit">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气插件">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -419,7 +408,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/06/beautiful-ui-kit/" data-tooltip="好看的管理后台 UI kit">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气插件">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
