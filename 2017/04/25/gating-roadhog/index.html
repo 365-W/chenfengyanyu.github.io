@@ -19,14 +19,14 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
-<meta name="keywords" content="roadhog,react">
+<meta name="keywords" content="roadhog,antd">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="探路 Roadhog">
 <meta property="og:url" content="http://jartto.wang/2017/04/25/gating-roadhog/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-10-25T16:02:41.000Z">
+<meta property="og:updated_time" content="2017-10-26T15:00:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探路 Roadhog">
 <meta name="twitter:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
@@ -264,8 +264,14 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。<br><a id="more"></a></p>
-<h4 id="一、Roadhog是什么？"><a href="#一、Roadhog是什么？" class="headerlink" title="一、Roadhog是什么？"></a>一、Roadhog是什么？</h4><p>dva 是基于 redux，redux-saga，react-route 的框架，roadhog 是基于 create-react-app 脚手架优化简便的脚手架，简单的说就约等于 dva 是 react+redux，roadhog 是 webpack</p>
-<h4 id="二、如何使用？"><a href="#二、如何使用？" class="headerlink" title="二、如何使用？"></a>二、如何使用？</h4><p><a href="https://github.com/sorrycc/roadhog" target="_blank" rel="external">https://github.com/sorrycc/roadhog</a></p>
+<h4 id="一、Roadhog-是什么？"><a href="#一、Roadhog-是什么？" class="headerlink" title="一、Roadhog 是什么？"></a>一、Roadhog 是什么？</h4><p><code>dva</code> 是基于 <code>redux</code>，<code>redux-saga</code>，<code>react-route</code> 的框架，<code>roadhog</code> 是基于 <code>create-react-app</code> 脚手架优化简便的脚手架。<br><div class="alert info"><p>我们可以这样理解：<code>dva</code> 相当于 <code>react + redux</code>，而 <code>roadhog</code> 则是 <code>webpack</code></p>
+</div></p>
+<p>官网是这么描述的：由于 create-react-app 的默认配置不能满足需求，而他又不提供定制的功能，于是基于他实现了一个可配置版。所以如果既要 create-react-app 的优雅体验，又想定制配置，那么可以试试 roadhog 。</p>
+<h4 id="二、如何使用？"><a href="#二、如何使用？" class="headerlink" title="二、如何使用？"></a>二、如何使用？</h4><p>首先，全局安装 <code>roadhog</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i roadhog -g</div></pre></td></tr></table></figure></p>
+<p>其次，在项目根目录下创建 .roadhogrc 文件，并添加如下代码（<a href="https://github.com/sorrycc/roadhog" target="_blank" rel="external">配置项请参看官网文档</a>）：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"entry"</span>: <span class="string">"src/index.js"</span>,</div><div class="line">  <span class="string">"disableCSSModules"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="string">"publicPath"</span>: <span class="string">"/"</span>,</div><div class="line">  <span class="string">"theme"</span>: &#123;</div><div class="line">    <span class="string">"@primary-color"</span>: <span class="string">"#108ee9"</span>,</div><div class="line">    <span class="string">"@link-color"</span>: <span class="string">"#1DA57A"</span>,</div><div class="line">    <span class="string">"@border-radius-base"</span>: <span class="string">"2px"</span>,</div><div class="line">    <span class="string">"@font-size-base"</span>: <span class="string">"16px"</span>,</div><div class="line">    <span class="string">"@line-height-base"</span>: <span class="string">"1.2"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"externals"</span>: &#123;</div><div class="line">    <span class="string">"XLSX"</span>: <span class="string">"window.XLSX"</span>,</div><div class="line">    <span class="string">"jquery"</span>: <span class="string">"jQuery"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"autoprefixer"</span>: <span class="literal">null</span>,</div><div class="line">  <span class="string">"extraBabelPlugins"</span>: [</div><div class="line">    <span class="string">"transform-runtime"</span>,</div><div class="line">    [<span class="string">"import"</span>, &#123; <span class="string">"libraryName"</span>: <span class="string">"antd"</span>, <span class="string">"style"</span>: <span class="string">"css"</span> &#125;]</div><div class="line">  ],</div><div class="line">  <span class="string">"env"</span>: &#123;</div><div class="line">    <span class="string">"development"</span>: &#123;</div><div class="line">      <span class="string">"extraBabelPlugins"</span>: [</div><div class="line">        <span class="string">"dva-hmr"</span></div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后，我们就可以通过启动项目了：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog server</div></pre></td></tr></table></figure></p>
+<p>最后，在需要构建发布的时候，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog build</div></pre></td></tr></table></figure></p>
+<p>此外，启动测试，默认会跑 ./test 目录下的所有文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog test</div></pre></td></tr></table></figure></p>
 <h4 id="三、从-atool-build-dora-转换到-roadhog"><a href="#三、从-atool-build-dora-转换到-roadhog" class="headerlink" title="三、从 atool-build + dora 转换到 roadhog"></a>三、从 atool-build + dora 转换到 roadhog</h4><p><a href="http://www.tuicool.com/articles/nEreu2e" target="_blank" rel="external">http://www.tuicool.com/articles/nEreu2e</a></p>
 <h4 id="四、全局安装-rodehog，启动-roadhog-server"><a href="#四、全局安装-rodehog，启动-roadhog-server" class="headerlink" title="四、全局安装 rodehog，启动 roadhog server"></a>四、全局安装 rodehog，启动 roadhog server</h4><p> Failed to compile.</p>
 <pre><code>Error in ./src/index.js
@@ -313,7 +319,7 @@ Module build failed: Error: /Users/fox/Documents/ceb-admin/src/index.js: [babel-
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/react/">react</a> <a class="tag tag--primary tag--small t-link" href="/tags/roadhog/">roadhog</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/antd/">antd</a> <a class="tag tag--primary tag--small t-link" href="/tags/roadhog/">roadhog</a>
 
             </div>
         
