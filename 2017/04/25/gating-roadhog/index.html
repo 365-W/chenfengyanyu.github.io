@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-10-26T15:00:24.000Z">
+<meta property="og:updated_time" content="2017-10-26T15:15:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探路 Roadhog">
 <meta name="twitter:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
@@ -272,39 +272,44 @@
 <p>然后，我们就可以通过启动项目了：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog server</div></pre></td></tr></table></figure></p>
 <p>最后，在需要构建发布的时候，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog build</div></pre></td></tr></table></figure></p>
 <p>此外，启动测试，默认会跑 ./test 目录下的所有文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog test</div></pre></td></tr></table></figure></p>
-<h4 id="三、从-atool-build-dora-转换到-roadhog"><a href="#三、从-atool-build-dora-转换到-roadhog" class="headerlink" title="三、从 atool-build + dora 转换到 roadhog"></a>三、从 atool-build + dora 转换到 roadhog</h4><p><a href="http://www.tuicool.com/articles/nEreu2e" target="_blank" rel="external">http://www.tuicool.com/articles/nEreu2e</a></p>
-<h4 id="四、全局安装-rodehog，启动-roadhog-server"><a href="#四、全局安装-rodehog，启动-roadhog-server" class="headerlink" title="四、全局安装 rodehog，启动 roadhog server"></a>四、全局安装 rodehog，启动 roadhog server</h4><p> Failed to compile.</p>
-<pre><code>Error in ./src/index.js
-Module build failed: Error: /Users/fox/Documents/ceb-admin/src/index.js: [babel-plugin-dva-hmr error] You must set the `entries` option.
- @ multi index
-</code></pre><p>这时候，需要看一下 babel-plugin-dva-hmr 升级到最新的版本 0.3.2，再次运行 roadhog server<br>系统默认打开 <a href="http://localhost:8000/" target="_blank" rel="external">http://localhost:8000/</a></p>
-<p>不错，项目启动起来了</p>
+<h4 id="三、从-atool-build-dora-转换到-roadhog"><a href="#三、从-atool-build-dora-转换到-roadhog" class="headerlink" title="三、从 atool-build + dora 转换到 roadhog"></a>三、从 atool-build + dora 转换到 roadhog</h4><p>此处参考了作者的<a href="https://www.tuicool.com/articles/nEreu2e" target="_blank" rel="external">说明文档</a>，大致过程如下：</p>
+<p>1.修改 <code>package.json</code>，删除 <code>atool-build</code> 和 <code>dora</code> 相关依赖，加上 <code>roadhog</code> 依赖。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install roadhog --save-dev</div></pre></td></tr></table></figure></p>
+<p>2.修改 <code>scripts</code> 部分，让 <code>start</code> 和 <code>build</code> 走 <code>roadhog</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;start&quot;: &quot;roadhog server&quot;</div><div class="line">&quot;build&quot;: &quot;roadhog build&quot;</div></pre></td></tr></table></figure></p>
+<p>3.新增 .roadhogrc<br>如果是用 <code>dva + antd</code> 的组合，<code>babel</code> 插件部分通常这么配：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&quot;extraBabelPlugins&quot;: [</div><div class="line">  &quot;transform-runtime&quot;,</div><div class="line">  [&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;antd&quot;, &quot;style&quot;: &quot;css&quot; &#125;]</div><div class="line">],</div><div class="line">&quot;env&quot;: &#123;</div><div class="line">  &quot;development&quot;: &#123;</div><div class="line">    &quot;extraBabelPlugins&quot;: [</div><div class="line">      &quot;dva-hmr&quot;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.把 <code>webpack.config.js</code> 中的配置迁移到 <code>.roadhogrc</code> 中。<br>5.删除 <code>webpack.config.js</code></p>
+<div class="alert info"><p>最后一定要删除 <code>webpack.config.js</code>，否则可能会出现异常。</p>
+</div>
+<h4 id="四、全局安装-rodehog，启动-roadhog-server-异常处理"><a href="#四、全局安装-rodehog，启动-roadhog-server-异常处理" class="headerlink" title="四、全局安装 rodehog，启动 roadhog server 异常处理"></a>四、全局安装 rodehog，启动 roadhog server 异常处理</h4><p>按照步骤当运行 <code>roadhog server</code> 的时候，报出了如下的错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Failed to compile.</div><div class="line">Error in ./src/index.js</div><div class="line">Module build failed: Error: /Users/fox/Documents/ceb-admin/src/index.js: [babel-plugin-dva-hmr error] You must set the `entries` option.</div><div class="line">@ multi index</div></pre></td></tr></table></figure></p>
+<p>这时候，需要看一下 babel-plugin-dva-hmr 升级到最新的版本 0.3.2，再次运行 roadhog server<br>系统默认打开 <a href="http://localhost:8000/" target="_blank" rel="external">http://localhost:8000/</a></p>
+<p>不错，项目启动起来了。</p>
 <h4 id="五、接着，我们需要打包发布："><a href="#五、接着，我们需要打包发布：" class="headerlink" title="五、接着，我们需要打包发布："></a>五、接着，我们需要打包发布：</h4><p>执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog build</div></pre></td></tr></table></figure></p>
 <p>可以看到生成了。</p>
-<h4 id="六、打包完，启动服务器模拟一下部署环境"><a href="#六、打包完，启动服务器模拟一下部署环境" class="headerlink" title="六、打包完，启动服务器模拟一下部署环境"></a>六、打包完，启动服务器模拟一下部署环境</h4><p>你可以使用 ngnix，或者 http-server 启动：</p>
+<h4 id="六、打包完，启动服务器模拟一下部署环境"><a href="#六、打包完，启动服务器模拟一下部署环境" class="headerlink" title="六、打包完，启动服务器模拟一下部署环境"></a>六、打包完，启动服务器模拟一下部署环境</h4><p>你可以使用 <code>ngnix</code>，或者 <code>http-server</code> 启动：</p>
 <p>ok，访问链接，页面正常打开，没有问题。</p>
 <h4 id="七、其他异常："><a href="#七、其他异常：" class="headerlink" title="七、其他异常："></a>七、其他异常：</h4><ol>
-<li><p>Error in Cannot find module ‘less’<br>初步怀疑并没有添加 less loader，执行</p>
+<li><p>Error in Cannot find module ‘less’<br>初步怀疑并没有添加 <code>less loader</code>，执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less —save</div></pre></td></tr></table></figure>
 </li>
-<li><p>使用 public 目录<br>我们约定 public 目录下的文件会在 server 和 build 时被自动 copy 到输出目录（默认是 ./dist）下。所以可以在这里存放 favicon, iconfont, html, html 里引用的图片等。</p>
+<li><p>使用 <code>public</code> 目录<br>我们约定 <code>public</code> 目录下的文件会在 <code>server</code> 和 <code>build</code> 时被自动 <code>copy</code> 到输出目录（默认是 ./dist）下。所以可以在这里存放 <code>favicon</code>, <code>iconfont</code>, <code>html</code>, <code>html</code> 里引用的图片等。</p>
 </li>
-<li><p>图片路径访问不到，奇怪<br>需要放到 public 目录下，且访问不需要带 public 目录</p>
+<li><p>图片路径访问不到，奇怪<br>需要放到 <code>public</code> 目录下，且访问不需要带 <code>public</code> 目录</p>
 </li>
-<li><p>Cannot find module ‘webpack/lib/removeAndDo<br>出现如上提示，需要局部安装 webpack，执行</p>
+<li><p>Cannot find module ‘webpack/lib/removeAndDo’<br>出现如上提示，需要局部安装 <code>webpack</code>，执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i webpack --save-dev</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><a href="https://github.com/webpack/webpack/issues/2131" target="_blank" rel="external">https://github.com/webpack/webpack/issues/2131</a></p>
+<p><a href="https://github.com/webpack/webpack/issues/2131" target="_blank" rel="external">详情</a></p>
 <ol>
-<li>Chunk.entry was removed. Use hasRuntime()<br><a href="https://github.com/webpack/webpack/issues/2764" target="_blank" rel="external">https://github.com/webpack/webpack/issues/2764</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack-extract-text-plugin —save</div></pre></td></tr></table></figure>
+<li>Chunk.entry was removed. Use hasRuntime()<br>执行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install webpack-extract-text-plugin —save</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install extract-text-webpack-plugin@^2.0.0-beta --save-dev</div></pre></td></tr></table></figure>
-<h4 id="八、打包慢怎么办"><a href="#八、打包慢怎么办" class="headerlink" title="八、打包慢怎么办"></a>八、打包慢怎么办</h4><p><a href="https://github.com/sorrycc/roadhog/issues/108" target="_blank" rel="external">https://github.com/sorrycc/roadhog/issues/108</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">roadhog build --debug</div><div class="line"></div><div class="line">roadhog build --watch</div><div class="line"></div><div class="line">roadhog build -h</div></pre></td></tr></table></figure></p>
+<p>还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install extract-text-webpack-plugin@^2.0.0-beta --save-dev</div></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/webpack/webpack/issues/2764" target="_blank" rel="external">详情</a></p>
+<h4 id="八、打包慢怎么办"><a href="#八、打包慢怎么办" class="headerlink" title="八、打包慢怎么办"></a>八、打包慢怎么办</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">roadhog build --debug</div><div class="line">roadhog build --watch</div><div class="line">roadhog build -h</div></pre></td></tr></table></figure>
 <h4 id="九、参考："><a href="#九、参考：" class="headerlink" title="九、参考："></a>九、参考：</h4><ol>
 <li><a href="https://github.com/sorrycc/roadhog" target="_blank" rel="external">roadhog</a></li>
 <li><a href="http://www.tuicool.com/articles/nEreu2e" target="_blank" rel="external">从 dora 转到 roadhog</a></li>
+<li><a href="https://github.com/webpack/webpack/issues/2131" target="_blank" rel="external">webpack</a></li>
 </ol>
 
             
