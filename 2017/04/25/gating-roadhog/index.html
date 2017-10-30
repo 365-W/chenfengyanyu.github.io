@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-10-26T15:20:34.000Z">
+<meta property="og:updated_time" content="2017-10-30T23:07:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探路 Roadhog">
 <meta name="twitter:description" content="为了紧跟 ant design 的步伐，前不久将项目从 dora 切换到了 roadhog。当然，问题也如雨后春笋一般，陆续冒出来，总结一下，也不负折腾。">
@@ -295,6 +295,12 @@
 <p>还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install extract-text-webpack-plugin@^2.0.0-beta --save-dev</div></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/webpack/webpack/issues/2764" target="_blank" rel="external">详情</a></p>
 <h4 id="八、打包慢怎么办"><a href="#八、打包慢怎么办" class="headerlink" title="八、打包慢怎么办"></a>八、打包慢怎么办</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">roadhog build --debug</div><div class="line">roadhog build --watch</div><div class="line">roadhog build -h</div></pre></td></tr></table></figure>
+<p>此外，我们可以分析一下构建后文件大小：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog build --analyze</div></pre></td></tr></table></figure></p>
+<p>当出现如下提示，说明已经成功生成了分析文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Analyze result is generated at dist/stats.html.</div></pre></td></tr></table></figure></p>
+<p>让然，我们还可以查看 build 时的编译时间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">time roadhog build</div></pre></td></tr></table></figure></p>
+<p>结果可能如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">roadhog build  79.98s user 3.38s system 99% cpu 1:23.95 total</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p>这里指包括开发时的编译时间，修改代码重编译时间。</p>
+</div>
 <h4 id="九、参考："><a href="#九、参考：" class="headerlink" title="九、参考："></a>九、参考：</h4><ol>
 <li><a href="https://github.com/sorrycc/roadhog" target="_blank" rel="external">roadhog</a></li>
 <li><a href="http://www.tuicool.com/articles/nEreu2e" target="_blank" rel="external">从 dora 转到 roadhog</a></li>
@@ -330,7 +336,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气插件">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气图标插件">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -408,7 +414,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气插件">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气图标插件">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
