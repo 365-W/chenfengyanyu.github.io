@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>有趣的动态天气图标插件 - Jartto&#39;s blog</title>
+    <title>Nginx 使用与异常处理 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="偶然发现一个国外的网站接入了天气板块，很有意思的是该网站所有的天气图标都是会动的。于是我便有了学（chao）习（xi）的念头，我们来一探究竟。">
-<meta name="keywords" content="plugin">
+    <meta name="description" content="以前总是偷懒使用 Http-Server 来启动一个本地服务，后来花时间学习了一下 Nginx，感觉挺好用，总结整理一下，就当打点存档了。">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="有趣的动态天气图标插件">
-<meta property="og:url" content="http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/index.html">
+<meta property="og:title" content="Nginx 使用与异常处理">
+<meta property="og:url" content="http://jartto.wang/2017/04/15/nginx-exception-handling/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="偶然发现一个国外的网站接入了天气板块，很有意思的是该网站所有的天气图标都是会动的。于是我便有了学（chao）习（xi）的念头，我们来一探究竟。">
+<meta property="og:description" content="以前总是偷懒使用 Http-Server 来启动一个本地服务，后来花时间学习了一下 Nginx，感觉挺好用，总结整理一下，就当打点存档了。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-11-01T23:56:56.000Z">
+<meta property="og:updated_time" content="2017-11-04T15:26:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有趣的动态天气图标插件">
-<meta name="twitter:description" content="偶然发现一个国外的网站接入了天气板块，很有意思的是该网站所有的天气图标都是会动的。于是我便有了学（chao）习（xi）的念头，我们来一探究竟。">
+<meta name="twitter:title" content="Nginx 使用与异常处理">
+<meta name="twitter:description" content="以前总是偷懒使用 Http-Server 来启动一个本地服务，后来花时间学习了一下 Nginx，感觉挺好用，总结整理一下，就当打点存档了。">
     
     
         
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/weather0.gif"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/weather0.gif" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/nginx.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/nginx.png" />
     
     
     
@@ -235,13 +235,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            有趣的动态天气图标插件
+            Nginx 使用与异常处理
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-04-10T23:22:48+08:00">
+    <time itemprop="datePublished" datetime="2017-04-15T23:00:04+08:00">
 	  
-		    2017/4月/10 23:22:48
+		    2017/4月/15 23:00:04
     	
     </time>
     
@@ -263,32 +263,31 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>偶然发现一个国外的网站接入了天气板块，很有意思的是该网站所有的天气图标都是会动的。于是我便有了学（chao）习（xi）的念头，我们来一探究竟。<br><a id="more"></a></p>
-<h4 id="一、顺藤摸瓜"><a href="#一、顺藤摸瓜" class="headerlink" title="一、顺藤摸瓜"></a>一、顺藤摸瓜</h4><p>通过审查元素，我们很快定位到了一个叫 <code>skycons</code> 的 <code>js</code> 类库，顺藤摸瓜找到了 <a href="https://github.com/darkskyapp/skycons" target="_blank" rel="external">github 地址</a>。美中不足的是，<code>skycons</code> 文档地址不能访问了，于是顺手下载了一份 skycons.js 文件。</p>
-<div class="alert success"><p>OK，万事具备，下面我们开始分步剖析。</p>
-</div>
-<h4 id="二、简单示例"><a href="#二、简单示例" class="headerlink" title="二、简单示例"></a>二、简单示例</h4><p>html:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"icon1"</span> <span class="attr">width</span>=<span class="string">"128"</span> <span class="attr">height</span>=<span class="string">"128"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"icon2"</span> <span class="attr">width</span>=<span class="string">"128"</span> <span class="attr">height</span>=<span class="string">"128"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>js 文件中，我们可以添加 canvas 通过它的 id ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> skycons = <span class="keyword">new</span> Skycons(&#123;<span class="string">"color"</span>: <span class="string">"pink"</span>&#125;);</div><div class="line"></div><div class="line">skycons.add(<span class="string">"icon1"</span>, Skycons.PARTLY_CLOUDY_DAY);</div><div class="line"></div><div class="line">skycons.play();</div></pre></td></tr></table></figure></p>
-<p>或者通过 DOM 元素的 id 来添加：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> skycons = <span class="keyword">new</span> Skycons(&#123;<span class="string">'color'</span>: <span class="string">'pink'</span>&#125;);</div><div class="line"></div><div class="line">skycons.add(<span class="string">'icon1'</span>, Skycons.PARTLY_CLOUDY_DAY);</div><div class="line"></div><div class="line">skycons.play();</div></pre></td></tr></table></figure></p>
-<div class="alert info"><p>通过调用 skycons.play() 来播放动画。</p>
-</div>
-<p>这样，一个简单的示例就完成了，是不是很简单呢？下面我们来看看参数详解。</p>
-<h4 id="三、参数详解"><a href="#三、参数详解" class="headerlink" title="三、参数详解"></a>三、参数详解</h4><p>播放：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">skycons.play();</div></pre></td></tr></table></figure></p>
-<p>暂停：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">skycons.pause()</div></pre></td></tr></table></figure></p>
-<p>动态更改 icon ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">skycons.set(<span class="string">'icon1'</span>, Skycons.PARTLY_CLOUDY_NIGHT);</div></pre></td></tr></table></figure></p>
-<p>移除：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">skycons.remove(<span class="string">'icon2'</span>);</div></pre></td></tr></table></figure></p>
-<p>可设置的天气类型参数：</p>
-<ul>
-<li>CLEAR_DAY</li>
-<li>PARTLY_CLOUDY_DAY</li>
-<li>CLOUDY</li>
-<li>RAIN</li>
-<li>SLEET</li>
-<li>SNOW</li>
-<li>WIND</li>
-<li>FOG</li>
+            <p>以前总是偷懒使用 Http-Server 来启动一个本地服务，后来花时间学习了一下 Nginx，感觉挺好用，总结整理一下，就当打点存档了。<br><a id="more"></a></p>
+<h4 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h4><p><a href="https://lufficc.com/blog/nginx-for-beginners" target="_blank" rel="external">https://lufficc.com/blog/nginx-for-beginners</a></p>
+<h4 id="二、Nginx-安装与使用"><a href="#二、Nginx-安装与使用" class="headerlink" title="二、Nginx 安装与使用"></a>二、Nginx 安装与使用</h4><p>基本使用</p>
+<h4 id="三、Nginx-查看配置"><a href="#三、Nginx-查看配置" class="headerlink" title="三、Nginx 查看配置"></a>三、Nginx 查看配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -t</div></pre></td></tr></table></figure>
+<p>当你执行 nginx -t 得时候，nginx会去测试你得配置文件得语法，并告诉你配置文件是否写得正确，同时也告诉了你配置文件得路径：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nginx: the configuration file /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf syntax is ok</div><div class="line">nginx: configuration file /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf <span class="built_in">test</span> is successful</div></pre></td></tr></table></figure></p>
+<p>vim 查看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/etc/nginx/nginx.confıg</div></pre></td></tr></table></figure></p>
+<p>重启nginx：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s reload</div></pre></td></tr></table></figure></p>
+<p><a href="http://linux.it.net.cn/e/server/nginx/2015/0621/15898.html" target="_blank" rel="external">config配置详解</a></p>
+<h4 id="四、启动"><a href="#四、启动" class="headerlink" title="四、启动"></a>四、启动</h4><h4 id="五、Nginx-配置-HTTPS"><a href="#五、Nginx-配置-HTTPS" class="headerlink" title="五、Nginx 配置 HTTPS"></a>五、Nginx 配置 HTTPS</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    listen 443 ssl;</div><div class="line"></div><div class="line">    server_name passport.sensoro.com;</div><div class="line"></div><div class="line">    ssl_certificate     /ssl/https.crt;</div><div class="line">    ssl_certificate_key /ssl/https.key;</div><div class="line"></div><div class="line">    proxy_set_header Host <span class="variable">$http_host</span>;</div><div class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">    proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</div><div class="line">    proxy_http_version 1.1;</div><div class="line">    proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</div><div class="line">    proxy_set_header Connection <span class="string">"upgrade"</span>;</div><div class="line"></div><div class="line">    more_set_headers <span class="string">'X-Powered-By: Sensoro'</span>;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        access_log /var/<span class="built_in">log</span>/nginx/user-service.log  main;</div><div class="line">        proxy_pass http://192.168.1.4:3000/;</div><div class="line">        client_max_body_size 10M;</div><div class="line">        proxy_redirect off;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="六、Nginx中使用-rewrite"><a href="#六、Nginx中使用-rewrite" class="headerlink" title="六、Nginx中使用 rewrite"></a>六、Nginx中使用 rewrite</h4><h4 id="七、Nginx-open-异常"><a href="#七、Nginx-open-异常" class="headerlink" title="七、Nginx open 异常"></a>七、Nginx open 异常</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx: [error] open() <span class="string">"/usr/local/var/run/nginx.pid"</span> failed (2: No such file or directory)</div></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/zhouyufengqingyang/article/details/45420775" target="_blank" rel="external">http://blog.csdn.net/zhouyufengqingyang/article/details/45420775</a></p>
+<p>解决方法：<br>[root@localhost nginx]# /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</p>
+<p>使用nginx -c的参数指定nginx.conf文件的位置</p>
+<p>[root@localhost nginx]# cd logs/<br>[root@localhost logs]# ll<br>总用量 12<br>-rw-r–r– 1 root root 1246 12月  9 18:10 access.log<br>-rw-r–r– 1 root root  516 12月 10 15:39 error.log<br>-rw-r–r– 1 root root    5 12月 10 15:38 nginx.pid</p>
+<p>看nginx.pid文件已经有了。</p>
+<h4 id="八、Nginx-alert-kill-647-1-failed-3-No-such-process"><a href="#八、Nginx-alert-kill-647-1-failed-3-No-such-process" class="headerlink" title="八、Nginx: [alert] kill(647, 1) failed (3: No such process)"></a>八、Nginx: [alert] kill(647, 1) failed (3: No such process)</h4><p>没启动 nginx 服务，执行 nginx 启动</p>
+<h4 id="九、nginx-error-invalid-PID-number-“”-in-“-usr-local-var-run-nginx-nginx-pid”"><a href="#九、nginx-error-invalid-PID-number-“”-in-“-usr-local-var-run-nginx-nginx-pid”" class="headerlink" title="九、nginx: [error] invalid PID number “” in “/usr/local/var/run/nginx/nginx.pid”"></a>九、nginx: [error] invalid PID number “” in “/usr/local/var/run/nginx/nginx.pid”</h4><p>在Mac上用brew安装Nginx，然后修改Nginx配置文件，再重启时报出如下错误：</p>
+<p>nginx: [error] invalid PID number “” in “/usr/local/var/run/nginx/nginx.pid”</p>
+<p>解决办法：</p>
+<p>$ sudo nginx -c /usr/local/etc/nginx/nginx.conf</p>
+<p>$ sudo nginx -s reload<br><a href="http://www.cnblogs.com/yuqianwen/p/4285686.html" target="_blank" rel="external">http://www.cnblogs.com/yuqianwen/p/4285686.html</a></p>
+<h4 id="十、Nginx-403-forbidden原因"><a href="#十、Nginx-403-forbidden原因" class="headerlink" title="十、Nginx 403 forbidden原因"></a>十、Nginx 403 forbidden原因</h4><p>引起nginx 403 forbidden有二种原因，一是缺少索引文件，二权限问题。今天又遇到 了，顺便总结一下。<br>1，缺少index.html或者index.php文件<br>server {<br> listen       80;<br> server_name  localhost;<br> index  index.php index.html;<br> root  /home/zhangy/www;<br>如果在/home/zhang/www下面没有index.php,index.html的时候，直接访问域名，找不到文件，会报403 forbidden。例如：你访问www.test.com而这个域名，对应的root指定的索引文件不存在。<br>2，权限问题<br>因为权限问题引起的403，个人觉得比较难查找，因为一时想不起<br>server {<br> listen       80;<br> server_name  localhost;<br> index  index.php index.html;<br> root  /home/zhangy/www;<br>我把web目录放在用户的所属目录下面，nginx的启动用户默认是nginx的，所以对目录根本没有读的权限，这样就会报403错误了。这个时候，把web目录的权限改大，或者是把nginx的启动用户改成目录的所属用户，重起一下就能解决。<br><a href="http://blog.51yip.com/apachenginx/1512.html" target="_blank" rel="external">http://blog.51yip.com/apachenginx/1512.html</a></p>
+<h4 id="十一、Nginx-学习文档"><a href="#十一、Nginx-学习文档" class="headerlink" title="十一、Nginx 学习文档"></a>十一、Nginx 学习文档</h4><ul>
+<li><a href="https://wizardforcel.gitbooks.io/nginx-doc/content/" target="_blank" rel="external">gitbooks</a></li>
 </ul>
-<h4 id="四、实际应用"><a href="#四、实际应用" class="headerlink" title="四、实际应用"></a>四、实际应用</h4><h4 id="五、问题汇总"><a href="#五、问题汇总" class="headerlink" title="五、问题汇总"></a>五、问题汇总</h4><h4 id="六、源码分析"><a href="#六、源码分析" class="headerlink" title="六、源码分析"></a>六、源码分析</h4><h4 id="七、相关资源"><a href="#七、相关资源" class="headerlink" title="七、相关资源"></a>七、相关资源</h4><p>1.<a href="https://github.com/darkskyapp/skycons" target="_blank" rel="external">skycons</a></p>
 
             
         </div>
@@ -302,7 +301,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/plugin/">plugin</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/nginx/">nginx</a>
 
             </div>
         
@@ -311,7 +310,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/15/nginx-exception-handling/"  data-tooltip="Nginx 使用与异常处理">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/25/gating-roadhog/"  data-tooltip="探路 Roadhog">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -319,7 +318,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/06/beautiful-ui-kit/" data-tooltip="好看的管理后台 UI kit">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气图标插件">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -334,17 +333,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -389,7 +388,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/15/nginx-exception-handling/"  data-tooltip="Nginx 使用与异常处理">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/25/gating-roadhog/"  data-tooltip="探路 Roadhog">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -397,7 +396,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/06/beautiful-ui-kit/" data-tooltip="好看的管理后台 UI kit">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/04/10/funny-plugin-for-dynamic-weather/" data-tooltip="有趣的动态天气图标插件">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -412,17 +411,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -442,17 +441,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/04/15/nginx-exception-handling/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
