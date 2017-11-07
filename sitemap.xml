@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/</loc>
+    
+    <lastmod>2017-11-07T00:06:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/10/31/js-anti-aliasing/</loc>
+    
+    <lastmod>2017-11-04T15:31:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/04/15/nginx-exception-handling/</loc>
     
-    <lastmod>2017-11-04T15:26:02.000Z</lastmod>
+    <lastmod>2017-11-04T15:27:50.000Z</lastmod>
     
   </url>
   
@@ -12,20 +26,6 @@
     <loc>http://jartto.wang/2017/10/18/js-fancy-programming/</loc>
     
     <lastmod>2017-11-04T14:51:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/</loc>
-    
-    <lastmod>2017-11-01T23:56:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/10/31/js-anti-aliasing/</loc>
-    
-    <lastmod>2017-10-30T23:42:25.000Z</lastmod>
     
   </url>
   
