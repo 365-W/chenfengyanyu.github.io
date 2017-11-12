@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="baidu-site-verification" content="bJPvLdWAu8" />
+    <meta name="generator" content="Jartto&#39;s blog">
+    <title>前端开发 Tips - Jartto&#39;s blog</title>
+    <meta name="author" content="Jartto">
+    
+        <meta name="keywords" content="Jartto,web 前端开发,博客,">
+    
+    
+        <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="作为前端，日常开发充满了各种挑战与乐趣，我们穷尽一切在奇葩的需求中提升用户体验。本文将列举一些前端开发中碰到的小众需求，并提供解决方案以供参考。">
+<meta name="keywords" content="web,css">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="前端开发 Tips">
+<meta property="og:url" content="http://jartto.wang/2017/11/12/f2e-tips/index.html">
+<meta property="og:site_name" content="Jartto&#39;s blog">
+<meta property="og:description" content="作为前端，日常开发充满了各种挑战与乐趣，我们穷尽一切在奇葩的需求中提升用户体验。本文将列举一些前端开发中碰到的小众需求，并提供解决方案以供参考。">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2017-11-12T13:19:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发 Tips">
+<meta name="twitter:description" content="作为前端，日常开发充满了各种挑战与乐趣，我们穷尽一切在奇葩的需求中提升用户体验。本文将列举一些前端开发中碰到的小众需求，并提供解决方案以供参考。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+    
+    
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/tips0.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/tips0.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-amswellqtyheubmlz8etcaxxnc5dvbfw49m4rvjaocb7nstambtlprry5pr8.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-79715416-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</script>
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Jartto&#39;s blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture st-search-show-outputs"
+                href="#about">
+        
+        
+            <img class="header-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+            </a>
+            <span class="sidebar-profile-name">Jartto</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">分类</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">关于</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:Jartto@qq.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Email</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/chenfengyanyu/source" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/sitemap.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-sitemap"></i>
+                    <span class="sidebar-button-desc">Sitemap</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title" itemprop="headline">
+            前端开发 Tips
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-11-12T21:19:26+08:00">
+	  
+		    2017/11月/12 21:19:26
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+
+
+    
+    <span style="opacity:0;font-size:1.3rem;text-align:center;"> 123 次阅读</span>
+</div>
+
+</div>
+        <div style="color:#9eabb3;font-size:1.3rem;text-align:center;margin:-25px 0px 0 235px">
+          <span id="busuanzi_container_page_pv">
+            &nbsp;&nbsp;<span id="busuanzi_value_page_pv"></span> 次阅读
+          </span>
+        </div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>作为前端，日常开发充满了各种挑战与乐趣，我们穷尽一切在奇葩的需求中提升用户体验。本文将列举一些前端开发中碰到的小众需求，并提供解决方案以供参考。<br><a id="more"></a></p>
+<h4 id="一、修改鼠标手势图标"><a href="#一、修改鼠标手势图标" class="headerlink" title="一、修改鼠标手势图标"></a>一、修改鼠标手势图标</h4><p>很多童鞋可能都用过：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">cursor</span>: <span class="selector-tag">pointer</span>;</div></pre></td></tr></table></figure></p>
+<p>但是，它还支持自定义图片，你知道吗？<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cursor: url('#');</div></pre></td></tr></table></figure></p>
+<p>这里有详细说明：<br><a href="https://www.cnblogs.com/MY0101/p/6130089.html" target="_blank" rel="external">https://www.cnblogs.com/MY0101/p/6130089.html</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_User_Interface/Using_URL_values_for_the_cursor_property" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_User_Interface/Using_URL_values_for_the_cursor_property</a></p>
+<h4 id="二、box-shadow-单边阴影"><a href="#二、box-shadow-单边阴影" class="headerlink" title="二、box-shadow 单边阴影"></a>二、box-shadow 单边阴影</h4><p>box-shadow 大家都不陌生，可是单边阴影该如何设置呢？<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#shadowBox</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#ddd</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0px</span> auto;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">8px</span> <span class="number">10px</span> gray,</div><div class="line">        -<span class="number">10px</span> <span class="number">8px</span> <span class="number">15px</span> gray, <span class="number">10px</span> <span class="number">8px</span> <span class="number">15px</span> gray;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="https://stackoverflow.com/questions/8738768/css-box-shadow-on-three-sides-of-a-div" target="_blank" rel="external">https://stackoverflow.com/questions/8738768/css-box-shadow-on-three-sides-of-a-div</a></p>
+<h4 id="三、超好用的-currentColor"><a href="#三、超好用的-currentColor" class="headerlink" title="三、超好用的 currentColor"></a>三、超好用的 currentColor</h4><div class="alert success"><p>currentColor 表示“当前的标签所继承的文字颜色”</p>
+</div>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.jartto</span> &#123; <span class="attribute">border</span>: <span class="number">1px</span> solid currentColor; &#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.zhangxinxu.com/wordpress/2014/10/currentcolor-css3-powerful-css-keyword/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2014/10/currentcolor-css3-powerful-css-keyword/</a></p>
+<h4 id="四、png-图片如何改颜色"><a href="#四、png-图片如何改颜色" class="headerlink" title="四、png 图片如何改颜色"></a>四、png 图片如何改颜色</h4><p>网页中大多使用透明图片 png 格式，可是如果有天产品经理说，这个图标颜色能不能改成红色，恰巧设计师不能支持你，你该如何办？<br>其一：自己重新 ps 一下图片，换个颜色；<br>其二：只能上 svg 喽，搞成 icon font；</p>
+<p>这里，我们来说第三种方式，妙不妙可以试试哦！<br><a href="http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/</a><br>demo<br><a href="http://www.zhangxinxu.com/study/201606/png-icon-color-fill.html" target="_blank" rel="external">http://www.zhangxinxu.com/study/201606/png-icon-color-fill.html</a></p>
+<h4 id="五、vh-与-vw"><a href="#五、vh-与-vw" class="headerlink" title="五、vh 与 vw"></a>五、vh 与 vw</h4><p><a href="http://www.css88.com/book/css/values/length/ch.htm" target="_blank" rel="external">http://www.css88.com/book/css/values/length/ch.htm</a><br>less中使用需要加 <code>～</code><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">min-height</span>: <span class="string">~"calc(100vh - 68px)"</span>;</div></pre></td></tr></table></figure></p>
+<p>正常使用不需要</p>
+<h4 id="六、如何去掉-chrome-input-的背景黄色"><a href="#六、如何去掉-chrome-input-的背景黄色" class="headerlink" title="六、如何去掉 chrome input 的背景黄色"></a>六、如何去掉 chrome input 的背景黄色</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-webkit-autofill</span> &#123;</div><div class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0px</span> <span class="number">1000px</span> <span class="built_in">rgba</span>(255, 255, 255, 0.5) inset <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/wangxiaohui6687/article/details/10149579" target="_blank" rel="external">http://blog.csdn.net/wangxiaohui6687/article/details/10149579</a><br><a href="https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete" target="_blank" rel="external">https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-webkit-autofill</span> &#123;</div><div class="line">  <span class="attribute">-webkit-animation-name</span>: autofill;</div><div class="line">  <span class="attribute">-webkit-animation-fill-mode</span>: both;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> autofill &#123;</div><div class="line">  <span class="selector-tag">to</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">    <span class="attribute">background</span>: transparent;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="七、chrome中设置小于12px的字体"><a href="#七、chrome中设置小于12px的字体" class="headerlink" title="七、chrome中设置小于12px的字体"></a>七、chrome中设置小于12px的字体</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ant-checkbox-wrapper</span> &#123;</div><div class="line"> <span class="attribute">cursor</span>: pointer;</div><div class="line"> <span class="attribute">font-size</span>: <span class="number">10px</span>;</div><div class="line"> <span class="attribute">display</span>: inline-block;</div><div class="line"> -webkit-text-size-adjust: none; // 不支持</div><div class="line"> <span class="selector-tag">transform</span>: <span class="selector-tag">scale</span>(0<span class="selector-class">.9</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="八、0-5px-border-如何操作"><a href="#八、0-5px-border-如何操作" class="headerlink" title="八、0.5px border 如何操作"></a>八、0.5px border 如何操作</h4><h4 id="九、border颜色渐变"><a href="#九、border颜色渐变" class="headerlink" title="九、border颜色渐变"></a>九、border颜色渐变</h4><p><a href="http://www.w3school.com.cn/cssref/pr_border-color.asp" target="_blank" rel="external">http://www.w3school.com.cn/cssref/pr_border-color.asp</a></p>
+<h4 id="十、css3画小箭头"><a href="#十、css3画小箭头" class="headerlink" title="十、css3画小箭头"></a>十、css3画小箭头</h4><h4 id="十一、有趣的-drop-shadow"><a href="#十一、有趣的-drop-shadow" class="headerlink" title="十一、有趣的 drop-shadow"></a>十一、有趣的 drop-shadow</h4><h4 id="十二、修改浏览器默认滚动条"><a href="#十二、修改浏览器默认滚动条" class="headerlink" title="十二、修改浏览器默认滚动条"></a>十二、修改浏览器默认滚动条</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*滚动条 start*/</span></div><div class="line"><span class="selector-pseudo">::-webkit-scrollbar</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">1px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">4px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#F5F5F5</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*定义滚动条轨道 内阴影+圆角*/</span></div><div class="line"><span class="selector-pseudo">::-webkit-scrollbar-track</span> &#123;</div><div class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.3);</div><div class="line">  <span class="attribute">background</span>: <span class="number">#fff</span> ;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*定义滑块 内阴影+圆角*/</span></div><div class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span> &#123;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,.3);</div><div class="line">  // background-color:rgba(7, 170, 247, 0.7);</div><div class="line">  <span class="selector-tag">background-color</span>: <span class="selector-tag">transparent</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,.3);</div><div class="line">  <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(7, 170, 247, 1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/ning0_o/article/details/52188953" target="_blank" rel="external">http://blog.csdn.net/ning0_o/article/details/52188953</a></p>
+<h4 id="十三、safari-placeholder-bugs"><a href="#十三、safari-placeholder-bugs" class="headerlink" title="十三、safari placeholder bugs"></a>十三、safari placeholder bugs</h4><p><a href="http://www.cnblogs.com/humaotegong/p/6629060.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="external">http://www.cnblogs.com/humaotegong/p/6629060.html?utm_source=itdadao&amp;utm_medium=referral</a></p>
+<h4 id="十四、总结"><a href="#十四、总结" class="headerlink" title="十四、总结"></a>十四、总结</h4>
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap"> 
+        <div style="color:#757288;font-size:1.3rem;padding:2px 6px;border:1px solid #fad2d2;background:#ffecea;border-radius:3px;line-height:22px;">
+          版权声明：<br/>文章首发于 <a href="http://jartto.wang"> Jartto's blog </a>，
+          转载文章请务必以超链接形式标明文章出处，作者信息及本版权声明（<a href="http://jartto.wang"> http://jartto.wang </a>)。
+        </div>
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/css/">css</a> <a class="tag tag--primary tag--small t-link" href="/tags/web/">web</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/10/31/js-anti-aliasing/" data-tooltip="JS 反混淆">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="copyrights">
+    Copyrights &copy; 2017 Jartto. All Rights Reserved.
+  </span>
+  <br>
+  <span id="busuanzi_container_site_uv">
+	  欢迎你，Jartto 的第 <span id="busuanzi_value_site_uv"></span> 位朋友！
+  </span>
+  <span id="busuanzi_container_site_pv">
+    网站总访问量 <span id="busuanzi_value_site_pv"></span> 人次
+  </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/10/31/js-anti-aliasing/" data-tooltip="JS 反混淆">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/11/12/f2e-tips/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
+        
+            <h4 id="about-card-name">Jartto</h4>
+        
+            <h5 id="about-card-bio"><blockquote>
+<p>最遗憾的不是把梦想丢在路上，</br>而是梦想从未上路!</br>Just do IT</p>
+</blockquote>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>jartto@qq.com</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                北京－朝阳
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('http://7xvi3w.com1.z0.glb.clouddn.com/layout_cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
+<!--SCRIPTS END-->
+
+
+
+</html>
