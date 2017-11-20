@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/04/15/nginx-exception-handling/</loc>
+    
+    <lastmod>2017-11-20T06:35:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/10/31/js-anti-aliasing/</loc>
+    
+    <lastmod>2017-11-20T06:35:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/11/13/Exploring-the-principle-of-CSS-parsing/</loc>
     
     <lastmod>2017-11-20T02:24:39.000Z</lastmod>
@@ -26,20 +40,6 @@
     <loc>http://jartto.wang/2017/04/10/funny-plugin-for-dynamic-weather/</loc>
     
     <lastmod>2017-11-12T12:01:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/10/31/js-anti-aliasing/</loc>
-    
-    <lastmod>2017-11-04T15:31:41.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/04/15/nginx-exception-handling/</loc>
-    
-    <lastmod>2017-11-04T15:27:50.000Z</lastmod>
     
   </url>
   
