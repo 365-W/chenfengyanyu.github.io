@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse1.png-blog">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse4.png-blog">
-<meta property="og:updated_time" content="2017-11-19T15:12:13.000Z">
+<meta property="og:updated_time" content="2017-11-20T02:24:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探究 CSS 解析原理">
 <meta name="twitter:description" content="吃早饭的时候，同事随意问了一句：“你知道 CSS 是怎么解析的吗？”，我一头雾水。对哦，作为前端，每天都在与 CSS 打交道，我竟然忽视了最基本的原理。">
@@ -310,7 +310,7 @@
 </div>
 <p>深入阅读，请移步：<br><a href="http://www.imooc.com/code/4570" target="_blank" rel="external">jQuery 源码解析</a><br><a href="http://www.cnblogs.com/zhaodongyu/p/3341080.html" target="_blank" rel="external">CSS 选择器从右向左的匹配规则</a><br><a href="https://segmentfault.com/q/1010000000713509" target="_blank" rel="external">CSS 选择器</a></p>
 <h4 id="四、CSS-语法解析过程"><a href="#四、CSS-语法解析过程" class="headerlink" title="四、CSS 语法解析过程"></a>四、CSS 语法解析过程</h4><p><a href="http://blog.csdn.net/shuimuniao/article/details/8601588" target="_blank" rel="external">CSS 样式表解析过程</a>中讲解的很细致，这里我们只看 CSS 语法解释器，大致过程如下：<br>1.先创建 CSSStyleSheet 对象。将 CSSStyleSheet 对象的指针存储到 CSSParser 对象中。<br>2.CSSParser 识别出一个 simple-selector ，形如 “div” 或者 “.class”。创建一个 CSSParserSelector 对象。<br>3.CSSParser 识别出一个关系符和另一个 simple-selecotr ，那么修改之前创建的 simple-selecotr, 创建组合关系符。<br>4.循环第3步直至碰到逗号或者左大括号。<br>5.如果碰到逗号，那么取出 CSSParser 的 reuse vector，然后将堆栈尾部的 CSSParserSelector 对象弹出存入 Vecotr 中，最后跳转至第2步。如果碰到左大括号，那么跳转至第6步。<br>6.识别属性名称，将属性名称的 hash 值压入解释器堆栈。<br>7.识别属性值，创建 CSSParserValue 对象，并将 CSSParserValue 对象存入解释器堆栈。<br>8.将属性名称和属性值弹出栈，创建 CSSProperty 对象。并将 CSSProperty 对象存入 CSSParser 成员变量m_parsedProperties 中。<br>9.如果识别处属性名称，那么转至第6步。如果识别右大括号，那么转至第10步。<br>10.将 reuse vector 从堆栈中弹出，并创建 CSSStyleRule 对象。CSSStyleRule 对象的选择符就是 reuse vector, 样式值就是 CSSParser 的成员变量 m_parsedProperties 。<br>11.把 CSSStyleRule 添加到 CSSStyleSheet 中。<br>12.清空 CSSParser 内部缓存结果。<br>13.如果没有内容了，那么结束。否则跳转值第2步。</p>
-<h4 id="五、内联样式如何解析？"><a href="#五、内联样式如何解析？" class="headerlink" title="五、内联样式如何解析？"></a>五、内联样式如何解析？</h4><p>通过上文的了解，我们知道，当 CSS Parser 解析完 CSS 脚本后，会生成 CSSStyleSheetList ，他保存在Document 对象上。为了更快的计算样式，必须对这些CSSStyleSheetList进行重新组织。</p>
+<h4 id="五、内联样式如何解析？"><a href="#五、内联样式如何解析？" class="headerlink" title="五、内联样式如何解析？"></a>五、内联样式如何解析？</h4><p>通过上文的了解，我们知道，当 CSS Parser 解析完 CSS 脚本后，会生成 CSSStyleSheetList ，他保存在Document 对象上。为了更快的计算样式，必须对这些 CSSStyleSheetList 进行重新组织。</p>
 <p>计算样式就是从 CSSStyleSheetList 中找出所有匹配相应元素的 property-value 对。匹配会通过CSSSelector 来验证，同时需要满足层叠规则。</p>
 <p>将所有的 declaration 中的 property 组织成一个大的数组。数组中的每一项纪录了这个 property 的selector，property 的值，权重（层叠规则）。</p>
 <p>可能类似如下的表现：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &gt; <span class="selector-tag">a</span> &#123; </div><div class="line">  <span class="attribute">color </span>: red; </div><div class="line">  <span class="attribute">background-color</span>:black;</div><div class="line">&#125;  </div><div class="line"><span class="selector-tag">a</span> &#123;</div><div class="line">  <span class="attribute">color </span>: yellow</div><div class="line">&#125;  </div><div class="line"><span class="selector-tag">div</span> &#123; </div><div class="line">  <span class="attribute">margin </span>: <span class="number">1px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -319,7 +319,7 @@
 <div class="alert success"><p>到这里就不难理解了，对浏览器来说，內联样式与其他的加载样式方式唯一的区别就是权重不同。</p>
 </div>
 <p>深入了解，请阅读<a href="http://blog.csdn.net/scusyq/article/details/7059063" target="_blank" rel="external">Webkit CSS引擎分析</a></p>
-<h4 id="六、何谓-computedStyle-？"><a href="#六、何谓-computedStyle-？" class="headerlink" title="六、何谓 computedStyle ？"></a>六、何谓 computedStyle ？</h4><p>到这里，你以为完了？too young too simple, sometimes native!</p>
+<h4 id="六、何谓-computedStyle-？"><a href="#六、何谓-computedStyle-？" class="headerlink" title="六、何谓 computedStyle ？"></a>六、何谓 computedStyle ？</h4><p>到这里，你以为完了？Too young too simple, sometimes naive!</p>
 <p>浏览器还有一个非常棒的策略，在特定情况下，浏览器会共享 computedStyle，网页中能共享的标签非常多，所以能极大的提升执行效率！如果能共享，那就不需要执行匹配算法了，执行效率自然非常高。</p>
 <p>也就是说：如果两个或多个 element 的 computedStyle 不通过计算可以确认他们相等，那么这些 computedStyle 相等的 elements 只会计算一次样式，其余的仅仅共享该 computedStyle 。</p>
 <p>那么有哪些规则会共享 computedStyle 呢？</p>
