@@ -26,10 +26,13 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="最近看了许多 CSS 相关的文章，也深刻认识到自身的不足。本文属于查漏补缺，巩固基础知识。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-11-23T23:58:52.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png-blog">
+<meta property="og:image" content="http://acgtofe.com/assets/used-images/posts/201304/specificity_calculate_example.png">
+<meta property="og:updated_time" content="2017-11-27T23:30:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS 三大特性">
 <meta name="twitter:description" content="最近看了许多 CSS 相关的文章，也深刻认识到自身的不足。本文属于查漏补缺，巩固基础知识。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png-blog">
     
     
         
@@ -264,9 +267,46 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>最近看了许多 CSS 相关的文章，也深刻认识到自身的不足。本文属于查漏补缺，巩固基础知识。<br><a id="more"></a></p>
-<h4 id="一、CSS-优先级"><a href="#一、CSS-优先级" class="headerlink" title="一、CSS 优先级"></a>一、CSS 优先级</h4><p><a href="http://acgtofe.com/posts/2013/04/css-specificity-explain-in-detail" target="_blank" rel="external">CSS 优先级详细解析</a></p>
-<h4 id="二、CSS-继承性"><a href="#二、CSS-继承性" class="headerlink" title="二、CSS 继承性"></a>二、CSS 继承性</h4><p>继承性是指指被包在内部的标签将拥有外部标签的样式性，即子元素可以继承父元素的属性，例如下面的代码，div中包含2个p标签，1个span标签，当给div设置字体颜色为红色时，他的子标签会继承父元素的属性，因而会显示红色。 在CSS中以text-、font-、line- 开头的属性都是可以继承的。</p>
-<h4 id="三、CSS-层叠性"><a href="#三、CSS-层叠性" class="headerlink" title="三、CSS 层叠性"></a>三、CSS 层叠性</h4><p><a href="http://blog.csdn.net/k491022087/article/details/52319252" target="_blank" rel="external">CSS 三大特性</a></p>
+<h4 id="一、CSS-优先级"><a href="#一、CSS-优先级" class="headerlink" title="一、CSS 优先级"></a>一、CSS 优先级</h4><p>CSS 的组成单元是样式规则，也就是我们常说的 CSS Rule ，正如我们下面看到的这张图：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png-blog" alt="css rule"></p>
+<p>众所周知，CSS 有一个核心特性：当多条样式规则中的同一个属性作用到了同一个元素，这些样式之间就会发生覆盖。<br><div class="alert info"><p>优先级高的 CSS 样式，将覆盖优先级低的 CSS 样式，成为最终网页元素的实际样式。</p>
+</div></p>
+<p>所以，为了保证页面有序并且正确的渲染，我们需要了解 CSS 优先级规则。大致的规则如下：<br><div class="alert success"><p>!important &gt; 行内样式 &gt; ID 选择器 &gt; 类选择器 &gt; 标签 &gt; 通配符 &gt; 继承 &gt; 浏览器默认属性</p>
+</div></p>
+<p>当然，上述规则可以解决我们 80% 的疑惑，关键的是，还需要理解以下三点：<br><strong>1. CSS 属性继承（详情请看下文），我们来看一个例子：</strong><br>首先定义 html 结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span>Jartto's blog<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>为其添加样式规则：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;<span class="attribute">color</span>: red;&#125;</div><div class="line"><span class="selector-class">.text</span>&#123;<span class="attribute">color</span>: yellow;&#125;</div></pre></td></tr></table></figure></p>
+<p>如上代码，那么到底显示什么颜色呢？答案就是 yellow 。你肯定会有这样的疑惑：ID 选择器的优先级高于 Class 选择器，且还有继承，应该是 red 。其实不然，这里不要被误导了，其实 box 提供的 color 对 text 来说只能继承 color 属性，而继承优先级是小于直接作用元素的。请务必明确如下规则：</p>
+<ul>
+<li>继承得到的样式的优先级是最低的，在任何时候，只要元素本身有同属性的样式定义，就可以覆盖掉继承值；</li>
+<li>在存在多个继承样式时，层级关系距离当前元素最近的父级元素的继承样式，具有相对最高的优先级；</li>
+</ul>
+<p><strong>2. CSS 权重计算：</strong><br>CSS 权重计算其实就是统计选择符中的不同组成元素的个数，并以 (a,b,c,d) 这种形式来判断。其中，abcd分别代表了不同类别的选择符组成元素，且战斗力分别在不同的数量级，a最强，d最弱。从强到弱，这4个字母分别代表的类别是：</p>
+<ul>
+<li>内联样式（Inline style） a = 1 – (1,0,0,0)；</li>
+<li>Id选择符 b = 1 – (0,1,0,0)</li>
+<li>类选择符 （Class），伪类选择符（Pseudo class），属性选择符（Attribute） c = 1 – (0,0,1,0)</li>
+<li>元素选择符（Element），伪元素选择符（Pseudo Element） d = 1 – (0,0,0,1)<br>这里引用一张图来说明：<br><img src="http://acgtofe.com/assets/used-images/posts/201304/specificity_calculate_example.png" alt="specificity_calculate_example"></li>
+</ul>
+<p><strong>3. !important 标识符；</strong><br>毫无疑问，!important 会有最高的优先级，这也经常让我们执行强制覆写样式。但是需要注意，一定是直接作用元素，不要和继承搞混淆，我们继续用上面的演示代码举例：<br>html 结构不变：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span>Jartto's blog<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>样式规则稍作修改，我们增加 !important 规则：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;<span class="attribute">color</span>: red<span class="meta">!important</span>;&#125;</div><div class="line"><span class="selector-class">.text</span>&#123;<span class="attribute">color</span>: yellow;&#125;</div></pre></td></tr></table></figure></p>
+<p>明白了上述规则后，我们不难得出结论，结果依然是黄色，因为 !important 再牛，在这里他也是 color 继承，显然干不过直接作用类 text。</p>
+<p>深入阅读请查看：<br><a href="http://acgtofe.com/posts/2013/04/css-specificity-explain-in-detail" target="_blank" rel="external">CSS 优先级详细解析</a></p>
+<h4 id="二、CSS-继承性"><a href="#二、CSS-继承性" class="headerlink" title="二、CSS 继承性"></a>二、CSS 继承性</h4><div class="alert success"><p>CSS 继承性是指被包在内部的标签将拥有外部标签的样式性，即子元素可以继承父元素的属性。</p>
+</div>
+<p>有哪些属性是可以继承的呢，我们简单分一下类：<br>1.font-family,font-size,font-weight 等 f 开头的 CSS 样式；<br>2.text-align,text-indent 等 t 开头的样式；<br>3.color；</p>
+<h4 id="三、CSS-层叠性"><a href="#三、CSS-层叠性" class="headerlink" title="三、CSS 层叠性"></a>三、CSS 层叠性</h4><p>CSS 层叠性是指 CSS 样式在针对同一元素配置同一属性时，依据层叠规则（权重）来处理冲突，选择应用权重高的 CSS 选择器所指定的属性，一般也被描述为权重高的覆盖权重低的，因此也称作层叠。</p>
+<p>每个 CSS 选择器都会有一个权重，当两个选择器同时配置同一元素的同一属性时（比如一个设置 color：red，另一个 color：black ），就会产生冲突，而解决冲突的方案就是 CSS 选择器的权重，权重高的来覆盖权重低的。</p>
+<div class="alert info"><p>层叠就是浏览器对多个样式来源进行叠加，最终确定结果的过程。CSS 之所以有“层叠”的概念，是因为有多个样式来源。</p>
+</div>
+<h4 id="四、示例解说"><a href="#四、示例解说" class="headerlink" title="四、示例解说"></a>四、示例解说</h4><p>为了巩固上面的知识，我们来高搞一些容易混淆的例子，简单的测试一下。<br>示例一：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Jartto's blog<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>样式规则，定义如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">color </span>: red<span class="meta">!important</span>; &#125;</div><div class="line"><span class="selector-tag">ol</span> &#123; <span class="attribute">color </span>: green; &#125;</div></pre></td></tr></table></figure></p>
+<p>结果是 green ，因为 div 和 ol 都不是直接作用于 li 元素，所以他们拼的是继承性，根据属性继承的<strong>就近原则</strong>，显然 ol 更胜一筹。</p>
+<p>示例二：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box1"</span> <span class="attr">class</span>=<span class="string">"one"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box2"</span> <span class="attr">class</span>=<span class="string">"two"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box3"</span> <span class="attr">class</span>=<span class="string">"three"</span>&gt;</span>Jartto's blog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>CSS 规则如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.one</span> <span class="selector-class">.two</span> <span class="selector-tag">div</span> &#123; <span class="attribute">color </span>: red; &#125;</div><div class="line"><span class="selector-tag">div</span> <span class="selector-id">#box3</span> &#123; <span class="attribute">color </span>: yellow; &#125;</div><div class="line"><span class="selector-id">#box1</span> <span class="selector-tag">div</span> &#123; <span class="attribute">color </span>: blue; &#125;</div></pre></td></tr></table></figure></p>
+<p>猜一猜，结果是什么？</p>
+<p>示例三：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Jartto's blog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>为其设置如下规则：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> <span class="selector-tag">div</span> &#123; <span class="attribute">color</span>: red; &#125;</div><div class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">color</span>: yellow; &#125;</div></pre></td></tr></table></figure></p>
+<p>都可以命中对应元素，权重第一个大于第二个（比较标签选择器数量），显示 red。<br>更多示例补充中～</p>
+<p>上文基本也涵盖了此部分内容，这里就不赘述了，详情请参考：<a href="http://blog.csdn.net/k491022087/article/details/52319252" target="_blank" rel="external">CSS 三大特性</a></p>
 
             
         </div>

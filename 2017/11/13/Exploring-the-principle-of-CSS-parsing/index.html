@@ -28,9 +28,9 @@
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse2.png-blog">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse1.png-blog">
-<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png-blog">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse4.png-blog">
-<meta property="og:updated_time" content="2017-11-20T02:24:39.000Z">
+<meta property="og:updated_time" content="2017-11-27T22:06:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探究 CSS 解析原理">
 <meta name="twitter:description" content="吃早饭的时候，同事随意问了一句：“你知道 CSS 是怎么解析的吗？”，我一头雾水。对哦，作为前端，每天都在与 CSS 打交道，我竟然忽视了最基本的原理。">
@@ -279,7 +279,7 @@
 <div class="alert info"><p>Webkit 使用 Flex 和 Bison 解析生成器从 CSS 语法文件中自动生成解析器。</p>
 </div>
 <p>它们都是将每个 CSS 文件解析为样式表对象，每个对象包含 CSS 规则，CSS 规则对象包含选择器和声明对象，以及其他一些符合 CSS 语法的对象，下图可能会比较明了：</p>
-<p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png" alt="css rule"></p>
+<p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png-blog" alt="css rule"></p>
 <p>Webkit 使用了自动代码生成工具生成了相应的代码，也就是说<code>词法分析</code>和<code>语法分析</code>这部分代码是自动生成的，而 Webkit 中实现的 CallBack 函数就是在 CSSParser 中。</p>
 <p>CSS 的一些解析功能的入口也在此处，它们会调用 lex , parse 等生成代码。相对的，生成代码中需要的 CallBack 也需要在这里实现。</p>
 <p>举例来说，现在我们来看其中一个回调函数的实现，createStyleRule(),该函数将在一般性的规则需要被建立的时候调用，代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">CSSRule* CSSParser::createStyleRule(CSSSelector* selector)  </div><div class="line">&#123;  </div><div class="line">    CSSStyleRule* rule = <span class="number">0</span>;  </div><div class="line">    <span class="keyword">if</span> (selector) &#123;  </div><div class="line">        rule = <span class="keyword">new</span> CSSStyleRule(styleElement);  </div><div class="line">        m_parsedStyleObjects.append(rule);  </div><div class="line">        rule-&gt;setSelector(sinkFloatingSelector(selector));  </div><div class="line">        rule-&gt;setDeclaration(<span class="keyword">new</span> CSSMutableStyleDeclaration(rule, parsedProperties, numParsedProperties));  </div><div class="line">    &#125;  </div><div class="line">    clearProperties();  </div><div class="line">    <span class="keyword">return</span> rule;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
