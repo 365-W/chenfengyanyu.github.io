@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/parse3.png-blog">
 <meta property="og:image" content="http://acgtofe.com/assets/used-images/posts/201304/specificity_calculate_example.png">
-<meta property="og:updated_time" content="2017-11-29T07:50:46.000Z">
+<meta property="og:updated_time" content="2017-11-29T07:56:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS 三大特性">
 <meta name="twitter:description" content="最近看了许多 CSS 相关的文章，也深刻认识到自身的不足。本文属于查漏补缺，巩固基础知识。">
@@ -326,6 +326,7 @@
 <li><code>#father #son { color: red };</code> 两个 <code>id</code> 选择器，简直是浪费；</li>
 <li><code>id</code> 选择器中使用 <code>!important</code> 这就尴尬了；</li>
 <li><code>div#father</code> 这种写法把 <code>id</code> 选择器变成了一个不精准的类选择器了；</li>
+<li>代码可读性很差，几乎很难把握到重点，全是冗余代码；</li>
 </ol>
 <p>可以看到，<code>#son { color: red };</code> 这样简单一行代码搞定的事情，被写的乱七八糟，漏洞百出。所以，我们不能只写代码，而不知其所以然，否则很有可能产生这样的后果，十分尴尬。</p>
 <p>上文基本也涵盖了此部分内容，这里就不赘述了，详情请参考：<a href="http://blog.csdn.net/k491022087/article/details/52319252" target="_blank" rel="external">CSS 三大特性</a></p>
