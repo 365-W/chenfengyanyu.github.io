@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>Mac下查看端口占用情况 - Jartto&#39;s blog</title>
+    <title>细说 Mockjs - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
-<meta name="keywords" content="mac,linux">
+    <meta name="description" content="随着技术的不断发展，前后端分离已成为项目开发的潮流。前端工程师需要更加独立的去做一些事情，别再傻傻的等后端工程师的 API 文档了，拿到需求，我们就可以开始了。">
+<meta name="keywords" content="mockjs">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Mac下查看端口占用情况">
-<meta property="og:url" content="http://jartto.wang/2016/09/28/check-the-system-port-of-mac/index.html">
+<meta property="og:title" content="细说 Mockjs">
+<meta property="og:url" content="http://jartto.wang/2017/01/05/detail-of-mockjs/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
+<meta property="og:description" content="随着技术的不断发展，前后端分离已成为项目开发的潮流。前端工程师需要更加独立的去做一些事情，别再傻傻的等后端工程师的 API 文档了，拿到需求，我们就可以开始了。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2016-12-09T09:25:18.000Z">
+<meta property="og:updated_time" content="2017-12-01T03:12:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下查看端口占用情况">
-<meta name="twitter:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
+<meta name="twitter:title" content="细说 Mockjs">
+<meta name="twitter:description" content="随着技术的不断发展，前后端分离已成为项目开发的潮流。前端工程师需要更加独立的去做一些事情，别再傻傻的等后端工程师的 API 文档了，拿到需求，我们就可以开始了。">
     
     
         
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/mac.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/mac.png" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/mockjs0.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/mockjs0.png" />
     
     
     
@@ -235,13 +235,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            Mac下查看端口占用情况
+            细说 Mockjs
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-28T20:08:32+08:00">
+    <time itemprop="datePublished" datetime="2017-01-05T10:18:40+08:00">
 	  
-		    2016/9月/28 20:08:32
+		    2017/1月/05 10:18:40
     	
     </time>
     
@@ -263,26 +263,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。<br><a id="more"></a></p>
-<h4 id="一、问题由来："><a href="#一、问题由来：" class="headerlink" title="一、问题由来："></a>一、问题由来：</h4><p>当我想在本地启动一个http-server来查看静态网页的时候，发现服务并不能被启动。查看原因后，得知：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: listen EADDRINUSE 0.0.0.0:8080</div></pre></td></tr></table></figure></p>
-<h4 id="二、分析问题："><a href="#二、分析问题：" class="headerlink" title="二、分析问题："></a>二、分析问题：</h4><div class="alert info"><p>看到错误，我们很容易就判断出来了，很明显，8080端口被占用了。</p>
-</div>
-<p>解决思路有两个：<br>其一，修改http-server服务器端口号；<br><a href="http://www.cnblogs.com/lucker/p/4108838.html" target="_blank" rel="external">查阅文档</a>命令行直接输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http-server -p 6666</div></pre></td></tr></table></figure></p>
-<p>好的，http-server不能启动的问题解决了，可是我并不打算收手👻</p>
-<p>其二，我想查看8080端口被谁占用了。</p>
-<p>那么问题来了，mac下如何查看端口被占用情况呢？众所周知，mac os是Unix内核的桌面版操作系统，Linux是类Unix操作系统。</p>
-<div class="alert success"><p>bingo！问题转嫁了，如何查看linux端口号情况？</p>
-</div>
-<h4 id="三、查看端口号"><a href="#三、查看端口号" class="headerlink" title="三、查看端口号"></a>三、查看端口号</h4><p>我查到了这个：<br>可以使用netstat命令。netstat命令可以显示网络连接，路由表，接口状态，伪装连接，网络链路信息和组播成员组等信息。<br>命令格式：netstat [选项]<br>常用参数：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">netstat [-AaLlnW] [-f address_family | -p protocol]</div><div class="line">netstat [-gilns] [-f address_family]</div><div class="line">netstat -i | -I interface [-w <span class="built_in">wait</span>] [-abdgRt]</div><div class="line">netstat -s [-s] [-f address_family | -p protocol] [-w <span class="built_in">wait</span>]</div><div class="line">netstat -i | -I interface -s [-f address_family | -p protocol]</div><div class="line">netstat -m [-m]</div><div class="line">netstat -r [-Aaln] [-f address_family]</div><div class="line">netstat -rs [-s]</div></pre></td></tr></table></figure></p>
-<p>都是什么意思呢，一不做二不休，我来一个个试一下。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#列出所有端口</span></div><div class="line">netstat </div><div class="line"></div><div class="line"><span class="comment">#列出所有 tcp 端口 </span></div><div class="line">netstat -at</div><div class="line"></div><div class="line"><span class="comment">#显示网络接口列表</span></div><div class="line">netstat -i</div><div class="line"></div><div class="line"><span class="comment">#显示网络工作信息统计表</span></div><div class="line">netstat -s</div><div class="line"></div><div class="line"><span class="comment">#显示伪装的网络连线</span></div><div class="line">netstat -m</div><div class="line"></div><div class="line"><span class="comment">#显示核心路由信息</span></div><div class="line">netstat -r</div><div class="line"></div><div class="line"><span class="comment">#显示合并的信息</span></div><div class="line">netstat -rs</div><div class="line">routing:</div><div class="line">       	0 bad routing redirects</div><div class="line">       	0 dynamically created routes</div><div class="line">       	0 new gateways due to redirects</div><div class="line">       	4294944612 destinations found unreachable</div><div class="line">       	0 uses of a wildcard route</div><div class="line">       	8 routes not <span class="keyword">in</span> table but not freed</div></pre></td></tr></table></figure></p>
-<h4 id="四、查看某一端口占用情况："><a href="#四、查看某一端口占用情况：" class="headerlink" title="四、查看某一端口占用情况："></a>四、查看某一端口占用情况：</h4><p>进一步可以使用lsof命令显示占用该端口的进程情况 。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#命令格式：lsof -i :端口</span></div><div class="line">lsof -i:8080</div></pre></td></tr></table></figure></p>
-<p>控制台输出如下信息：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">COMMAND   PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME</div><div class="line">nginx     634 Jartto    6u  IPv4 0x8800c1295e443e43      0t0  TCP *:http-alt (LISTEN)</div><div class="line">nginx     635 Jartto    6u  IPv4 0x8800c1295e443e43      0t0  TCP *:http-alt (LISTEN)</div><div class="line">WeChat  93768 Jartto  119u  IPv6 0x8800c12977474f33      0t0  TCP 192.168.1.*</div></pre></td></tr></table></figure></p>
-<h4 id="五、如何杀掉进程？"><a href="#五、如何杀掉进程？" class="headerlink" title="五、如何杀掉进程？"></a>五、如何杀掉进程？</h4><p>查看进程，命令行输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | more</div></pre></td></tr></table></figure></p>
-<p>找到需要杀掉的进程，执行：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 pid</div></pre></td></tr></table></figure></p>
-<p>某种情况下，我们也可以根据进程名称来杀进程，如下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 name</div></pre></td></tr></table></figure></p>
-<h4 id="六、数据太多？"><a href="#六、数据太多？" class="headerlink" title="六、数据太多？"></a>六、数据太多？</h4><p>在尝试netstat的各种命令过程中，控制台给出的都是满满的一屏。有没有更好的展现方式，或过滤选项呢？可以试试<a href="">awk</a>和<a href="http://jartto.wang/2016/10/12/grasp-linux-grep/">grep</a>。</p>
-<p>这里就不展开讨论了，后续我会补充相关文章，此处先占个坑吧！</p>
-<h4 id="七、参考文档"><a href="#七、参考文档" class="headerlink" title="七、参考文档"></a>七、参考文档</h4><p>1.<a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html" target="_blank" rel="external">netstat详解</a><br>2.<a href="http://man.linuxde.net/netstat" target="_blank" rel="external">netstat命令</a></p>
+            <p>随着技术的不断发展，前后端分离已成为项目开发的潮流。前端工程师需要更加独立的去做一些事情，别再傻傻的等后端工程师的 API 文档了，拿到需求，我们就可以开始了。<br><a id="more"></a></p>
 
             
         </div>
@@ -296,7 +277,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/linux/">linux</a> <a class="tag tag--primary tag--small t-link" href="/tags/mac/">mac</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/mockjs/">mockjs</a>
 
             </div>
         
@@ -305,7 +286,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/"  data-tooltip="关于html中的base标签">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/17/xhr-or-fetch-api/"  data-tooltip="XHR or Fetch API ?">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -313,7 +294,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/15/grasp-a-js-template-engine/" data-tooltip="掌握js模板引擎">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/14/together-to-learn-ant-design-of-react/" data-tooltip="一起来学习Ant Design">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -328,26 +309,20 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -361,12 +336,6 @@
 
 
         <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
-        
-            
-                <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-            
         
     </div>
 </article>
@@ -395,7 +364,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/"  data-tooltip="关于html中的base标签">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/17/xhr-or-fetch-api/"  data-tooltip="XHR or Fetch API ?">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -403,7 +372,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/15/grasp-a-js-template-engine/" data-tooltip="掌握js模板引擎">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/12/14/together-to-learn-ant-design-of-react/" data-tooltip="一起来学习Ant Design">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -418,26 +387,20 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -454,17 +417,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/01/05/detail-of-mockjs/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -519,25 +482,6 @@
     <!--SCRIPTS-->
 <script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
 <!--SCRIPTS END-->
-
-    
-        <script>
-             var disqus_config = function () {
-                 this.page.url = 'http://jartto.wang/2016/09/28/check-the-system-port-of-mac/';
-                 
-                    this.page.identifier = '2016/09/28/check-the-system-port-of-mac/';
-                                  
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = 'jartto';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-    
 
 
 
