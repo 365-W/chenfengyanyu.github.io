@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/06/25/h5-fullscreen-api/</loc>
+    
+    <lastmod>2017-12-01T00:07:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/04/15/nginx-exception-handling/</loc>
     
     <lastmod>2017-11-30T00:02:26.000Z</lastmod>
