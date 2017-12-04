@@ -19,14 +19,14 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="技术日新月异，各大浏览器对 HTML5 的支持也越来越好，我们不妨大胆的使用 HTML5 API 来提升用户体验。这一节我们来看看 Fullscreen API 的使用及原理。">
-<meta name="keywords" content="HTML5,API,Fullscreen">
+<meta name="keywords" content="HTML5,Fullscreen,API">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="HTML5 之全屏（Fullscreen API）">
 <meta property="og:url" content="http://jartto.wang/2017/06/25/h5-fullscreen-api/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="技术日新月异，各大浏览器对 HTML5 的支持也越来越好，我们不妨大胆的使用 HTML5 API 来提升用户体验。这一节我们来看看 Fullscreen API 的使用及原理。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-03T12:33:29.000Z">
+<meta property="og:updated_time" content="2017-12-04T02:29:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5 之全屏（Fullscreen API）">
 <meta name="twitter:description" content="技术日新月异，各大浏览器对 HTML5 的支持也越来越好，我们不妨大胆的使用 HTML5 API 来提升用户体验。这一节我们来看看 Fullscreen API 的使用及原理。">
@@ -264,9 +264,9 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>技术日新月异，各大浏览器对 HTML5 的支持也越来越好，我们不妨大胆的使用 HTML5 API 来提升用户体验。这一节我们来看看 Fullscreen API 的使用及原理。<br><a id="more"></a></p>
-<h4 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、使用场景</h4><p>1.视频窗口全屏化<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">id</span>=<span class="string">"myvideo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"somevideo.webm"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"somevideo.mp4"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、使用场景</h4><p>1.视频窗口全屏化；<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">id</span>=<span class="string">"myvideo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"somevideo.webm"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"somevideo.mp4"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> elem = <span class="built_in">document</span>.getElementById(<span class="string">"myvideo"</span>);</div><div class="line"><span class="keyword">if</span> (elem.requestFullscreen) &#123;</div><div class="line">  elem.requestFullscreen();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>2.地图页面全屏展示</p>
+<p>2.地图页面全屏展示；<br>3.图片或动画全屏预览；<br>…</p>
 <h4 id="二、参数详解"><a href="#二、参数详解" class="headerlink" title="二、参数详解"></a>二、参数详解</h4><ul>
 <li><p>检测全屏是否可用</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//full-sreen available</span></div><div class="line"><span class="keyword">if</span>(</div><div class="line">  <span class="built_in">document</span>.fullscreenEnable||</div><div class="line">  <span class="built_in">document</span>.webkitFullscreenEnabled||</div><div class="line">  <span class="built_in">document</span>.mozFullScreenEnabled||</div><div class="line">  <span class="built_in">document</span>.msFullscreenEnabled</div><div class="line">)&#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
