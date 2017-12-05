@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="不得不说 Git 改变了我们的编程习惯，随时版本备份百利而无一害。我们不能只停留在熟练使用 add,pull,push 等基本命令的层次，是时候扩展技能了。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-05T02:53:14.000Z">
+<meta property="og:updated_time" content="2017-12-05T03:04:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 常规操作">
 <meta name="twitter:description" content="不得不说 Git 改变了我们的编程习惯，随时版本备份百利而无一害。我们不能只停留在熟练使用 add,pull,push 等基本命令的层次，是时候扩展技能了。">
@@ -308,8 +308,8 @@
 <p>4.<a href="https://www.zhihu.com/question/27804571" target="_blank" rel="external">知乎</a>上看到了另一种场景，有一条主分支 <code>master</code>，进行过两次提交（ <code>m0</code> 和 <code>m1</code> ）。此时，新开了一个分支 <code>develop</code> 做开发，进行了三次提交（ <code>d0</code> 、<code>d1</code> 和 <code>d2</code>）。如果只想将 <code>d2</code> 这次提交合并到主分支 <code>master</code> 就会产生一个冲突，需要用户手动去编辑，问题是，如何避免冲突？</p>
 <p><a href="https://www.zhihu.com/question/27804571/answer/38192329" target="_blank" rel="external">答一</a>：你无法 <code>cherry-pick</code> 的原因是，你 <code>d2</code> 修改的文件，已经在 <code>d1</code>（or <code>d0</code>） 被修改过了，所以 <code>cherry-pick</code> 并不知道如何删除和增加对应的 <code>lines</code>，所以就冲突了。你唯一的办法就是解决冲突。</p>
 <p><a href="https://www.zhihu.com/question/27804571/answer/38167731" target="_blank" rel="external">答二</a>：<code>cherry-pick</code> 只会将一个 <code>commit</code> 引入的更改应用到当前的 <code>commit</code> 上。而你的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git cherry-pick d2的哈希码</div></pre></td></tr></table></figure></p>
-<p>只会将从 <code>d1-&gt;d2</code> 的修改引入到 <code>m1</code> 中，这样当然会造成冲突。正确的做法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git cherry-pick --no-commit d0的哈希 d1的哈希 d2的哈希</div><div class="line">git commit -m<span class="string">"merged commit"</span></div></pre></td></tr></table></figure></p>
-<div class="alert info"><p>–no-commit参数是防止cherry-pick每一次应用更改都commit一次。</p>
+<p>只会将从 <code>d1-&gt;d2</code> 的修改引入到 <code>m1</code> 中，这样当然会造成冲突。正确的做法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">git cherry-pick --no-commit d0的哈希 d1的哈希 d2的哈希</div><div class="line">git commit -m <span class="string">"merged commit"</span></div></pre></td></tr></table></figure></p>
+<div class="alert info"><p><code>--no-commit</code> 参数是防止 <code>cherry-pick</code> 每一次应用更改都 <code>commit</code> 一次。</p>
 </div>
 <p>除此之外，还有一个命令是等效的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git merge d2 --squash</div></pre></td></tr></table></figure></p>
 <h4 id="五、Reset"><a href="#五、Reset" class="headerlink" title="五、Reset"></a>五、Reset</h4><p>先来理解两个概念：<br>1.四个区</p>
