@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/05/18/use-google-map-in-react/</loc>
+    
+    <lastmod>2017-12-06T07:49:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/06/25/h5-fullscreen-api/</loc>
     
     <lastmod>2017-12-05T10:20:51.000Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://jartto.wang/2017/10/31/js-anti-aliasing/</loc>
     
     <lastmod>2017-11-20T11:09:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/05/18/use-google-map-in-react/</loc>
-    
-    <lastmod>2017-11-18T15:02:25.000Z</lastmod>
     
   </url>
   
