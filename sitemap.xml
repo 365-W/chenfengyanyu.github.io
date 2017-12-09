@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/10/06/js-async-and-await/</loc>
+    
+    <lastmod>2017-12-09T02:05:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/12/09/chattered-about-parcel/</loc>
     
     <lastmod>2017-12-09T02:01:02.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://jartto.wang/2017/12/07/xss-and-csrf/</loc>
     
     <lastmod>2017-12-09T01:42:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/12/05/js-async-and-await/</loc>
-    
-    <lastmod>2017-12-09T01:32:48.000Z</lastmod>
     
   </url>
   
