@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/12/08/chattered-about-parcel/</loc>
+    
+    <lastmod>2017-12-08T11:03:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/03/exploration-the-encryption/</loc>
+    
+    <lastmod>2017-12-08T10:56:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/08/js-async-and-await/</loc>
+    
+    <lastmod>2017-12-08T10:55:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/08/grasp-js-stack-trace/</loc>
+    
+    <lastmod>2017-12-08T10:54:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/08/xss-and-csrf/</loc>
+    
+    <lastmod>2017-12-08T10:50:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/11/28/h5-user-media/</loc>
     
     <lastmod>2017-12-08T10:23:23.000Z</lastmod>
