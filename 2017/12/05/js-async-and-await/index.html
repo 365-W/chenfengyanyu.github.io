@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>初探加密算法 - Jartto&#39;s blog</title>
+    <title>掌握 Async/Await - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="最近同事做了一次加密算法的分享，感觉自己对这方面的认知还有待提升，这篇文章算是先入门吧，多学点知识总归是好的。">
-<meta name="keywords" content="算法,加密,encryption">
+    <meta name="description" content="前端工程师肯定都经历过 JS 回调链狱的痛苦过程，我们在使用 Promise 的时候总是不尽人意。这时候 Async/Await 应运而生，它到底有什么魔力，我们来说道说道。">
+<meta name="keywords" content="es7,async,await">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="初探加密算法">
-<meta property="og:url" content="http://jartto.wang/2017/12/03/exploration-the-encryption/index.html">
+<meta property="og:title" content="掌握 Async&#x2F;Await">
+<meta property="og:url" content="http://jartto.wang/2017/12/05/js-async-and-await/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="最近同事做了一次加密算法的分享，感觉自己对这方面的认知还有待提升，这篇文章算是先入门吧，多学点知识总归是好的。">
+<meta property="og:description" content="前端工程师肯定都经历过 JS 回调链狱的痛苦过程，我们在使用 Promise 的时候总是不尽人意。这时候 Async/Await 应运而生，它到底有什么魔力，我们来说道说道。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-09T01:18:43.000Z">
+<meta property="og:updated_time" content="2017-12-09T01:32:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探加密算法">
-<meta name="twitter:description" content="最近同事做了一次加密算法的分享，感觉自己对这方面的认知还有待提升，这篇文章算是先入门吧，多学点知识总归是好的。">
+<meta name="twitter:title" content="掌握 Async&#x2F;Await">
+<meta name="twitter:description" content="前端工程师肯定都经历过 JS 回调链狱的痛苦过程，我们在使用 Promise 的时候总是不尽人意。这时候 Async/Await 应运而生，它到底有什么魔力，我们来说道说道。">
     
     
         
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/encrtption0.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/encrtption0.png" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/async0.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/async0.png" />
     
     
     
@@ -235,13 +235,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            初探加密算法
+            掌握 Async/Await
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-12-03T18:53:33+08:00">
+    <time itemprop="datePublished" datetime="2017-12-05T23:42:36+08:00">
 	  
-		    2017/12月/03 18:53:33
+		    2017/12月/05 23:42:36
     	
     </time>
     
@@ -263,7 +263,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>最近同事做了一次加密算法的分享，感觉自己对这方面的认知还有待提升，这篇文章算是先入门吧，多学点知识总归是好的。<br><a id="more"></a></p>
+            <p>前端工程师肯定都经历过 JS 回调链狱的痛苦过程，我们在使用 Promise 的时候总是不尽人意。这时候 Async/Await 应运而生，它到底有什么魔力，我们来说道说道。<br><a id="more"></a></p>
 
             
         </div>
@@ -277,7 +277,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/encryption/">encryption</a> <a class="tag tag--primary tag--small t-link" href="/tags/加密/">加密</a> <a class="tag tag--primary tag--small t-link" href="/tags/算法/">算法</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/async/">async</a> <a class="tag tag--primary tag--small t-link" href="/tags/await/">await</a> <a class="tag tag--primary tag--small t-link" href="/tags/es7/">es7</a>
 
             </div>
         
@@ -286,7 +286,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/05/js-async-and-await/"  data-tooltip="掌握 Async/Await">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/07/xss-and-csrf/"  data-tooltip="Web 安全之 XSS 和 CSRF">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -294,7 +294,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/01/git-common-operate/" data-tooltip="Git 常规操作">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/03/exploration-the-encryption/" data-tooltip="初探加密算法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -309,17 +309,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -364,7 +364,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/05/js-async-and-await/"  data-tooltip="掌握 Async/Await">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/07/xss-and-csrf/"  data-tooltip="Web 安全之 XSS 和 CSRF">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -372,7 +372,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/01/git-common-operate/" data-tooltip="Git 常规操作">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/03/exploration-the-encryption/" data-tooltip="初探加密算法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -387,17 +387,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -417,17 +417,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/03/exploration-the-encryption/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/05/js-async-and-await/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
