@@ -18,18 +18,20 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。">
+    <meta name="description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。 本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。">
 <meta name="keywords" content="js,stack,trace">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="掌握 JS Stack Trace">
 <meta property="og:url" content="http://jartto.wang/2017/12/08/grasp-js-stack-trace/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。">
+<meta property="og:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。 本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-09T01:51:15.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/jstrance1.png">
+<meta property="og:updated_time" content="2017-12-13T14:37:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 JS Stack Trace">
-<meta name="twitter:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。">
+<meta name="twitter:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。 本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/jstrance1.png">
     
     
         
@@ -263,8 +265,56 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。<br><a id="more"></a></p>
-
+            <p>在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。</p>
+<p>本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。<br><a id="more"></a></p>
+<h4 id="一、队列（Queue）与栈（Stack）"><a href="#一、队列（Queue）与栈（Stack）" class="headerlink" title="一、队列（Queue）与栈（Stack）"></a>一、队列（Queue）与栈（Stack）</h4><p>最早是在数据结构的线性表中接触到队列（Queue）与栈（Stack），我们先来回顾一下概念：</p>
+<ul>
+<li>栈的插入和删除操作只允许在表的尾端进行（在栈中成为“栈顶”），满足 “FIFO：First In Last Out”；</li>
+<li>队列只允许在表尾插入数据元素，在表头删除数据元素,满足 “First In First Out”。</li>
+</ul>
+<div class="alert info"><p>这里我们不去纠结<a href="http://blog.csdn.net/bbc955625132551/article/details/72773285" target="_blank" rel="external">栈与队列的异同</a>，而只去用概念去理解 JS 中 Stack。</p>
+</div>
+<h4 id="二、Stack"><a href="#二、Stack" class="headerlink" title="二、Stack"></a>二、Stack</h4><p>我们先来看这样一段<a href="https://segmentfault.com/a/1190000008413860" target="_blank" rel="external">代码</a>，试想一下输出结果，以及它是如何调用的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'b'</span>);</div><div class="line">    c();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>);</div><div class="line">    b();</div><div class="line">&#125;</div><div class="line"></div><div class="line">a();</div></pre></td></tr></table></figure></p>
+<p>对上面的代码做一下简短的分析：</p>
+<ul>
+<li>当调用 a 的时候，它会被压到栈顶；</li>
+<li>然后，当 b 在 a 中被调用的时候，它会被继续压入栈顶，当 c 在 b 中被调用的时候，也一样；</li>
+<li>在运行 c 的时候，栈中包含了 a，b，c，并且其顺序也是 a，b，c；</li>
+<li>当 c 调用完毕时，它会被从栈顶移出，随后控制流回到 b。当 b 执行完毕后也会从栈顶移出，控制流交还到 a。最后，当 a 执行完毕后也会从栈中移出。</li>
+</ul>
+<div class="alert success"><p>每当有一个函数调用，就会将其压入栈顶。在调用结束的时候再将其从栈顶移出。</p>
+</div>
+<p>补充一点： 我们可以用 <code>console.trace()</code> 将 <code>Stack Trace</code> 打印到控制台。</p>
+<h4 id="三、Error"><a href="#三、Error" class="headerlink" title="三、Error"></a>三、Error</h4><p>当 <code>Error</code> 发生的时候，通常会抛出一个 <code>Error</code> 对象。<code>Error</code> 对象也可以被看做一个 <code>Error</code> 原型，用户可以扩展其含义，以创建自己的 <code>Error</code> 对象。</p>
+<p><code>Error.prototype</code> 对象通常包含下面属性：</p>
+<ul>
+<li>constructor - 一个错误实例原型的构造函数</li>
+<li>message - 错误信息</li>
+<li>name - 错误名称</li>
+</ul>
+<div class="alert success"><p>一个 <code>Error</code> 的堆栈追踪包含了从其构造函数开始的所有堆栈帧。</p>
+</div>
+<h4 id="四、Stack-Trace"><a href="#四、Stack-Trace" class="headerlink" title="四、Stack Trace"></a>四、Stack Trace</h4><p>好了，介绍了一些基础点，这里重新回到我们的重点：Stack Trace - 堆栈追踪。</p>
+<p><code>Error.captueStackTrace</code> 函数的第一个参数是一个 <code>object</code> 对象，第二个参数是一个可选的 <code>function</code>。捕获堆栈跟踪所做的是要捕获当前堆栈的路径（这是显而易见的），并且在 <code>object</code> 对象上创建一个 <code>stack</code> 属性来存储它。如果提供了第二个 <code>function</code> 参数，那么这个被传递的函数将会被看成是本次堆栈调用的终点，本次堆栈跟踪只会展示到这个函数被调用之前。</p>
+<p>我们来用几个例子来更清晰的解释下。我们将捕获当前堆栈路径并且将其存储到一个普通 <code>object</code> 对象中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myObj = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 这里存储当前的堆栈路径，保存到myObj中</span></div><div class="line">    <span class="built_in">Error</span>.captureStackTrace(myObj);</div><div class="line">    c();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    b();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 首先调用这些函数</span></div><div class="line">a();</div><div class="line"></div><div class="line"><span class="comment">// 这里，我们看一下堆栈路径往 myObj.stack 中存储了什么</span></div><div class="line"><span class="built_in">console</span>.log(myObj.stack);</div><div class="line"></div><div class="line"><span class="comment">// 这里将会打印如下堆栈信息到控制台</span></div><div class="line"><span class="comment">//    at b (repl:3:7) &lt;-- Since it was called inside B, the B call is the last entry in the stack</span></div><div class="line"><span class="comment">//    at a (repl:2:1)</span></div><div class="line"><span class="comment">//    at repl:1:1 &lt;-- Node internals below this line</span></div><div class="line"><span class="comment">//    at realRunInThisContextScript (vm.js:22:35)</span></div><div class="line"><span class="comment">//    at sigintHandlersWrap (vm.js:98:12)</span></div><div class="line"><span class="comment">//    at ContextifyScript.Script.runInThisContext (vm.js:24:12)</span></div><div class="line"><span class="comment">//    at REPLServer.defaultEval (repl.js:313:29)</span></div><div class="line"><span class="comment">//    at bound (domain.js:280:14)</span></div><div class="line"><span class="comment">//    at REPLServer.runBound [as eval] (domain.js:293:12)</span></div><div class="line"><span class="comment">//    at REPLServer.onLine (repl.js:513:10)</span></div></pre></td></tr></table></figure></p>
+<p>我们从上面的例子中可以看到，我们首先调用了 a（ a 被压入栈），然后从 a 的内部调用了 b（ b 被压入栈，并且在 a 的上面）。在 b 中，我们捕获到了当前堆栈路径并且将其存储在了 myObj 中。这就是为什么打印在控制台上的只有 a 和 b，而且是下面 a 上面 b。</p>
+<p>深入了解请查看：<a href="https://segmentfault.com/a/1190000008413860" target="_blank" rel="external">深入理解 JavaScript Errors 和 Stack Traces</a></p>
+<h4 id="五、JS-执行机制"><a href="#五、JS-执行机制" class="headerlink" title="五、JS 执行机制"></a>五、JS 执行机制</h4><p>从上面我们可以看出，每当有一个函数调用，就会将其压入栈顶，在调用结束的时候再将其从栈顶移出。那这些方法是如何执行的呢，我们就需要了解一下<a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="external">JavaScript 执行机制</a>，此处用原文中的图来做一下说明：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/jstrance1.png" alt="JS 执行机制"><br>简单分析一下上图中的流程：</p>
+<ul>
+<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入 <code>Event Table</code> 并注册函数。</li>
+<li>当指定的事情完成时，<code>Event Table</code> 会将这个函数移入 <code>Event Queue</code>。</li>
+<li>主线程内的任务执行完毕为空，会去 <code>Event Queue</code> 读取对应的函数，进入主线程执行。</li>
+<li>上述过程会不断重复，也就是常说的 <code>Event Loop</code>(事件循环)。</li>
+</ul>
+<p>举个例子说明一下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">  url: <span class="string">'www.jartto.wang'</span>,</div><div class="line">  data: &#123;<span class="attr">test</span>: <span class="string">'jarro'</span>&#125;,</div><div class="line">  success: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'异步请求'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'主线程同步输出'</span>);</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>ajax</code> 进入 <code>Event Table</code>，注册回调函数 <code>success</code>。</li>
+<li>执行 <code>console.log</code>(‘代码执行结束’)。</li>
+<li><code>ajax</code> 事件完成，回调函数 <code>success</code> 进入 <code>Event Queue</code>。</li>
+<li>主线程从 <code>Event Queue</code> 读取回调函数 <code>success</code> 并执行。</li>
+</ul>
+<p>上面的例子很简单，我们继续深入。</p>
+<h4 id="六、垃圾回收"><a href="#六、垃圾回收" class="headerlink" title="六、垃圾回收"></a>六、垃圾回收</h4><h4 id="七、内存溢出"><a href="#七、内存溢出" class="headerlink" title="七、内存溢出"></a>七、内存溢出</h4><h4 id="八、问题解答"><a href="#八、问题解答" class="headerlink" title="八、问题解答"></a>八、问题解答</h4>
             
         </div>
     </div>
