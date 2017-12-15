@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://jartto.wang/2017/12/08/grasp-js-stack-trace/</loc>
+    <loc>http://jartto.wang/2017/12/15/xss-and-csrf/</loc>
     
-    <lastmod>2017-12-13T14:37:12.000Z</lastmod>
+    <lastmod>2017-12-15T10:05:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/11/chattered-about-parcel/</loc>
+    
+    <lastmod>2017-12-15T10:05:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/09/grasp-js-stack-trace/</loc>
+    
+    <lastmod>2017-12-15T10:05:45.000Z</lastmod>
     
   </url>
   
@@ -26,20 +40,6 @@
     <loc>http://jartto.wang/2017/11/02/grasp-testing/</loc>
     
     <lastmod>2017-12-09T14:44:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/12/09/chattered-about-parcel/</loc>
-    
-    <lastmod>2017-12-09T02:01:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2017/12/07/xss-and-csrf/</loc>
-    
-    <lastmod>2017-12-09T01:42:18.000Z</lastmod>
     
   </url>
   
