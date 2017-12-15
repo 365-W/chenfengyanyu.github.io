@@ -18,19 +18,19 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。 本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。">
+    <meta name="description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。">
 <meta name="keywords" content="js,stack,trace">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="掌握 JS Stack Trace">
 <meta property="og:url" content="http://jartto.wang/2017/12/09/grasp-js-stack-trace/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。 本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。">
+<meta property="og:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/jstrance1.png">
-<meta property="og:updated_time" content="2017-12-15T10:05:45.000Z">
+<meta property="og:updated_time" content="2017-12-15T10:09:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 JS Stack Trace">
-<meta name="twitter:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。 本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。">
+<meta name="twitter:description" content="在使用 Roadhog 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 JS Stack Trace 这样的提示，怎么理解呢，这节我们来探究一下。">
 <meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/jstrance1.png">
     
     
@@ -265,8 +265,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>在使用 <code>Roadhog</code> 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 <code>JS Stack Trace</code> 这样的提示，怎么理解呢，这节我们来探究一下。</p>
-<p>本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。<br><a id="more"></a></p>
+            <p>在使用 <code>Roadhog</code> 编译过程中，我的终端崩掉了，怀着好奇的心理，我找到了 <code>JS Stack Trace</code> 这样的提示，怎么理解呢，这节我们来探究一下。<br><a id="more"></a><br>本文并不会告诉你“终端崩溃了，如何解决？”，我只会围绕 “JS Stack Trace” 异常来分析，我们可能碰到了什么问题，以及需要了解的相关技术栈。</p>
 <h4 id="一、队列（Queue）与栈（Stack）"><a href="#一、队列（Queue）与栈（Stack）" class="headerlink" title="一、队列（Queue）与栈（Stack）"></a>一、队列（Queue）与栈（Stack）</h4><p>最早是在数据结构的线性表中接触到队列（Queue）与栈（Stack），我们先来回顾一下概念：</p>
 <ul>
 <li>栈的插入和删除操作只允许在表的尾端进行（在栈中成为“栈顶”），满足 “FIFO：First In Last Out”；</li>
