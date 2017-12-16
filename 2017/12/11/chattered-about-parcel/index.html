@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="无意间发现了 Parcel ，当时 Github 上只有不到 2000 星 。几天后，当我重新打开 Parcel 地址时，已经 6000+ 星了。我知道，是时候学习了，落后注定挨打。">
+    <meta name="description" content="无意间发现了 Parcel ，当时 Github 上只有不到 2000 星 。几天后，当我重新打开 Parcel 地址时，已经 6000+ 星了。是时候学习了，落后注定挨打。">
 <meta name="keywords" content="parcel,webpack">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="聊聊 Parcel">
 <meta property="og:url" content="http://jartto.wang/2017/12/11/chattered-about-parcel/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="无意间发现了 Parcel ，当时 Github 上只有不到 2000 星 。几天后，当我重新打开 Parcel 地址时，已经 6000+ 星了。我知道，是时候学习了，落后注定挨打。">
+<meta property="og:description" content="无意间发现了 Parcel ，当时 Github 上只有不到 2000 星 。几天后，当我重新打开 Parcel 地址时，已经 6000+ 星了。是时候学习了，落后注定挨打。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-15T11:07:55.000Z">
+<meta property="og:updated_time" content="2017-12-16T12:31:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聊聊 Parcel">
-<meta name="twitter:description" content="无意间发现了 Parcel ，当时 Github 上只有不到 2000 星 。几天后，当我重新打开 Parcel 地址时，已经 6000+ 星了。我知道，是时候学习了，落后注定挨打。">
+<meta name="twitter:description" content="无意间发现了 Parcel ，当时 Github 上只有不到 2000 星 。几天后，当我重新打开 Parcel 地址时，已经 6000+ 星了。是时候学习了，落后注定挨打。">
     
     
         
@@ -263,7 +263,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>无意间发现了 <code>Parcel</code> ，当时 <code>Github</code> 上只有不到 2000 星 。几天后，当我重新打开 <code>Parcel</code> 地址时，已经 6000+ 星了。我知道，是时候学习了，落后注定挨打。<br><a id="more"></a></p>
+            <p>无意间发现了 <code>Parcel</code> ，当时 <code>Github</code> 上只有不到 2000 星 。几天后，当我重新打开 <code>Parcel</code> 地址时，已经 6000+ 星了。是时候学习了，落后注定挨打。<br><a id="more"></a></p>
 <h4 id="一、这是什么？"><a href="#一、这是什么？" class="headerlink" title="一、这是什么？"></a>一、这是什么？</h4><div class="alert info"><p>Parcel：极速零配置 Web 应用打包工具。</p>
 </div>
 <h4 id="二、能做什么？"><a href="#二、能做什么？" class="headerlink" title="二、能做什么？"></a>二、能做什么？</h4><p>1.极速打包时间</p>
@@ -291,18 +291,23 @@
 <li>当遇到错误时，<code>Parcel</code> 会输出 语法高亮的代码片段，帮助你定位问题。</li>
 </ul>
 <h4 id="三、如何使用？"><a href="#三、如何使用？" class="headerlink" title="三、如何使用？"></a>三、如何使用？</h4><p>安装 <code>Parcel</code>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g parcel-bundler</div></pre></td></tr></table></figure></p>
-<p>先你应用的从入口 <code>HTML</code> 文件开始。<code>Parcel</code> 跟随着文件的依赖去构建你的整个应用。<br>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>接着我们创建几个简单的项目文件，具体步骤如下：<br>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引入另一个组件</span></div><div class="line"><span class="keyword">import</span> main <span class="keyword">from</span> <span class="string">'./main'</span>;</div><div class="line"></div><div class="line">main();</div></pre></td></tr></table></figure></p>
 <p>main.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引入一个 CSS 模块</span></div><div class="line"><span class="keyword">import</span> classes <span class="keyword">from</span> <span class="string">'./main.css'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(classes.main);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>main.css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.main</span> &#123;</div><div class="line">  <span class="comment">/* 引用一张图片 */</span></div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">'./images/background.png'</span>);</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>只需要运行 <code>parcel index.html</code> 去启动一个开发服务器。引入 <code>JS</code>, <code>CSS</code>, <code>images</code>, 和更多的资源，然后便大功告成！ </p>
+<p>这时候，我们可以看到目录结构如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── .cache</div><div class="line">├── dist</div><div class="line">│   ├── 57ddef82b59606d39132f926ebbc9b62.png</div><div class="line">│   ├── parcel.css</div><div class="line">│   └── parcel.js</div><div class="line">├── images</div><div class="line">│   └── parcel.png</div><div class="line">├── index.html</div><div class="line">├── index.js</div><div class="line">├── main.css</div><div class="line">├── main.js</div><div class="line">└── package.json</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p><code>.cache</code> 文件夹就是文件系统缓存，可以保存每一个文件的编译结果，以便后续能够更快的启动。</p>
+</div>
+<p>而 <code>dist</code> 目录就是我们构建完成的文件，是不是很简单呢，赶快自己试试吧！</p>
 <h4 id="四、Parcel-是如何工作的？"><a href="#四、Parcel-是如何工作的？" class="headerlink" title="四、Parcel 是如何工作的？"></a>四、Parcel 是如何工作的？</h4><p><code>Parcel</code> 将资源树转换为 <code>Bundle</code> 树。许多其它的打包工具基本上都是基于 <code>JS</code> 资源，其它格式都是粘贴的-例如，默认情况下以字符串的形式内嵌到 <code>JS</code> 中。<code>Parcel</code> 是文件类型无关的-它可以按照你期望的方式与任何类型的资源一起工作，无需配置。</p>
 <p><code>Parcel</code> 将一个入口点作为输入，可以是任何类型的：<code>JS</code>，<code>HTML</code>，<code>CSS</code>，图片等。在 <code>Parcel</code> 中定义了各种资源类型，它们知道如何处理特定的资源类型。资源文件被解析，它的依赖关系被提取，并转换成最终的编译形式。这创建了一个资源树。</p>
 <p>一旦资源树被构建，资源就被放入一个 <code>Bundle</code> 树中。为入口资源创建一个 <code>Bundle</code>，并为动态导入的资源创建子 <code>Bundle</code>，这会导致代码拆分的发生。当导入不同类型的资源的时候就会创建子 <code>Bundle</code>，例如如果你在 <code>JS</code> 中导入 <code>CSS</code> 文件，它就会打包成对应 <code>JS</code> 的兄弟 <code>Bundle</code>。如果一个资源需要多个 <code>Bundle</code>，它会被打包到最近的共同祖先，因此不会被包含多次。</p>
 <p>在构建 <code>Bundle</code> 树之后，每一个包都有特定的文件类型的包装器写入文件。</p>
 <h4 id="五、对比传统打包工具有何优势？"><a href="#五、对比传统打包工具有何优势？" class="headerlink" title="五、对比传统打包工具有何优势？"></a>五、对比传统打包工具有何优势？</h4><p>1.<code>Parcel</code> 拥有更少的配置；<br>2.监听文件变更能够帮助重新构建，但初始的启动仍然非常慢。<code>Parcel</code> 利用工作线程编译你的代码，利用现代的多核处理器能力。这导致了初始构建的速度大大提升。<br>3.<code>Parcel</code> 还具有一个文件系统缓存，可以保存每一个文件的编译结果，以便后续能够更快的启动。<br>4.<code>Parcel</code> 的转换工作在 <code>AST</code> 上，因此每个文件只有一个解析，多个转换以及一个代码生成。</p>
-<h4 id="六、美中不足"><a href="#六、美中不足" class="headerlink" title="六、美中不足"></a>六、美中不足</h4><p>1.零配置<br><code>Parcel</code> 本身是零配置的，但 <code>HTML</code>、<code>JS</code> 和 <code>CSS</code> 分别是通过 <code>posthtml</code>、<code>babel</code> 和 <code>postcss</code> 处理的，所以我们得分别配 <code>.posthtmlrc</code>、<code>.babelrc</code> 和 <code>.postcssrc</code>。<br>2.<code>CSS</code> 打包路径问题</p>
-<h4 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h4><p><a href="https://github.com/parcel-bundler/parcel" target="_blank" rel="external">Github 地址</a><br><a href="https://parceljs.org/getting_started.html" target="_blank" rel="external">官方文档</a><br><a href="https://juejin.im/post/5a288a4951882531d8284c97" target="_blank" rel="external">说说 ParcelJS</a><br><a href="https://juejin.im/post/5a28ea566fb9a0450909664c" target="_blank" rel="external">全新打包工具- Parcel 介绍</a></p>
+<h4 id="六、美中不足"><a href="#六、美中不足" class="headerlink" title="六、美中不足"></a>六、美中不足</h4><p>1.零配置<br><code>Parcel</code> 本身是零配置的，但 <code>HTML</code>、<code>JS</code> 和 <code>CSS</code> 分别是通过 <code>posthtml</code>、<code>babel</code> 和 <code>postcss</code> 处理的，所以我们得分别配 <code>.posthtmlrc</code>、<code>.babelrc</code> 和 <code>.postcssrc</code>。<br>2.<code>CSS</code> 打包路径问题。<br>3.<code>async function bundle(main, command) {-SyntaxError: Unexpected token function</code><br>出现该异常问题，你需要将 <code>node</code> 版本升级到 <code>8.x</code> 以上版本，我本地用的 <code>n</code> 来管理 <code>node</code> 版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">n stable</div></pre></td></tr></table></figure></p>
+<p>4.<code>build</code> 之后 <code>dist</code> 目录不会清除，当你切换不同打包文件的时候，容易出现冗余脏文件。<br>5.<code>Parcel</code> 还很年轻，所以你可能会碰到一些麻烦的问题，所以切换项目请慎用。</p>
+<h4 id="七、相关文档"><a href="#七、相关文档" class="headerlink" title="七、相关文档"></a>七、相关文档</h4><p><a href="https://github.com/parcel-bundler/parcel" target="_blank" rel="external">Github 地址</a><br><a href="https://parceljs.org/getting_started.html" target="_blank" rel="external">官方文档</a><br><a href="https://juejin.im/post/5a288a4951882531d8284c97" target="_blank" rel="external">说说 ParcelJS</a><br><a href="https://juejin.im/post/5a28ea566fb9a0450909664c" target="_blank" rel="external">全新打包工具- Parcel 介绍</a></p>
 
             
         </div>
