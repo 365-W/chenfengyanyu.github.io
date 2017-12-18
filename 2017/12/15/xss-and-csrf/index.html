@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="伴随着前端技术的不断发展，Web 应用已经随处可见了。随之而来的问题就是，谁来保护用户的隐私和网络安全？">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-16T12:33:45.000Z">
+<meta property="og:updated_time" content="2017-12-18T07:41:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web 安全之 XSS 和 CSRF">
 <meta name="twitter:description" content="伴随着前端技术的不断发展，Web 应用已经随处可见了。随之而来的问题就是，谁来保护用户的隐私和网络安全？">
@@ -263,8 +263,61 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>伴随着前端技术的不断发展，Web 应用已经随处可见了。随之而来的问题就是，谁来保护用户的隐私和网络安全？<br><a id="more"></a><br><div class="alert info"><p><code>.cache</code> 文件夹就是文件系统缓存，可以保存每一个文件的编译结果，以便后续能够更快的启动。</p>
+            <p>伴随着前端技术的不断发展，Web 应用已经随处可见了。随之而来的问题就是，谁来保护用户的隐私和网络安全？<br><a id="more"></a></p>
+<h4 id="一、网络安全"><a href="#一、网络安全" class="headerlink" title="一、网络安全"></a>一、网络安全</h4><div class="alert info"><p><a href="https://baike.baidu.com/item/网络安全/343664?fr=aladdin" target="_blank" rel="external">网络安全</a>是指网络系统的硬件、软件及其系统中的数据受到保护，不因偶然的或者恶意的原因而遭受到破坏、更改、泄露，系统连续可靠正常地运行，网络服务不中断。</p>
+</div>
+<p>网络安全主要有如下特征：</p>
+<ul>
+<li>保密性：信息不泄露给非授权用户、实体或过程，或供其利用的特性。</li>
+<li>完整性：数据未经授权不能进行改变的特性。即信息在存储或传输过程中保持不被修改、不被破坏和丢失的特性。</li>
+<li>可用性：可被授权实体访问并按需求使用的特性。即当需要时能否存取所需的信息。例如网络环境下拒绝服务、破坏网络和有关系统的正常运行等都属于对可用性的攻击；</li>
+<li>可控性：对信息的传播及内容具有控制能力。</li>
+<li>可审查性：出现安全问题时提供依据与手段。</li>
+</ul>
+<p>通过上面，我们也了解到网络安全其实与我们息息相关，而作为 <code>Web</code> 前端开发工程师，这方面知识一定要了解，可能我们是距离用户最近的开发者。所以我们先从 <code>Web</code> 最常见的 <code>XSS</code> 和 <code>CSRF</code> 攻击来入手吧。<br><div class="alert info"><p>这个时代软件的特点就是：解决了用户痛点，就能为王！</p>
 </div></p>
+<h4 id="二、什么是-XSS-？"><a href="#二、什么是-XSS-？" class="headerlink" title="二、什么是 XSS ？"></a>二、什么是 XSS ？</h4><p>跨站脚本攻击（<code>Cross Site Scripting</code>，为了不和层叠样式表 <code>CSS</code> 混淆，故将跨站脚本攻击缩写为 <code>XSS</code>)。恶意攻击者往 <code>Web</code> 页面里插入恶意 <code>Script</code> 代码，当用户浏览该页之时，嵌入其中 <code>Web</code> 里面的 <code>Script</code> 代码会被执行，从而达到恶意攻击用户的目的。</p>
+<p><code>XSS</code> 主要有如下<a href="https://juejin.im/post/59e6b21bf265da43247f861d" target="_blank" rel="external">三种分类</a>：</p>
+<ul>
+<li><code>Reflected XSS</code>（基于反射的 <code>XSS</code> 攻击）：主要通过利用系统反馈行为漏洞，并欺骗用户主动触发，从而发起 <code>Web</code> 攻击。</li>
+<li><code>Stored XSS</code>（基于存储的 <code>XSS</code> 攻击）：<code>Stored XSS</code> 和 <code>Reflected XSS</code> 的差别就在于，具有攻击性的脚本被保存到了服务器并且可以被普通用户完整的从服务的取得并执行，从而获得了在网络上传播的能力。</li>
+<li><code>DOM-based or local XSS</code>（基于 <code>DOM</code> 或本地的 <code>XSS</code> 攻击）：<code>DOM</code> 型 <code>XSS</code> 其实是一种特殊类型的反射型 <code>XSS</code>，它是基于 <code>DOM</code> 文档对象模型的一种漏洞。可以通过 <code>DOM</code> 来动态修改页面内容，从客户端获取 <code>DOM</code> 中的数据并在本地执行。基于这个特性，就可以利用 <code>JS</code> 脚本来实现 <code>XSS</code> 漏洞的利用。</li>
+</ul>
+<p><code>XSS</code> 是一门又热门又不太受重视的 <code>Web</code> 攻击方式，为什么会这样呢，原因如下：</p>
+<ul>
+<li>耗时间；</li>
+<li>有一定几率不成功；</li>
+<li>没有相应的软件来完成自动化攻击；</li>
+<li>前期需要基本的 <code>HTML</code>、<code>JS</code> 功底，后期需要扎实的 <code>HTML</code>、<code>JS</code>、<code>ActionScript2/3.0</code> 等语言的功底；</li>
+<li>是一种被动的攻击手法；</li>
+<li>对 <code>Website</code> 有 <code>http-only</code>、<code>crossdomian.xml</code> 没有用。</li>
+</ul>
+<div class="alert info"><p>但是这些并没有影响黑客对此漏洞的偏爱，原因只有一个：<code>XSS</code>几乎每个网站都存在。</p>
+</div>
+<h4 id="三、XSS-情景再现"><a href="#三、XSS-情景再现" class="headerlink" title="三、XSS 情景再现"></a>三、XSS 情景再现</h4><p>为了更好的说明 <code>XSS</code>，我们来举一些小栗子：<br>1.在网页 <code>input</code> 或者 <code>textarea</code> 中输入 <code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code> ，如果弹出 <code>alert</code> 对话框，则说明网站存在 <code>XSS</code> 漏洞。<br><div class="alert danger"><p>请注意：我们经常在一些博客网站或者论坛底下的留言框看到 <code>alert</code>，你以为是用户热情，其实他们是想搞你！</p>
+</div></p>
+<p>2.只要网页存在 <code>XSS</code> 漏洞，攻击者可能会嵌入 <code>JS</code> 脚本，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script scr=<span class="string">"jartto_xss_js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span> <span class="comment">// 获取 cookie ，发送用户信息等</span></div></pre></td></tr></table></figure></p>
+<p>3.图片也可能会被利用，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"..."</span> onerror=<span class="string">"appendChild(createElement('script')).src='jartto_xss_js'"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<div class="alert success"><p>到这里你可能就了解了，<code>XSS</code> 的目的就是在目标页面执行不为人知的 JS 脚本，从而窥探用户隐私甚至财产。</p>
+</div>
+<h4 id="四、XSS-漏洞检测以及防御"><a href="#四、XSS-漏洞检测以及防御" class="headerlink" title="四、XSS 漏洞检测以及防御"></a>四、XSS 漏洞检测以及防御</h4><p>通常有一些方式可以测试网站是否有正确处理特殊字符，具体如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span> </div><div class="line">=<span class="string">'&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt; </span></div><div class="line"><span class="string">"&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt; </span></div><div class="line"><span class="string">&lt;script&gt;alert(document.cookie)&lt;/script&gt; </span></div><div class="line"><span class="string">&lt;script&gt;alert(vulnerable)&lt;/script&gt; </span></div><div class="line"><span class="string">%3Cscript%3Ealert('</span>XSS<span class="string">')%3C/script%3E  </span></div><div class="line"><span class="string">&lt;script&gt;alert('</span>XSS<span class="string">')&lt;/script&gt; </span></div><div class="line"><span class="string">&lt;img src="javascript:alert('</span>XSS<span class="string">')"&gt; </span></div><div class="line"><span class="string">&lt;img src="http://jartto.com/test.png" onerror="alert('</span>XSS<span class="string">')"&gt; </span></div><div class="line"><span class="string">&lt;div style="height:expression(alert('</span>XSS<span class="string">'),1)" /&gt;（这个仅限 IE 有效）</span></div></pre></td></tr></table></figure></p>
+<p><a href="https://mp.weixin.qq.com/s/bCVUhh1hyj5KftoYfi89aA" target="_blank" rel="external">防御手段</a>可以采取如下方式：</p>
+<ul>
+<li>对所有用户提交内容进行可靠的输入验证，包括对 <code>URL</code>、查询关键字、<code>HTTP</code>头、<code>POST</code>数据等，仅接受指定长度范围内、采用适当格式、采用所预期的字符的内容提交，对其他的一律过滤。</li>
+<li>使用 <code>HTTP</code> 头指定类型，很多时候可以使用 <code>HTTP</code> 头指定内容的类型，使得输出的内容避免被作为 <code>HTML</code> 解析。</li>
+<li>实现 <code>Session</code> 标记(session tokens)、<code>CAPTCHA</code> 系统或者 <code>HTTP</code> 引用头检查，以防功能被第三方网站所执行。</li>
+<li>确认接收的的内容被妥善的规范化，仅包含最小的、安全的 <code>Tag</code> (没有 <code>JS</code> )，去掉任何对远程内容的引用(尤其是样式表和 <code>JS</code> )，使用 <code>HTTP only</code> 的 <code>Cookie</code>。</li>
+</ul>
+<div class="alert success"><p>避免 <code>XSS</code> 的方法之一主要是将用户所提供的内容进行过滤，许多语言都有提供对 <code>HTML</code> 的过滤，看似很简单，实则很有效。</p>
+</div>
+<h4 id="五、什么是-CSRF-？"><a href="#五、什么是-CSRF-？" class="headerlink" title="五、什么是 CSRF ？"></a>五、什么是 CSRF ？</h4><p>跨站请求伪造 <code>CSRF</code>（Cross-site request forgery），也被称为 <code>One Click Attack</code> 或者 <code>Session Riding</code>，通常缩写为 <code>CSRF</code> 或者 <code>XSRF</code>，是一种对网站的恶意利用。尽管听起来像跨站脚本 <code>XSS</code>，但它与 <code>XSS</code> 非常不同，<code>XSS</code> 利用站点内的信任用户，而 <code>CSRF</code> 则通过伪装来自受信任用户的请求来利用受信任的网站。与 <code>XSS</code> 攻击相比，<code>CSRF</code> 攻击往往不大流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比 <code>XSS</code>更具危险性。</p>
+<p>要完成一次 <code>CSRF</code> 攻击，受害者必须依次完成两个步骤：</p>
+<ol>
+<li>登录受信任网站 <code>A</code>，并在本地生成 <code>Cookie</code>。</li>
+<li>在不登出 <code>A</code> 的情况下，访问危险网站 <code>B</code>。</li>
+</ol>
+<h4 id="六、CSRF-情景再现"><a href="#六、CSRF-情景再现" class="headerlink" title="六、CSRF 情景再现"></a>六、CSRF 情景再现</h4><h4 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h4><p>随着 <code>Web2.0</code>、社交网络、微博等等一系列新型的互联网产品的诞生，基于 <code>Web</code> 环境的互联网应用越来越广泛，企业信息化的过程中各种应用都架设在 <code>Web</code> 平台上，<code>Web</code> 业务的迅速发展也引起黑客们的强烈关注，接踵而至的就是 <code>Web</code> 安全威胁的凸显。</p>
+<h4 id="八、参考"><a href="#八、参考" class="headerlink" title="八、参考"></a>八、参考</h4><p><a href="https://juejin.im/post/59e6b21bf265da43247f861d" target="_blank" rel="external">Web 安全的三个攻防姿势</a><br><a href="http://netsecurity.51cto.com/art/201408/448305_all.htm" target="_blank" rel="external">XSS 的原理分析与解剖</a><br><a href="http://netsecurity.51cto.com/art/201407/446775.htm" target="_blank" rel="external">对于 XSS 和 CSRF 你究竟了解多少</a></p>
 
             
         </div>
