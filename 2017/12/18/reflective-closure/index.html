@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="在定位一个 Bug 的时候，我们聊到了闭包，我认为是闭包的弊端，但在别人眼里却是优势。这是一个值得思考的问题，我决定重新认识闭包，以开放的心态去反思。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-20T15:20:58.000Z">
+<meta property="og:updated_time" content="2017-12-20T15:29:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反思闭包">
 <meta name="twitter:description" content="在定位一个 Bug 的时候，我们聊到了闭包，我认为是闭包的弊端，但在别人眼里却是优势。这是一个值得思考的问题，我决定重新认识闭包，以开放的心态去反思。">
@@ -320,18 +320,19 @@
 <li>由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存；</li>
 <li><code>this</code> 对象在运行时基于函数的执行环境绑定的，而闭包在运行时是指向 <code>window</code> 的，因为闭包并不属于这个对象的属性或方法（用 <code>call</code> 可以强制的要求指向那个对象）；</li>
 </ul>
-<h4 id="五、闭包为什么会导致内存泄漏？"><a href="#五、闭包为什么会导致内存泄漏？" class="headerlink" title="五、闭包为什么会导致内存泄漏？"></a>五、闭包为什么会导致内存泄漏？</h4><p>一般来讲，当函数执行完毕后，局部活动对象就会销毁，内存仅保存全局作用域。但是，闭包的情况不同，<code>closure</code> 函数执行完毕后，其活动对象不会销毁，因为匿名函数的作用域链仍然引用这个活动对象。直到匿名函数被销毁后，<code>closure</code> 函数的活动对象才会被销毁。</p>
+<h4 id="五、闭包为什么会导致内存占用过多？"><a href="#五、闭包为什么会导致内存占用过多？" class="headerlink" title="五、闭包为什么会导致内存占用过多？"></a>五、闭包为什么会导致内存占用过多？</h4><p>一般来讲，当函数执行完毕后，局部活动对象就会销毁，内存仅保存全局作用域。但是，闭包的情况不同，<code>closure</code> 函数执行完毕后，其活动对象不会销毁，因为匿名函数的作用域链仍然引用这个活动对象。直到匿名函数被销毁后，<code>closure</code> 函数的活动对象才会被销毁。</p>
 <p>由于闭包会携带包含它的函数的作用域，因此会占用更多的内存，过度的使用闭包会导致内存占用过多，因此，在绝对必要时，再考虑使用闭包。</p>
-<h4 id="六、反思"><a href="#六、反思" class="headerlink" title="六、反思"></a>六、反思</h4><p>到这里，我们对闭包的理解已经很清楚了，那么如下的问题，对与错也就很容易回答了。</p>
+<h4 id="六、内存占用和内存泄漏"><a href="#六、内存占用和内存泄漏" class="headerlink" title="六、内存占用和内存泄漏"></a>六、内存占用和内存泄漏</h4><p>很多人都会把内存使用和内存泄露搞混。所谓内存泄露是上个世纪某些浏览器的 <code>bug</code>，跟 <code>JS</code> 本身没有关系。</p>
+<h4 id="七、反思"><a href="#七、反思" class="headerlink" title="七、反思"></a>七、反思</h4><p>到这里，我们对闭包的理解已经很清楚了，那么如下的问题，对与错也就很容易回答了。</p>
 <ul>
-<li>闭包一定会造成内存泄漏；(✗)</li>
+<li>闭包会造成内存泄漏吗？(✗)</li>
 <li>闭包中的局部变量会变成全局变量；(✗)</li>
 <li>闭包的弊端就是会造成内存泄漏；(✗)</li>
 <li>闭包会影响性能；(✗)</li>
 <li>闭包是作用域的应用；(√)</li>
 </ul>
-<h4 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h4><p>知识总是在不断论述中得到升华，感谢与我论述并给我启发的 Wmu 同学。</p>
-<h4 id="八、相关资源"><a href="#八、相关资源" class="headerlink" title="八、相关资源"></a>八、相关资源</h4><p><a href="http://blog.csdn.net/vuturn/article/details/44560717" target="_blank" rel="external">JavaScript 闭包详解</a><br><a href="http://blog.csdn.net/hongchh/article/details/52222561" target="_blank" rel="external">JavaScript 闭包的原理与缺陷</a><br><a href="http://blog.csdn.net/sunlylorn/article/details/6534610" target="_blank" rel="external">JS 闭包的用途</a></p>
+<h4 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h4><p>知识总是在不断论述中得到升华，感谢与我论述并给我启发的 Wmu 同学。</p>
+<h4 id="九、相关资源"><a href="#九、相关资源" class="headerlink" title="九、相关资源"></a>九、相关资源</h4><p><a href="http://blog.csdn.net/vuturn/article/details/44560717" target="_blank" rel="external">JavaScript 闭包详解</a><br><a href="http://blog.csdn.net/hongchh/article/details/52222561" target="_blank" rel="external">JavaScript 闭包的原理与缺陷</a><br><a href="http://blog.csdn.net/sunlylorn/article/details/6534610" target="_blank" rel="external">JS 闭包的用途</a><br><a href="http://www.cnblogs.com/rubylouvre/p/3345294.html" target="_blank" rel="external">JS 闭包测试</a><br><a href="https://www.zhihu.com/question/31078912?sort=created" target="_blank" rel="external">关于 JS 闭包是否真的会造成内存泄漏？</a></p>
 
             
         </div>
