@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2017/12/18/reflective-closure/</loc>
+    
+    <lastmod>2017-12-20T09:55:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2017/12/19/one-git-for-more-repository/</loc>
+    
+    <lastmod>2017-12-19T23:52:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/12/15/xss-and-csrf/</loc>
     
     <lastmod>2017-12-19T07:13:39.000Z</lastmod>
