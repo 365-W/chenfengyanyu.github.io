@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>Howler 音频播放插件 - Jartto&#39;s blog</title>
+    <title>Howlerjs 音频播放插件 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -21,14 +21,14 @@
     <meta name="description" content="日常的开发中，我们可能会碰到对音频操作的业务逻辑。原生的 Audio 并不是很好用，所以我们需要一个第三方的支持，这一节，我们来说说音频插件 Howler。">
 <meta name="keywords" content="howler,audio">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Howler 音频播放插件">
+<meta property="og:title" content="Howlerjs 音频播放插件">
 <meta property="og:url" content="http://jartto.wang/2017/05/03/guide-of-howler/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="日常的开发中，我们可能会碰到对音频操作的业务逻辑。原生的 Audio 并不是很好用，所以我们需要一个第三方的支持，这一节，我们来说说音频插件 Howler。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-27T09:16:54.000Z">
+<meta property="og:updated_time" content="2017-12-27T10:00:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Howler 音频播放插件">
+<meta name="twitter:title" content="Howlerjs 音频播放插件">
 <meta name="twitter:description" content="日常的开发中，我们可能会碰到对音频操作的业务逻辑。原生的 Audio 并不是很好用，所以我们需要一个第三方的支持，这一节，我们来说说音频插件 Howler。">
     
     
@@ -235,7 +235,7 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            Howler 音频播放插件
+            Howlerjs 音频播放插件
         </h1>
     
     <div class="post-meta">
@@ -264,7 +264,16 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>日常的开发中，我们可能会碰到对音频操作的业务逻辑。原生的 Audio 并不是很好用，所以我们需要一个第三方的支持，这一节，我们来说说音频插件 Howler。<br><a id="more"></a></p>
-<h4 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h4><div class="alert info"></div>
+<h4 id="一、关于-Howlerjs"><a href="#一、关于-Howlerjs" class="headerlink" title="一、关于 Howlerjs"></a>一、关于 Howlerjs</h4><div class="alert info"></div>
+<h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><p>1.<code>npm</code> 安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install howler</div></pre></td></tr></table></figure></p>
+<p>2.<code>yarn</code> 安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn add howler</div></pre></td></tr></table></figure></p>
+<p>3.<code>bower</code> 安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install howler</div></pre></td></tr></table></figure></p>
+<h4 id="三、简单使用"><a href="#三、简单使用" class="headerlink" title="三、简单使用"></a>三、简单使用</h4><p>1.直接在浏览器中使用<br>首先引入类库文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/howler.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>实例化 <code>Howl</code>：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sound = <span class="keyword">new</span> Howl(&#123;</div><div class="line">  src: [<span class="string">'sound.webm'</span>, <span class="string">'sound.mp3'</span>]</div><div class="line">&#125;);</div><div class="line"></div><div class="line">sound.play();</div></pre></td></tr></table></figure></p>
+<p>2.初始化更多数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sound = <span class="keyword">new</span> Howl(&#123;</div><div class="line">  src: [<span class="string">'sound.webm'</span>, <span class="string">'sound.mp3'</span>, <span class="string">'sound.wav'</span>],</div><div class="line">  autoplay: <span class="literal">true</span>,</div><div class="line">  loop: <span class="literal">true</span>,</div><div class="line">  volume: <span class="number">0.5</span>,</div><div class="line">  onend: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Finished!'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>3.事件监听<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sound = <span class="keyword">new</span> Howl(&#123;</div><div class="line">  src: [<span class="string">'sound.webm'</span>, <span class="string">'sound.mp3'</span>]</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// Clear listener after first call.</span></div><div class="line">sound.once(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  sound.play();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// Fires when the sound finishes playing.</span></div><div class="line">sound.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Finished!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>4.多个声音如何控制<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sound = <span class="keyword">new</span> Howl(&#123;</div><div class="line">  src: [<span class="string">'sound.webm'</span>, <span class="string">'sound.mp3'</span>]</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// Play returns a unique Sound ID that can be passed</span></div><div class="line"><span class="comment">// into any method on Howl to control that specific sound.</span></div><div class="line"><span class="keyword">var</span> id1 = sound.play();</div><div class="line"><span class="keyword">var</span> id2 = sound.play();</div><div class="line"></div><div class="line"><span class="comment">// Fade out the first sound and speed up the second.</span></div><div class="line">sound.fade(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1000</span>, id1);</div><div class="line">sound.rate(<span class="number">1.5</span>, id2);</div></pre></td></tr></table></figure></p>
+<h4 id="四、高级用法"><a href="#四、高级用法" class="headerlink" title="四、高级用法"></a>四、高级用法</h4><h4 id="五、更多参数"><a href="#五、更多参数" class="headerlink" title="五、更多参数"></a>五、更多参数</h4><h4 id="六、相关文档"><a href="#六、相关文档" class="headerlink" title="六、相关文档"></a>六、相关文档</h4><p><a href="https://howlerjs.com" target="_blank" rel="external">官网地址</a><br><a href="https://github.com/goldfire/howler.js#documentation" target="_blank" rel="external">文档地址</a></p>
 
             
         </div>
