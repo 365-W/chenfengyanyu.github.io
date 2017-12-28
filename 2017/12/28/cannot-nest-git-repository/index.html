@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-28T03:06:54.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/gitnest1.png">
+<meta property="og:updated_time" content="2017-12-28T05:24:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何解决 Git 仓库嵌套问题">
 <meta name="twitter:description" content="用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/gitnest1.png">
     
     
         
@@ -247,7 +249,7 @@
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+    <a class="category-link" href="/categories/异常处理/">异常处理</a>
 
 
     
@@ -264,6 +266,29 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。<br><a id="more"></a></p>
+<h4 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h4><div class="alert danger"><p>Git 仓库嵌套使用后，被嵌套的 Git 仓库不能被外层 Git 仓库检测到。</p>
+</div>
+<p>这也就意味着你在被嵌套的 <code>Git</code> 仓库中的更改，外层仓库是无感知的。导致这个问题的原因可能如下：</p>
+<ul>
+<li>在代码中引入其他 <code>Git</code> 仓库；</li>
+<li><code>Clone</code> 别人的 <code>Demo</code> 并做修改；</li>
+</ul>
+<div class="alert info"><p>不看场景的解决方案就是耍流氓。</p>
+</div>
+<h4 id="二、场景一：在代码中引入其他-Git-仓库"><a href="#二、场景一：在代码中引入其他-Git-仓库" class="headerlink" title="二、场景一：在代码中引入其他 Git 仓库"></a>二、场景一：在代码中引入其他 <code>Git</code> 仓库</h4><p>这种情况，需要使用 <code>submodule</code>，过程如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git submodule add https://github.com/chenfengyanyu/fmap-demo.git</div><div class="line"></div><div class="line"><span class="comment"># 或者使用 clone</span></div><div class="line">git <span class="built_in">clone</span> --recursive https://github.com/chenfengyanyu/fmap-demo.git</div></pre></td></tr></table></figure></p>
+<p>这个操作类似于 <code>Clone</code> ，但是会在父仓库下面新建 <code>.gitmodules</code> 文件，我们看一下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi .gitmodules</div></pre></td></tr></table></figure></p>
+<p>大致如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[submodule <span class="string">"fmap-demo"</span>]</div><div class="line">        path = fmap-demo</div><div class="line">        url = https://github.com/chenfengyanyu/fmap-demo.git</div></pre></td></tr></table></figure></p>
+<p>然后做正常提交就可以了。<br><div class="alert info"><p>需要注意的是，这样的操作只能提交一个引用，类似：<code>fmap-demo @ 90758cf</code>，打开的话，会跳到项目源地址。</p>
+</div></p>
+<h4 id="三、场景二：Clone-别人的-Demo-并做修改"><a href="#三、场景二：Clone-别人的-Demo-并做修改" class="headerlink" title="三、场景二：Clone 别人的 Demo 并做修改"></a>三、场景二：<code>Clone</code> 别人的 <code>Demo</code> 并做修改</h4><p>那么有时候，我们可能会 <code>Clone</code> 到一段代码来作为项目的脚手架，这时候嵌套的话，肯定不希望改子仓库的时候，父仓库毫无感知。那么这种情况如何处理呢？</p>
+<p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/gitnest1.png" alt="github"></p>
+<p>首先，进入子仓库，也就是被嵌套的 <code>Git</code> 仓库，删除 <code>.git</code> 目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf .git</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p>可以这么理解，一个项目不应该有俩 <code>Git</code> 地址，所以断开子仓库的原有联系，也就是删除 <code>.git</code> 目录。</p>
+</div>
+<p>然后，返回项目根目录，执行 <code>add</code> 操作：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add fmap-demo</div></pre></td></tr></table></figure></p>
+<div class="alert success"><p>这里必须要选择子项目进行 <code>add</code>，此时 <code>add .</code> 和 <code>add *</code> 都无效。</p>
+</div>
+<p>之后正常 <code>commit</code> 和 <code>push</code>，就可以了。</p>
 
             
         </div>
