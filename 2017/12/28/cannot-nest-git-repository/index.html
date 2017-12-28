@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>如何配置 Git 对应多个 Repository - Jartto&#39;s blog</title>
+    <title>如何解决 Git 仓库嵌套问题 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="突发奇想，做一个在线的 Demo，最经济适用的办法就是利用 github.io 来演示了。那么问题来了，我本地一个客户端，如何对应多个 Github 账号呢？">
-<meta name="keywords" content="git,github">
+    <meta name="description" content="用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。">
+<meta name="keywords" content="git,nest">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="如何配置 Git 对应多个 Repository">
-<meta property="og:url" content="http://jartto.wang/2017/12/19/one-git-for-more-repository/index.html">
+<meta property="og:title" content="如何解决 Git 仓库嵌套问题">
+<meta property="og:url" content="http://jartto.wang/2017/12/28/cannot-nest-git-repository/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="突发奇想，做一个在线的 Demo，最经济适用的办法就是利用 github.io 来演示了。那么问题来了，我本地一个客户端，如何对应多个 Github 账号呢？">
+<meta property="og:description" content="用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-12-22T03:59:39.000Z">
+<meta property="og:updated_time" content="2017-12-28T03:06:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何配置 Git 对应多个 Repository">
-<meta name="twitter:description" content="突发奇想，做一个在线的 Demo，最经济适用的办法就是利用 github.io 来演示了。那么问题来了，我本地一个客户端，如何对应多个 Github 账号呢？">
+<meta name="twitter:title" content="如何解决 Git 仓库嵌套问题">
+<meta name="twitter:description" content="用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。">
     
     
         
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/github0.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/github0.png" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/gitnest0.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/gitnest0.png" />
     
     
     
@@ -235,13 +235,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            如何配置 Git 对应多个 Repository
+            如何解决 Git 仓库嵌套问题
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-12-19T15:46:27+08:00">
+    <time itemprop="datePublished" datetime="2017-12-28T10:51:52+08:00">
 	  
-		    2017/12月/19 15:46:27
+		    2017/12月/28 10:51:52
     	
     </time>
     
@@ -263,31 +263,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>突发奇想，做一个在线的 <code>Demo</code>，最经济适用的办法就是利用 <code>github.io</code> 来演示了。那么问题来了，我本地一个客户端，如何对应多个 <code>Github</code> 账号呢？<br><a id="more"></a></p>
-<h4 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h4><p>假定我现在的场景是：只有一台 <code>Mac</code> ，而我想配置连接两个 <code>Github</code> 账号，你可能会失败。因为：<br><div class="alert success"><p>GitHub will use the key as means to identify you when you connect to them via SSH. As such, you cannot have multiple accounts with the same key, as GitHub won’t be able to tell then which of your accounts you want to use.</p>
-</div></p>
-<p>大致意思就是：你只有一个 SSH 公钥的话，你只能连接一个 Github 账号，否则 Github 将无法区分你想使用哪个账号。提示很明显，既然是这样，那我们就尝试添加新的私钥/公钥来解决问题。</p>
-<h4 id="二、添加私钥-公钥"><a href="#二、添加私钥-公钥" class="headerlink" title="二、添加私钥/公钥"></a>二、添加私钥/公钥</h4><p>1.在 Mac 命令行中输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls ~/.ssh</div></pre></td></tr></table></figure></p>
-<p>如果有 <code>id_rsa</code> 和 <code>id_rsa.pub</code>，说明已存在一对私钥/公钥。<br>2.创建新的私钥/公钥，并指定私钥名称，比如 <code>id_rsa_x</code>（ x 为任意名称）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -f ~/.ssh/id_rsa_1 -C <span class="string">"yourmail@xxx.com"</span></div></pre></td></tr></table></figure></p>
-<div class="alert info"><p>操作完成后，该目录会多出 <code>id_rsa_1</code> 和 <code>id_rsa_1.pub</code> 两个文件。</p>
-</div>
-<h4 id="三、配置-config-文件"><a href="#三、配置-config-文件" class="headerlink" title="三、配置 config 文件"></a>三、配置 <code>config</code> 文件</h4><p>按照上述过程，我们已经创建完成了私钥/公钥，然后在 <code>~/.ssh/</code> 文件夹下创建一个 <code>config</code> 文件并打开：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim config</div></pre></td></tr></table></figure></p>
-<p>编辑 <code>config</code> 文件，配置不同的仓库指向不同的私钥文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 第一个账号，默认使用的账号</span></div><div class="line">Host github.com</div><div class="line">HostName github.com</div><div class="line">User git</div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line"><span class="comment"># 第二个账号</span></div><div class="line">Host second.github.com  <span class="comment"># second为前缀名，可以任意设置</span></div><div class="line">HostName github.com</div><div class="line">User git</div><div class="line">IdentityFile ~/.ssh/id_rsa_1</div></pre></td></tr></table></figure></p>
-<div class="alert info"><p>配置完 <code>config</code> 文件，接下来就是要告诉 <code>Github</code> 相关信息了。</p>
-</div>
-<h4 id="四、为-Github-添加-Deploy-keys"><a href="#四、为-Github-添加-Deploy-keys" class="headerlink" title="四、为 Github 添加 Deploy keys"></a>四、为 <code>Github</code> 添加 <code>Deploy keys</code></h4><p>首先，查看两个账号的私钥，并拷贝：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">more id_rsa.pub</div><div class="line">more id_rsa_1.pub</div></pre></td></tr></table></figure></p>
-<p>打开 <code>Github</code>，<code>Setting - Deploy keys - Add deploy key</code>，将 <code>id_rsa.pub</code> 和 <code>id_rsa_1.pub</code> 分别填入不同的 <code>Github</code> 账号，并保存。</p>
-<h4 id="五、测试-ssh-是否可用"><a href="#五、测试-ssh-是否可用" class="headerlink" title="五、测试 ssh 是否可用"></a>五、测试 <code>ssh</code> 是否可用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div><div class="line">ssh -T git@second.github.com</div></pre></td></tr></table></figure>
-<p>如果出现如下提示，表示配置成功：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hi jartto! You have successfully authenticated, but GitHub does not provide shell access.</div></pre></td></tr></table></figure></p>
-<h4 id="六、注意事项"><a href="#六、注意事项" class="headerlink" title="六、注意事项"></a>六、注意事项</h4><p>因为要对应不同的账号，所以需要取消 <code>git</code> 全局用户名/邮箱的设置，设置独立的用户名/邮箱：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 取消全局 用户名/邮箱 配置</div><div class="line">$ git config --global --unset user.name</div><div class="line">$ git config --global --unset user.email</div><div class="line"></div><div class="line"># 进入项目文件夹，单独设置每个repo 用户名/邮箱</div><div class="line">$ git config user.email &quot;xxxx@xx.com&quot;</div><div class="line">$ git config user.name &quot;xxxx&quot;</div></pre></td></tr></table></figure></p>
-<h4 id="七、ssh-如何区别不同的账号"><a href="#七、ssh-如何区别不同的账号" class="headerlink" title="七、ssh 如何区别不同的账号"></a>七、<code>ssh</code> 如何区别不同的账号</h4><p>有意思的是，<code>ssh</code> 是如何区分不同的账号呢，大概<a href="http://www.jianshu.com/p/04e9a885c5c8" target="_blank" rel="external">原理</a>如下：<br>1.<code>ssh</code> 客户端是通过类似 <code>git@github.com:githubUserName/repName.git **</code> 的地址来识别使用本地的哪个私钥的，地址中的 <code>User</code> 是 <code>@</code> 前面的 <code>git</code>， <code>Host</code> 是 <code>@</code> 后面的 <code>github.com</code>。</p>
-<p>2.如果所有账号的 <code>User</code> 和 <code>Host</code> 都为 <code>git</code> 和 <code>github.com</code>，那么就只能使用一个私钥。所以要对 <code>User</code> 和 <code>Host</code> 进行配置，让每个账号使用自己的 <code>Host</code>，每个 <code>Host</code> 的域名做 <code>CNAME</code> 解析到 <code>github.com</code>，如上面配置中的 <code>Host second.github.com</code>。</p>
-<p>3.配置了别名之后，新的地址就是 <code>git@second.github.com:githubUserName/repName.git**</code>（在添加远程仓库时使用）。</p>
-<h4 id="八、异常处理"><a href="#八、异常处理" class="headerlink" title="八、异常处理"></a>八、异常处理</h4><p>如果配置过程一帆风顺的话，可能也就不会有这篇总结了。<br><div class="alert success"><p>一些细节问题可能会导致你所有努力前功尽弃。</p>
-</div><br>1.<code>Permission denied (publickey)</code><br>如果你碰到这样的问题，可以<a href="https://help.github.com/articles/error-permission-denied-publickey/" target="_blank" rel="external">打出异常</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -vT git@github.com</div></pre></td></tr></table></figure></p>
-<p>然后根据提示的消息来查找解决方案</p>
-<p>2.<code>Permission to jartto1.git denied to jartto</code><br>这个意思很明显，访问被拒绝了，应该是账号没有正确对应。解决方案就是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote <span class="built_in">set</span>-url origin jartto.github.com:jartto/jartto.github.io.git</div></pre></td></tr></table></figure></p>
-<h4 id="九、参考"><a href="#九、参考" class="headerlink" title="九、参考"></a>九、参考</h4><p><a href="http://www.jianshu.com/p/04e9a885c5c8" target="_blank" rel="external">Git 之同一台电脑连接多个远程仓库</a><br><a href="http://www.jianshu.com/p/12badb7e6c10" target="_blank" rel="external">Git 最著名报错 “ERROR: Permission to XXX.git denied to user” 终极解决方案</a><br><a href="https://help.github.com/articles/error-permission-denied-publickey/" target="_blank" rel="external">error-permission-denied-publickey</a></p>
+            <p>用了很久 Git ，今天却被 Git 嵌套问题卡住了。本文将围绕“如何解决 Git 仓库嵌套”问题展开讨论，并提供解决方案。<br><a id="more"></a></p>
 
             
         </div>
@@ -301,7 +277,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/git/">git</a> <a class="tag tag--primary tag--small t-link" href="/tags/github/">github</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/git/">git</a> <a class="tag tag--primary tag--small t-link" href="/tags/nest/">nest</a>
 
             </div>
         
@@ -310,7 +286,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/28/cannot-nest-git-repository/"  data-tooltip="如何解决 Git 仓库嵌套问题">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -318,7 +294,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/18/reflective-closure/" data-tooltip="反思闭包">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/19/one-git-for-more-repository/" data-tooltip="如何配置 Git 对应多个 Repository">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -333,20 +309,26 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
         
         <li class="post-action">
             
@@ -360,6 +342,12 @@
 
 
         <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
         
     </div>
 </article>
@@ -388,7 +376,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/28/cannot-nest-git-repository/"  data-tooltip="如何解决 Git 仓库嵌套问题">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -396,7 +384,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/18/reflective-closure/" data-tooltip="反思闭包">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/12/19/one-git-for-more-repository/" data-tooltip="如何配置 Git 对应多个 Repository">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -411,20 +399,26 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
         
         <li class="post-action">
             
@@ -441,17 +435,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/19/one-git-for-more-repository/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2017/12/28/cannot-nest-git-repository/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -506,6 +500,25 @@
     <!--SCRIPTS-->
 <script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://jartto.wang/2017/12/28/cannot-nest-git-repository/';
+                 
+                    this.page.identifier = '2017/12/28/cannot-nest-git-repository/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'jartto';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
 
