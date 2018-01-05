@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron4.png-blog">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/ps2.png-blog">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron6.png">
-<meta property="og:updated_time" content="2018-01-04T10:30:22.000Z">
+<meta property="og:updated_time" content="2018-01-05T02:53:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探 Electron - 理论篇">
 <meta name="twitter:description" content="提起构建桌面应用，最先想到的肯定是 NW.js ，但却一直不温不火。直到 Electron 的出现，将这一切推向了巅峰，前端的触手伸向了更为广阔的系统应用。">
@@ -402,10 +402,10 @@
 <h4 id="二十六、Electron-源代码结构"><a href="#二十六、Electron-源代码结构" class="headerlink" title="二十六、Electron 源代码结构"></a>二十六、Electron 源代码结构</h4><div class="alert success"><p>当然，如果你需要深入了解 <code>Electron</code> ，官方也提供了一些帮助，我们可以通过如下的结构来深入学习。</p>
 </div>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Electron</div><div class="line">├──atom - Electron 的源代码</div><div class="line">|  ├── app - 系统入口代码</div><div class="line">|  ├── browser - 包含了主窗口、UI 和其他所有与主进程有关的东西，它会告诉渲染进程如何管理页面</div><div class="line">|  |   ├── lib - 主进程初始化代码中 JavaScript 部分的代码</div><div class="line">|  |   ├── ui - 不同平台上 UI 部分的实现</div><div class="line">|  |   |   ├── cocoa - Cocoa 部分的源代码</div><div class="line">|  |   |   ├── gtk - GTK+ 部分的源代码</div><div class="line">|  |   |   └── win - Windows GUI 部分的源代码</div><div class="line">|  |   ├── default_app - 在没有指定 app 的情况下 Electron 启动时默认显示的页面</div><div class="line">|  |   ├── api - 主进程 API 的实现</div><div class="line">|  |   |   └── lib - API 实现中 Javascript 部分的代码</div><div class="line">|  |   ├── net - 网络相关的代码</div><div class="line">|  |   ├── mac - 与 Mac 有关的 Objective-C 代码</div><div class="line">|  |   └── resources - 图标，平台相关的文件等</div><div class="line">|  ├── renderer - 运行在渲染进程中的代码</div><div class="line">|  |   ├── lib - 渲染进程初始化代码中 JavaScript 部分的代码</div><div class="line">|  |   └── api - 渲染进程 API 的实现</div><div class="line">|  |       └── lib - API 实现中 Javascript 部分的代码</div><div class="line">|  └── common - 同时被主进程和渲染进程用到的代码，包括了一些用来将 node 的事件循环</div><div class="line">|      |        整合到 Chromium 的事件循环中时用到的工具函数和代码</div><div class="line">|      ├── lib - 同时被主进程和渲染进程使用到的 Javascript 初始化代码</div><div class="line">|      └── api - 同时被主进程和渲染进程使用到的 API 的实现以及 Electron 内置模块的基础设施</div><div class="line">|          └── lib - API 实现中 Javascript 部分的代码</div><div class="line">├── chromium_src - 从 Chromium 项目中拷贝来的代码</div><div class="line">├── docs - 英语版本的文档</div><div class="line">├── docs-translations - 各种语言版本的文档翻译</div><div class="line">├── spec - 自动化测试</div><div class="line">├── atom.gyp - Electron 的构建规则</div><div class="line">└── common.gypi - 为诸如 `node` 和 `breakpad` 等其他组件准备的编译设置和构建规则</div></pre></td></tr></table></figure>
-<h4 id="二十七、学习资源"><a href="#二十七、学习资源" class="headerlink" title="二十七、学习资源"></a>二十七、学习资源</h4><p>学习过程中，发现了很多不错的资源，分享给大家，共同进步吧：<br><a href="https://www.w3cschool.cn/electronmanual/wcx31ql6.html" target="_blank" rel="external">Electron 中文文档</a><br><a href="https://segmentfault.com/a/1190000006207600" target="_blank" rel="external">Electron 的入门学习</a><br><a href="http://get.ftqq.com/7870.get" target="_blank" rel="external">用 Electron 开发桌面应用</a><br><a href="https://github.com/pfan123/electron-docs" target="_blank" rel="external">Electron-Docs</a><br><a href="https://github.com/eugeneCN/vue-electron-music" target="_blank" rel="external">vue，electron 实现网易云音乐客户端</a><br><a href="https://github.com/sindresorhus/awesome-electron" target="_blank" rel="external">awesome electron</a><br><a href="https://segmentfault.com/a/1190000006919539" target="_blank" rel="external">使用 Electron 构建跨平台的抓取桌面程序</a><br><a href="https://www.npmjs.com/package/electron-builder" target="_blank" rel="external">electron-builder</a><br><a href="https://github.com/mainyaa/gulp-electron" target="_blank" rel="external">gulp-electron</a></p>
+<h4 id="二十七、学习资源"><a href="#二十七、学习资源" class="headerlink" title="二十七、学习资源"></a>二十七、学习资源</h4><p>学习过程中，发现了很多不错的资源，分享给大家，共同进步吧：<br><a href="https://electronjs.org/docs" target="_blank" rel="external">Electron 官方文档</a><br><a href="https://www.w3cschool.cn/electronmanual/wcx31ql6.html" target="_blank" rel="external">Electron 中文文档</a><br><a href="https://segmentfault.com/a/1190000006207600" target="_blank" rel="external">Electron 的入门学习</a><br><a href="http://get.ftqq.com/7870.get" target="_blank" rel="external">用 Electron 开发桌面应用</a><br><a href="https://github.com/pfan123/electron-docs" target="_blank" rel="external">Electron-Docs</a><br><a href="https://github.com/eugeneCN/vue-electron-music" target="_blank" rel="external">vue，electron 实现网易云音乐客户端</a><br><a href="https://github.com/sindresorhus/awesome-electron" target="_blank" rel="external">awesome electron</a><br><a href="https://segmentfault.com/a/1190000006919539" target="_blank" rel="external">使用 Electron 构建跨平台的抓取桌面程序</a><br><a href="https://www.npmjs.com/package/electron-builder" target="_blank" rel="external">electron-builder</a><br><a href="https://github.com/mainyaa/gulp-electron" target="_blank" rel="external">gulp-electron</a></p>
 <h4 id="二十八、写在最后"><a href="#二十八、写在最后" class="headerlink" title="二十八、写在最后"></a>二十八、写在最后</h4><p>由于篇幅实在是太长了，所以我打算把开发中遇到的问题留在后续文章中说明。这里先剧透一下，后续应该还会有两篇总结性的文章，标题已经想好了，我会在<a href="https://github.com/chenfengyanyu/source" target="_blank" rel="external"> github </a>持续更新。先留个传送门吧！</p>
 <ul>
-<li><a href="#">初探 Electron - 升华篇</a></li>
+<li><a href="http://jartto.wang/2018/01/04/first-exploration-electron-2/">初探 Electron - 升华篇</a></li>
 <li><a href="#">初探 Electron - 实践篇</a></li>
 </ul>
 
@@ -468,12 +468,6 @@
             </a>
         </li>
         
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
-        
         <li class="post-action">
             
                 <a class="post-action-btn btn btn--default" href="#">
@@ -486,12 +480,6 @@
 
 
         <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
-        
-            
-                <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-            
         
     </div>
 </article>
@@ -557,12 +545,6 @@
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -644,25 +626,6 @@
     <!--SCRIPTS-->
 <script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
 <!--SCRIPTS END-->
-
-    
-        <script>
-             var disqus_config = function () {
-                 this.page.url = 'http://jartto.wang/2018/01/03/first-exploration-electron/';
-                 
-                    this.page.identifier = '2018/01/03/first-exploration-electron/';
-                                  
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = 'jartto';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-    
 
 
 
