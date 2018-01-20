@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！">
+    <meta name="description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！">
 <meta name="keywords" content="image,blob,base64">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="玩转图片流">
 <meta property="og:url" content="http://jartto.wang/2018/01/19/play-image-stream/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！">
+<meta property="og:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-01-20T11:20:53.000Z">
+<meta property="og:updated_time" content="2018-01-20T12:44:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玩转图片流">
-<meta name="twitter:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！">
+<meta name="twitter:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！">
     
     
         
@@ -263,7 +263,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>做了一款<a href="#">图片识别</a>软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！<br><a id="more"></a></p>
+            <p>做了一款<a href="https://github.com/chenfengyanyu/electron-ocr" target="_blank" rel="external">图片识别</a>软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！<br><a id="more"></a></p>
 <h4 id="一、常见场景"><a href="#一、常见场景" class="headerlink" title="一、常见场景"></a>一、常见场景</h4><p>我们先来看一下图片的使用场景：</p>
 <ul>
 <li>通过 input 上传；</li>
@@ -275,9 +275,43 @@
 </ul>
 <div class="alert success"><p>当然，实际的应用远远比这些复杂，但是我们如果掌握了核心思想，那么无非就是「图片流」的获取和转换，下面让我们逐步深入吧！</p>
 </div>
-<h4 id="二、图片流如何定义？"><a href="#二、图片流如何定义？" class="headerlink" title="二、图片流如何定义？"></a>二、图片流如何定义？</h4><p>上面提到了「图片流」，那么我们先来过一下基础：</p>
+<h4 id="二、说说图片流"><a href="#二、说说图片流" class="headerlink" title="二、说说图片流"></a>二、说说图片流</h4><p>上面提到了「图片流」，其实就是用二进制流来表示图片，也就是我们常说的「二进制图片」。<br><div class="alert info"><p>计算机的存储在物理上是都二进制的，所以文本文件与二进制文件的区别并不是物理上的，而是逻辑上的。</p>
+</div><br>可能有人要问了，为什么要用二进制来表示图片呢？我们来看看二进制的优势：</p>
+<ol>
+<li>二进制文件比较节约空间，在储存字符型数据时与普通存储并没有差别。但是在储存数字，特别是实型数字时，二进制更节省空间；</li>
+<li>内存中参加计算的数据都是用二进制无格式储存起来的，因此，使用二进制储存到文件就更快捷。如果储存为文本文件，则需要一个转换的过程。在数据量很大的时候，两者就会有明显的速度差别了；　</li>
+<li>涉及到一些比较精确的数据，使用二进制储存不会造成有效位的丢失；</li>
+</ol>
+<p>看到这里，相信大家已经对图片流有了一定的认识。既然提到了存储，补充说明一下图片在后端存储方式：</p>
+<ul>
+<li>其一：可以将图片以独立文件的形式存储在服务器的指定文件夹中，再将路径存入数据库字段中；</li>
+<li>其二：将图片转换成二进制流，直接存储到数据库的 <code>Image</code> 类型字段中；</li>
+</ul>
 <h4 id="三、FileReader-是什么？"><a href="#三、FileReader-是什么？" class="headerlink" title="三、FileReader 是什么？"></a>三、FileReader 是什么？</h4><p><code>FileReader</code> 对象允许 <code>Web</code> 应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 <code>File</code> 或 <code>Blob</code> 对象指定要读取的文件或数据。</p>
-<p>其中 <code>File</code> 对象可以是来自用户在一个 <code>&lt;input&gt;</code> 元素上选择文件后返回的 <code>FileList</code> 对象,也可以来自拖放操作生成的  <code>DataTransfer</code> 对象,还可以是来自在一个 <code>HTMLCanvasElement</code> 上执行 <code>mozGetAsFile()</code> 方法后返回结果。</p>
+<p>其中 <code>File</code> 对象可以是来自用户在一个 <code>&lt;input&gt;</code> 元素上选择文件后返回的 <code>FileList</code> 对象,也可以来自拖放操作生成的  <code>DataTransfer</code> 对象,还可以是来自在一个 <code>HTMLCanvasElement</code> 上执行 <code>mozGetAsFile()</code> 方法后返回结果。<br><div class="alert warning"><p>官话说了一大堆，其实你只需要知道「它是用来读取文件的」就够了。</p>
+</div><br>参数说明如下：</p>
+<ul>
+<li><code>FileReader.error</code>（只读）：一个 <code>DOMException</code>，表示在读取文件时发生的错误 ；</li>
+<li><code>FileReader.readyState</code>（只读）：表示 <code>FileReader</code> 状态的数字。取值如下：<ul>
+<li><code>EMPTY</code>    0    还没有加载任何数据.</li>
+<li><code>LOADING</code>    1    数据正在被加载.</li>
+<li><code>DONE</code>    2    已完成全部的读取请求.</li>
+</ul>
+</li>
+<li><code>FileReader.result</code>（只读）：文件的内容。该属性仅在读取操作完成后才有效，数据的格式取决于使用哪个方法来启动读取操作。</li>
+</ul>
+<p>还有几个事件处理函数：</p>
+<ul>
+<li><code>FileReader.onabort</code>：处理 <code>abort</code> 事件。该事件在读取操作被中断时触发。</li>
+<li><code>FileReader.onerror</code>：处理 <code>error</code> 事件。该事件在读取操作发生错误时触发。</li>
+<li><code>FileReader.onload</code>：处理 <code>load</code> 事件。该事件在读取操作完成时触发。</li>
+<li><code>FileReader.onloadstart</code>：处理 <code>loadstart</code> 事件。该事件在读取操作开始时触发。</li>
+<li><code>FileReader.onloadend</code>：处理 <code>loadend</code> 事件。该事件在读取操作结束时（要么成功，要么失败）触发。</li>
+<li><code>FileReader.onprogress</code>：处理 <code>progress</code> 事件。该事件在读取 <code>Blob</code> 时触发。</li>
+</ul>
+<p>具体的应用场景可能如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">onDrop(files) &#123;</div><div class="line">  files.forEach(<span class="function"><span class="params">file</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">    reader.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'Jartto files: '</span>, file);</div><div class="line">      <span class="keyword">const</span> fileAsBinaryString = reader.result;</div><div class="line">      <span class="comment">// Todo...</span></div><div class="line">    &#125;;</div><div class="line">    reader.onabort = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'file reading was aborted'</span>);</div><div class="line">    reader.onerror = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'file reading has failed'</span>);</div><div class="line"></div><div class="line">    reader.readAsBinaryString(file);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<div class="alert danger"><p>用法很简单，你唯一需要注意的是一定要在 <code>onload</code> 之后做操作！</p>
+</div>
 <h4 id="四、base64-格式"><a href="#四、base64-格式" class="headerlink" title="四、base64 格式"></a>四、base64 格式</h4><h4 id="五、Blob-格式"><a href="#五、Blob-格式" class="headerlink" title="五、Blob 格式"></a>五、Blob 格式</h4><div class="alert success"><p>BLOB (binary large object)，二进制大对象，是一个可以存储二进制文件的容器。</p>
 </div>
 <p>BLOB是一个大文件，典型的BLOB是一张图片或一个声音文件，由于它们的尺寸，必须使用特殊的方式来处理（例如：上传、下载或者存放到一个数据库）。</p>
@@ -285,7 +319,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">blobToBase64(blob) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">    fileReader.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">      resolve(e.target.result);</div><div class="line">    &#125;;</div><div class="line">    fileReader.readAsDataURL(blob);</div><div class="line">    fileReader.onerror = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'文件流异常'</span>));</div><div class="line">    &#125;;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>url 转 base64</p>
 <h4 id="八、常见问题与补充说明"><a href="#八、常见问题与补充说明" class="headerlink" title="八、常见问题与补充说明"></a>八、常见问题与补充说明</h4><p>1.Failed to execute ‘readAsDataURL’ on ‘FileReader’: parameter 1 is not of type ‘Blob’.<br>2.很多第三方应用都需要去除 <code>base64</code> 头信息：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">base64.replace(<span class="regexp">/^data:image\/(jpeg|png|gif);base64,/</span>,<span class="string">''</span>)</div></pre></td></tr></table></figure></p>
-<h4 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h4><h4 id="十、参考资源"><a href="#十、参考资源" class="headerlink" title="十、参考资源"></a>十、参考资源</h4><p><a href="https://baike.baidu.com/item/blob/543419?fr=aladdin" target="_blank" rel="external">百科</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="external">MDN FileReader</a></p>
+<h4 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h4><h4 id="十、参考资源"><a href="#十、参考资源" class="headerlink" title="十、参考资源"></a>十、参考资源</h4><p><a href="https://baike.baidu.com/item/blob/543419?fr=aladdin" target="_blank" rel="external">百科</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="external">MDN FileReader</a><br><a href="https://baike.baidu.com/item/二进制图片/22031326?fr=aladdin" target="_blank" rel="external">二进制图片</a></p>
 
             
         </div>
