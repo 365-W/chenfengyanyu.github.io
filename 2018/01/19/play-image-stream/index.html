@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！">
+    <meta name="description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！">
 <meta name="keywords" content="image,blob,base64">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="玩转图片流">
 <meta property="og:url" content="http://jartto.wang/2018/01/19/play-image-stream/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！">
+<meta property="og:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-01-20T04:09:25.000Z">
+<meta property="og:updated_time" content="2018-01-20T11:20:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玩转图片流">
-<meta name="twitter:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！">
+<meta name="twitter:description" content="做了一款图片识别软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！">
     
     
         
@@ -263,7 +263,29 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>做了一款<a href="#">图片识别</a>软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流」吧！<br><a id="more"></a></p>
+            <p>做了一款<a href="#">图片识别</a>软件，应用到了图片流，预览，Blob，Base64，以及类型转换等技术。这些技术在图片相关开发中必不可少，这一次，让我们玩转「图片流吧！<br><a id="more"></a></p>
+<h4 id="一、常见场景"><a href="#一、常见场景" class="headerlink" title="一、常见场景"></a>一、常见场景</h4><p>我们先来看一下图片的使用场景：</p>
+<ul>
+<li>通过 input 上传；</li>
+<li>文件拖拽上传；</li>
+<li>图片预览；</li>
+<li>图片数据存储；</li>
+<li>第三方接口需要；</li>
+<li>…</li>
+</ul>
+<div class="alert success"><p>当然，实际的应用远远比这些复杂，但是我们如果掌握了核心思想，那么无非就是「图片流」的获取和转换，下面让我们逐步深入吧！</p>
+</div>
+<h4 id="二、图片流如何定义？"><a href="#二、图片流如何定义？" class="headerlink" title="二、图片流如何定义？"></a>二、图片流如何定义？</h4><p>上面提到了「图片流」，那么我们先来过一下基础：</p>
+<h4 id="三、FileReader-是什么？"><a href="#三、FileReader-是什么？" class="headerlink" title="三、FileReader 是什么？"></a>三、FileReader 是什么？</h4><p><code>FileReader</code> 对象允许 <code>Web</code> 应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 <code>File</code> 或 <code>Blob</code> 对象指定要读取的文件或数据。</p>
+<p>其中 <code>File</code> 对象可以是来自用户在一个 <code>&lt;input&gt;</code> 元素上选择文件后返回的 <code>FileList</code> 对象,也可以来自拖放操作生成的  <code>DataTransfer</code> 对象,还可以是来自在一个 <code>HTMLCanvasElement</code> 上执行 <code>mozGetAsFile()</code> 方法后返回结果。</p>
+<h4 id="四、base64-格式"><a href="#四、base64-格式" class="headerlink" title="四、base64 格式"></a>四、base64 格式</h4><h4 id="五、Blob-格式"><a href="#五、Blob-格式" class="headerlink" title="五、Blob 格式"></a>五、Blob 格式</h4><div class="alert success"><p>BLOB (binary large object)，二进制大对象，是一个可以存储二进制文件的容器。</p>
+</div>
+<p>BLOB是一个大文件，典型的BLOB是一张图片或一个声音文件，由于它们的尺寸，必须使用特殊的方式来处理（例如：上传、下载或者存放到一个数据库）。</p>
+<h4 id="六、base64-转-blob"><a href="#六、base64-转-blob" class="headerlink" title="六、base64 转 blob"></a>六、base64 转 blob</h4><h4 id="七、blob-转-base64"><a href="#七、blob-转-base64" class="headerlink" title="七、blob 转 base64"></a>七、blob 转 base64</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> allBase64 = <span class="keyword">await</span> <span class="keyword">this</span>.blobToBase64(<span class="keyword">this</span>.state.myfile);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">blobToBase64(blob) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> fileReader = <span class="keyword">new</span> FileReader();</div><div class="line">    fileReader.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">      resolve(e.target.result);</div><div class="line">    &#125;;</div><div class="line">    fileReader.readAsDataURL(blob);</div><div class="line">    fileReader.onerror = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'文件流异常'</span>));</div><div class="line">    &#125;;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>url 转 base64</p>
+<h4 id="八、常见问题与补充说明"><a href="#八、常见问题与补充说明" class="headerlink" title="八、常见问题与补充说明"></a>八、常见问题与补充说明</h4><p>1.Failed to execute ‘readAsDataURL’ on ‘FileReader’: parameter 1 is not of type ‘Blob’.<br>2.很多第三方应用都需要去除 <code>base64</code> 头信息：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">base64.replace(<span class="regexp">/^data:image\/(jpeg|png|gif);base64,/</span>,<span class="string">''</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h4><h4 id="十、参考资源"><a href="#十、参考资源" class="headerlink" title="十、参考资源"></a>十、参考资源</h4><p><a href="https://baike.baidu.com/item/blob/543419?fr=aladdin" target="_blank" rel="external">百科</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="external">MDN FileReader</a></p>
 
             
         </div>
