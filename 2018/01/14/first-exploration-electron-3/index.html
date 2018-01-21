@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>初探 Electron - 实践篇 - Jartto&#39;s blog</title>
+    <title>初探 Electron - 实践篇1 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -21,7 +21,7 @@
     <meta name="description" content="经历过前两篇的洗礼，相信大家已经掌握了 Electron 基本的用法，那么还在等什么，快上手项目试试吧！">
 <meta name="keywords" content="electron">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="初探 Electron - 实践篇">
+<meta property="og:title" content="初探 Electron - 实践篇1">
 <meta property="og:url" content="http://jartto.wang/2018/01/14/first-exploration-electron-3/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="经历过前两篇的洗礼，相信大家已经掌握了 Electron 基本的用法，那么还在等什么，快上手项目试试吧！">
@@ -32,9 +32,9 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron10.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron12.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron13.png">
-<meta property="og:updated_time" content="2018-01-21T06:21:06.000Z">
+<meta property="og:updated_time" content="2018-01-21T06:32:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探 Electron - 实践篇">
+<meta name="twitter:title" content="初探 Electron - 实践篇1">
 <meta name="twitter:description" content="经历过前两篇的洗礼，相信大家已经掌握了 Electron 基本的用法，那么还在等什么，快上手项目试试吧！">
 <meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron7.png">
     
@@ -242,7 +242,7 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            初探 Electron - 实践篇
+            初探 Electron - 实践篇1
         </h1>
     
     <div class="post-meta">
@@ -310,7 +310,9 @@
 <p>同时增加 <code>&quot;start&quot;: &quot;electron .&quot;</code> 配置项，指定使用 <code>Electron</code> 启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;start&quot;: &quot;electron .&quot;,</div><div class="line">  &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 <p>接下来，我们打开命令行，执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run start</div></pre></td></tr></table></figure></p>
 <p>如果你看到了窗口中的 <code>Hello World!</code>，那么恭喜你，示例已经正确运行了。</p>
-<h4 id="五、继续升级"><a href="#五、继续升级" class="headerlink" title="五、继续升级"></a>五、继续升级</h4><p>我们通过手动创建完成了和官网起手项目类似的功能，但路还有些远，我们来做一些升级工作，使用 <code>react</code>。</p>
+<h4 id="五、继续升级"><a href="#五、继续升级" class="headerlink" title="五、继续升级"></a>五、继续升级</h4><p>我们通过手动创建完成了和官网起手项目类似的功能，但路还有些远，我们来做一些升级工作，使用 <code>react</code>。<br><div class="alert info"><p><code>react</code> 需要额外的一些解析，所以我们借助 <code>electron-compile</code> 来动态编译。</p>
+</div></p>
+<p><a href="http://jartto.wang/2018/01/21/first-exploration-electron-4/">初探 Electron - 实践篇2</a></p>
 
             
         </div>
