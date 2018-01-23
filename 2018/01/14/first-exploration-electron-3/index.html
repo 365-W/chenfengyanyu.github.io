@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron10.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron12.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron13.png">
-<meta property="og:updated_time" content="2018-01-21T06:36:40.000Z">
+<meta property="og:updated_time" content="2018-01-23T02:31:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探 Electron - 实践篇1">
 <meta name="twitter:description" content="经历过前两篇的洗礼，相信大家已经掌握了 Electron 基本的用法，那么还在等什么，快上手项目试试吧！">
@@ -312,6 +312,10 @@
 <p>如果你看到了窗口中的 <code>Hello World!</code>，那么恭喜你，示例已经正确运行了。</p>
 <h4 id="五、继续升级"><a href="#五、继续升级" class="headerlink" title="五、继续升级"></a>五、继续升级</h4><p>我们通过手动创建完成了和官网起手项目类似的功能，但路还有些远，我们来做一些升级工作，使用 <code>react</code> 来开发项目。<br><div class="alert info"><p><code>react</code> 需要额外的一些解析，所以我们借助 <code>electron-compile</code> 来动态编译。</p>
 </div></p>
+<p>先来安装 <code>electron-compile</code>，如果太慢请考虑使用 <code>cnpm</code> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install electron-compile --save</div></pre></td></tr></table></figure></p>
+<p>因为要预编译文件，所以我们需要为 <code>electron-compile</code> 指定入口文件，在项目根目录下新建 <code>index.js</code> 文件，写入：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">let</span> appRoot = path.join(__dirname, <span class="string">''</span>);</div><div class="line"></div><div class="line"><span class="built_in">require</span>(<span class="string">'electron-compile'</span>).init(appRoot, <span class="built_in">require</span>.resolve(<span class="string">'./app/main'</span>));</div></pre></td></tr></table></figure></p>
+<div class="alert success"><p>这里先指定一个在 <code>app</code> 目录下的启动文件 <code>main.js</code>，其实也就是该目录下的主进程文件。</p>
+</div>
 <p><a href="http://jartto.wang/2018/01/21/first-exploration-electron-4/">初探 Electron - 实践篇2</a></p>
 
             
