@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron10.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron12.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/electron13.png">
-<meta property="og:updated_time" content="2018-01-23T06:43:14.000Z">
+<meta property="og:updated_time" content="2018-01-23T13:45:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探 Electron - 实践篇1">
 <meta name="twitter:description" content="经历过前两篇的洗礼，相信大家已经掌握了 Electron 基本的用法，那么还在等什么，快上手项目试试吧！">
@@ -334,7 +334,7 @@
 <h4 id="六、热启动"><a href="#六、热启动" class="headerlink" title="六、热启动"></a>六、热启动</h4><p>太棒了，美中不足的就是 <code>react</code> 不能热加载，没关系，我们还有 <code>electron-reload</code>，先安装依赖包：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install electron-reload --save-dev</div></pre></td></tr></table></figure></p>
 <p>同时，需要在主进程文件 main.js 中增加如下代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> isDevelopment = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span> (isDevelopment) &#123;</div><div class="line">  <span class="comment">/* eslint-disable */</span></div><div class="line">  <span class="built_in">require</span>(<span class="string">'electron-reload'</span>)(__dirname, &#123;</div><div class="line">    electron: <span class="built_in">require</span>(<span class="string">'$&#123;__dirname&#125;/../../node_modules/electron'</span>),</div><div class="line">    ignored: <span class="regexp">/node_modules|[\/\\]\./</span></div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>重新启动，快更新文件试试吧，热更新也已经就绪了！</p>
-<h4 id="七、回顾总结"><a href="#七、回顾总结" class="headerlink" title="七、回顾总结"></a>七、回顾总结</h4><p>实践篇，我们从零到一搭建了一个用 <code>react</code> 来开发 <code>electron</code> 的简单框架，完成了支持 <code>es6</code> 的编译配置，同时也添加了热加载。到这里，项目已经初具规模，你可以去做任何想做的事情了～</p>
+<h4 id="七、回顾小结"><a href="#七、回顾小结" class="headerlink" title="七、回顾小结"></a>七、回顾小结</h4><p>实践篇，我们从零到一搭建了一个用 <code>react</code> 来开发 <code>electron</code> 的简单框架，完成了支持 <code>es6</code> 的编译配置，同时也添加了热加载。到这里，项目已经初具规模，你可以去做任何想做的事情了～</p>
 <p>下一节，我们将继续深入，对框架做一些易用性的优化以及补充，逐步完善项目。传送门在此：<a href="http://jartto.wang/2018/01/21/first-exploration-electron-4/">初探 Electron - 实践篇2</a>。</p>
 
             
