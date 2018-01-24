@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="上文 初探 Electron - 实践篇1中，我们完成了项目的主架构，虽然可以运行，但并不完美。这节我们继续补充，一起完成剩下的工作。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-01-24T04:39:09.000Z">
+<meta property="og:updated_time" content="2018-01-24T06:45:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探 Electron - 实践篇2">
 <meta name="twitter:description" content="上文 初探 Electron - 实践篇1中，我们完成了项目的主架构，虽然可以运行，但并不完美。这节我们继续补充，一起完成剩下的工作。">
@@ -304,7 +304,8 @@
 <p>接着配置 <code>compilerc</code>：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"plugins"</span>: [</div><div class="line">    [<span class="string">"transform-runtime"</span>, &#123;</div><div class="line">      <span class="attr">"polyfill"</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">"regenerator"</span>: <span class="literal">true</span></div><div class="line">    &#125;]</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <div class="alert danger"><p>如果出现异常：<code>await is a reserved word</code>，请注意配套 <code>async</code> 使用。</p>
 </div>
-<h4 id="十七、总结"><a href="#十七、总结" class="headerlink" title="十七、总结"></a>十七、总结</h4><p>本篇主要围绕具体实现来展开说明，提到了 <code>UI</code> 库、添加了路由、编写了组件、完善了规范、对接了 <code>API</code> 等等。</p>
+<h4 id="十六、总结"><a href="#十六、总结" class="headerlink" title="十六、总结"></a>十六、总结</h4><p>本篇主要围绕具体实现来展开说明，提到了 <code>UI</code> 库、添加了路由、编写了组件、完善了规范、对接了 <code>API</code> 等等。功能也算是完成了七七八八，剩下的业务逻辑就不在这里啰嗦了。<code>Electron</code> 还有很多的技术细节，肯定也不是三言两语就能说完的，所以建议大家都去实际的应用一下，只有这样才能融汇贯通。</p>
+<p><a href="https://github.com/chenfengyanyu/electron-ocr" target="_blank" rel="external">Electron-OCR</a>这个项目我还在继续，想到什么就加上去实现。欢迎大家加入进来，一起来做一个完美的识图工具。</p>
 
             
         </div>
