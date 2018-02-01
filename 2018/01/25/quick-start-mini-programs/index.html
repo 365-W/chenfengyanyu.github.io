@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="心血来潮，突然想搞个小程序玩玩。微信提供了比较全面的支持，还可以上传托管服务器，又不收钱。对前端来说，这不是白送吗，快抓紧机会试试吧～">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-02-01T14:55:16.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wx1.png">
+<meta property="og:updated_time" content="2018-02-01T15:43:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速上手小程序">
 <meta name="twitter:description" content="心血来潮，突然想搞个小程序玩玩。微信提供了比较全面的支持，还可以上传托管服务器，又不收钱。对前端来说，这不是白送吗，快抓紧机会试试吧～">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wx1.png">
     
     
         
@@ -265,11 +267,44 @@
         <div class="main-content-wrap">
             <p>心血来潮，突然想搞个小程序玩玩。微信提供了比较全面的支持，还可以上传托管服务器，又不收钱。对前端来说，这不是白送吗，快抓紧机会试试吧～<br><a id="more"></a></p>
 <h4 id="一、注册账号"><a href="#一、注册账号" class="headerlink" title="一、注册账号"></a>一、注册账号</h4><p>首先去<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="external">官网注册</a>一个小程序账号吧，我们要拿到 <code>AppId</code>。</p>
-<div class="alert warning"><p>小程序注册的前提是，没有注册过任何的微公众平，如未注册过订阅号、服务号之类的。邮箱要求也是“未被公众平台注册，未被开放平台注册，未被个人微信号绑定的邮箱</p>
+<div class="alert warning"><p>小程序注册的前提是，没有注册过任何的微公众平，如未注册过订阅号、服务号之类的。邮箱要求也是“未被公众平台注册，未被开放平台注册，未被个人微信号绑定的邮箱。</p>
 </div>
-<h4 id="二、安装开发者工具"><a href="#二、安装开发者工具" class="headerlink" title="二、安装开发者工具"></a>二、安装开发者工具</h4><p>要开发微信小程序，开发者工具必不可少，快去<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=2018125" target="_blank" rel="external">这里</a>下载吧！</p>
-<p>打开微信开发者工具，创建项目的时候会用到我们上面拿到的 <code>AppId</code>。</p>
+<h4 id="二、安装开发者工具"><a href="#二、安装开发者工具" class="headerlink" title="二、安装开发者工具"></a>二、安装开发者工具</h4><p>要开发微信小程序，开发者工具必不可少，快去<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=2018125" target="_blank" rel="external">这里</a>下载吧！打开微信开发者工具，创建项目的时候会用到我们上面拿到的 <code>AppId</code>。</p>
 <h4 id="三、简易教程"><a href="#三、简易教程" class="headerlink" title="三、简易教程"></a>三、简易教程</h4><p>官网的<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/" target="_blank" rel="external">简易教程</a>走一遍，主要包含：</p>
+<ul>
+<li>起步：告诉你怎么申请账号，如何使用开发者工具，以及编译预览。</li>
+<li>代码构成：<code>WXML</code>，<code>WXSS</code> 以及 <code>JSON</code> 配置。</li>
+<li>小程序能力：告诉你页面如何启动，可以使用的组件，还有微信的一些 <code>API</code>。</li>
+<li>发布前准备：预览，上传以及版本管理。</li>
+<li>上线：提交审核，发布产品，以及运营数据的监控等。</li>
+</ul>
+<div class="alert info"><p>教程很简单，看一遍文档，基本都会了。</p>
+</div>
+<h4 id="四、使用-WePY-框架"><a href="#四、使用-WePY-框架" class="headerlink" title="四、使用 WePY 框架"></a>四、使用 WePY 框架</h4><p>本来打算直接按照简易教程上手撸一把，结果意外发现了 WePY 这个框架，看完以后，我决定马上用起来。先来上一张<a href="https://tencent.github.io/wepy/" target="_blank" rel="external">官网</a>的介绍：<br><div class="alert success"><p>让小程序支持组件化开发的框架一个最受欢迎的小程序框架。</p>
+</div><br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/wx1.png" alt="wepy"><br>看完上面的图，为什么使用 <code>WePY</code> 框架的理由，不言自明了吧！下面，先来准备初始化代码吧：<br>首先，我们先来安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install wepy-cli -g</div></pre></td></tr></table></figure></p>
+<p>然后，在开发目录中生成 <code>Demo</code> 开发项目：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wepy new myproject</div></pre></td></tr></table></figure></p>
+<p>切换至项目目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> myproject</div></pre></td></tr></table></figure></p>
+<p>开启实时编译：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wepy build --watch</div></pre></td></tr></table></figure></p>
+<p>脚手架生成出来的项目结构如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── dist                   微信开发者工具指定的目录（该目录由WePY的build指令自动编译生成，请不要直接修改该目录下的文件）</div><div class="line">├── node_modules           </div><div class="line">├── src                    代码编写的目录（该目录为使用WePY后的开发目录）</div><div class="line">|   ├── components         WePY组件目录（组件不属于完整页面，仅供完整页面或其他组件引用）</div><div class="line">|   |   ├── com_a.wpy      可复用的WePY组件a</div><div class="line">|   |   └── com_b.wpy      可复用的WePY组件b</div><div class="line">|   ├── pages              WePY页面目录（属于完整页面）</div><div class="line">|   |   ├── index.wpy      index页面（经build后，会在dist目录下的pages目录生成index.js、index.json、index.wxml和index.wxss文件）</div><div class="line">|   |   └── other.wpy      other页面（经build后，会在dist目录下的pages目录生成other.js、other.json、other.wxml和other.wxss文件）</div><div class="line">|   └── app.wpy            小程序配置项（全局数据、样式、声明钩子等；经build后，会在dist目录下生成app.js、app.json和app.wxss文件）</div><div class="line">└── package.json           项目的package配置</div></pre></td></tr></table></figure></p>
+<h4 id="五、WePY-框架的重要事项"><a href="#五、WePY-框架的重要事项" class="headerlink" title="五、WePY 框架的重要事项"></a>五、WePY 框架的重要事项</h4><ol>
+<li>使用微信开发者工具 –&gt; 添加项目，项目目录请选择 <code>dist</code> 目录。</li>
+<li>微信开发者工具 –&gt; 项目 –&gt; 关闭 <code>ES6</code> 转 <code>ES5</code>。 重要：漏掉此项会运行报错。</li>
+<li>微信开发者工具 –&gt; 项目 –&gt; 关闭上传代码时样式自动补全。 重要：某些情况下漏掉此项也会运行报错。</li>
+<li>微信开发者工具 –&gt; 项目 –&gt; 关闭代码压缩上传。 重要：开启后，会导致真机 <code>computed</code>, <code>props.sync</code> 等等属性失效。（注：压缩功能可使用 <code>WePY</code> 提供的 <code>build</code> 指令代替，详见后文相关介绍以及 <code>Demo</code> 项目根目录中的 <code>wepy.config.js</code> 和 <code>package.json</code> 文件。）</li>
+<li>本地项目根目录运行 <code>wepy build --watch</code>，开启实时编译。（注：如果同时在微信开发者工具 –&gt; 设置 –&gt; 编辑器中勾选了文件保存时自动编译小程序，将可以实时预览，非常方便。）</li>
+</ol>
+<div class="alert success"><p>友情提示，如果你采用了 <code>WePY</code> 框架，请一定按照提示做配置，否则错误可能很麻烦。</p>
+</div>
+<h4 id="六、配置编辑器高亮"><a href="#六、配置编辑器高亮" class="headerlink" title="六、配置编辑器高亮"></a>六、配置编辑器高亮</h4><p>因为我使用了 <code>VS Code</code>，可能的配置如下：</p>
+<ol>
+<li>在 <code>Code</code> 里先安装 <code>Vue</code> 的语法高亮插件 <code>Vetur</code>。</li>
+<li>打开任意 <code>.wpy</code> 文件。</li>
+<li>点击右下角的选择语言模式，默认为纯文本。</li>
+<li>在弹出的窗口中选择 <code>.wpy</code> 的配置文件关联…。</li>
+<li>在选择要与 <code>.wpy</code> 关联的语言模式中选择 <code>Vue</code>。</li>
+</ol>
+<p>更多的编辑器配置，请移步：<a href="https://tencent.github.io/wepy/document.html#/" target="_blank" rel="external">代码高亮</a></p>
+<h4 id="七、为小程序引入-UI-样式库"><a href="#七、为小程序引入-UI-样式库" class="headerlink" title="七、为小程序引入 UI 样式库"></a>七、为小程序引入 UI 样式库</h4><p>到这里，整体框架算是有了，但是我们还需要美颜啊。嗯，是时候引入 UI 样式库了！</p>
 
             
         </div>
