@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="前端的框架不计其数，学习的速度真是追不上更新速度。那么问题来了，如何才能以不变应万变呢？很多童鞋可能猜到了，对，就是看源码。既知其然又知其所以然。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-02-02T05:39:56.000Z">
+<meta property="og:updated_time" content="2018-02-02T08:02:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剖析 Angularjs 语法">
 <meta name="twitter:description" content="前端的框架不计其数，学习的速度真是追不上更新速度。那么问题来了，如何才能以不变应万变呢？很多童鞋可能猜到了，对，就是看源码。既知其然又知其所以然。">
@@ -283,7 +283,20 @@
 <div class="alert success"><p>结论：Angularjs 是框架，React 是类库。</p>
 </div>
 <p>更多细节的比较，可以<a href="https://juejin.im/entry/5a54b747518825734216c3df" target="_blank" rel="external">参考这里</a></p>
-<h4 id="三、依赖注入实现原理"><a href="#三、依赖注入实现原理" class="headerlink" title="三、依赖注入实现原理"></a>三、依赖注入实现原理</h4><h4 id="四、强大的-scope"><a href="#四、强大的-scope" class="headerlink" title="四、强大的 scope"></a>四、强大的 scope</h4><h4 id="五、无处不在的-Provider"><a href="#五、无处不在的-Provider" class="headerlink" title="五、无处不在的 Provider"></a>五、无处不在的 Provider</h4><h4 id="六、双向绑定"><a href="#六、双向绑定" class="headerlink" title="六、双向绑定"></a>六、双向绑定</h4><h4 id="七、-apply-和-digest"><a href="#七、-apply-和-digest" class="headerlink" title="七、$apply 和 $digest"></a>七、$apply 和 $digest</h4><h4 id="八、脏值检测"><a href="#八、脏值检测" class="headerlink" title="八、脏值检测"></a>八、脏值检测</h4><h4 id="九、启动流程"><a href="#九、启动流程" class="headerlink" title="九、启动流程"></a>九、启动流程</h4>
+<h4 id="三、双向绑定"><a href="#三、双向绑定" class="headerlink" title="三、双向绑定"></a>三、双向绑定</h4><p><code>Angularjs</code> 是以双向绑定出名的一个框架，</p>
+<h4 id="四、强大的-scope"><a href="#四、强大的-scope" class="headerlink" title="四、强大的 scope"></a>四、强大的 scope</h4><h4 id="五、依赖注入实现原理"><a href="#五、依赖注入实现原理" class="headerlink" title="五、依赖注入实现原理"></a>五、依赖注入实现原理</h4><h4 id="六、无处不在的-Provider"><a href="#六、无处不在的-Provider" class="headerlink" title="六、无处不在的 Provider"></a>六、无处不在的 Provider</h4><h4 id="七、-apply-和-digest"><a href="#七、-apply-和-digest" class="headerlink" title="七、$apply 和 $digest"></a>七、$apply 和 $digest</h4><p>$apply 会使 ng 进入 $digest cycle, 并从 $rootScope 开始遍历(深度优先)检查数据变更。$digest 仅会检查该 scope 和它的子 scope，当你确定当前操作仅影响它们时，用 $digest 可以稍微提升性能。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> $apply = <span class="function"><span class="params">exp</span> =&gt;</span> &#123;</div><div class="line">  $<span class="built_in">eval</span>(exp);</div><div class="line">  $rootScope.$digest();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>$digest()触发条件：</p>
+<ol>
+<li>DOM事件</li>
+<li>ajax相应事件</li>
+<li>$timeout, $interval</li>
+<li>手动执行执行$digest()或$apply()</li>
+<li>浏览器Location变更事件 ($location)</li>
+</ol>
+<h4 id="八、脏值检测"><a href="#八、脏值检测" class="headerlink" title="八、脏值检测"></a>八、脏值检测</h4><p>我们摘录出脏值检测的核心代码，先来研究一下源代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function Scope() &#123; </div><div class="line">  this.$$watchers = [];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Scope.prototype.$watch = function (watchFn, listenerFn) &#123; </div><div class="line">  var watcher = &#123;</div><div class="line">    watchFn: watchFn,</div><div class="line">    listenerFn: listenerFn</div><div class="line">  &#125;;</div><div class="line">  this.$$watchers.push(watcher);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Scope.prototype.$digest = function () &#123;</div><div class="line">  var self = this;</div><div class="line">  var newValue, oldValue; _.forEach(this.$$watchers, function (watcher) &#123;</div><div class="line">    newValue = watcher.watchFn(self);</div><div class="line">    oldValue = watcher.last;</div><div class="line">    if (newValue !== oldValue) &#123;</div><div class="line">      watcher.last = newValue;</div><div class="line">      watcher.listenerFn(newValue, oldValue, self);</div><div class="line">    &#125;</div><div class="line">  &#125;); </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>脏值检测简单来说就是给每个需要绑定的元素加个 <code>watcher</code>，缓存下 <code>oldValue</code>，然后定时遍历所有的<code>watcher</code>，比较 <code>newValue</code> 和 <code>oldValue</code>，如果变化了做更新操作。</p>
+<h4 id="九、启动流程"><a href="#九、启动流程" class="headerlink" title="九、启动流程"></a>九、启动流程</h4><h4 id="十、参考资源"><a href="#十、参考资源" class="headerlink" title="十、参考资源"></a>十、参考资源</h4><p><a href="https://github.com/xufei/Make-Your-Own-AngularJS/blob/master/01.md" target="_blank" rel="external">Make-Your-Own-AngularJS</a></p>
+
             
         </div>
     </div>
