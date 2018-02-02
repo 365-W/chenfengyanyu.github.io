@@ -27,7 +27,7 @@
 <meta property="og:description" content="心血来潮，突然想搞个小程序玩玩。微信提供了比较全面的支持，还可以上传托管服务器，又不收钱。对前端来说，这不是白送吗，快抓紧机会试试吧～">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wx1.png">
-<meta property="og:updated_time" content="2018-02-02T03:24:50.000Z">
+<meta property="og:updated_time" content="2018-02-02T04:38:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速上手小程序">
 <meta name="twitter:description" content="心血来潮，突然想搞个小程序玩玩。微信提供了比较全面的支持，还可以上传托管服务器，又不收钱。对前端来说，这不是白送吗，快抓紧机会试试吧～">
@@ -326,7 +326,30 @@
 <li>在选择要与 <code>.wpy</code> 关联的语言模式中选择 <code>Vue</code>。</li>
 </ol>
 <p>更多的编辑器配置，请移步：<a href="https://tencent.github.io/wepy/document.html#/" target="_blank" rel="external">代码高亮</a></p>
-<h4 id="九、为小程序引入-UI-样式库"><a href="#九、为小程序引入-UI-样式库" class="headerlink" title="九、为小程序引入 UI 样式库"></a>九、为小程序引入 UI 样式库</h4><p>到这里，整体框架算是有了，但是我们还需要美颜啊。嗯，是时候引入 UI 样式库了！</p>
+<h4 id="九、为小程序引入-UI-样式库"><a href="#九、为小程序引入-UI-样式库" class="headerlink" title="九、为小程序引入 UI 样式库"></a>九、为小程序引入 UI 样式库</h4><p>到这里，整体框架算是有了，但是我们还需要美颜啊。嗯，是时候引入 UI 样式库了！这里我们还是使用微信本家的产品 <a href="https://github.com/Tencent/weui-wxss" target="_blank" rel="external">WeUI</a>：<br><div class="alert success"><p>WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。包含 button、cell、dialog、progress、toast、article、actionsheet、icon 等各式元素。</p>
+</div><br>好了，下面说说怎么使用：</p>
+<ul>
+<li>首先，需要下载<a href="https://github.com/Tencent/weui-wxss/tree/master/dist/style" target="_blank" rel="external">样式库</a>；</li>
+<li>其次，将完整的样式包文件放入你的项目目录中；</li>
+<li>最后，如果使用了 <code>wepy</code> 的话，<code>weui</code> 需要 <code>less</code> 文件；</li>
+</ul>
+<div class="alert warning"><p>使用 wepy ，样式文件一定是 less 后缀，否则可能会有 unexpected token “@import” 这样的异常。</p>
+</div>
+<p>完成上面步骤后，就可以开心的使用微信样式库了：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"page"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"20"</span> <span class="attr">show-info</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="十、页面跳转如何操作"><a href="#十、页面跳转如何操作" class="headerlink" title="十、页面跳转如何操作"></a>十、页面跳转如何操作</h4><p>使用惯了其他的框架，很可能你也像我一样，开始去找小程序的路由文件了。其实大可不必如此，这些事情小程序已经处理好了，你唯一需要知道的就是如何去用。丰富的<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatetoobject" target="_blank" rel="external"> API </a>你都可以试试：<br>1.保留当前页面，跳转到应用内的某个页面，使用 <code>wx.navigateBack</code> 可以返回到原页面。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wx.navigateTo(&#123;</div><div class="line">  url: <span class="string">'test?user=jartto'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>2.关闭当前页面，跳转到应用内的某个页面。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wx.redirectTo(&#123;</div><div class="line">  url: <span class="string">'test?user=jartto'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>3.关闭所有页面，打开到应用内的某个页面。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wx.reLaunch(&#123;</div><div class="line">  url: <span class="string">'test?id=1'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>4.跳转到 <code>tabBar</code> 页面，并关闭其他所有非 <code>tabBar</code> 页面<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"tabBar"</span>: &#123;</div><div class="line">    <span class="string">"list"</span>: [&#123;</div><div class="line">      <span class="string">"pagePath"</span>: <span class="string">"index"</span>,</div><div class="line">      <span class="string">"text"</span>: <span class="string">"首页"</span></div><div class="line">    &#125;,&#123;</div><div class="line">      <span class="string">"pagePath"</span>: <span class="string">"other"</span>,</div><div class="line">      <span class="string">"text"</span>: <span class="string">"其他"</span></div><div class="line">    &#125;]</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">wx.switchTab(&#123;</div><div class="line">  url: <span class="string">'/index'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>5.关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages()) 获取当前的页面栈，决定需要返回几层。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意：调用 navigateTo 跳转时，调用该方法的页面会被加入堆栈，而 redirectTo 方法则不会。见下方示例代码</span></div><div class="line"></div><div class="line"><span class="comment">// 此处是A页面</span></div><div class="line">wx.navigateTo(&#123;</div><div class="line">  url: <span class="string">'B?id=1'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 此处是B页面</span></div><div class="line">wx.navigateTo(&#123;</div><div class="line">  url: <span class="string">'C?id=1'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 在C页面内 navigateBack，将返回A页面</span></div><div class="line">wx.navigateBack(&#123;</div><div class="line">  delta: <span class="number">2</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="十一、服务器域名配置"><a href="#十一、服务器域名配置" class="headerlink" title="十一、服务器域名配置"></a>十一、服务器域名配置</h4><p>每个微信小程序需要事先设置一个通讯域名，小程序可以跟指定的域名与进行网络通信。包括普通 <code>HTTPS</code> 请求（<code>request</code>）、上传文件（<code>uploadFile</code>）、下载文件（<code>downloadFile</code>) 和 <code>WebSocket</code> 通信（<code>connectSocket</code>），服务器域名请在 小程序后台-设置-开发设置-服务器域名 中进行配置，配置时需要注意：<br><div class="alert warning"><p>服务器域名请在小程序后台-设置-开发设置-服务器域名 中进行配置，配置时需要注意：</p>
+</div></p>
+<ul>
+<li>域名只支持 https (request、uploadFile、downloadFile) 和 wss (connectSocket) 协议；</li>
+<li>域名不能使用 IP 地址或 localhost，且不能带端口号；</li>
+<li>域名必须经过 ICP 备案；</li>
+<li>出于安全考虑，api.weixin.qq.com 不能被配置为服务器域名，相关API也不能在小程序内调用。开发者应将 appsecret 保存到后台服务器中，通过服务器使用 appsecret 获取 accesstoken，并调用相关 API。</li>
+<li>对于每个接口，分别可以配置最多 20 个域名；</li>
+</ul>
 
             
         </div>
