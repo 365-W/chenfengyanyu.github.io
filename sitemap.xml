@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/02/08/count-pit-of-mini-programs/</loc>
+    
+    <lastmod>2018-02-08T07:07:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2018/01/25/quick-start-mini-programs/</loc>
+    
+    <lastmod>2018-02-08T07:01:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/12/28/cannot-nest-git-repository/</loc>
     
     <lastmod>2018-02-07T05:37:50.000Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://jartto.wang/2018/02/01/analysis-of-angularjs/</loc>
     
     <lastmod>2018-02-07T03:48:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2018/01/25/quick-start-mini-programs/</loc>
-    
-    <lastmod>2018-02-02T05:32:04.000Z</lastmod>
     
   </url>
   
