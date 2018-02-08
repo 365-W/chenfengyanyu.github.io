@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="最近做了一个应用，把玩了一下小程序。总体感觉还是可以，但是限制太多，最适合的场景可能就是手机小型应用。这节，我们来细数一下小程序开发过程的坑。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-02-08T07:07:56.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wx3.png">
+<meta property="og:updated_time" content="2018-02-08T07:18:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="细数小程序的坑">
 <meta name="twitter:description" content="最近做了一个应用，把玩了一下小程序。总体感觉还是可以，但是限制太多，最适合的场景可能就是手机小型应用。这节，我们来细数一下小程序开发过程的坑。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wx3.png">
     
     
         
@@ -270,7 +272,7 @@
 <h4 id="五、脚本不能使用-window-等对象"><a href="#五、脚本不能使用-window-等对象" class="headerlink" title="五、脚本不能使用 window 等对象"></a>五、脚本不能使用 window 等对象</h4><p>页面的脚本逻辑是在 <code>JsCore</code> 中运行，<code>JsCore</code> 是一个没有窗口对象的环境，所以不能在脚本中使用 <code>window</code>，也无法在脚本中操作组件。<br>当然，<code>zepto/jquery</code> 会使用到 <code>window</code> 对象和 <code>document</code> 对象，所以无法使用。</p>
 <h4 id="六、wx-navigateTo-无法打开页面"><a href="#六、wx-navigateTo-无法打开页面" class="headerlink" title="六、wx.navigateTo 无法打开页面"></a>六、wx.navigateTo 无法打开页面</h4><p>一个应用同时只能打开 5 个页面，当已经打开了 5 个页面之后，<code>wx.navigateTo</code> 不能正常打开新页面。请避免多层级的交互方式，或者使用 <code>wx.redirectTo</code></p>
 <h4 id="七、样式表不支持级联选择器"><a href="#七、样式表不支持级联选择器" class="headerlink" title="七、样式表不支持级联选择器"></a>七、样式表不支持级联选择器</h4><h4 id="八、不能直接操作-Page-data"><a href="#八、不能直接操作-Page-data" class="headerlink" title="八、不能直接操作 Page.data"></a>八、不能直接操作 Page.data</h4><p>避免在直接对 <code>Page.data</code> 进行赋值修改，请使用 <code>Page.setData</code> 进行操作才能将数据同步到页面中进行渲染</p>
-<h4 id="九、本地资源无法通过-WXSS-获取"><a href="#九、本地资源无法通过-WXSS-获取" class="headerlink" title="九、本地资源无法通过 WXSS 获取"></a>九、本地资源无法通过 WXSS 获取</h4><p><code>background-image</code>：可以使用网络图片，或者 <code>base64</code>，或者使用 <code>&lt;image/&gt;</code> 标签</p>
+<h4 id="九、本地资源无法通过-WXSS-获取"><a href="#九、本地资源无法通过-WXSS-获取" class="headerlink" title="九、本地资源无法通过 WXSS 获取"></a>九、本地资源无法通过 WXSS 获取</h4><p><code>background-image</code>：可以使用网络图片，或者 <code>base64</code>，或者使用 <code>&lt;image/&gt;</code> 标签。<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/wx3.png" alt="background-image"></p>
 <h4 id="十、修改窗口的背景色"><a href="#十、修改窗口的背景色" class="headerlink" title="十、修改窗口的背景色"></a>十、修改窗口的背景色</h4><p>使用 <code>page</code> 标签选择器，可以修改顶层节点的样式：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">page</span> &#123;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="十一、不可设置网络请求的-referer"><a href="#十一、不可设置网络请求的-referer" class="headerlink" title="十一、不可设置网络请求的 referer"></a>十一、不可设置网络请求的 referer</h4><p>网络请求的 <code>referer</code> 是不可以设置的，格式固定为 <code>https://servicewechat.com/{appid}/{version}/page-frame.html</code>，其中 <code>{appid}</code> 为小程序的 <code>appid</code>，<code>{version}</code> 为小程序的版本号，版本号为 0 表示为开发版、体验版以及审核版本，版本号为 <code>devtools</code> 表示为开发者工具，其余为正式版本。</p>
 <h4 id="十二、map-组件总是在最上层"><a href="#十二、map-组件总是在最上层" class="headerlink" title="十二、map 组件总是在最上层"></a>十二、map 组件总是在最上层</h4><p><code>map</code>、<code>canvas</code>、<code>video</code>、<code>textarea</code> 是由客户端创建的原生组件，原生组件的层级是最高的，所以页面中的其他组件无论设置 <code>z-index</code> 为多少，都无法盖在原生组件上。 原生组件暂时还无法放在 <code>scroll-view</code> 上，也无法对原生组件设置 <code>css</code> 动画。</p>
