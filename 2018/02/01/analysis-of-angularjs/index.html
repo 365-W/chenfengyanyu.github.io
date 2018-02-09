@@ -27,7 +27,7 @@
 <meta property="og:description" content="前端的框架不计其数，学习的速度真是追不上更新速度。那么问题来了，如何才能以不变应万变呢？很多童鞋可能猜到了，对，就是看源码。既知其然又知其所以然。">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/angular1.png">
-<meta property="og:updated_time" content="2018-02-07T03:48:17.000Z">
+<meta property="og:updated_time" content="2018-02-09T02:34:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剖析 Angularjs 语法">
 <meta name="twitter:description" content="前端的框架不计其数，学习的速度真是追不上更新速度。那么问题来了，如何才能以不变应万变呢？很多童鞋可能猜到了，对，就是看源码。既知其然又知其所以然。">
@@ -287,7 +287,7 @@
 </div>
 <p>更多细节的比较，可以<a href="https://juejin.im/entry/5a54b747518825734216c3df" target="_blank" rel="external">参考这里</a></p>
 <h4 id="三、双向绑定"><a href="#三、双向绑定" class="headerlink" title="三、双向绑定"></a>三、双向绑定</h4><p><code>Angularjs</code> 是以数据双向绑定出名的一个框架，视图的变更会影响到模型，同理，模型的变更也能影响到视图。为什么会如此神奇，底层的实现原理到底是怎样的呢？下面我们来细节拆分，举例说明吧：<br>首先，先来一个 <code>html</code> 结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">"week = '周几'"</span>&gt;</span>修改日期<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"week"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>如上，我们设置了一个 <code>ng-click</code> 方法，以及一个 <code>ng-model</code> ，涉及到了 <code>week</code> 变量。经过 <code>$compile</code> 编译之后，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$scope.watch(<span class="string">'week'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123;</div><div class="line">  el.innerHTML = $interpolate(el.innerHTML);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>如上，我们设置了一个 <code>ng-click</code> 方法，以及一个 <code>ng-model</code> ，涉及到了 <code>week</code> 变量。经过 <code>$compile</code> 编译之后，实际是做了这样的处理：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$scope.watch(<span class="string">'week'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123;</div><div class="line">  el.innerHTML = $interpolate(el.innerHTML);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h4 id="四、关于-Scope"><a href="#四、关于-Scope" class="headerlink" title="四、关于 Scope"></a>四、关于 Scope</h4><p>作用域是一个指向应用模型的对象。它是表达式的执行环境。作用域有层次结构，这个层次和相应的 <code>DOM</code> 几乎是一样的。作用域能监控表达式和传递事件。</p>
 <div class="alert success"><p>我们可以把作用域和它的属性当做是用来渲染视图的数据。作用域是视图唯一相关联的变化来源。</p>
 </div>
