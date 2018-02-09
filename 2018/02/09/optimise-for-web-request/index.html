@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/web2.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/web3.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/web4.png">
-<meta property="og:updated_time" content="2018-02-09T10:21:41.000Z">
+<meta property="og:updated_time" content="2018-02-09T10:42:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web 优化之 Request">
 <meta name="twitter:description" content="对于 Web 页面的优化，可能大家都会提出很多方案。可是如果有一天，你发现由于请求接口的数据量太大，导致页面长时间 Loading，这时候你会怎么办？">
@@ -316,7 +316,27 @@
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/web4.png" alt="Timing3"></p>
 <div class="alert warning"><p>友情提示：一定要注意你的数据返回格式，同时相应的调整 <code>gzip_types</code>，否则 <code>Gzip</code> 可能开启了，但并未起作用。</p>
 </div>
-<h4 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h4><p><code>Web</code> 页面优化本身就不是一蹴而就的，更没有什么捷径可走，你唯一需要做的就是：不断的尝试，不断优化。</p>
+<h4 id="七、优化-TTFB"><a href="#七、优化-TTFB" class="headerlink" title="七、优化 TTFB"></a>七、优化 TTFB</h4><p>到这里，优化过程其实并没有完，因为我又发现了 <code>TTFB</code> 是可以优化的，先附上<a href="https://www.incapsula.com/blog/using-cdn-to-improve-seo-and-ttfb.html" target="_blank" rel="external">原文地址</a>。文中提到了两个问题：</p>
+<p>1.动态 <code>HTML</code> 如何影响 <code>TTFB</code> 呢？我们知道 <code>TTFB</code> 是作为客户端接收服务器响应首字节的时间，那么服务器首先会发送什么资源给客户端呢？第一个有意义的响应经常是网页 <code>HTML</code> 的内容部分，它的渲染时间由以下两部分组成：</p>
+<ul>
+<li><code>Processing(Waiting)time</code> 在 <code>web</code> 服务器上生成动态 <code>HTML</code> 所产生的时间；</li>
+<li><code>Network(Receiving)time</code> 编译的 <code>HTML</code> 到达浏览器的时间；</li>
+</ul>
+<p>2.使用 <code>Incapsula CDN</code> 管理 <code>TTFB</code> 和新鲜度<br><div class="alert success"><p>这里不是很明白，原文中大致是这样描述的，先摘录过来。</p>
+</div></p>
+<ul>
+<li><p>Purge Cache<br>这个最新增加的功能目的是通过移除与我们预先设置的验证周期的依赖来清除所有的缓存对像，内容和自动验证机制。点击鼠标缓存副本即被删除，为所有最新更新的内容或动态生成的内容保持即时新鲜度。</p>
+</li>
+<li><p>Cache Everything<br>这是基于学习算法版本中最受争议的方法。该功能可用即缓存所有可用的对象，不管他们的类型和功能。明显的缺点是对新鲜度产生重大的影响。尽管如此，如果你运行的是一个静态的博客，可以开发一个程序在每次更新后手动清除缓存，这可能是一次选择方案。</p>
+</li>
+<li><p>Always Cache(by resource)<br>在缓存一切模式上有一个更多选择的版本。是一个可以手动微调缓存指令的工具。如果你仅仅想缓存某一特殊页面的HTML部分而不影响页面的其他部分来提高TTFB，你可以使用这种方式。</p>
+</li>
+<li><p>Async Validation<br>这个方式控制自动验证周期。启用这个选型确保所有用户总是会从缓存中提高 <code>TTFB</code>。然而，在每个缓存周期中，用户有可能访问过时的副本，因为缓存在他访问的过程中将异步的进行更新。</p>
+</li>
+<li><p>Override “Vary:User-Agent”headers<br><code>Vart:User-Agent</code> 将防止缓存。然而，这些 <code>headers</code> 经常被滥用，他们经常出现在没有真正目的服务的网页上。启用该选项，将允许 <code>Incapsula</code> 来重写这些指令，来提高你的 <code>TTFB</code> 和用户体验以及搜索引擎排名。</p>
+</li>
+</ul>
+<h4 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h4><p><code>Web</code> 页面优化本身就不是一蹴而就的，更没有什么捷径可走，你唯一需要做的就是：不断的尝试，不断优化。</p>
 
             
         </div>
