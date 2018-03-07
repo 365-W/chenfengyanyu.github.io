@@ -18,18 +18,20 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="继细数小程序的坑之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。">
+    <meta name="description" content="继「细数小程序的坑」之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。">
 <meta name="keywords" content="wx,mini-programs">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="小程序开发 Tips">
 <meta property="og:url" content="http://jartto.wang/2018/03/06/tips-of-mini-programs/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="继细数小程序的坑之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。">
+<meta property="og:description" content="继「细数小程序的坑」之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-07T02:45:06.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wxtips1.png">
+<meta property="og:updated_time" content="2018-03-07T03:52:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序开发 Tips">
-<meta name="twitter:description" content="继细数小程序的坑之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。">
+<meta name="twitter:description" content="继「细数小程序的坑」之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/wxtips1.png">
     
     
         
@@ -263,8 +265,46 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>继<a href="http://jartto.wang/2018/02/08/count-pit-of-mini-programs/">细数小程序的坑</a>之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。<br><a id="more"></a><br>本文是小程序系列的第三篇文章，如果你还没有实际开发小程序的经验，建议按照顺序阅读如下文章：<br>1.<a href="http://jartto.wang/2018/01/25/quick-start-mini-programs/">快速上手小程序</a><br>2.<a href="http://jartto.wang/2018/02/08/count-pit-of-mini-programs/">细数小程序的坑</a><br>3.<a href="#">小程序开发 Tips</a></p>
-<h4 id="一、小程序生命周期"><a href="#一、小程序生命周期" class="headerlink" title="一、小程序生命周期"></a>一、小程序生命周期</h4><h4 id="二、小程序返回监听"><a href="#二、小程序返回监听" class="headerlink" title="二、小程序返回监听"></a>二、小程序返回监听</h4><h4 id="三、小程序-onUnload-未触发"><a href="#三、小程序-onUnload-未触发" class="headerlink" title="三、小程序 onUnload 未触发"></a>三、小程序 onUnload 未触发</h4><h4 id="四、小程序取消授权怎么办？"><a href="#四、小程序取消授权怎么办？" class="headerlink" title="四、小程序取消授权怎么办？"></a>四、小程序取消授权怎么办？</h4><h4 id="五、小程序-wepy-中启用-async-await"><a href="#五、小程序-wepy-中启用-async-await" class="headerlink" title="五、小程序 wepy 中启用 async/await"></a>五、小程序 wepy 中启用 async/await</h4><h4 id="六、小程序的-textarea-光标问题"><a href="#六、小程序的-textarea-光标问题" class="headerlink" title="六、小程序的 textarea 光标问题"></a>六、小程序的 textarea 光标问题</h4><h4 id="七、页面多次跳转，直接返回首页"><a href="#七、页面多次跳转，直接返回首页" class="headerlink" title="七、页面多次跳转，直接返回首页"></a>七、页面多次跳转，直接返回首页</h4><h4 id="八、表单域控制"><a href="#八、表单域控制" class="headerlink" title="八、表单域控制"></a>八、表单域控制</h4><h4 id="九、不要轻易移除-dist-文件"><a href="#九、不要轻易移除-dist-文件" class="headerlink" title="九、不要轻易移除 dist 文件"></a>九、不要轻易移除 dist 文件</h4><h4 id="十、为小程序添加转发"><a href="#十、为小程序添加转发" class="headerlink" title="十、为小程序添加转发"></a>十、为小程序添加转发</h4><h4 id="十一、合理使用-scroll-view"><a href="#十一、合理使用-scroll-view" class="headerlink" title="十一、合理使用 scroll-view"></a>十一、合理使用 scroll-view</h4><h4 id="十二、通知服务"><a href="#十二、通知服务" class="headerlink" title="十二、通知服务"></a>十二、通知服务</h4>
+            <p>继「<a href="http://jartto.wang/2018/02/08/count-pit-of-mini-programs/">细数小程序的坑</a>」之后，我们来说一些小程序开发中可以用到的技巧，毕竟抱怨并不能解决问题，更何况还「人在屋檐下，不得不低头」。<br><a id="more"></a><br>本文是小程序系列的第三篇文章，如果你还没有实际开发小程序的经验，建议按照顺序阅读如下文章：<br>1.<a href="http://jartto.wang/2018/01/25/quick-start-mini-programs/">快速上手小程序</a><br>2.<a href="http://jartto.wang/2018/02/08/count-pit-of-mini-programs/">细数小程序的坑</a><br>3.<a href="http://jartto.wang/2018/03/06/tips-of-mini-programs/">小程序开发 Tips</a></p>
+<h4 id="一、小程序生命周期"><a href="#一、小程序生命周期" class="headerlink" title="一、小程序生命周期"></a>一、小程序生命周期</h4><p>我们先来熟悉一下小程序的生命周期函数：</p>
+<ul>
+<li>data: Object<ul>
+<li>页面初始数据</li>
+</ul>
+</li>
+<li>onLoad: Function<ul>
+<li>监听页面加载</li>
+</ul>
+</li>
+<li>onReady: Function<ul>
+<li>监听页面渲染完成</li>
+</ul>
+</li>
+<li>onShow: Function<ul>
+<li>监听页面显示</li>
+</ul>
+</li>
+<li>onHide: Function<ul>
+<li>监听页面隐藏</li>
+</ul>
+</li>
+<li>onUnload: Function<ul>
+<li>监听页面卸载</li>
+</ul>
+</li>
+</ul>
+<div class="alert success"><p>接下来我们来看一张状态图，深入了解一下：</p>
+</div>
+<p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/wxtips1.png" alt="状态图"></p>
+<p>如果用代码来表示小程序的生命周期的话，大致如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取应用实例</span></div><div class="line"><span class="keyword">var</span> app = getApp()</div><div class="line">Page(&#123;</div><div class="line">  <span class="comment">// 通过data初始化数据</span></div><div class="line">  data: &#123;</div><div class="line">    blog: <span class="string">'jartto'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 监听页面开始加载的状态，页面加载完成之后就不会在执行</span></div><div class="line">  onLoad: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onLoad()'</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 监听页面渲染完成，完成之后不会在执行</span></div><div class="line">  onReady: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onReaday()'</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 监听页面显示，当从当前页面调转到另一个页面，另一个页面销毁时会再次执行</span></div><div class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onShow()'</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 监听页面隐藏，当前页面跳转到另一个页面时会执行</span></div><div class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onHide()'</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 当页面销毁时调用</span></div><div class="line">  onUnload: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onUnload'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="二、小程序返回监听"><a href="#二、小程序返回监听" class="headerlink" title="二、小程序返回监听"></a>二、小程序返回监听</h4><p>提到返回监听，可能会有几种业务场景，如：<br>1.监听页面返回按钮，警告用户是否确认离开？<br>2.提醒用户进行保存操作；<br>3.更新一些状态值；<br>…<br><div class="alert danger"><p>遗憾的是，小程序并没有提供类似的方法，所以只能自己想办法实现。</p>
+</div></p>
+<p>如果你真正了解了上文描述的生命周期，那么就有两个方式可以变通解决问题：</p>
+<ul>
+<li>其一：通过监听 <code>onShow</code> 或 <code>onHide</code> 来实现；</li>
+<li>其二：页面被 <code>destroy</code> 后，<code>onUnload</code> 来实现。</li>
+</ul>
+<h4 id="三、小程序-onUnload-未触发"><a href="#三、小程序-onUnload-未触发" class="headerlink" title="三、小程序 onUnload 未触发"></a>三、小程序 onUnload 未触发</h4><h4 id="四、小程序取消授权怎么办？"><a href="#四、小程序取消授权怎么办？" class="headerlink" title="四、小程序取消授权怎么办？"></a>四、小程序取消授权怎么办？</h4><h4 id="五、小程序-wepy-中启用-async-await"><a href="#五、小程序-wepy-中启用-async-await" class="headerlink" title="五、小程序 wepy 中启用 async/await"></a>五、小程序 wepy 中启用 async/await</h4><h4 id="六、小程序的-textarea-光标问题"><a href="#六、小程序的-textarea-光标问题" class="headerlink" title="六、小程序的 textarea 光标问题"></a>六、小程序的 textarea 光标问题</h4><h4 id="七、页面多次跳转，直接返回首页"><a href="#七、页面多次跳转，直接返回首页" class="headerlink" title="七、页面多次跳转，直接返回首页"></a>七、页面多次跳转，直接返回首页</h4><h4 id="八、表单域控制"><a href="#八、表单域控制" class="headerlink" title="八、表单域控制"></a>八、表单域控制</h4><h4 id="九、不要轻易移除-dist-文件"><a href="#九、不要轻易移除-dist-文件" class="headerlink" title="九、不要轻易移除 dist 文件"></a>九、不要轻易移除 dist 文件</h4><h4 id="十、为小程序添加转发"><a href="#十、为小程序添加转发" class="headerlink" title="十、为小程序添加转发"></a>十、为小程序添加转发</h4><h4 id="十一、合理使用-scroll-view"><a href="#十一、合理使用-scroll-view" class="headerlink" title="十一、合理使用 scroll-view"></a>十一、合理使用 scroll-view</h4><h4 id="十二、通知服务"><a href="#十二、通知服务" class="headerlink" title="十二、通知服务"></a>十二、通知服务</h4>
             
         </div>
     </div>
