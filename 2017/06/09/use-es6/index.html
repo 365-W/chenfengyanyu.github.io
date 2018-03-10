@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="技术不断的发展，ES6 技术已逐渐成熟。如何才能跟上时代的步伐让自己立于不败之地，除了学习，别无他法。基础永远都是第一位，那么你还在等什么？">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-10T12:20:34.000Z">
+<meta property="og:updated_time" content="2018-03-10T15:43:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6 边学边用">
 <meta name="twitter:description" content="技术不断的发展，ES6 技术已逐渐成熟。如何才能跟上时代的步伐让自己立于不败之地，除了学习，别无他法。基础永远都是第一位，那么你还在等什么？">
@@ -264,7 +264,31 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>技术不断的发展，ES6 技术已逐渐成熟。如何才能跟上时代的步伐让自己立于不败之地，除了学习，别无他法。基础永远都是第一位，那么你还在等什么？<br><a id="more"></a></p>
-<h4 id="一、let-和-const"><a href="#一、let-和-const" class="headerlink" title="一、let 和 const"></a>一、let 和 const</h4>
+<h4 id="一、let"><a href="#一、let" class="headerlink" title="一、let"></a>一、let</h4><p>1.let 存在块级作用域；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">  <span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a <span class="comment">// ReferenceError: a is not defined.</span></div><div class="line">b <span class="comment">// 1</span></div></pre></td></tr></table></figure></p>
+<p>2.不存在变量提升；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// var 的情况</span></div><div class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// 输出undefined</span></div><div class="line"><span class="keyword">var</span> foo = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="comment">// let 的情况</span></div><div class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// 报错ReferenceError</span></div><div class="line"><span class="keyword">let</span> bar = <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
+<p>3.暂时性死区<br>只要块级作用域内存在 <code>let</code> 命令，它所声明的变量就“绑定”（<code>binding</code>）这个区域，不再受外部的影响。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> tmp = <span class="number">123</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  tmp = <span class="string">'jartto'</span>; <span class="comment">// ReferenceError</span></div><div class="line">  <span class="keyword">let</span> tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码中，存在全局变量 <code>tmp</code>，但是块级作用域内 <code>let</code> 又声明了一个局部变量 <code>tmp</code> ，导致后者绑定这个块级作用域，所以在 <code>let</code> 声明变量前，对 <code>tmp</code> 赋值会报错。</p>
+<div class="alert info"><p>ES6 明确规定，如果区块中存在 let 和 const 命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
+</div>
+<p>如何理解暂时性死区（temporal dead zone，简称 TDZ）呢，我们来看下面一段代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  <span class="comment">// TDZ开始</span></div><div class="line">  tmp = <span class="string">'abc'</span>; <span class="comment">// ReferenceError</span></div><div class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></div><div class="line"></div><div class="line">  <span class="keyword">let</span> tmp; <span class="comment">// TDZ结束</span></div><div class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// undefined</span></div><div class="line"></div><div class="line">  tmp = <span class="number">123</span>;</div><div class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// 123</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有些“死区”比较隐蔽，不太容易发现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x = y, y = <span class="number">2</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line">bar(); <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
+<div class="alert success"><p>总之，暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。</p>
+</div>
+<p>4.不允许重复声明；<br>5.函数声明</p>
+<ul>
+<li>允许在块级作用域内声明函数。</li>
+<li>函数声明类似于 var，即会提升到全局作用域或函数作用域的头部。</li>
+<li>同时，函数声明还会提升到所在的块级作用域的头部。</li>
+</ul>
+<h4 id="二、const"><a href="#二、const" class="headerlink" title="二、const"></a>二、const</h4><ul>
+<li><code>const</code> 声明一个只读的常量。一旦声明，常量的值就不能改变。</li>
+<li><code>const</code> 一旦声明变量，就必须立即初始化，不能留到以后赋值。</li>
+<li><code>const</code> 的作用域与 <code>let</code> 命令相同：只在声明所在的块级作用域内有效。</li>
+<li><code>const</code> 命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。</li>
+<li><code>const</code> 声明的常量，也与let一样不可重复声明。</li>
+</ul>
+
             
         </div>
     </div>
