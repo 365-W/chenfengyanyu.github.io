@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="提到 HTTP2.0 ，第一印象就是：这与 HTTP1.0 的区别是什么，有怎样的改进？大的版本变化必然会有更强力的特性，那不妨拿来了解一下。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-04-26T00:42:25.000Z">
+<meta property="og:updated_time" content="2018-04-26T01:00:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 HTTP2.0">
 <meta name="twitter:description" content="提到 HTTP2.0 ，第一印象就是：这与 HTTP1.0 的区别是什么，有怎样的改进？大的版本变化必然会有更强力的特性，那不妨拿来了解一下。">
@@ -266,26 +266,28 @@
             <p>提到 HTTP2.0 ，第一印象就是：这与 HTTP1.0 的区别是什么，有怎样的改进？大的版本变化必然会有更强力的特性，那不妨拿来了解一下。<br><a id="more"></a></p>
 <h4 id="一、先了解-HTTP1-0-和-HTTP1-1"><a href="#一、先了解-HTTP1-0-和-HTTP1-1" class="headerlink" title="一、先了解 HTTP1.0 和 HTTP1.1"></a>一、先了解 HTTP1.0 和 HTTP1.1</h4><p>我们先撇开 <code>HTTP2</code> 和 <code>HTTP1</code> 的区别，来说说 <code>HTTP1.0</code> 和 <code>HTTP1.1</code> 的区别，因为它俩本身就存在一些大的区别：</p>
 <ul>
-<li>长连接<br>HTTP 1.0需要使用keep-alive参数来告知服务器端要建立一个长连接，而HTTP1.1默认支持长连接。</li>
-<li>节约带宽<br>HTTP 1.1支持只发送header信息(不带任何body信息)，如果服务器认为客户端有权限请求服务器，则返回100，否则返回401。客户端如果接受到100，才开始把请求body发送到服务器。</li>
-<li>HOST域<br>现在可以web server例如tomat，设置虚拟站点是非常常见的，也即是说，web server上的多个虚拟站点可以共享同一个ip和端口。HTTP1.0是没有host域的，HTTP1.1才支持这个参数。</li>
+<li>长连接<br><code>HTTP 1.0</code> 需要使用 <code>keep-alive</code> 参数来告知服务器端要建立一个长连接，而 <code>HTTP1.1</code> 默认支持长连接。</li>
+<li>节约带宽<br><code>HTTP 1.1</code> 支持只发送 <code>header</code> 信息(不带任何 <code>body</code> 信息)，如果服务器认为客户端有权限请求服务器，则返回 100，否则返回 401。客户端如果接受到 100，才开始把请求 <code>body</code> 发送到服务器。</li>
+<li>HOST 域<br>现在可以 <code>web server</code> 例如 <code>tomat</code>，设置虚拟站点是非常常见的，也即是说，<code>web server</code> 上的多个虚拟站点可以共享同一个 <code>ip</code> 和端口。<code>HTTP1.0</code> 是没有 <code>host</code> 域的，<code>HTTP1.1</code> 才支持这个参数。</li>
 </ul>
-<p>更多细节请<a href="https://blog.csdn.net/linsongbin1/article/details/54980801" target="_blank" rel="external">参考</a>。</p>
-<h4 id="二、HTTP2-新特性"><a href="#二、HTTP2-新特性" class="headerlink" title="二、HTTP2 新特性"></a>二、HTTP2 新特性</h4><p>HTTP/2.0 相比1.0有哪些重大改进？<br><a href="https://www.zhihu.com/question/34074946" target="_blank" rel="external">https://www.zhihu.com/question/34074946</a></p>
+<p>更多细节请<a href="https://blog.csdn.net/linsongbin1/article/details/54980801" target="_blank" rel="external">参考</a>，还有之前的一篇文章 <a href="http://jartto.wang/2016/08/04/Rudimentary-http-protocol/">HTTP 协议入门</a>。</p>
+<h4 id="二、HTTP2-新特性"><a href="#二、HTTP2-新特性" class="headerlink" title="二、HTTP2 新特性"></a>二、HTTP2 新特性</h4><div class="alert warning"><p>众所周知 ，在 <code>HTTP1.1</code> 协议中 「浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻塞」，也就是我们常说的 <code>Pending</code> 状态。</p>
+</div>
 <p>提到 <code>HTTP2</code> 的新特性，有三个特性肯定是亮点：</p>
 <ul>
-<li>多路复用</li>
+<li>多路复用<br>多路复用允许同时通过单一的 <code>HTTP2</code> 连接发起多重的请求-响应消息。</li>
 <li>数据压缩<br><code>HTTP1.1</code> 不支持 <code>header</code> 数据的压缩，<code>HTTP2.0</code> 使用 <code>HPACK</code> 算法对 <code>header</code> 的数据进行压缩，这样数据体积小了，在网络上传输就会更快。</li>
 <li>服务器推送<br>当我们对支持 <code>HTTP2.0</code> 的 <code>web server</code> 请求数据的时候，服务器会顺便把一些客户端需要的资源一起推送到客户端，免得客户端再次创建连接发送请求到服务器端获取。这种方式非常合适加载静态资源。</li>
 </ul>
 <div class="alert info"><p>至于 HPACK 算法是什么鬼，这里就不扩展了，感兴趣的童鞋可以走这里<a href="https://www.jianshu.com/p/f44b930cfcac" target="_blank" rel="external">HPACK 完全解析</a></p>
 </div>
+<p>参考阅读：<a href="https://www.zhihu.com/question/34074946" target="_blank" rel="external">HTTP/2.0 相比 1.0 有哪些重大改进？</a></p>
 <h4 id="三、深入研究：HTTP2-的真正性能到底如何"><a href="#三、深入研究：HTTP2-的真正性能到底如何" class="headerlink" title="三、深入研究：HTTP2 的真正性能到底如何"></a>三、深入研究：HTTP2 的真正性能到底如何</h4><p><a href="https://segmentfault.com/a/1190000007219256" target="_blank" rel="external">https://segmentfault.com/a/1190000007219256</a><br>通过上述一系列的实验，我们可以知道http2的性能优势集中体现在“多路复用”和“服务端推送”上。对于请求数目较少（约小于30个）的情况下，http1.x和http2的性能差异不大，在请求数目较多且延迟大于30ms的情况下，才能体现http2的性能优势。对于网络状况较差的环境，http2的性能也高于http1.x。与此同时，如果把静态资源都通过服务端推送的方式来处理，加载速度会得到更加巨大的提升。</p>
 <p>在实际的应用中，由于http2多路复用的优势，前端应用团队无须采取把多个文件合并成一个，生成雪碧图之类的方法减少网络请求。除此之外，http2对于前端开发的影响并不大。</p>
 <h4 id="四、HTTP2-加载效果演示"><a href="#四、HTTP2-加载效果演示" class="headerlink" title="四、HTTP2 加载效果演示"></a>四、HTTP2 加载效果演示</h4><p><a href="https://http2.akamai.com/demo" target="_blank" rel="external">https://http2.akamai.com/demo</a><br>回顾 HTTP1.0</p>
 <h4 id="五、扩展：HTTP-POST-请求为什么会有一个-OPTION-？"><a href="#五、扩展：HTTP-POST-请求为什么会有一个-OPTION-？" class="headerlink" title="五、扩展：HTTP POST 请求为什么会有一个 OPTION ？"></a>五、扩展：HTTP POST 请求为什么会有一个 OPTION ？</h4><p>正如上面问题所说，当你打开 <code>Chrome</code> 开发工具或者其他抓包工具的时候，会发现一条 <code>POST</code> 请求输出两次，第一次状态显示 <code>OPTION</code>。</p>
-<p>值得注意的是：其实 HTTP 请求还分为两类：普通请求和简单请求。</p>
-
+<div class="alert info"><p>值得注意的是：其实 HTTP 请求还分为两类：普通请求和简单请求。</p>
+</div>
             
         </div>
     </div>
