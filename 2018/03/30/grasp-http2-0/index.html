@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="提到 HTTP2.0 ，第一印象就是：这与 HTTP1.0 的区别是什么，有怎样的改进？大的版本变化必然会有更强力的特性，那不妨拿来了解一下。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-04-26T01:00:40.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/http2.jpg">
+<meta property="og:updated_time" content="2018-04-27T00:31:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 HTTP2.0">
 <meta name="twitter:description" content="提到 HTTP2.0 ，第一印象就是：这与 HTTP1.0 的区别是什么，有怎样的改进？大的版本变化必然会有更强力的特性，那不妨拿来了解一下。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/http2.jpg">
     
     
         
@@ -273,9 +275,8 @@
 <p>更多细节请<a href="https://blog.csdn.net/linsongbin1/article/details/54980801" target="_blank" rel="external">参考</a>，还有之前的一篇文章 <a href="http://jartto.wang/2016/08/04/Rudimentary-http-protocol/">HTTP 协议入门</a>。</p>
 <h4 id="二、HTTP2-新特性"><a href="#二、HTTP2-新特性" class="headerlink" title="二、HTTP2 新特性"></a>二、HTTP2 新特性</h4><div class="alert warning"><p>众所周知 ，在 <code>HTTP1.1</code> 协议中 「浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻塞」，也就是我们常说的 <code>Pending</code> 状态。</p>
 </div>
-<p>提到 <code>HTTP2</code> 的新特性，有三个特性肯定是亮点：</p>
+<p>提到 <code>HTTP2</code> 的新特性，有三个特性肯定是亮点：<br>1.多路复用<br>多路复用允许同时通过单一的 <code>HTTP2</code> 连接发起多重的请求-响应消息。<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/http2.jpg" alt="http2"></p>
 <ul>
-<li>多路复用<br>多路复用允许同时通过单一的 <code>HTTP2</code> 连接发起多重的请求-响应消息。</li>
 <li>数据压缩<br><code>HTTP1.1</code> 不支持 <code>header</code> 数据的压缩，<code>HTTP2.0</code> 使用 <code>HPACK</code> 算法对 <code>header</code> 的数据进行压缩，这样数据体积小了，在网络上传输就会更快。</li>
 <li>服务器推送<br>当我们对支持 <code>HTTP2.0</code> 的 <code>web server</code> 请求数据的时候，服务器会顺便把一些客户端需要的资源一起推送到客户端，免得客户端再次创建连接发送请求到服务器端获取。这种方式非常合适加载静态资源。</li>
 </ul>
