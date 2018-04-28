@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-04-25T01:06:15.000Z">
+<meta property="og:updated_time" content="2018-04-28T01:00:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重写 Audio 样式">
 <meta name="twitter:description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
@@ -282,10 +282,11 @@
 <h4 id="五、新的问题"><a href="#五、新的问题" class="headerlink" title="五、新的问题"></a>五、新的问题</h4><p>我们碰到了新的问题，具体如下：</p>
 <ol>
 <li>播放／暂停 按钮不能替换；</li>
-<li>播放进度的 slider 和 声音的 slider 无法修改样式；</li>
+<li>播放进度 slider 和 声音 slider 无法修改样式；</li>
 </ol>
 <p>怎么办，这是个问题，距离设计师与众不同的音频播放器就差一步之遥了！</p>
-<h4 id="六、继续探索"><a href="#六、继续探索" class="headerlink" title="六、继续探索"></a>六、继续探索</h4><p>探索中。。。</p>
+<h4 id="六、继续探索"><a href="#六、继续探索" class="headerlink" title="六、继续探索"></a>六、继续探索</h4><p>首先，突破点在于能否找到一个 <code>pause</code> 的样式类，来解决上述问题一。<br>其次，play 和 pause 如何触发图片互换。</p>
+<p>我们知道，通过 <code>audio::-webkit-media-controls-play-button</code> 可以重新定义播放按钮的外观样式。</p>
 
             
         </div>
