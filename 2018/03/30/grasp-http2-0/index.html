@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/http2.jpg">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/http2-1.png">
-<meta property="og:updated_time" content="2018-04-27T01:28:47.000Z">
+<meta property="og:updated_time" content="2018-04-28T00:29:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握 HTTP2.0">
 <meta name="twitter:description" content="提到 HTTP2.0 ，第一印象就是：这与 HTTP1.0 的区别是什么，有怎样的改进？大的版本变化必然会有更强力的特性，那不妨拿来了解一下。">
@@ -297,10 +297,27 @@
 <div class="alert info"><p>对于网络状况较差的环境，<code>HTTP2</code> 的性能也高于 <code>HTTP1</code>。</p>
 </div>
 <h4 id="四、HTTP2-加载效果演示"><a href="#四、HTTP2-加载效果演示" class="headerlink" title="四、HTTP2 加载效果演示"></a>四、HTTP2 加载效果演示</h4><p>有个在线的 <a href="https://http2.akamai.com/demo" target="_blank" rel="external">DMEO</a> 可以直观的感受一下 <code>HTTP2</code> 的实际效果。<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/http2-1.png" alt="DEMO"></p>
+<div class="alert success"><p>可以看出 <code>HTTP1.1</code> 和 <code>HTTP2</code> 在比较接近的服务器延迟条件下，<code>HTTP2</code> 的加载速度明显要优于 <code>HTTP1</code>。</p>
+</div>
 <h4 id="五、扩展：HTTP-POST-请求为什么会有一个-OPTION-？"><a href="#五、扩展：HTTP-POST-请求为什么会有一个-OPTION-？" class="headerlink" title="五、扩展：HTTP POST 请求为什么会有一个 OPTION ？"></a>五、扩展：HTTP POST 请求为什么会有一个 OPTION ？</h4><p>正如上面问题所说，当你打开 <code>Chrome</code> 开发工具或者其他抓包工具的时候，会发现一条 <code>POST</code> 请求输出两次，第一次状态显示 <code>OPTION</code>。</p>
+<p><a href="https://blog.csdn.net/leikezhu1981/article/details/7402272" target="_blank" rel="external">文档官方</a>是这么定义的：</p>
+<ul>
+<li><code>OPTIONS</code> 方法是用于请求获得由 <code>Request-URI</code> 标识的资源在请求/响应的通信过程中可以使用的功能选项。</li>
+<li>该请求方法的响应不能缓存。</li>
+<li>如果这个 <code>OPTIONS</code> 请求包含一个正文（有 <code>Content-Length</code> 或 <code>Transfer-Encoding</code> 存在），则必须有<code>Content-Type</code> 来指定媒体类型。虽然规范里没有定义这种正文的用法，但是 <code>HTTP</code> 将来的扩展可能会用它来查询服务器上更详细的信息。不支持该扩展的服务器可以忽略该请求正文。</li>
+<li>如果该 <code>URI</code> 是一个星号（“<em>”），<code>OPTIONS</code> 请求将试图应用于服务器，而不是某个指定资源。由于服务器的通信选项通常依赖于资源，所以此“</em>”请求只能作为“ping”或者“no-op”方法；或者用来测试服务器的性能。例如，用来测试 <code>HTTP/1.1</code> 代理。</li>
+<li>如果该 <code>URI</code> 不是星号，则只能用来获取该资源通信中可用的选项。</li>
+<li>得到的 <code>200</code> 响应应该包含一个头域，指明服务器实现的和适用于该资源的可选特征（如：<code>Allow</code>），可能还包括该规范尚未定义的扩展。如果有响应正文，则应包含关于通信选项的信息。本规范没有定义该正文格式，但可能在 <code>HTTP</code> 将来的扩展中定义。可以利用内容协商来选择合适的响应格式。如果没有响应正文，响应必须包含 <code>Content-Length</code>，并且值为“0”。</li>
+<li>请求头的 <code>Max-Forwards</code> 用来请求特定代理。当代理收到一个允许 <code>URI</code> 转发的 <code>OPTIONS</code> 请求，则检查<code>Max-Forwards</code>。如果 <code>Max-Forwards</code> 值为0，则不能转发该消息；相反，代理会将自己的通信选项去响应。如果<code>Max-Forwards</code> 是正整数，代理转发请求的时候会将该值减1。如果请求中没有 <code>Max-Forwards</code>，转发的请求也不会有。</li>
+</ul>
+<div class="alert success"><p>通过这个方法，客户端可以在采取具体资源请求之前，决定对该资源采取何种必要措施，或者了解服务器的性能。</p>
+</div>
+<p>根据上面描述，我们可以列举出 OPTION 的主要功能：<br>其一：获取服务器支持的 <code>HTTP</code> 请求方法；<br>其二：用来检查服务器的性能。</p>
 <div class="alert info"><p>值得注意的是：其实 HTTP 请求还分为两类：普通请求和简单请求。</p>
 </div>
-<h4 id="六、扩展阅读"><a href="#六、扩展阅读" class="headerlink" title="六、扩展阅读"></a>六、扩展阅读</h4><ul>
+<p>那么到这里，大家已经了然于胸了吧！<code>OPTIONS</code> 请求旨在发送一种“探测”请求以确定针对某个目标地址的请求必须具有怎样的约束（比如应该采用怎样的HTTP方法以及自定义的请求报头），然后根据其约束发送真正的请求。比如针对“跨域资源”的预检（Preflight）请求采用的 <code>HTTP</code> 方法就是 <code>OPTIONS</code>。</p>
+<p>好了，就说到这里，了解更多请移步<a href="https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0" target="_blank" rel="external"> W3C </a></p>
+<h4 id="六、扩展：如何理解三次握手-？"><a href="#六、扩展：如何理解三次握手-？" class="headerlink" title="六、扩展：如何理解三次握手 ？"></a>六、扩展：如何理解三次握手 ？</h4><h4 id="七、扩展阅读"><a href="#七、扩展阅读" class="headerlink" title="七、扩展阅读"></a>七、扩展阅读</h4><ul>
 <li><a href="https://www.nginx.com/blog/7-tips-for-faster-http2-performance/" target="_blank" rel="external">7 Tips for Faster HTTP/2 Performance</a></li>
 <li><a href="https://legacy.gitbook.com/book/ye11ow/http2-explained/details" target="_blank" rel="external">HTTP2 讲解</a></li>
 <li><a href="http://blog.httpwatch.com/2015/01/16/a-simple-performance-comparison-of-https-spdy-and-http2/" target="_blank" rel="external">A Simple Performance Comparison of HTTPS, SPDY and HTTP/2</a></li>
