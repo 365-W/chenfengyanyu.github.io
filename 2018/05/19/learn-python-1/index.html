@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>API 和 SDK - Jartto&#39;s blog</title>
+    <title>Python 学习笔记 1 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="一直以来，对 API 和 SDK 都有着模模糊糊的认识。突然有一天，这个问题摆在你的面前，你如何去解释呢？">
-<meta name="keywords" content="api,sdk">
+    <meta name="description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
+<meta name="keywords" content="python">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="API 和 SDK">
-<meta property="og:url" content="http://jartto.wang/2018/05/13/api-and-sdk/index.html">
+<meta property="og:title" content="Python 学习笔记 1">
+<meta property="og:url" content="http://jartto.wang/2018/05/19/learn-python-1/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="一直以来，对 API 和 SDK 都有着模模糊糊的认识。突然有一天，这个问题摆在你的面前，你如何去解释呢？">
+<meta property="og:description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-18T01:23:18.000Z">
+<meta property="og:updated_time" content="2018-05-19T01:00:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="API 和 SDK">
-<meta name="twitter:description" content="一直以来，对 API 和 SDK 都有着模模糊糊的认识。突然有一天，这个问题摆在你的面前，你如何去解释呢？">
+<meta name="twitter:title" content="Python 学习笔记 1">
+<meta name="twitter:description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
     
     
         
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/sdk.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/sdk.png" />
+        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/python1.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/python1.png" />
     
     
     
@@ -235,19 +235,19 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            API 和 SDK
+            Python 学习笔记 1
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2018-05-13T22:57:23+08:00">
+    <time itemprop="datePublished" datetime="2018-05-19T08:37:59+08:00">
 	  
-		    2018/5月/13 22:57:23
+		    2018/5月/19 08:37:59
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/前端分享/">前端分享</a>
+    <a class="category-link" href="/categories/技术博文/">技术博文</a>
 
 
     
@@ -263,29 +263,18 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>一直以来，对 API 和 SDK 都有着模模糊糊的认识。突然有一天，这个问题摆在你的面前，你如何去解释呢？<br><a id="more"></a></p>
-<h4 id="一、API-定义"><a href="#一、API-定义" class="headerlink" title="一、API 定义"></a>一、API 定义</h4><p>API (Application Programming Interface)应用程式接口：通常由一组函式库所组成，提供用户编程时的接口，是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，或理解内部工作机制的细节。</p>
-<div class="alert info"><p>例如：我要在 自己的网页 上加入 google map网页的功能，就使用 “google map API”。</p>
-</div>
-<h4 id="二、SDK-定义"><a href="#二、SDK-定义" class="headerlink" title="二、SDK 定义"></a>二、SDK 定义</h4><p>SDK (Software Development Kit)软件开发工具集：是用来帮一个产品或平台开发应用程式的工具组，由产品的厂商提供给开发者使用的。</p>
-<p>通常是某一家厂商针对某一平台或系统或硬件所发布出来用以开发应用程式的工具组，在这个工具包里面，可能包含了各式各样的开发工具，模拟器等。</p>
-<div class="alert info"><p>例如：给<code>Android</code> 平台使用的 <code>Android SDK</code> 就是用来开发 <code>Android</code> 系统上面的应用程式。</p>
-</div>
-<p>这里只说明定义，具体细节请<a href="https://www.zhihu.com/question/21691705/answer/26406216" target="_blank" rel="external">参考</a>。</p>
-<h4 id="三、通俗易懂的解释"><a href="#三、通俗易懂的解释" class="headerlink" title="三、通俗易懂的解释"></a>三、通俗易懂的解释</h4><p>看到<a href="https://www.zhihu.com/question/21691705" target="_blank" rel="external">知乎</a>上面一个有意思的回答，可以拿来逗乐：</p>
-<ul>
-<li>你是个男的</li>
-<li>你要开发一个 BABY</li>
-<li>SDK 就是房间、床、你老婆等一系列相关的工具、文档</li>
-<li>API 就是你老婆开放的接口</li>
+            <p>随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？<br><a id="more"></a></p>
+<h4 id="一、开场白"><a href="#一、开场白" class="headerlink" title="一、开场白"></a>一、开场白</h4><p><code>Python</code> 是一门简单易学且功能强大的编程语言。它拥有高效的高级数据结构，并且能够用简单而又高效的方式进行面向对象编程。<code>Python</code> 优雅的语法和动态类型，再结合它的解释性，使其在大多数平台的许多领域中成为编写脚本或开发应用程序的理想语言。</p>
+<h4 id="二、关于-Python"><a href="#二、关于-Python" class="headerlink" title="二、关于 Python"></a>二、关于 Python</h4><ul>
+<li>Python 是一门解释型语言，因为无需编译和链接</li>
+<li>Python 更易于使用，无论在 Windows、Mac OS X 或 Unix 操作系统上它都会帮助你更快地完成任务。</li>
+<li>完整的编程语言，内置支持高级的数据结构类型</li>
+<li>Python 允许你将程序分割为不同的模块，以便在其他的 Python 程序中重用。</li>
+<li>Python 让程序编写的紧凑和可读。</li>
+<li>Python 是可扩展的。</li>
+<li>…</li>
 </ul>
-<div class="alert warning"><p>这个答案不是很准确，但是足够你理解 API 和 SDK 在大方向上的不同。</p>
-</div>
-<h4 id="四、API-与-SDK-的差异"><a href="#四、API-与-SDK-的差异" class="headerlink" title="四、API 与 SDK 的差异"></a>四、API 与 SDK 的差异</h4><div class="alert success"><p><code>SDK</code> 是用来开发某一个平台的程式的工具包，<code>API</code> 是让同一平台下的程式取用它的功能的函式库。</p>
-</div>
-<p>实际上 <code>SDK</code> 包含了 <code>API</code> 的定义，<code>API</code> 定义一种能力，一种接口的规范，而 <code>SDK</code> 可以包含这种能力、包含这种规范。但是 <code>SDK</code> 又不完完全全只包含 <code>API</code> 以及 <code>API</code> 的实现，它是一个软件工具包，它还有很多其他辅助性的功能。为了使用 <code>API</code> 函数，我们就要有跟 <code>API</code> 所对应的 <code>.H</code> 和 <code>.LIB</code> 文件，而 <code>SDK</code> 正是提供了一整套开发 <code>Windows</code> 应用程序所需的相关文件、范例和工具的“工具包”。</p>
-<p>更多差异，请<a href="https://www.zhihu.com/question/21691705/answer/149935191" target="_blank" rel="external">移步</a>。</p>
-
+<h4 id="三、官网地址"><a href="#三、官网地址" class="headerlink" title="三、官网地址"></a>三、官网地址</h4><h4 id="四、快速开始"><a href="#四、快速开始" class="headerlink" title="四、快速开始"></a>四、快速开始</h4><h4 id="五、编辑中。。。"><a href="#五、编辑中。。。" class="headerlink" title="五、编辑中。。。"></a>五、编辑中。。。</h4>
             
         </div>
     </div>
@@ -298,7 +287,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/api/">api</a> <a class="tag tag--primary tag--small t-link" href="/tags/sdk/">sdk</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/python/">python</a>
 
             </div>
         
@@ -307,7 +296,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/19/learn-python-1/"  data-tooltip="Python 学习笔记 1">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -315,7 +304,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/13/about-ckeditor/" data-tooltip="强大的富文本编辑器 CKEditor">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/13/api-and-sdk/" data-tooltip="API 和 SDK">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -330,17 +319,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -385,7 +374,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/19/learn-python-1/"  data-tooltip="Python 学习笔记 1">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -393,7 +382,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/13/about-ckeditor/" data-tooltip="强大的富文本编辑器 CKEditor">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/05/13/api-and-sdk/" data-tooltip="API 和 SDK">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -408,17 +397,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -438,17 +427,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/05/13/api-and-sdk/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/05/19/learn-python-1/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

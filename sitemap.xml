@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/05/19/learn-python-1/</loc>
+    
+    <lastmod>2018-05-19T01:00:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2018/05/13/api-and-sdk/</loc>
     
     <lastmod>2018-05-18T01:23:18.000Z</lastmod>
