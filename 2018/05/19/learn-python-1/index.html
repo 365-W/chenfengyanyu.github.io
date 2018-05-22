@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-22T01:22:57.000Z">
+<meta property="og:updated_time" content="2018-05-22T01:32:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 笔记 - 简单语法1">
 <meta name="twitter:description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
@@ -265,7 +265,10 @@
         <div class="main-content-wrap">
             <p>随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？<br><a id="more"></a></p>
 <h4 id="一、开场白"><a href="#一、开场白" class="headerlink" title="一、开场白"></a>一、开场白</h4><p><code>Python</code> 是一门简单易学且功能强大的编程语言。它拥有高效的高级数据结构，并且能够用简单而又高效的方式进行面向对象编程。<code>Python</code> 优雅的语法和动态类型，再结合它的解释性，使其在大多数平台的许多领域中成为编写脚本或开发应用程序的理想语言。</p>
-<h4 id="二、关于-Python"><a href="#二、关于-Python" class="headerlink" title="二、关于 Python"></a>二、关于 Python</h4><ul>
+<div class="alert success"><p>简单来说，python 的用途很广，可以用来干很多有趣的事情，这就是兴趣所在。</p>
+</div>
+<h4 id="二、关于-Python"><a href="#二、关于-Python" class="headerlink" title="二、关于 Python"></a>二、关于 Python</h4><p>摘录了几条关于 <code>python</code> 的特性，大致如下，大家现有个整体的认识：</p>
+<ul>
 <li>Python 是一门解释型语言，因为无需编译和链接。</li>
 <li>Python 更易于使用，无论在 Windows、Mac OS X 或 Unix 操作系统上它都会帮助你更快地完成任务。</li>
 <li>完整的编程语言，内置支持高级的数据结构类型</li>
@@ -284,7 +287,14 @@
 <div class="alert info"><p>默认会安装 python3 ，如果需要安装 2.7 版本，请使用 brew install python@2</p>
 </div>
 <p>2.Hello world<br>命令行输入 <code>python</code>，默认会直接打开 <code>python</code> 的执行环境。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python</div><div class="line">print &apos;jartto: hello world!&apos;</div></pre></td></tr></table></figure></p>
-<h4 id="五、简单语法"><a href="#五、简单语法" class="headerlink" title="五、简单语法"></a>五、简单语法</h4>
+<h4 id="五、简单运算符"><a href="#五、简单运算符" class="headerlink" title="五、简单运算符"></a>五、简单运算符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 5*2</div><div class="line">&gt;&gt;&gt; round(_,2) #保留两位小数</div><div class="line">&gt;&gt;&gt; s = &apos;First line.\nSecond line.&apos;</div><div class="line">&gt;&gt;&gt; print s</div></pre></td></tr></table></figure>
+<div class="alert info"><p>保存之前的值使用下划线，只读属性，不能赋值。</p>
+</div>
+<p>如果你前面带有 \ 的字符被当作特殊字符，你可以使用 原始字符串，方法是在第一个引号前面加上一个 r:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &apos;C:\some\name&apos;  # here \n means newline!</div><div class="line">C:\some</div><div class="line">ame</div><div class="line">&gt;&gt;&gt; print r&apos;C:\some\name&apos;  # note the r before the quote</div><div class="line">C:\some\name</div></pre></td></tr></table></figure></p>
+<p>处理多行，使用“”“<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &quot;&quot;&quot;a</div><div class="line">... b</div><div class="line">... c</div><div class="line">... d&quot;&quot;&quot;</div><div class="line">a</div><div class="line">b</div><div class="line">c</div><div class="line">d</div></pre></td></tr></table></figure></p>
+<h4 id="六、字符串操作"><a href="#六、字符串操作" class="headerlink" title="六、字符串操作"></a>六、字符串操作</h4><p>1.字符串连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 3*&apos;num&apos;+1</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects</div><div class="line">&gt;&gt;&gt; 3 * &apos;num&apos; + 1</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects</div><div class="line">&gt;&gt;&gt; 3 * &apos;un&apos; + &apos;ium&apos;</div><div class="line">&apos;unununium&apos;</div><div class="line">&gt;&gt;&gt; 3 * &apos;num&apos; + &apos;1&apos;</div><div class="line">&apos;numnumnum1&apos;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<p>2.相邻的两个字符串文本自动连接在一起<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &apos;Jartto &apos; &apos;blog&apos;</div><div class="line">&apos;jartto blog&apos;</div></pre></td></tr></table></figure></p>
+
             
         </div>
     </div>
