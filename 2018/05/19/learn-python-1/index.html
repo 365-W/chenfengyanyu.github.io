@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-23T01:05:15.000Z">
+<meta property="og:updated_time" content="2018-05-23T01:26:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 笔记 - 简单语法1">
 <meta name="twitter:description" content="随着人工智能，数据分析的势头，Python 被应用到更广泛的场景中。作为世界上增长最快的编程语言，重要性不言而喻。所以，还有什么理由不去学习呢？">
@@ -297,6 +297,13 @@
 <p>3.字符串也可以被截取(检索)。类似于 C ，字符串的第一个字符索引为 0：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; word = &apos;Jartto&apos;s blog&apos;</div><div class="line">&gt;&gt;&gt; word[0]  # character in position 0 &apos;J&apos;</div><div class="line">&gt;&gt;&gt; word[5]  # character in position 5 &apos;o&apos;</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>Python 没有单独的字符类型；一个字符就是一个简单的长度为1的字符串。</p>
 </div>
+<p>4.索引也可以是负数，这将导致从右边开始计算。例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; word[-1]  # last character &apos;g&apos;</div><div class="line">&gt;&gt;&gt; word[-2]  # second-last character &apos;o&apos;</div><div class="line">&gt;&gt;&gt; word[-6]  # &apos;s&apos;</div></pre></td></tr></table></figure></p>
+<p>5.除了索引，还支持切片。索引用于获得单个字符，切片让你获得一个子字符串:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; word[0:2]  # characters from position 0 (included) to 2 (excluded) &apos;Ja&apos;</div><div class="line">&gt;&gt;&gt; word[2:5]  # characters from position 2 (included) to 5 (excluded) &apos;rtt&apos;</div></pre></td></tr></table></figure></p>
+<div class="alert warnning"><p>注意，包含起始的字符，不包含末尾的字符。这使得 s[:i] + s[i:] 永远等于 s:</p>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; word[:2] + word[2:]</div><div class="line">&apos;Jartto&apos;s blog&apos;</div><div class="line">&gt;&gt;&gt; word[:4] + word[4:]</div><div class="line">&apos;Jartto&apos;s blog&apos;</div></pre></td></tr></table></figure>
+<p>6.切片的索引有非常有用的默认值；省略的第一个索引默认为零，省略的第二个索引默认为切片的字符串的大小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; word[:6]  # character from the beginning to position 6 (excluded)</div><div class="line">&apos;Ja&apos;</div><div class="line">&gt;&gt;&gt; word[9:]  # characters from position 9 (included) to the end</div><div class="line">&apos;blog&apos;</div><div class="line">&gt;&gt;&gt; word[-2:] # characters from the second-last (included) to the end</div><div class="line">&apos;og&apos;</div></pre></td></tr></table></figure></p>
+
             
         </div>
     </div>
