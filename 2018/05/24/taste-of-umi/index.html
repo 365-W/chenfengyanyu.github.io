@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="前文构建你的 Dva2 中提到了 UmiJs，但并未深入讨论。这节开个专题，主要探讨 UmiJs 如何使用、注意事项、以及问题处理。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-24T01:24:32.000Z">
+<meta property="og:updated_time" content="2018-05-25T01:34:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UmiJs 尝鲜">
 <meta name="twitter:description" content="前文构建你的 Dva2 中提到了 UmiJs，但并未深入讨论。这节开个专题，主要探讨 UmiJs 如何使用、注意事项、以及问题处理。">
@@ -264,6 +264,48 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>前文<a href="http://jartto.wang/2018/05/24/build-your-dva2/">构建你的 Dva2</a> 中提到了 UmiJs，但并未深入讨论。这节开个专题，主要探讨 UmiJs 如何使用、注意事项、以及问题处理。<br><a id="more"></a></p>
+<h4 id="一、是什么？"><a href="#一、是什么？" class="headerlink" title="一、是什么？"></a>一、是什么？</h4><p>umi 是 next.js 风格的框架，所以沿用了 pages 下的文件即路由的方式，这种方式简单直观，而且省去了额外的一份配置，是默认的推荐方式。</p>
+<p>另外，我们考虑到有些复杂的场景下约定式路由无法满足，或者就是有人偏爱配置的方式，所以依然提供了配置式的路由。</p>
+<p>注意：约定式路由和配置式路由是二选一的，并不是 merge 的关系，目录下有 _routes.json 时会优先用配置式。</p>
+<h4 id="二、约定大于配置"><a href="#二、约定大于配置" class="headerlink" title="二、约定大于配置"></a>二、约定大于配置</h4><ul>
+<li>约定 _layout.js 目录下路由的父级组件，可通过 props.children 渲染子路由，或通过 route.routes 定制子路由的渲染</li>
+<li>有 _layout.js 时才会有嵌套，无 _layout.js 则平级渲染</li>
+<li>目录下有 page.js 时 _layout.js 无效，因为目录路由没有子路由，无嵌套需求</li>
+</ul>
+<p>看下具体的例子，目录结构如下：<br><a href="https://umijs.org/docs/zh-Hans/router.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/router.html</a></p>
+<h4 id="三、目录路由"><a href="#三、目录路由" class="headerlink" title="三、目录路由"></a>三、目录路由</h4><p>有些场景下文件路由无法满足需求，比如我们需要组织 dva 的 models、services 等等，所以 umi 支持一个目录作为路由的方式。约定是：目录下如果有 page.js，则作为路由解析。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;require(</span>'<span class="attr">..</span>/<span class="attr">index.js</span>')<span class="attr">.default</span>&#125; /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">"/users/detail"</span> <span class="attr">component</span>=<span class="string">&#123;require(</span>'<span class="attr">..</span>/<span class="attr">users</span>/<span class="attr">detail.js</span>')<span class="attr">.default</span>&#125;&#125; /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">"/list"</span> <span class="attr">component</span>=<span class="string">&#123;require(</span>'<span class="attr">..</span>/<span class="attr">list</span>/<span class="attr">page.js</span>')<span class="attr">.default</span>&#125;&#125; /&gt;</span></div></pre></td></tr></table></figure>
+<p>注意 /users/detail.js 和 /list/page.js 的区别。</p>
+<h4 id="四、变量路由"><a href="#四、变量路由" class="headerlink" title="四、变量路由"></a>四、变量路由</h4><p>umi 里约定，文件名或目录名里的 $ 会被替换为 :。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;require(</span>'<span class="attr">..</span>/<span class="attr">index.js</span>')<span class="attr">.default</span>&#125; /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">"/users/:userId"</span> <span class="attr">component</span>=<span class="string">&#123;require(</span>'<span class="attr">..</span>/<span class="attr">users</span>/$<span class="attr">userId.js</span>')<span class="attr">.default</span>&#125;&#125; /&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这里什么意思，如何使用？</p>
+<h4 id="五、配置式路由"><a href="#五、配置式路由" class="headerlink" title="五、配置式路由"></a>五、配置式路由</h4><p>umi 里约定可通过 _routes.json 配置路由，如果有 _routes.json，则会忽略 pages 下文件即路由的规则。</p>
+<h4 id="六、添加-404-页面"><a href="#六、添加-404-页面" class="headerlink" title="六、添加 404 页面"></a>六、添加 404 页面</h4><p>umi 中约定 pages 目录下的 404.js 为 404 页面，这个文件需要返回 React 组件。比如：</p>
+<p>开发模式下，umi 会添加一个默认的 404 页面，但你仍然可通过精确地访问 /404 来验证 404 页面。</p>
+<h4 id="七、配置-HTML-模板"><a href="#七、配置-HTML-模板" class="headerlink" title="七、配置 HTML 模板"></a>七、配置 HTML 模板</h4><p>-修改默认模板<br>新建 pages/document.ejs，umi 约定如果这个文件存在，会作为默认模板，内容上可以参考 umi 内置模板，需要保证出现 <div id="root"></div>。<br>-针对特定页面指定模板<br>配置 .umirc.js</p>
+<p>优先级是：pages 里指定 &gt; pages/document.ejs &gt; umi 内置模板。</p>
+<h4 id="八、按需加载"><a href="#八、按需加载" class="headerlink" title="八、按需加载"></a>八、按需加载</h4><p><a href="https://umijs.org/docs/zh-Hans/load-on-demand.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/load-on-demand.html</a><br>出于性能的考虑，我们会对模块和组件进行按需加载，比如 umi 本身在实现的时候，每个页面就是按需加载的。<br>-按需加载组件<br>通过 umi/dynamic 接口实现，比如：</p>
+<p>-按需加载模块<br>通过 import() 实现，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import(&apos;g2&apos;).then(() =&gt; &#123; // do something with g2&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="九、部署"><a href="#九、部署" class="headerlink" title="九、部署"></a>九、部署</h4><p><a href="https://umijs.org/docs/zh-Hans/deploy.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/deploy.html</a><br>-直接部署<br>-部署static 目录到 cdn<br>-HTML在非根路径</p>
+<h4 id="十、umi-和-dva-以及-roadhog-是什么关系？"><a href="#十、umi-和-dva-以及-roadhog-是什么关系？" class="headerlink" title="十、umi 和 dva 以及 roadhog 是什么关系？"></a>十、umi 和 dva 以及 roadhog 是什么关系？</h4><p>简单来说：</p>
+<ul>
+<li>dva 是数据流</li>
+<li>roadhog 是通用工具</li>
+<li>umi 是框架，包含路由和工具，很多的约定，很多的性能优化，以及开发体验优化</li>
+</ul>
+<p>然后，umi 和 roadhog 共用同一个底层 af-webpack，他们在功能上有一定重叠，可以说 umi 包含 roadhog，react 项目我会倾向于推荐用 umi。</p>
+<h4 id="十一、Umi-定位"><a href="#十一、Umi-定位" class="headerlink" title="十一、Umi 定位"></a>十一、Umi 定位</h4><p><a href="https://umijs.org/docs/zh-Hans/introduction.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/introduction.html</a><br>umi[工具 + 路由] + dva[数据] + antd(-mobile)[视图]</p>
+<p>大家可能会觉得，umi 有啥特别的，工具用 webpack + webpack-dev-server + babel + postcss + … ，路由用 react-router 不就完了吗？</p>
+<p>这是上一代的使用方式，工具是工具，库是库，泾渭分明。而近来，我们发现工具和库其实可以糅合在一起，工具也是框架的一部分。<br> 通过约定、自动生成和解析代码等方式来辅助开发，减少开发者要写的代码量。next.js 如此，umi 也如此，Compilers are the New Frameworks 。</p>
+<h4 id="十二、如何评价五米"><a href="#十二、如何评价五米" class="headerlink" title="十二、如何评价五米"></a>十二、如何评价五米</h4><p><a href="https://www.zhihu.com/question/266579173/answer/310254225" target="_blank" rel="external">https://www.zhihu.com/question/266579173/answer/310254225</a></p>
+<h4 id="十三、如何解决-login-页不使用-layout-问题"><a href="#十三、如何解决-login-页不使用-layout-问题" class="headerlink" title="十三、如何解决 login 页不使用 layout 问题"></a>十三、如何解决 login 页不使用 layout 问题</h4><h4 id="十四、环境变量"><a href="#十四、环境变量" class="headerlink" title="十四、环境变量"></a>十四、环境变量</h4><p><a href="https://umijs.org/docs/zh-Hans/introduction.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/introduction.html</a></p>
+<h4 id="十五、简单使用"><a href="#十五、简单使用" class="headerlink" title="十五、简单使用"></a>十五、简单使用</h4><p><a href="https://umijs.org/docs/zh-Hans/navigate-between-pages.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/navigate-between-pages.html</a><br>基于 umi/link。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Link <span class="keyword">from</span> <span class="string">'umi/link'</span>; <span class="keyword">export</span> <span class="keyword">default</span> () =&gt; ( <span class="xml"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/list"</span>&gt;</span>Go to list page<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span> );</div></pre></td></tr></table></figure></p>
+<h4 id="十六、build-访问路由后-404"><a href="#十六、build-访问路由后-404" class="headerlink" title="十六、build 访问路由后 404"></a>十六、build 访问路由后 404</h4><p><a href="https://umijs.org/docs/zh-Hans/faq.html" target="_blank" rel="external">https://umijs.org/docs/zh-Hans/faq.html</a></p>
+<p>几个方案供选择：</p>
+<ul>
+<li>改用 hashHistory，在 .umirc.js 里配 hashHistory: true</li>
+<li>静态化，在 .umirc.js 里配 exportStatic: true</li>
+<li>服务端配置路由 fallback 到 index.html</li>
+</ul>
 
             
         </div>
