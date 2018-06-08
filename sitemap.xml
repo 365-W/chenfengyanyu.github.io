@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/05/27/nextjs-1/</loc>
+    
+    <lastmod>2018-06-08T00:36:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2018/06/08/nextjs-3/</loc>
+    
+    <lastmod>2018-06-08T00:34:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2018/06/01/nextjs-2/</loc>
+    
+    <lastmod>2018-06-07T23:28:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2018/05/24/build-your-dva2/</loc>
     
     <lastmod>2018-06-07T23:07:15.000Z</lastmod>
