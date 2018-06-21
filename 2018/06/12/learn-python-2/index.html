@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="继续上一节，我们来补充一些常用语法。很简单，主要是了解一些 Python 语言的特性，为后续使用做好铺垫。OK，快来开始吧！">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-06-21T00:57:17.000Z">
+<meta property="og:updated_time" content="2018-06-21T01:22:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 笔记2 - 常用操作">
 <meta name="twitter:description" content="继续上一节，我们来补充一些常用语法。很简单，主要是了解一些 Python 语言的特性，为后续使用做好铺垫。OK，快来开始吧！">
@@ -283,13 +283,21 @@
 </div>
 </li>
 </ul>
-<h4 id="三、Python-如何取括号中的字符串？"><a href="#三、Python-如何取括号中的字符串？" class="headerlink" title="三、Python 如何取括号中的字符串？"></a>三、Python 如何取括号中的字符串？</h4><ul>
-<li>使用正则<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">str1 = <span class="string">'(1, 0.123) (2, 0.234)'</span></div><div class="line">re.findall(<span class="string">r'[(](.*?)[)]'</span>, str1)</div><div class="line"></div><div class="line"><span class="comment"># 输出：['1, 0.123', '2, 0.234']</span></div><div class="line">result.append(re.findall(<span class="string">r'[[](.*?)[]]'</span>,str)[<span class="number">0</span>])</div></pre></td></tr></table></figure>
+<h4 id="三、Python-如何取括号中的字符串？"><a href="#三、Python-如何取括号中的字符串？" class="headerlink" title="三、Python 如何取括号中的字符串？"></a>三、Python 如何取括号中的字符串？</h4><p>如果你恰好要处理一下字符串操作，譬如：我们将 <code>Markdown</code> 文件中的链接全部取出来，这时候就需要使用正则了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">str1 = <span class="string">'(1, 0.123) (2, 0.234)'</span></div><div class="line">re.findall(<span class="string">r'[(](.*?)[)]'</span>, str1)</div><div class="line"></div><div class="line"><span class="comment"># 输出：['1, 0.123', '2, 0.234']</span></div><div class="line">result.append(re.findall(<span class="string">r'[[](.*?)[]]'</span>,str)[<span class="number">0</span>])</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p>使用正则的话，需要先引入内置模块 re，这在后续章节中会深入介绍。</p>
+</div>
+<p>当然，这仅仅为了说明一些处理思路，正则操作会比你想象的更加复杂和强大。</p>
+<h4 id="四、去除字符串中不需要字符"><a href="#四、去除字符串中不需要字符" class="headerlink" title="四、去除字符串中不需要字符"></a>四、去除字符串中不需要字符</h4><p>通常我们用的最多的可能是一些类似 <code>trim</code> 之类的方法，去掉首尾空格。<code>Python</code> 中也有类似的操作，不过更加强大。这里我们来介绍几个方法。</p>
+<ul>
+<li><p>去掉两端字符串： strip(), rstrip(),lstrip()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">text = <span class="string">'  ----- http://jartto.wang +++++    '</span></div><div class="line"><span class="comment"># 删除两边空字符</span></div><div class="line">print(text.strip()) <span class="comment"># '----- http://jartto.wang +++++'</span></div><div class="line"><span class="comment"># 删除右边空字符</span></div><div class="line">print(text.rstrip()) <span class="comment"># '  ----- http://jartto.wang +++++'</span></div><div class="line"><span class="comment"># 删除左边空字符</span></div><div class="line">print(text.lstrip()) <span class="comment"># '----- http://jartto.wang +++++    '</span></div></pre></td></tr></table></figure>
+<p>更高级的用法来，我们甚至可以指定去掉的字符，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">text = <span class="string">'  ----- http://jartto.wang +++++    '</span></div><div class="line"><span class="comment"># 删除两边 -+ 和空字符</span></div><div class="line">print(text.strip().strip(<span class="string">'-+'</span>)) <span class="comment"># ' http://jartto.wang '</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>删除单个固定位置字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">text = <span class="string">'name:jartto'</span></div><div class="line"><span class="comment"># 字符串拼接方式去除冒号</span></div><div class="line">new_s = s[:<span class="number">4</span>] + s[<span class="number">5</span>:]</div><div class="line">print(new_s)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<div class="alert info"><p>使用正则的话，需要引入 re 模块。</p>
-</div>
-<h4 id="四、去除字符串中不需要字符"><a href="#四、去除字符串中不需要字符" class="headerlink" title="四、去除字符串中不需要字符"></a>四、去除字符串中不需要字符</h4><p>去掉两端字符串： strip(), rstrip(),lstrip()</p>
 <h4 id="五、数组过滤"><a href="#五、数组过滤" class="headerlink" title="五、数组过滤"></a>五、数组过滤</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">33</span>]</div><div class="line">b = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">33</span>]</div><div class="line">c = [i <span class="keyword">for</span> i <span class="keyword">in</span> a <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> b]</div><div class="line"></div><div class="line">a = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line">b = set([<span class="number">2</span>])</div><div class="line">print(list(a - b))</div><div class="line">print(c)</div></pre></td></tr></table></figure>
 <h4 id="六、open-文件操作"><a href="#六、open-文件操作" class="headerlink" title="六、open 文件操作"></a>六、open 文件操作</h4><p><a href="https://blog.csdn.net/c369624808/article/details/79039311" target="_blank" rel="external">https://blog.csdn.net/c369624808/article/details/79039311</a></p>
 <p><a href="http://www.runoob.com/python/python-func-open.html" target="_blank" rel="external">http://www.runoob.com/python/python-func-open.html</a></p>
