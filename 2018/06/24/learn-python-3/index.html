@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="简单语法支撑不起 Python，文件操作却是重中之重。这节我们来探索一下 Python 中内置函数 Open()，让你从此爱上文件操作。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-06-25T01:08:37.000Z">
+<meta property="og:updated_time" content="2018-06-25T01:10:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 笔记3 - Open 文件操作">
 <meta name="twitter:description" content="简单语法支撑不起 Python，文件操作却是重中之重。这节我们来探索一下 Python 中内置函数 Open()，让你从此爱上文件操作。">
@@ -305,7 +305,7 @@
 <p>去 <code>jartto.txt</code> 文件查看，字符串已被写入文件。</p>
 </li>
 <li><p>若为 <code>1</code> 或 <code>True</code> 有缓冲区； </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="keyword">True</span>) </div><div class="line">f.write(<span class="string">'Jartto\'s blog'</span>)  </div><div class="line">``` </div><div class="line">&#123;% alert info %&#125;</div><div class="line">若缓冲区满了则自动写入文件 jartto.txt 中，否则需要 f.flush() 或 f.close(),才能写入 jartto.txt 文件；</div><div class="line">&#123;% endalert %&#125;</div><div class="line"></div><div class="line">- 若为其他正数则表示缓冲区大小； </div><div class="line">```python</div><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="number">20</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="keyword">True</span>) </div><div class="line">f.write(<span class="string">'Jartto\'s blog'</span>)  </div><div class="line">``` </div><div class="line"></div><div class="line">&#123;% alert info %&#125;</div><div class="line">若缓冲区满了则自动写入文件 jartto.txt 中，否则需要 f.flush() 或 f.close(),才能写入 jartto.txt 文件；</div><div class="line">&#123;% endalert %&#125;</div><div class="line"></div><div class="line">- 若为其他正数则表示缓冲区大小； </div><div class="line">```python</div><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="number">20</span>)</div></pre></td></tr></table></figure>
 <p>有缓冲区，缓冲区大小 20 字节。当写入字符串少于 20 字节时，先写入缓冲区，需要 <code>flush()</code> 或 <code>close()</code>,才能写入 <code>jartto.txt</code> 文件；<br>当字符串不少于 20 字节时，先写入缓冲区，若缓冲区满了，则自动写入 <code>jartto.txt</code> 文件，依次类推，最后缓冲区中的内容需 <code>f.flush</code> 或 <code>f.close()</code> ,才能写入 <code>jartto.txt</code> 文件；</p>
 </li>
 <li><p>若为负数，则使用默认缓冲区大小； </p>
