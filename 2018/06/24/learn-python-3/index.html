@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="简单语法支撑不起 Python，文件操作却是重中之重。这节我们来探索一下 Python 中内置函数 Open()，让你从此爱上文件操作。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-06-25T01:10:58.000Z">
+<meta property="og:updated_time" content="2018-06-27T01:22:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 笔记3 - Open 文件操作">
 <meta name="twitter:description" content="简单语法支撑不起 Python，文件操作却是重中之重。这节我们来探索一下 Python 中内置函数 Open()，让你从此爱上文件操作。">
@@ -304,8 +304,15 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="keyword">False</span>)</div><div class="line">f.write(<span class="string">'Jartto\'s blog'</span>)</div></pre></td></tr></table></figure>
 <p>去 <code>jartto.txt</code> 文件查看，字符串已被写入文件。</p>
 </li>
-<li><p>若为 <code>1</code> 或 <code>True</code> 有缓冲区； </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="keyword">True</span>) </div><div class="line">f.write(<span class="string">'Jartto\'s blog'</span>)  </div><div class="line">``` </div><div class="line"></div><div class="line">&#123;% alert info %&#125;</div><div class="line">若缓冲区满了则自动写入文件 jartto.txt 中，否则需要 f.flush() 或 f.close(),才能写入 jartto.txt 文件；</div><div class="line">&#123;% endalert %&#125;</div><div class="line"></div><div class="line">- 若为其他正数则表示缓冲区大小； </div><div class="line">```python</div><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="number">20</span>)</div></pre></td></tr></table></figure>
+<li><p>若为 <code>1</code> 或 <code>True</code> 有缓冲区；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="keyword">True</span>) </div><div class="line">f.write(<span class="string">'Jartto\'s blog'</span>)</div></pre></td></tr></table></figure>
+<div class="alert info"><p>若缓冲区满了则自动写入文件 jartto.txt 中，否则需要 f.flush() 或 f.close(),才能写入 jartto.txt 文件；</p>
+</div>
+</li>
+</ul>
+<ul>
+<li><p>若为其他正数则表示缓冲区大小； </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">r'&#123;&#125;/jartto.txt'</span>.format(sys.path[<span class="number">0</span>]), <span class="string">'w'</span>, <span class="number">20</span>)</div></pre></td></tr></table></figure>
 <p>有缓冲区，缓冲区大小 20 字节。当写入字符串少于 20 字节时，先写入缓冲区，需要 <code>flush()</code> 或 <code>close()</code>,才能写入 <code>jartto.txt</code> 文件；<br>当字符串不少于 20 字节时，先写入缓冲区，若缓冲区满了，则自动写入 <code>jartto.txt</code> 文件，依次类推，最后缓冲区中的内容需 <code>f.flush</code> 或 <code>f.close()</code> ,才能写入 <code>jartto.txt</code> 文件；</p>
 </li>
 <li><p>若为负数，则使用默认缓冲区大小； </p>
@@ -315,9 +322,20 @@
 </ul>
 <div class="alert danger"><p>这里有个问题，为什么要写入缓冲区，Buffering 是不是可有可无？</p>
 </div>
+<p>在网上查到一个关于缓冲区作用的描述：<br>FileInputStream/FileOutputStream 每次调用 read()/write() 都会触发一个 IO 操作。<br>BufferedInputStream/BufferedOutputSteam 调用 read()/write() 并不会每次都触发一个 IO 操作，只是写到内部的buffer里面，而只有内部的 buffer 满了或者调用 flush() 才会触发 IO 操作。</p>
+<div class="alert info"><p>IO 操作越少，性能越好。</p>
+</div>
+<p>操作系统不仅会将硬盘上的文件读到内存作为缓存使用，也会在内存开辟另外一段空间给内存的数据做缓存处理。意义何在？</p>
+<p>为了管理，也为了效率。</p>
+<ul>
+<li>内存与内存之间的数据交换，比内存与硬盘之间的数据交换速率高了两个数量级。</li>
+<li>当内存上的某个进程需要数据的时候，如果内存缓存有匹配的数据，则直接在缓存区取，如果没有，再去硬盘上读。（写也同理）</li>
+<li>代码需要进行频繁的IO操作时，意义就体现出来了。</li>
+</ul>
 <p>扩展阅读：</p>
 <ul>
 <li><a href="https://blog.csdn.net/u011878795/article/details/52194644" target="_blank" rel="external">关于 python open 函数缓冲区</a></li>
+<li><a href="https://segmentfault.com/q/1010000004947600" target="_blank" rel="external">在程序里读取磁盘文件时，为什么需要使用缓冲区</a></li>
 </ul>
 <h4 id="五、File-对象方法"><a href="#五、File-对象方法" class="headerlink" title="五、File 对象方法"></a>五、File 对象方法</h4><p><code>Open()</code> 函数从来都不是单用的，它与文件操作密不可分，所以请不要离开，再了解一下 <code>File</code> 对象方法？</p>
 <ul>
@@ -327,9 +345,11 @@
 <li>for line in f: print line #通过迭代器访问</li>
 <li>f.write(“hello\n”) #如果要写入字符串以外的数据,先将他转换为字符串.</li>
 <li>f.tell() 返回一个整数,表示当前文件指针的位置(就是到文件头的比特数).</li>
-<li>f.seek(偏移量,[起始位置]) 用来移动文件指针.</li>
+<li>f.seek(偏移量,[起始位置]) 用来移动文件指针.<ul>
 <li>偏移量:单位:比特,可正可负</li>
 <li>起始位置:0-文件头,默认值;1-当前位置;2-文件尾</li>
+</ul>
+</li>
 <li>f.close() 关闭文件</li>
 </ul>
 <h4 id="六、file-与-open"><a href="#六、file-与-open" class="headerlink" title="六、file() 与 open()"></a>六、file() 与 open()</h4><p>两者都能够打开文件，对文件进行操作，也具有相似的用法和参数。但是，这两种文件打开方式却有着本质的区别：</p>
