@@ -27,8 +27,10 @@
 <meta property="og:description" content="一直对 Github 的开源协议没有明确认识，直到有一天，也想搞个开源项目。随之而来的问题是：如何选择，如何在这个到处撕比的时代用武器维护劳动成果？">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license1.jpg">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license3.png">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license4.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license2.png">
-<meta property="og:updated_time" content="2018-07-01T14:45:45.000Z">
+<meta property="og:updated_time" content="2018-07-06T01:26:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简话开源协议">
 <meta name="twitter:description" content="一直对 Github 的开源协议没有明确认识，直到有一天，也想搞个开源项目。随之而来的问题是：如何选择，如何在这个到处撕比的时代用武器维护劳动成果？">
@@ -281,13 +283,24 @@
 <p><img src="http://7xvi3w.com1.z0.glb.clouddn.com/license1.jpg" alt="License1"></p>
 <div class="alert success"><p>这就是所谓的捷径，我们可以先从 Github 上最火的开源协议入手。</p>
 </div>
-<p>话不多说，我们开始吧：</p>
-<ul>
-<li>CC（Creative Commons） 协议</li>
-</ul>
-<ul>
-<li><a href="https://baike.baidu.com/item/creative%20commons/8755425?fr=aladdin" target="_blank" rel="external">CC</a></li>
-</ul>
+<p>话不多说，我们开始吧，先来看看下面这三种常用协议吧：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/license3.png" alt="License3"></p>
+<p>1.<code>MIT</code>(简单宽松的协议)</p>
+<div class="alert info"><p>如果你只想要一个简单点的协议不想太麻烦的话。</p>
+</div>
+<p><a href="https://choosealicense.com/licenses/mit/" target="_blank" rel="external"><code>MIT</code></a> 协议相对宽松但还是抓住了要点的。此协议允许别人以任何方式使用你的代码同时署名原作者，但原作者不承担代码使用后的风险，当然也没有技术支持的义务。<code>jQuery</code> 和 <code>Rails</code> 就是 <code>MIT</code> 协议。</p>
+<p>2.<code>Apache</code>(考虑有专利的情况)<br><div class="alert info"><p>如果你的作品中涉及到专利相关。</p>
+</div></p>
+<p><a href="https://choosealicense.com/licenses/apache-2.0/" target="_blank" rel="external"><code>Apache</code></a> 协议也是个相对宽松与 <code>MIT</code> 类似的协议，但它简单指明了作品归属者对用户专利上的一些授权。<code>Apache</code>服务器，<code>SVN</code> 还有 <code>NuGet</code> 等是使用的 <code>Apache</code> 协议。</p>
+<p>3.<code>GNU GPLv2</code> (代码分享与促进)<br><div class="alert info"><p>如果你在乎作品的传播和别人的修改，希望别人也以相同的协议分享出来。</p>
+</div><br><a href="https://choosealicense.com/licenses/gpl-2.0/" target="_blank" rel="external"><code>GNU GPL</code></a>（V2或V3）是一种版本自由的协议（可以参照<code>copyright</code> 来理解，后者是版本保留，那 <code>copyleft</code> 便是版权自由，或者无版权，但无版权不代表你可以不遵守软件中声明的协议）。此协议要求代码分发者或者以此代码为基础开发出来的衍生作品需要以同样的协议来发布。</p>
+<div class="alert warning"><p>copyright 和 copyleft 下文会有<a href="http://jartto.wang/2018/06/29/talk-about-license/">详细说明</a>。</p>
+</div>
+<p>4.CC（Creative Commons） 协议<br>上面各协议只是针对软件或代码作品，如果你的作品不是代码，比如视频，音乐，图片，文章等，共享于公众之前，也最好声明一下协议以保证自己的权益不被侵犯。</p>
+<p>针对非代码的数字作品的协议，最通用的莫过于 <a href="https://baike.baidu.com/item/creative%20commons/8755425?fr=aladdin" target="_blank" rel="external"><code>Creative Commons</code></a> (也是你经常在别人博客下面可以看到的 <code>CC</code> 协议)协议。</p>
+<div class="alert success"><p>所以现在你见到博客园别人文章下面的签名就不会感到陌生了。</p>
+</div>
+<p>还有更多相关协议，这里就不一一列举了，可以看看下面这张图(感谢<a href="https://www.cnblogs.com/Wayou/p/how_to_choose_a_license.html" target="_blank" rel="external">作者</a>的整理)，非常详细：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/license4.png" alt="License4"></p>
+<p>关于 <code>MIT</code>，<code>Apache</code>，<code>GNU GPL</code> 协议更多细节，可以看这里：<a href="https://choosealicense.com" target="_blank" rel="external">Choose an open source license</a>。</p>
 <h4 id="四、快速选择"><a href="#四、快速选择" class="headerlink" title="四、快速选择"></a>四、快速选择</h4><p>那我们该如何选择呢？看看<a href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html" target="_blank" rel="external">阮一峰老师</a>的这张图片，简洁易懂：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/license2.png" alt="License2"></p>
 <h4 id="五、为-Github-项目添加协议"><a href="#五、为-Github-项目添加协议" class="headerlink" title="五、为 Github 项目添加协议"></a>五、为 Github 项目添加协议</h4><p>在 <code>Github</code> 中添加协议很容易，主要分为四步：<br>1.进入你的代码仓库，点击 <code>Create new file</code>；<br>2.这时 <code>Github</code> 的新页面上，有一个空格让你填入文件名称。在输入框输入文件名 <code>LICENSE</code>, 然后点击右侧 <code>Choose a license template</code>；<br>3.出现一系列协议可供选择，选择自己想要的即可；<br>4.点击 <code>Commit new file</code>，这时你添加的开源协议就在代码仓库的菜单中了。</p>
 <p>如果还不清楚，请查看图文：<a href="https://www.cnblogs.com/gwca/p/8341198.html" target="_blank" rel="external">如何为 Github 已有仓库添加协议</a>。</p>
