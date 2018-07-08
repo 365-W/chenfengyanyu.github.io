@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license3.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license4.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/license2.png">
-<meta property="og:updated_time" content="2018-07-06T01:26:47.000Z">
+<meta property="og:updated_time" content="2018-07-08T13:19:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简话开源协议">
 <meta name="twitter:description" content="一直对 Github 的开源协议没有明确认识，直到有一天，也想搞个开源项目。随之而来的问题是：如何选择，如何在这个到处撕比的时代用武器维护劳动成果？">
@@ -295,9 +295,21 @@
 </div><br><a href="https://choosealicense.com/licenses/gpl-2.0/" target="_blank" rel="external"><code>GNU GPL</code></a>（V2或V3）是一种版本自由的协议（可以参照<code>copyright</code> 来理解，后者是版本保留，那 <code>copyleft</code> 便是版权自由，或者无版权，但无版权不代表你可以不遵守软件中声明的协议）。此协议要求代码分发者或者以此代码为基础开发出来的衍生作品需要以同样的协议来发布。</p>
 <div class="alert warning"><p>copyright 和 copyleft 下文会有<a href="http://jartto.wang/2018/06/29/talk-about-license/">详细说明</a>。</p>
 </div>
-<p>4.CC（Creative Commons） 协议<br>上面各协议只是针对软件或代码作品，如果你的作品不是代码，比如视频，音乐，图片，文章等，共享于公众之前，也最好声明一下协议以保证自己的权益不被侵犯。</p>
+<p>4.<code>LGPL</code> (GNU Lesser General Public License)<br><div class="alert info"><p>鉴于 <code>GPL</code> 是如此的隔绝商业, 就出现了一个宽松版的 <code>GPL</code> 即 <code>LGPL</code></p>
+</div><br>但 <code>LGPL</code> 其实只是 <code>GPL</code> 的一个为主要为类库使用设计的开源协议，<code>LGPL</code>允许商业软件通过类库引用方式使用 <code>LGPL</code>类库而不需要开源商业软件的代码。</p>
+<p><code>GPL/LGPL</code> 都保障原作者的知识产权，避免有人利用开源代码复制并开发类似的产品，<code>Hibernate</code> 就采用了该协议。</p>
+<p>5.<code>BSD</code> (Berkeley Software Distribution)<br><div class="alert info"><p><a href="https://www.jianshu.com/p/5b2372fec71b" target="_blank" rel="external"><code>BSD</code></a> 开源协议是一个给于使用者很大自由的协议, 基本上使用者可以「为所欲为」, 因此是对商业集成很友好的协议。</p>
+</div></p>
+<p>但「为所欲为」的前提当你发布使用了 <code>BSD</code> 协议的代码时, 需要满足这三个条件：</p>
+<ul>
+<li>如果在发布的产品中包含源代码, 则在源代码中必须带有原来代码中的 <code>BSD</code> 协议</li>
+<li>如果在发布的只是二进制类库/软件, 则需要在类库/软件的文档和版权声明中包含原来代码中的 <code>BSD</code> 协议</li>
+<li>不可以用开源代码的作者/机构名字和原来产品的名字做市场推广</li>
+</ul>
+<p>采用 <code>BSD</code>协议的软件如：<code>nginx</code></p>
+<p>6.<code>CC</code>（Creative Commons） 协议<br>上面各协议只是针对软件或代码作品，如果你的作品不是代码，比如视频，音乐，图片，文章等，共享于公众之前，也最好声明一下协议以保证自己的权益不被侵犯。</p>
 <p>针对非代码的数字作品的协议，最通用的莫过于 <a href="https://baike.baidu.com/item/creative%20commons/8755425?fr=aladdin" target="_blank" rel="external"><code>Creative Commons</code></a> (也是你经常在别人博客下面可以看到的 <code>CC</code> 协议)协议。</p>
-<div class="alert success"><p>所以现在你见到博客园别人文章下面的签名就不会感到陌生了。</p>
+<div class="alert success"><p>所以现在你见到别人博客文章下面的签名就不会感到陌生了，数字作品的协议嘛。</p>
 </div>
 <p>还有更多相关协议，这里就不一一列举了，可以看看下面这张图(感谢<a href="https://www.cnblogs.com/Wayou/p/how_to_choose_a_license.html" target="_blank" rel="external">作者</a>的整理)，非常详细：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/license4.png" alt="License4"></p>
 <p>关于 <code>MIT</code>，<code>Apache</code>，<code>GNU GPL</code> 协议更多细节，可以看这里：<a href="https://choosealicense.com" target="_blank" rel="external">Choose an open source license</a>。</p>
@@ -318,7 +330,8 @@
 <p><code>Copyleft</code> 是一种对程序进行版权保护的方法。它并不是放弃版权，因为这样会使 <code>Copyleft</code> 变得不可操作。<code>Copyleft</code> 中的 <code>left</code>，并不使用它在英语中「保留」的意思，而是指它（left，左）与通常的版权( <code>Copyright</code> )中的 <code>right</code>（右）具有镜像的关系。</p>
 <p>践行 <code>Copyleft</code> 最常见的的协议有 <code>GPL</code>。即如果你使用了这份开源代码，要求使用者改作后的衍生作品必须要以同等的授权方式释出以回馈社会。这意味着，如果是商业软件使用这样的开源代码并改动，商业价值有可能会下降。而 <code>Copyleft</code> 也是很多开源协议的标志性特点。 </p>
 <p>详细内容请查看：1.<a href="http://www.gnu.org/copyleft/" target="_blank" rel="external">什么是 Copyleft？</a> 2.<a href="https://blog.csdn.net/testcs_dn/article/details/51099415" target="_blank" rel="external">WTFPL</a></p>
-<h4 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h4><p>已更新至<a href="https://github.com/f2e-awesome/knowledge" target="_blank" rel="external">F2E-Awesome</a>。</p>
+<h4 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h4><p>文章中整理了比较热门的开源协议，当然开源协议远远多于此。感兴趣的话，可以去深入学习，这里就不赘述了。而我们的目的就是了解它们，做一个文明的 <code>Coder</code> ，而不是流氓。不论代码或非代码作品，都凝聚了作者的心血，请尊重他们。</p>
+<p>注意：文章已更新至<a href="https://github.com/f2e-awesome/knowledge" target="_blank" rel="external">F2E-Awesome</a>。</p>
 
             
         </div>
@@ -341,7 +354,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/08/git-commit/"  data-tooltip="你可能会忽略的 Git 提交规范">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -419,7 +432,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/07/08/git-commit/"  data-tooltip="你可能会忽略的 Git 提交规范">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
