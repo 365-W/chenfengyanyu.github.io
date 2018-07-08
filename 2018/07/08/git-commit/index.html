@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="一直是 ESLint 的忠实用户，深知规范的重要性。然而，在新项目交接中，我被 Git Commit 规范逼疯了。才意识到自己的疏忽，于是便有了一探究竟的想法。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-07-08T14:53:50.000Z">
+<meta property="og:updated_time" content="2018-07-08T14:57:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你可能会忽略的 Git 提交规范">
 <meta name="twitter:description" content="一直是 ESLint 的忠实用户，深知规范的重要性。然而，在新项目交接中，我被 Git Commit 规范逼疯了。才意识到自己的疏忽，于是便有了一探究竟的想法。">
@@ -319,12 +319,12 @@
 <li>Breaking changes.</li>
 </ul>
 <p>每个部分都会罗列相关的 <code>commit</code> ，并且有指向这些 <code>commit</code> 的链接。当然，生成的文档允许手动修改，所以发布前，你还可以添加其他内容。</p>
-<p>这里需要使用工具 <a href="https://github.com/conventional-changelog/conventional-changelog" target="_blank" rel="external">Conventional Changelog</a>生成 Change log ：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g conventional-changelog</div><div class="line"><span class="built_in">cd</span> jartto-domo</div><div class="line">conventional-changelog -p angular -i CHANGELOG.md -w</div></pre></td></tr></table></figure></p>
+<p>这里需要使用工具 <a href="https://github.com/conventional-changelog/conventional-changelog" target="_blank" rel="external">Conventional Changelog</a> 生成 <code>Change log</code> ：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g conventional-changelog</div><div class="line"><span class="built_in">cd</span> jartto-domo</div><div class="line">conventional-changelog -p angular -i CHANGELOG.md -w</div></pre></td></tr></table></figure></p>
 <p>为了方便使用，可以将其写入 <code>package.json</code> 的 <code>scripts</code> 字段。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"changelog"</span>: <span class="string">"conventional-changelog -p angular -i CHANGELOG.md -w -r 0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这样，使用起来就很简单了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run changelog</div></pre></td></tr></table></figure></p>
 <p>到这里，我们所有的问题都搞明白了，🍻Cheers～</p>
 <h4 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h4><p>看完文章，你还会如此放荡不羁吗？你还会随心所欲的编写 <code>Commit</code> 吗？你还会如此 <code>git commit -m &quot;hello jartto&quot;</code>提交吗？</p>
-<p>答案是否定的，因为使用了钩子函数，你没有机会了，否则将是无穷无尽的恢复 <code>Commit</code>。这倒可以养成良好的提交习惯，赞～</p>
+<p>答案是否定的，因为使用了钩子函数，你没有机会了，否则将是无穷无尽的恢复 <code>Commit</code>。这倒可以养成良好的提交习惯，🙈～</p>
 
             
         </div>
