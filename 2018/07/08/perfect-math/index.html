@@ -26,10 +26,13 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="我们经常会用 Office Word 在文档中插入数学公式，有没有想过，如何在你的网页上渲染数学公式呢？让我们走进数学，欣赏一下公式渲染的美妙之处。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-08-22T00:52:41.000Z">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/math1.png">
+<meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/math2.png">
+<meta property="og:updated_time" content="2018-08-26T13:41:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="完美渲染之数学公式">
 <meta name="twitter:description" content="我们经常会用 Office Word 在文档中插入数学公式，有没有想过，如何在你的网页上渲染数学公式呢？让我们走进数学，欣赏一下公式渲染的美妙之处。">
+<meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/math1.png">
     
     
         
@@ -275,27 +278,24 @@
 <li>印刷出版<br>刊物印刷出版，数学公式必不可少，没有人可以忍受印在书上的图片公式。因为它可能会失真。</li>
 </ul>
 <p>等等，太多的场景，重要性不言而喻，这里就不细说了。</p>
-<h4 id="二、多种选择"><a href="#二、多种选择" class="headerlink" title="二、多种选择"></a>二、多种选择</h4><p>这里主要介绍两个 <code>JS</code> 数学公式渲染的类库：</p>
-<ul>
-<li><a href="https://www.mathjax.org" target="_blank" rel="external">Mathjax</a><ul>
-<li>A JavaScript display engine for mathematics that works in all browsers. No more setup for readers. It just works.</li>
-</ul>
-</li>
-<li><a href="https://khan.github.io/KaTeX/" target="_blank" rel="external">KaTex</a><ul>
-<li>The fastest math typesetting library for the web.</li>
-</ul>
-</li>
-</ul>
-<h4 id="三、示例"><a href="#三、示例" class="headerlink" title="三、示例"></a>三、示例</h4><h4 id="四、优缺点"><a href="#四、优缺点" class="headerlink" title="四、优缺点"></a>四、优缺点</h4><ul>
+<h4 id="二、多种选择"><a href="#二、多种选择" class="headerlink" title="二、多种选择"></a>二、多种选择</h4><p>这里主要介绍两个 <code>JS</code> 数学公式渲染的类库：<br>1.<a href="https://www.mathjax.org" target="_blank" rel="external">Mathjax</a>: A JavaScript display engine for mathematics that works in all browsers. No more setup for readers. It just works.<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/math1.png" alt="mathjax"></p>
+<p>2.<a href="https://khan.github.io/KaTeX/" target="_blank" rel="external">KaTex</a>: The fastest math typesetting library for the web.</p>
+<h4 id="三、Mathjax-示例"><a href="#三、Mathjax-示例" class="headerlink" title="三、Mathjax 示例"></a>三、Mathjax 示例</h4><p>先来看看 <code>Mathjax</code> 的例子，使用方式非常简单，我们引入类库文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&apos;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML&apos; async&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>一个简单的例子可能如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>MathJax AsciiMath Test Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">async</span></span></div><div class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">"https://example.com/mathjax/MathJax.js?config=AM_CHTML"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>When `a != 0`, there are two solutions to `ax^2 + bx + c = 0` and</div><div class="line">they are<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span>&gt;</span></div><div class="line">  `x = (-b +- sqrt(b^2-4ac))/(2a) .`</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>再比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are</div><div class="line">$$x = &#123;-b \pm \sqrt&#123;b^2-4ac&#125; \over 2a&#125;.$$</div></pre></td></tr></table></figure></p>
+<p>渲染后的结果如下：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/math2.png" alt="mathjax"></p>
+<p>更多的例子，可以看这里<a href=""></a></p>
+<h4 id="四、KaTex-示例"><a href="#四、KaTex-示例" class="headerlink" title="四、KaTex 示例"></a>四、KaTex 示例</h4><h4 id="五、优缺点"><a href="#五、优缺点" class="headerlink" title="五、优缺点"></a>五、优缺点</h4><ul>
 <li><code>Mathjax</code> 有着更全面的解析，但却丧失了体积轻量这一优势；</li>
 <li><code>KaTex</code> 则更加灵活，已高速渲染为优势；</li>
 </ul>
-<h4 id="五、万变不离其宗"><a href="#五、万变不离其宗" class="headerlink" title="五、万变不离其宗"></a>五、万变不离其宗</h4><p>不管是 <code>Mathjax</code> 还是 <code>KaTex</code> 其实都依赖了底层协议，也就是我们常说的 <code>TEX</code>。</p>
+<h4 id="六、万变不离其宗"><a href="#六、万变不离其宗" class="headerlink" title="六、万变不离其宗"></a>六、万变不离其宗</h4><p>不管是 <code>Mathjax</code> 还是 <code>KaTex</code> 其实都依赖了底层协议，也就是我们常说的 <code>TEX</code>。</p>
 <p><a href="https://zh.wikipedia.org/wiki/TeX" target="_blank" rel="external">TEX</a>（希腊语：/tɛx/[1]，音译“泰赫”，文本模式下写作 TeX ），是一个由美国计算机教授高德纳（Donald Ervin Knuth）编写的功能强大的排版软件。它在学术界十分流行，特别是数学、物理学和计算机科学界。</p>
 <div class="alert success"><p><code>TEX</code> 被普遍认为是一个优秀的排版工具，特别是在处理复杂的数学公式时。</p>
 </div>
 <p>利用诸如是 <code>LATEX</code> 等终端软件，<code>TEX</code> 就能够排版出精美的文本以帮助人们辨认和查找。<code>LATEX</code> 是一套以 <code>TEX</code> 描述的宏软件。<code>LATEX</code> 有很多预设的模版、样式。它比 <code>TEX</code> 更为结构化，如包含了供创建索引、表格、列表等的宏和公用软件。</p>
-<h4 id="六、掌握语法"><a href="#六、掌握语法" class="headerlink" title="六、掌握语法"></a>六、掌握语法</h4>
+<h4 id="六、掌握语法"><a href="#六、掌握语法" class="headerlink" title="六、掌握语法"></a>六、掌握语法</h4><p>既然大家都遵守 <code>TEX</code> 协议，那么就好办了。我们只要掌握底层语法，不管多少个类库都只是包了一层语法糖。那么我们就从语法开始吧，这里我稍作整理，大概如下：</p>
+
             
         </div>
     </div>
