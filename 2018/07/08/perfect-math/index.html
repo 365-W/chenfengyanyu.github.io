@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/math1.png">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/math2.png">
-<meta property="og:updated_time" content="2018-08-26T13:41:17.000Z">
+<meta property="og:updated_time" content="2018-09-04T04:26:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="完美渲染之数学公式">
 <meta name="twitter:description" content="我们经常会用 Office Word 在文档中插入数学公式，有没有想过，如何在你的网页上渲染数学公式呢？让我们走进数学，欣赏一下公式渲染的美妙之处。">
@@ -285,7 +285,12 @@
 <p>再比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are</div><div class="line">$$x = &#123;-b \pm \sqrt&#123;b^2-4ac&#125; \over 2a&#125;.$$</div></pre></td></tr></table></figure></p>
 <p>渲染后的结果如下：<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/math2.png" alt="mathjax"></p>
 <p>更多的例子，可以看这里<a href=""></a></p>
-<h4 id="四、KaTex-示例"><a href="#四、KaTex-示例" class="headerlink" title="四、KaTex 示例"></a>四、KaTex 示例</h4><h4 id="五、优缺点"><a href="#五、优缺点" class="headerlink" title="五、优缺点"></a>五、优缺点</h4><ul>
+<h4 id="四、KaTex-示例"><a href="#四、KaTex-示例" class="headerlink" title="四、KaTex 示例"></a>四、KaTex 示例</h4><p>看完 <code>Mathjax</code> 之后，我们再来了解一下 <code>KaTex</code>：<br>1.安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># npm</span></div><div class="line">npm install katex</div><div class="line">npm install -g katex</div><div class="line"><span class="comment"># yarn</span></div><div class="line">yarn add katex</div><div class="line">yarn global add katex</div><div class="line"><span class="comment"># Browser</span></div><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.css"</span> integrity=<span class="string">"sha384-JwmmMju6Z7M9jiY4RXeJLoNb3aown2QCC/cI7JPgmOLsn3n33pdwAj0Ml/CMMd1W"</span> crossorigin=<span class="string">"anonymous"</span>&gt;</div><div class="line">&lt;script defer src=<span class="string">"https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.js"</span> integrity=<span class="string">"sha384-atIluo+2Hixq8HCazSQWa1JjeC5L0CQeWAx74Q+EbqgAW4UixbrBQF4+1jvBX01b"</span> crossorigin=<span class="string">"anonymous"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p>KaTex 支持大部分的浏览器：Chrome, Safari, Firefox, Opera, Edge, and IE 9–11</p>
+</div>
+<p>2.使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">katex.render(&quot;c = \\pm\\sqrt&#123;a^2 + b^2&#125;&quot;, element, &#123;</div><div class="line">    throwOnError: false</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>3.在线尝试<br>公式排版不是一件容易的事，为了达到更好的渲染效果，调试必不可少。还好，KaTex 为我们提供了<a href="https://katex.org/#demo" target="_blank" rel="external">在线调试</a>工具。</p>
+<h4 id="五、优缺点"><a href="#五、优缺点" class="headerlink" title="五、优缺点"></a>五、优缺点</h4><ul>
 <li><code>Mathjax</code> 有着更全面的解析，但却丧失了体积轻量这一优势；</li>
 <li><code>KaTex</code> 则更加灵活，已高速渲染为优势；</li>
 </ul>
@@ -294,7 +299,11 @@
 <div class="alert success"><p><code>TEX</code> 被普遍认为是一个优秀的排版工具，特别是在处理复杂的数学公式时。</p>
 </div>
 <p>利用诸如是 <code>LATEX</code> 等终端软件，<code>TEX</code> 就能够排版出精美的文本以帮助人们辨认和查找。<code>LATEX</code> 是一套以 <code>TEX</code> 描述的宏软件。<code>LATEX</code> 有很多预设的模版、样式。它比 <code>TEX</code> 更为结构化，如包含了供创建索引、表格、列表等的宏和公用软件。</p>
-<h4 id="六、掌握语法"><a href="#六、掌握语法" class="headerlink" title="六、掌握语法"></a>六、掌握语法</h4><p>既然大家都遵守 <code>TEX</code> 协议，那么就好办了。我们只要掌握底层语法，不管多少个类库都只是包了一层语法糖。那么我们就从语法开始吧，这里我稍作整理，大概如下：</p>
+<h4 id="六、掌握语法"><a href="#六、掌握语法" class="headerlink" title="六、掌握语法"></a>六、掌握语法</h4><p>既然大家都遵守 <code>TEX</code> 协议，那么就好办了。我们只要掌握底层语法，不管多少个类库都只是包了一层语法糖。那么我们就从语法开始吧，这里我稍作整理，大概如下：<br>1.换行<br>2.基础表达式<br>3.分数<br>4.圆弧<br>5.表格<br>…</p>
+<h4 id="七、实用技巧"><a href="#七、实用技巧" class="headerlink" title="七、实用技巧"></a>七、实用技巧</h4><ul>
+<li>公式太长，如何<a href="https://blog.csdn.net/c2a2o2/article/details/79061200" target="_blank" rel="external">换行</a>?<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">\[</div><div class="line">\begin&#123;split&#125;</div><div class="line">x &amp;= \sqrt &#123;1-y^2&#125;\\</div><div class="line">x &amp;= \sqrt[3]&#123;1-y^3&#125;</div><div class="line">\end&#123;split&#125;</div><div class="line">\]</div></pre></td></tr></table></figure>
+</li>
+</ul>
 
             
         </div>
