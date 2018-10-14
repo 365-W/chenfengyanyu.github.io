@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="经常听后端童鞋提到 Kafka 这个词，加上业务慢慢有了交集，对 Kafka 的好奇越来越强烈。索性花点时间，一探究竟，顺便扩展一下技能树。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-13T14:46:24.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/kafka1.png">
+<meta property="og:updated_time" content="2018-10-14T13:39:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解 Kafka">
 <meta name="twitter:description" content="经常听后端童鞋提到 Kafka 这个词，加上业务慢慢有了交集，对 Kafka 的好奇越来越强烈。索性花点时间，一探究竟，顺便扩展一下技能树。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/kafka1.png">
     
     
         
@@ -290,17 +292,19 @@
 <div class="alert info"><p>除了上面几个概念，还有一个也非常重要，那就是 <code>zookeeper</code>。</p>
 </div>
 <p>1) <code>Producer</code> 端使用 <code>zookeeper</code> 用来发现 <code>broker</code> 列表，以及和 <code>Topic</code> 下每个 <code>partition leader</code> 建立 <code>socket</code> 连接并发送消息。<br>2) <code>Broker</code> 端使用 <code>zookeeper</code> 用来注册 <code>broker</code> 信息，已经监测 <code>partition leader</code> 存活性。<br>3) <code>Consumer</code> 端使用 <code>zookeeper</code> 用来注册 <code>consumer</code> 信息,其中包括 <code>consumer</code> 消费的 <code>partition</code> 列表等，同时也用来发现 <code>broker</code> 列表，并和 <code>partition leader</code> 建立 <code>socket</code> 连接，并获取消息。</p>
-<h4 id="五、设计原理"><a href="#五、设计原理" class="headerlink" title="五、设计原理"></a>五、设计原理</h4><p><code>Kafka</code> 的设计初衷是希望作为一个统一的信息收集平台，能够实时的收集反馈信息，并需要能够支撑较大的数据量，且具备良好的容错能力。</p>
+<h4 id="五、Kafka-数据流"><a href="#五、Kafka-数据流" class="headerlink" title="五、Kafka 数据流"></a>五、Kafka 数据流</h4><p>看完「鸡蛋」，「篮子」，我们逐渐清晰了，可这他娘的 <code>zookeeper</code> 又出来搅合了，是不是有点懵比了？不要着急，看看下面这张图，也许你就了然于胸了。<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/kafka1.png" alt="kafka data flow"></p>
+<h4 id="六、设计原理"><a href="#六、设计原理" class="headerlink" title="六、设计原理"></a>六、设计原理</h4><p><code>Kafka</code> 的设计初衷是希望作为一个统一的信息收集平台，能够实时的收集反馈信息，并需要能够支撑较大的数据量，且具备良好的容错能力。</p>
 <p>1.持久性<br>2.性能<br>3.生产者<br>4.消费者<br>5.消息传送机制<br>6.复制备份<br>7.日志<br>8.分配</p>
 <p>更多细节，请移步<a href="http://www.aboutyun.com/thread-9341-1-1.html" target="_blank" rel="external">Kafka 入门</a>。</p>
-<h4 id="六、API-文档"><a href="#六、API-文档" class="headerlink" title="六、API 文档"></a>六、API 文档</h4><ul>
+<h4 id="七、API-文档"><a href="#七、API-文档" class="headerlink" title="七、API 文档"></a>七、API 文档</h4><p>学习新东西，一定要先去<a href="http://kafka.apache.org" target="_blank" rel="external">官网</a>转一圈。</p>
+<ul>
 <li>API</li>
 <li>配置</li>
 <li>常用操作</li>
 <li>安全</li>
 <li>流</li>
 </ul>
-<h4 id="七、简单应用"><a href="#七、简单应用" class="headerlink" title="七、简单应用"></a>七、简单应用</h4><p>持续更新。。。。</p>
+<h4 id="八、简单应用"><a href="#八、简单应用" class="headerlink" title="八、简单应用"></a>八、简单应用</h4><p>持续更新。。。。</p>
 
             
         </div>
