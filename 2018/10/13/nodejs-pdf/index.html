@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="众所周知，Nodejs 可以用来做很多有意义的事情，偶尔来写一款小工具或是一个小插件也别有一番风味。这不，我们来用 Nodejs 写一款工具，将网页保存成 PDF。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-19T01:11:01.000Z">
+<meta property="og:updated_time" content="2018-10-23T01:08:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Nodejs 生成网页 PDF">
 <meta name="twitter:description" content="众所周知，Nodejs 可以用来做很多有意义的事情，偶尔来写一款小工具或是一个小插件也别有一番风味。这不，我们来用 Nodejs 写一款工具，将网页保存成 PDF。">
@@ -271,7 +271,25 @@
 </div>
 <p>这里需要额外补充一点，如果需要检测 <code>UA</code>，那么你需要这么使用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> page = <span class="built_in">require</span>(<span class="string">'webpage'</span>).create();</div><div class="line">page.userAgent = <span class="string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36'</span>;</div><div class="line"></div><div class="line">page.open(<span class="string">'https://securelearning.in'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  page.render(<span class="string">'image.png'</span>);</div><div class="line">  phantom.exit();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>这里就不再细说了，更多细节可以查看 <a href="https://github.com/chenfengyanyu/my-web-accumulation/tree/master/phantomjs-demo" target="_blank" rel="external">Demo</a>。</p>
-<h4 id="二、使用-Puppeteer"><a href="#二、使用-Puppeteer" class="headerlink" title="二、使用 Puppeteer"></a>二、使用 Puppeteer</h4>
+<h4 id="二、使用-Puppeteer"><a href="#二、使用-Puppeteer" class="headerlink" title="二、使用 Puppeteer"></a>二、使用 Puppeteer</h4><p>Puppeteer（木偶） 英[ˌpʌpɪˈtɪə(r)]，美[ˌpʌpɪˈtɪr]。大致有如下功能：</p>
+<ul>
+<li>生成页面的截图和PDF。</li>
+<li>抓取SPA并生成预先呈现的内容（即“SSR”）。</li>
+<li>从网站抓取你需要的内容。</li>
+<li>自动表单提交，UI测试，键盘输入等</li>
+<li>创建一个最新的自动化测试环境。使用最新的JavaScript和浏览器功能，直接在最新版本的Chrome中运行测试。</li>
+<li>捕获您的网站的时间线跟踪，以帮助诊断性能问题。</li>
+</ul>
+<p>1.安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i puppeteer</div></pre></td></tr></table></figure></p>
+<p>2.注意事项<br>Note: When you install Puppeteer, it downloads a recent version of Chromium (~170MB Mac, ~282MB Linux, ~280MB Win) that is guaranteed to work with the API. To skip the download, see Environment variables.</p>
+<p>正确姿势：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1</div><div class="line">npm i puppeteer</div></pre></td></tr></table></figure></p>
+<p>需要下载 <code>Chromium</code>，地址：<a href="https://download-chromium.appspot.com/，需要翻墙" target="_blank" rel="external">https://download-chromium.appspot.com/，需要翻墙</a></p>
+<p>使用 <code>npm i --save puppeteer --ignore-scripts</code> 安装</p>
+<p>3.下载核心包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i puppeteer-core</div></pre></td></tr></table></figure></p>
+<p>4.<code>puppeteer-core</code> 和  <code>puppeteer</code> 区别</p>
+<p>5.示例<br><a href="https://try-puppeteer.appspot.com/" target="_blank" rel="external">https://try-puppeteer.appspot.com/</a></p>
+<p>6.API 地址<br><a href="https://github.com/GoogleChrome/puppeteer/blob/v1.9.0/docs/api.md#environment-variables" target="_blank" rel="external">https://github.com/GoogleChrome/puppeteer/blob/v1.9.0/docs/api.md#environment-variables</a></p>
+
             
         </div>
     </div>
