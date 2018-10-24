@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="众所周知，Nodejs 可以用来做很多有意义的事情，偶尔来写一款小工具或是一个小插件也别有一番风味。这不，我们来用 Nodejs 写一款工具，将网页保存成 PDF。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-24T08:21:23.000Z">
+<meta property="og:updated_time" content="2018-10-24T08:46:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Nodejs 生成网页 PDF">
 <meta name="twitter:description" content="众所周知，Nodejs 可以用来做很多有意义的事情，偶尔来写一款小工具或是一个小插件也别有一番风味。这不，我们来用 Nodejs 写一款工具，将网页保存成 PDF。">
@@ -289,7 +289,7 @@
 <p>2.注意事项<br><div class="alert warning"><p>安装并不会那么顺利，因为要依赖 Chromium ，所以你可能会遇到这样的异常。</p>
 </div><br>Note: When you install Puppeteer, it downloads a recent version of Chromium (~170MB Mac, ~282MB Linux, ~280MB Win) that is guaranteed to work with the API. To skip the download, see Environment variables.</p>
 <p>正确姿势：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1</div><div class="line">npm i puppeteer</div><div class="line"></div><div class="line"><span class="comment"># 或者忽略依赖脚本安装 jartto's demo</span></div><div class="line">npm i --save puppeteer --ignore-scripts</div></pre></td></tr></table></figure></p>
-<p>如果不能翻墙下载，那么就手动去官网下载 <a href="https://download-chromium.appspot.com/" target="_blank" rel="external"><code>Chromium</code></a> 吧。当然，坑远不止这些，感兴趣的童鞋可以戳这里 <a href="#">Puppeteer 异常处理</a>。</p>
+<p>如果不能翻墙下载，那么就手动去官网下载 <a href="https://download-chromium.appspot.com/" target="_blank" rel="external"><code>Chromium</code></a> 吧。当然，坑远不止这些，感兴趣的童鞋可以戳这里 <a href="http://jartto.wang/2018/10/23/puppeteerjs/">Puppeteer 异常处理</a>。</p>
 <p>3.下载核心包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i puppeteer-core</div></pre></td></tr></table></figure></p>
 <p>从 1.7 版本开始发布 <code>puppeteer-core</code> ，他默认不会下载 <code>Chromium</code> 。<code>puppeteer-core</code> 使用已安装的浏览器 或远程浏览器。具体可以查看官网文档 <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.9.0/docs/api.md#puppeteer-vs-puppeteer-core" target="_blank" rel="external"><code>puppeteer vs puppeteer-core</code></a>.</p>
 <p>4.示例<br>生成网站快照：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</div><div class="line"></div><div class="line">(<span class="keyword">async</span> () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</div><div class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</div><div class="line">  <span class="keyword">await</span> page.goto(<span class="string">'http://jartto.wang'</span>);</div><div class="line">  <span class="keyword">await</span> page.screenshot(&#123;<span class="attr">path</span>: <span class="string">'blog.png'</span>&#125;);</div><div class="line"></div><div class="line">  <span class="keyword">await</span> browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
@@ -309,7 +309,7 @@
 </li>
 <li>第二阶段<ul>
 <li><a href="https://github.com/zhentaoo/puppeteer-deep" target="_blank" rel="external">深入 Puppeteer</a></li>
-<li><a href="#">Puppeteer 异常处理</a></li>
+<li><a href="http://jartto.wang/2018/10/23/puppeteerjs/">Puppeteer 异常处理</a></li>
 </ul>
 </li>
 <li>第三阶段<ul>
