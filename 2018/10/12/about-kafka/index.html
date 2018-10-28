@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/kafka1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/kafka2.png">
-<meta property="og:updated_time" content="2018-10-27T01:10:44.000Z">
+<meta property="og:updated_time" content="2018-10-28T13:42:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解 Kafka">
 <meta name="twitter:description" content="经常听后端童鞋提到 Kafka 这个词，加上业务慢慢有了交集，对 Kafka 的好奇越来越强烈。索性花点时间，一探究竟，顺便扩展一下技能树。">
@@ -355,18 +355,13 @@
 <p>8.分配<br><code>kafka</code> 使用 <code>zookeeper</code> 来存储一些 <code>meta</code> 信息，并使用了 <code>zookeeper watch</code> 机制来发现 <code>meta</code> 信息的变更并作出相应的动作(比如 <code>consumer</code> 失效，触发负载均衡等)</p>
 <p>更多细节，请移步 <a href="http://www.aboutyun.com/thread-9341-1-1.html" target="_blank" rel="external">Kafka 入门</a>。</p>
 <h4 id="七、快速开始"><a href="#七、快速开始" class="headerlink" title="七、快速开始"></a>七、快速开始</h4><p>1.下载 <a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/2.0.0/kafka_2.11-2.0.0.tgz" target="_blank" rel="external">kafka</a><br>2.解压并进入目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -xzf kafka_2.11-2.0.0.tgz</div><div class="line"><span class="built_in">cd</span> kafka_2.11-2.0.0</div></pre></td></tr></table></figure></p>
-<p>3.启动服务<br><code>kafka</code> 使用了 <code>zooKeeper</code>，所以我们需要先启动 <code>zooKeeper</code> 服务。</p>
+<p>3.启动服务<br><code>kafka</code> 使用了 <code>zooKeeper</code>，所以我们需要先启动 <code>zooKeeper</code> 服务。执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/zookeeper-server-start.sh config/zookeeper.properties</div></pre></td></tr></table></figure></p>
+<p>然后，再启动 <code>kafka</code> 服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/kafka-server-start.sh config/server.properties</div></pre></td></tr></table></figure></p>
+<p>控制台应该会输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">[2018-10-27 14:41:16,579] INFO [KafkaServer id=0] started (kafka.server.KafkaServer)</div></pre></td></tr></table></figure></p>
 <p>…</p>
-<h4 id="八、API-文档"><a href="#八、API-文档" class="headerlink" title="八、API 文档"></a>八、API 文档</h4><p>学习新东西，一定要先去<a href="http://kafka.apache.org" target="_blank" rel="external">官网</a>转一圈。下面是比较重要的一些点：</p>
-<ul>
-<li>API</li>
-<li>配置</li>
-<li>常用操作</li>
-<li>安全</li>
-<li>流</li>
-</ul>
-<p><code>API</code> 文档还是有很多重点内容的，这部分等回头看完了，整理整理，再行补充吧。</p>
-<h4 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h4><p>由于文章篇幅原因，很多细节都没有说到。本文只起到入门的作用，感兴趣的话，不妨深入学习一下。对于前端同学来说，这些就够了，因为如果你不常用，很可能很快就忘记了🙈。</p>
+<p>突然发现要运行一个简单的 <code>Demo</code> 还需要做很多事情，所以，这里不继续展开了。查看详情请移步<a href="#">快速上手 Kafka</a>，这里我会详细说明。</p>
+<h4 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h4><p>由于文章篇幅原因，很多细节都没有说到。本文只起到入门的作用，感兴趣的话，不妨深入学习一下。对于前端同学来说，这些就够了，因为如果你不常用，很可能很快就忘记了🙈。</p>
+<p>快速上手，请移步下一篇文章：<a href="#">快速上手 Kafka</a>。</p>
 
             
         </div>
