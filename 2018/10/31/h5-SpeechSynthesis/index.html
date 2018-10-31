@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>HTML5 之音频合成 - Jartto&#39;s blog</title>
+    <title>HTML5 之音频合成（SpeechSynthesis） - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,21 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="H5 最强大的地方就是让我们的 Web 交互更加生动有趣，但是浏览器的多样性以及挥之不去的兼容问题，阻碍了技术的发展。这并不是我们不学习的理由，恰恰相反，它应该成为动力。">
+    <meta name="description" content="H5 让我们的 Web 交互更加生动有趣，但浏览器的多样性以及挥之不去的兼容问题，却阻碍了技术发展。这并不是我们拒绝的理由，恰恰相反，它应该成为动力。">
 <meta name="keywords" content="html5,SpeechSynthesis">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="HTML5 之音频合成">
+<meta property="og:title" content="HTML5 之音频合成（SpeechSynthesis）">
 <meta property="og:url" content="http://jartto.wang/2018/10/31/h5-SpeechSynthesis/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="H5 最强大的地方就是让我们的 Web 交互更加生动有趣，但是浏览器的多样性以及挥之不去的兼容问题，阻碍了技术的发展。这并不是我们不学习的理由，恰恰相反，它应该成为动力。">
+<meta property="og:description" content="H5 让我们的 Web 交互更加生动有趣，但浏览器的多样性以及挥之不去的兼容问题，却阻碍了技术发展。这并不是我们拒绝的理由，恰恰相反，它应该成为动力。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-31T13:24:03.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/h5/speech1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/h5/speech2.png">
+<meta property="og:updated_time" content="2018-10-31T14:45:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5 之音频合成">
-<meta name="twitter:description" content="H5 最强大的地方就是让我们的 Web 交互更加生动有趣，但是浏览器的多样性以及挥之不去的兼容问题，阻碍了技术的发展。这并不是我们不学习的理由，恰恰相反，它应该成为动力。">
+<meta name="twitter:title" content="HTML5 之音频合成（SpeechSynthesis）">
+<meta name="twitter:description" content="H5 让我们的 Web 交互更加生动有趣，但浏览器的多样性以及挥之不去的兼容问题，却阻碍了技术发展。这并不是我们拒绝的理由，恰恰相反，它应该成为动力。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/h5/speech1.png">
     
     
         
@@ -235,7 +238,7 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            HTML5 之音频合成
+            HTML5 之音频合成（SpeechSynthesis）
         </h1>
     
     <div class="post-meta">
@@ -263,7 +266,24 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>H5 最强大的地方就是让我们的 Web 交互更加生动有趣，但是浏览器的多样性以及挥之不去的兼容问题，阻碍了技术的发展。这并不是我们不学习的理由，恰恰相反，它应该成为动力。<br><a id="more"></a></p>
+            <p>H5 让我们的 Web 交互更加生动有趣，但浏览器的多样性以及挥之不去的兼容问题，却阻碍了技术发展。这并不是我们拒绝的理由，恰恰相反，它应该成为动力。<br><a id="more"></a></p>
+<h4 id="一、语音场景"><a href="#一、语音场景" class="headerlink" title="一、语音场景"></a>一、语音场景</h4><p>文章标题为了严谨，所以叫音频合成。如果用大白话来解释，那就是「文字转语音」。语音的场景就太多了：</p>
+<ul>
+<li>点读机：哪里不会点哪里</li>
+<li>有声小说：看着太累，听起来不错</li>
+<li><code>Web</code> 页面警示用户的操作</li>
+<li>闹钟，提醒，小秘书</li>
+<li>残疾人支持<br>…</li>
+</ul>
+<p>这些都是随处可见的例子，但真正燃起我激情的是这个<a href="https://codepen.io/ispal/pen/LxjgEj" target="_blank" rel="external">场景</a>，简直酷炫到爆：<br><img src="" alt="GIF"></p>
+<h4 id="二、技术核心"><a href="#二、技术核心" class="headerlink" title="二、技术核心"></a>二、技术核心</h4><p>看完上面的动画，按捺不住内心的好奇，随手就翻起了源码。Oh～原来如此，把你揪出来：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sayhello = <span class="keyword">new</span> <span class="built_in">window</span>.SpeechSynthesisUtterance(<span class="string">'你好，欢迎来到 Jartto 的博客！'</span>);</div><div class="line"><span class="built_in">window</span>.speechSynthesis.speak(sayhello);</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p>事情的真相就是简单如此，短短两行，就实现了语音播报。</p>
+</div>
+<h4 id="三、兼容性"><a href="#三、兼容性" class="headerlink" title="三、兼容性"></a>三、兼容性</h4><p>如此有趣的 <code>API</code>，突然想到了一万个应用场景。别忙，先来看看 <code>SpeechSynthesis</code> 的兼容性吧：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/h5/speech1.png" alt="SpeechSynthesis"></p>
+<h4 id="四、API-文档"><a href="#四、API-文档" class="headerlink" title="四、API 文档"></a>四、API 文档</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechSynthesis" target="_blank" rel="external"><code>SpeechSynthesis</code></a> 接口是语音服务的控制接口，属于<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="external">网页语音 API</a>，它可以用于获取设备上关于可用的合成声音的信息，开始、暂停语音，或除此之外的其他命令。</p>
+<h4 id="五、完整示例"><a href="#五、完整示例" class="headerlink" title="五、完整示例"></a>五、完整示例</h4><h4 id="六、补充：SpeechRecognition"><a href="#六、补充：SpeechRecognition" class="headerlink" title="六、补充：SpeechRecognition"></a>六、补充：SpeechRecognition</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechRecognition" target="_blank" rel="external"><code>SpeechRecognition</code></a> 顾名思义，语音识别，属于<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="external">网页语音 <code>API</code></a>。需要麦克风等音频输入设备的支持，可以识别用户的语音输入，并且转化成文字。</p>
+<p><code>SpeechRecognition API</code> 需要硬件支持，所以兼容性并不好，大致如下：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/h5/speech2.png" alt="SpeechRecognition"></p>
+<h4 id="七、未来畅想"><a href="#七、未来畅想" class="headerlink" title="七、未来畅想"></a>七、未来畅想</h4><p>相信不久的未来，浏览器会逐步统一，兼容问题将会化为乌有。我们将会用更多的时间去探索技术，而不是去兼容老破旧的网站或者机器。当然，Web 技术会大行其道，用户将会拥有到更加有趣的体验。今天，我们迈进了一步！</p>
 
             
         </div>
