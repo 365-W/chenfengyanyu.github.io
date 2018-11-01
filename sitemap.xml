@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/10/31/h5-SpeechSynthesis/</loc>
+    
+    <lastmod>2018-11-01T15:31:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2017/12/09/grasp-js-stack-trace/</loc>
     
     <lastmod>2018-10-31T15:10:35.000Z</lastmod>
@@ -180,13 +187,6 @@
     <loc>http://jartto.wang/2017/12/28/cannot-nest-git-repository/</loc>
     
     <lastmod>2018-10-31T14:49:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2018/10/31/h5-SpeechSynthesis/</loc>
-    
-    <lastmod>2018-10-31T14:45:48.000Z</lastmod>
     
   </url>
   
