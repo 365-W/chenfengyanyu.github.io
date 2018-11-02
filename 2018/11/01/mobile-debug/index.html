@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>移动端调试全攻略 - Jartto&#39;s blog</title>
+    <title>H5 移动端调试全攻略 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="移动端">
-<meta name="keywords" content="html5,SpeechSynthesis">
+    <meta name="description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
+<meta name="keywords" content="html5,mobile,debug">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="移动端调试全攻略">
+<meta property="og:title" content="H5 移动端调试全攻略">
 <meta property="og:url" content="http://jartto.wang/2018/11/01/mobile-debug/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="移动端">
+<meta property="og:description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-01T15:34:48.000Z">
+<meta property="og:updated_time" content="2018-11-02T01:04:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端调试全攻略">
-<meta name="twitter:description" content="移动端">
+<meta name="twitter:title" content="H5 移动端调试全攻略">
+<meta name="twitter:description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
     
     
         
@@ -235,7 +235,7 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            移动端调试全攻略
+            H5 移动端调试全攻略
         </h1>
     
     <div class="post-meta">
@@ -263,7 +263,32 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>移动端<br><a id="more"></a></p>
+            <p>随着移动设备的高速发展，<code>H5</code> 开发也成为了 <code>F2E</code> 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 <code>Bug</code>于无形。<br><a id="more"></a></p>
+<h4 id="一、概要"><a href="#一、概要" class="headerlink" title="一、概要"></a>一、概要</h4><p>因为移动端操作系统分为 <code>iOS</code> 和 <code>Android</code> 两派，所以本文的调试技巧也会按照不同的系统来区分。</p>
+<h4 id="二、iOS-设备"><a href="#二、iOS-设备" class="headerlink" title="二、iOS 设备"></a>二、iOS 设备</h4><ul>
+<li>Safari</li>
+<li>iOS 模拟器</li>
+</ul>
+<h4 id="三、通用方案"><a href="#三、通用方案" class="headerlink" title="三、通用方案"></a>三、通用方案</h4><ul>
+<li>spy-debugger</li>
+<li>Charles</li>
+<li>Fiddler</li>
+<li>Chrome Remote Devices</li>
+</ul>
+<h4 id="四、HTTPS-安装证书"><a href="#四、HTTPS-安装证书" class="headerlink" title="四、HTTPS 安装证书"></a>四、HTTPS 安装证书</h4><p><code>Https</code> 无法抓包，需要安装额外的信任证书，按照下面操作：</p>
+<h4 id="五、真机模拟"><a href="#五、真机模拟" class="headerlink" title="五、真机模拟"></a>五、真机模拟</h4><ul>
+<li>localhost 转 ip，扫描二维码手机显示</li>
+</ul>
+<h4 id="六、调试工具"><a href="#六、调试工具" class="headerlink" title="六、调试工具"></a>六、调试工具</h4><p>这里推荐一款调试工具：<a href="#">vConsole</a>，一个轻量、可拓展、针对手机网页的前端开发者调试面板。</p>
+<h4 id="七、场景分析"><a href="#七、场景分析" class="headerlink" title="七、场景分析"></a>七、场景分析</h4><div class="alert warning"><p>既然移动端调试有这么多种方案，那在实际操作中，我该如何取舍？</p>
+</div>
+<h4 id="八、白屏处理"><a href="#八、白屏处理" class="headerlink" title="八、白屏处理"></a>八、白屏处理</h4><ul>
+<li>方案分析 ☆</li>
+<li>代码注释法 ☆</li>
+<li>类库异常，兼容问题 ☆</li>
+<li>try catch ☆☆</li>
+<li>Debug 包 ☆☆☆</li>
+</ul>
 
             
         </div>
@@ -277,7 +302,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/SpeechSynthesis/">SpeechSynthesis</a> <a class="tag tag--primary tag--small t-link" href="/tags/html5/">html5</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/debug/">debug</a> <a class="tag tag--primary tag--small t-link" href="/tags/html5/">html5</a> <a class="tag tag--primary tag--small t-link" href="/tags/mobile/">mobile</a>
 
             </div>
         
