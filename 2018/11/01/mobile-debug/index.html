@@ -31,7 +31,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ios2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg">
-<meta property="og:updated_time" content="2018-11-08T01:11:03.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map2.png">
+<meta property="og:updated_time" content="2018-11-08T01:29:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="H5 移动调试全攻略">
 <meta name="twitter:description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
@@ -290,7 +292,15 @@
 </div>
 <h4 id="三、抓包"><a href="#三、抓包" class="headerlink" title="三、抓包"></a>三、抓包</h4><div class="alert info"><p><a href="https://www.charlesproxy.com/download/" target="_blank" rel="external">Charles</a>： Mac OS 系统首选的抓包工具，适合查看、控制网络请求，分析数据情况。</p>
 </div>
-<p><code>Charles</code> 抓包首先需要配置手机代理，<code>Wifi</code> - 配置代理（IP 地址） - 手动，如下图：<br><div class="figure left" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg" style="width:320px;" alt=""></a></div><br><div class="figure right" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg" style="width:320px;" alt=""></a></div><div style="clear:both;"></div></p>
+<p><code>Charles</code> 抓包首先需要配置手机代理，<code>Wifi</code> - 配置代理（IP 地址） - 手动，如下图：</p>
+<div class="figure left" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg" style="width:320px;" alt=""></a></div>
+<div class="figure right" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg" style="width:320px;" alt=""></a></div><div style="clear:both;"></div>
+<p>配置好手机代理，这时候打开 <code>Charles</code> ，就会收到确认提醒，选择允许。接下来就可以捕获手机的请求了，但是这些都是常规操作，我们来点高级的。</p>
+<div class="alert success"><p>有意思的是：我们可以用本地文件来替换线上文件，方便调试，远程定位线上问题。</p>
+</div>
+<p>选择 <code>Structure</code>，找到需要替换的文件，右键菜单 - <code>Map Local</code>，如下图：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map1.png" alt="map1"></p>
+<p>这时候就会打开一个弹窗，填写具体的配置：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map2.png" alt="map2"></p>
+<p>OK，大功告成，快去改动本地文件吧，从此再也不怕线上调试了。</p>
 <div class="alert warning"><p>与之相应的是 Windows 平台的 Fiddler，功能大致相似，这里就不细说了。</p>
 </div>
 <h4 id="四、综合方案"><a href="#四、综合方案" class="headerlink" title="四、综合方案"></a>四、综合方案</h4><ul>
