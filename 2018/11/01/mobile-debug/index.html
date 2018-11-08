@@ -29,7 +29,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/safari1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ios1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ios2.png">
-<meta property="og:updated_time" content="2018-11-06T01:18:35.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg">
+<meta property="og:updated_time" content="2018-11-08T01:11:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="H5 移动调试全攻略">
 <meta name="twitter:description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
@@ -286,21 +288,24 @@
 <p>可以看到 <code>H5</code> 已经在「壳子」中运行起来了，下来就可以尝试调用 <code>Webview</code> 的方法，和「壳子」交互了。更多的调试技巧可以参考文章：<a href="http://imweb.io/topic/5bcd417305c8cb261b76a1f9" target="_blank" rel="external">iOS 模拟器调试</a>。</p>
 <div class="alert success"><p>具体的调试功能还是依赖浏览器的开发选项，与上无异，就不赘述了。</p>
 </div>
-<h4 id="三、通用方案"><a href="#三、通用方案" class="headerlink" title="三、通用方案"></a>三、通用方案</h4><ul>
+<h4 id="三、抓包"><a href="#三、抓包" class="headerlink" title="三、抓包"></a>三、抓包</h4><div class="alert info"><p><a href="https://www.charlesproxy.com/download/" target="_blank" rel="external">Charles</a>： Mac OS 系统首选的抓包工具，适合查看、控制网络请求，分析数据情况。</p>
+</div>
+<p><code>Charles</code> 抓包首先需要配置手机代理，<code>Wifi</code> - 配置代理（IP 地址） - 手动，如下图：<br><div class="figure left" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip1.jpeg" style="width:320px;" alt=""></a></div><br><div class="figure right" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg" style="width:320px;" alt=""></a></div><div style="clear:both;"></div></p>
+<div class="alert warning"><p>与之相应的是 Windows 平台的 Fiddler，功能大致相似，这里就不细说了。</p>
+</div>
+<h4 id="四、综合方案"><a href="#四、综合方案" class="headerlink" title="四、综合方案"></a>四、综合方案</h4><ul>
 <li>spy-debugger</li>
-<li>Charles</li>
-<li>Fiddler</li>
-<li>Chrome Remote Devices</li>
 <li>whistle</li>
 </ul>
-<h4 id="四、HTTPS-安装证书"><a href="#四、HTTPS-安装证书" class="headerlink" title="四、HTTPS 安装证书"></a>四、HTTPS 安装证书</h4><p><code>Https</code> 无法抓包，需要安装额外的信任证书，按照下面操作：</p>
-<h4 id="五、真机模拟"><a href="#五、真机模拟" class="headerlink" title="五、真机模拟"></a>五、真机模拟</h4><ul>
+<h4 id="五、HTTPS-安装证书"><a href="#五、HTTPS-安装证书" class="headerlink" title="五、HTTPS 安装证书"></a>五、HTTPS 安装证书</h4><p><code>Https</code> 无法抓包，需要安装额外的信任证书，按照下面操作：</p>
+<h4 id="六、真机模拟"><a href="#六、真机模拟" class="headerlink" title="六、真机模拟"></a>六、真机模拟</h4><ul>
+<li>Chrome Remote Devices</li>
 <li><code>localhost</code> 转 <code>ip</code>，扫描二维码手机显示。</li>
 </ul>
-<h4 id="六、调试工具"><a href="#六、调试工具" class="headerlink" title="六、调试工具"></a>六、调试工具</h4><p>这里推荐一款调试工具：<a href="#">vConsole</a>，一个轻量、可拓展、针对手机网页的前端开发者调试面板。</p>
-<h4 id="七、场景分析"><a href="#七、场景分析" class="headerlink" title="七、场景分析"></a>七、场景分析</h4><div class="alert warning"><p>既然移动端调试有这么多种方案，那在实际操作中，我该如何取舍？</p>
+<h4 id="七、调试工具"><a href="#七、调试工具" class="headerlink" title="七、调试工具"></a>七、调试工具</h4><p>这里推荐一款调试工具：<a href="#">vConsole</a>，一个轻量、可拓展、针对手机网页的前端开发者调试面板。</p>
+<h4 id="八、场景分析"><a href="#八、场景分析" class="headerlink" title="八、场景分析"></a>八、场景分析</h4><div class="alert warning"><p>既然移动端调试有这么多种方案，那在实际操作中，我该如何取舍？</p>
 </div>
-<h4 id="八、白屏处理"><a href="#八、白屏处理" class="headerlink" title="八、白屏处理"></a>八、白屏处理</h4><ul>
+<h4 id="九、白屏处理"><a href="#九、白屏处理" class="headerlink" title="九、白屏处理"></a>九、白屏处理</h4><ul>
 <li>方案分析 ☆</li>
 <li>代码注释法 ☆</li>
 <li>类库异常，兼容问题 ☆</li>
