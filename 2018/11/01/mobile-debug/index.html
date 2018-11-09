@@ -33,7 +33,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/ip2.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map2.png">
-<meta property="og:updated_time" content="2018-11-08T01:29:51.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https2.png">
+<meta property="og:updated_time" content="2018-11-09T01:20:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="H5 移动调试全攻略">
 <meta name="twitter:description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
@@ -300,19 +304,41 @@
 </div>
 <p>选择 <code>Structure</code>，找到需要替换的文件，右键菜单 - <code>Map Local</code>，如下图：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map1.png" alt="map1"></p>
 <p>这时候就会打开一个弹窗，填写具体的配置：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/map2.png" alt="map2"></p>
-<p>OK，大功告成，快去改动本地文件吧，从此再也不怕线上调试了。</p>
+<p>OK，大功告成，快去改动本地文件吧，从此再也不怕线上调试了。需要注意的是如果抓取 <code>HTTPS</code> 请求，要安装信任证书，<a href="http://jartto.wang/2018/11/01/mobile-debug/">下文</a>会详细说明。</p>
 <div class="alert warning"><p>与之相应的是 Windows 平台的 Fiddler，功能大致相似，这里就不细说了。</p>
 </div>
-<h4 id="四、综合方案"><a href="#四、综合方案" class="headerlink" title="四、综合方案"></a>四、综合方案</h4><ul>
-<li>spy-debugger</li>
-<li>whistle</li>
+<h4 id="四、综合方案"><a href="#四、综合方案" class="headerlink" title="四、综合方案"></a>四、综合方案</h4><div class="alert info"><p><a href="https://github.com/wuchangming/spy-debugger" target="_blank" rel="external">spy-debugger</a>： 移动端调试的利器，便捷的远程调试手机页面、抓包工具。</p>
+</div>
+<p>我们先来安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; sudo npm install spy-debugger -g</div></pre></td></tr></table></figure></p>
+<p>启动命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; spy-debugger</div></pre></td></tr></table></figure></p>
+<p>这时候，控制台会打印出如下信息，说明服务已经启动了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">正在启动代理</div><div class="line">本机在当前网络下的IP地址为：10.200.24.46</div><div class="line">node-mitmproxy启动端口: 9888</div><div class="line">浏览器打开 ---&gt; http://127.0.0.1:50389</div></pre></td></tr></table></figure></p>
+<p>最后一步，设置手机代理：<code>10.200.24.46</code>，端口号：<code>9888</code>。补充说明一下：</p>
+<ul>
+<li><code>Android</code> 设置代理步骤：设置 - <code>WLAN</code> - 长按选中网络 - 修改网络 - 高级 - 代理设置 - 手动</li>
+<li><code>iOS</code> 设置代理步骤：设置 - 无线局域网 - 选中网络 - <code>HTTP</code> 代理手动</li>
 </ul>
-<h4 id="五、HTTPS-安装证书"><a href="#五、HTTPS-安装证书" class="headerlink" title="五、HTTPS 安装证书"></a>五、HTTPS 安装证书</h4><p><code>Https</code> 无法抓包，需要安装额外的信任证书，按照下面操作：</p>
-<h4 id="六、真机模拟"><a href="#六、真机模拟" class="headerlink" title="六、真机模拟"></a>六、真机模拟</h4><ul>
-<li>Chrome Remote Devices</li>
+<p>接下来，尝试一下抓包：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page1.png" alt="page1"><br>再打开页面调试页面：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page2.png" alt="page2"></p>
+<div class="alert success"><p><code>HTTPS</code> 抓包，需要安装根证书，<a href="http://jartto.wang/2018/11/01/mobile-debug/">下文</a>会详细说明。</p>
+</div>
+<p>上面推荐了一款操作简单的调试利器，升级一下，看看更加强大的调试工具 <code>whistle</code>。</p>
+<div class="alert info"><p><a href="http://wproxy.org/whistle/" target="_blank" rel="external">whistle</a>：基于 <code>Node</code> 实现的跨平台 <code>Web</code> 调试代理工具。</p>
+</div>
+<h4 id="五、安装-HTTPS-证书"><a href="#五、安装-HTTPS-证书" class="headerlink" title="五、安装 HTTPS 证书"></a>五、安装 HTTPS 证书</h4><p>对于 <code>Charles</code>，按照如下操作安装证书：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">help-SSL - Proxying - install Charles root</div></pre></td></tr></table></figure></p>
+<p><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https1.png" alt="https1"></p>
+<p>弹出安装证书的提示框：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https2.png" alt="https2"></p>
+<div class="alert info"><p>按照提示去手机浏览器打开：<code>chls.pro/ssl</code>，安装信任证书即可。</p>
+</div>
+<p>对于 <code>spy-debugger</code>，<code>HTTPS</code> 抓包，需要安装根证书，选择 <code>RootCA</code>，扫描二维码按照提示信任证书。安装证书的时候需要注意以下几件事情：</p>
+<p>1.手机必须先设置完代理后再通过(非微信)手机浏览器访问 <code>http://s.xxx</code> (地址二维码)安装证书；<br>2.手机首次调试需要安装证书，已安装了证书的手机无需重复安装；<br>3.手机和 <code>PC</code> 保持在同一网络下（比如同时连到一个 <code>WIFI</code> 下）；</p>
+<div class="alert danger"><p>切记：移动设备和 PC 必须在一个 WIFI 下。</p>
+</div>
+<h4 id="六、真机模拟"><a href="#六、真机模拟" class="headerlink" title="六、真机模拟"></a>六、真机模拟</h4><p>上面说了很多，但是实际开发过程中，我们不会等上线了才去验证兼容性，所以你可能需要提前「真机模拟」。这里提供两种方式：</p>
+<ul>
+<li><code>Chrome Remote Devices</code></li>
 <li><code>localhost</code> 转 <code>ip</code>，扫描二维码手机显示。</li>
 </ul>
 <h4 id="七、调试工具"><a href="#七、调试工具" class="headerlink" title="七、调试工具"></a>七、调试工具</h4><p>这里推荐一款调试工具：<a href="#">vConsole</a>，一个轻量、可拓展、针对手机网页的前端开发者调试面板。</p>
+<p>看起来很完美，但是有几个小缺点：<br>1.网络请求，需要刷新页面，可是很多内嵌的 H5 页面是没有机会刷新页面的，所以功能失效；</p>
 <h4 id="八、场景分析"><a href="#八、场景分析" class="headerlink" title="八、场景分析"></a>八、场景分析</h4><div class="alert warning"><p>既然移动端调试有这么多种方案，那在实际操作中，我该如何取舍？</p>
 </div>
 <h4 id="九、白屏处理"><a href="#九、白屏处理" class="headerlink" title="九、白屏处理"></a>九、白屏处理</h4><ul>
