@@ -37,7 +37,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https2.png">
-<meta property="og:updated_time" content="2018-11-09T01:24:26.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/vconsole1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/vconsole2.png">
+<meta property="og:updated_time" content="2018-11-10T02:08:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="H5 移动调试全攻略">
 <meta name="twitter:description" content="随着移动设备的高速发展，H5 开发也成为了 F2E 不可或缺的能力。而移动开发的重中之重就是掌握调试技巧，定 Bug于无形。">
@@ -307,7 +309,7 @@
 <p>OK，大功告成，快去改动本地文件吧，从此再也不怕线上调试了。需要注意的是如果抓取 <code>HTTPS</code> 请求，要安装信任证书，<a href="http://jartto.wang/2018/11/01/mobile-debug/">下文</a>会详细说明。</p>
 <div class="alert warning"><p>与之相应的是 Windows 平台的 Fiddler，功能大致相似，这里就不细说了。</p>
 </div>
-<h4 id="四、spy-debugger"><a href="#四、spy-debugger" class="headerlink" title="四、spy-debugger"></a>四、spy-debugger</h4><div class="alert info"><p><a href="https://github.com/wuchangming/spy-debugger" target="_blank" rel="external">spy-debugger</a>： 移动端调试的利器，便捷的远程调试手机页面、抓包工具。</p>
+<h4 id="四、Spy-Debugger"><a href="#四、Spy-Debugger" class="headerlink" title="四、Spy-Debugger"></a>四、Spy-Debugger</h4><div class="alert info"><p><a href="https://github.com/wuchangming/spy-debugger" target="_blank" rel="external">spy-debugger</a>： 移动端调试的利器，便捷的远程调试手机页面、抓包工具。</p>
 </div>
 <p>我们先来安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; sudo npm install spy-debugger -g</div></pre></td></tr></table></figure></p>
 <p>启动命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; spy-debugger</div></pre></td></tr></table></figure></p>
@@ -320,7 +322,7 @@
 <p>接下来，尝试一下抓包：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page1.png" alt="page1"><br>再打开调试页面：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/page2.png" alt="page2"></p>
 <div class="alert success"><p><code>HTTPS</code> 抓包，需要安装根证书，<a href="http://jartto.wang/2018/11/01/mobile-debug/">下文</a>会详细说明。</p>
 </div>
-<h4 id="五、whistle"><a href="#五、whistle" class="headerlink" title="五、whistle"></a>五、whistle</h4><p>上面推荐了一款操作简单的调试利器，升级一下，看看更加强大的调试工具 <code>whistle</code>。<br><div class="alert info"><p><a href="http://wproxy.org/whistle/" target="_blank" rel="external">whistle</a>：基于 <code>Node</code> 实现的跨平台 <code>Web</code> 调试代理工具。</p>
+<h4 id="五、Whistle"><a href="#五、Whistle" class="headerlink" title="五、Whistle"></a>五、Whistle</h4><p>上面推荐了一款操作简单的调试利器，升级一下，看看更加强大的调试工具 <code>whistle</code>。<br><div class="alert info"><p><a href="http://wproxy.org/whistle/" target="_blank" rel="external">whistle</a>：基于 <code>Node</code> 实现的跨平台 <code>Web</code> 调试代理工具。</p>
 </div></p>
 <h4 id="六、安装-HTTPS-证书"><a href="#六、安装-HTTPS-证书" class="headerlink" title="六、安装 HTTPS 证书"></a>六、安装 HTTPS 证书</h4><p>对于 <code>Charles</code>，按照如下操作安装证书：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">help-SSL - Proxying - install Charles root</div></pre></td></tr></table></figure></p>
 <p><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/https1.png" alt="https1"></p>
@@ -331,15 +333,25 @@
 <p>1.手机必须先设置完代理后再通过(非微信)手机浏览器访问 <code>http://s.xxx</code> (地址二维码)安装证书；<br>2.手机首次调试需要安装证书，已安装了证书的手机无需重复安装；<br>3.手机和 <code>PC</code> 保持在同一网络下（比如同时连到一个 <code>WIFI</code> 下）；</p>
 <div class="alert danger"><p>切记：移动设备和 PC 必须在一个 WIFI 下。</p>
 </div>
-<h4 id="七、真机模拟"><a href="#七、真机模拟" class="headerlink" title="七、真机模拟"></a>七、真机模拟</h4><p>上面说了很多，但是实际开发过程中，我们不会等上线了才去验证兼容性，所以你可能需要提前「真机模拟」。这里提供两种方式：</p>
-<ul>
-<li><code>Chrome Remote Devices</code></li>
-<li><code>localhost</code> 转 <code>ip</code>，扫描二维码手机显示。</li>
-</ul>
-<h4 id="八、调试工具"><a href="#八、调试工具" class="headerlink" title="八、调试工具"></a>八、调试工具</h4><p>这里推荐一款调试工具：<a href="#">vConsole</a>，一个轻量、可拓展、针对手机网页的前端开发者调试面板。</p>
-<p>看起来很完美，但是有几个小缺点：<br>1.网络请求，需要刷新页面，可是很多内嵌的 H5 页面是没有机会刷新页面的，所以功能失效；</p>
+<h4 id="七、真机调试"><a href="#七、真机调试" class="headerlink" title="七、真机调试"></a>七、真机调试</h4><p>上面说了很多，但是实际开发过程中，我们不会等上线了才去验证兼容性，所以你可能需要提前「真机调试」。这里提供两种方式：<br><div class="alert info"><p><code>Chrome Remote Devices</code>：依赖 Chrome 来进行远程调试，适合安卓手机。</p>
+</div><br>首先，开启 <code>Android</code> 手机的「开发者选项」，勾选 「USB 调试」。<br>然后，<code>Chrome</code> 中输入：<code>chrome://inspect</code>，进入调试页面。</p>
+<p>很全面的一篇文章，可以参考：<a href="https://blog.csdn.net/freshlover/article/details/42528643" target="_blank" rel="external">Chrome 远程调试</a>。</p>
+<div class="alert info"><p><code>localhost</code> 转 <code>ip</code>，扫描二维码手机显示，这个比较简单。</p>
+</div>
+<p>可以在浏览器安装一个 <code>Chrome</code> 插件，用于将当前页面链接转换成二维码，这样就能边开发边真机预览，非常方便。</p>
+<h4 id="八、调试工具"><a href="#八、调试工具" class="headerlink" title="八、调试工具"></a>八、调试工具</h4><p>这里推荐一款调试工具：<a href="https://github.com/Tencent/vConsole/blob/dev/README_CN.md" target="_blank" rel="external">vConsole</a>，一个轻量、可拓展、针对手机网页的前端开发者调试面板。安装很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vconsole</div></pre></td></tr></table></figure></p>
+<p>如果未使用 <code>AMD/CMD</code> 规范，可直接在 <code>HTML</code> 中引入 <code>vConsole</code> 模块。为了便于后续扩展，建议在 <code>&lt;head&gt;</code> 中引入：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"path/to/vconsole.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    var vConsole = new VConsole();</span></div><div class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果使用了 <code>AMD/CMD</code> 规范，可在 <code>module</code> 内使用 <code>require()</code> 引入模块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var VConsole = require(&apos;path/to/vconsole.min.js&apos;);</div><div class="line">var vConsole = new VConsole();</div></pre></td></tr></table></figure></p>
+<div class="alert danger"><p>请注意，<code>VConsole</code> 只是 <code>vConsole</code> 的原型，而非一个已实例化的对象。</p>
+</div>
+<p>所以在手动 <code>new</code> 实例化之前，<code>vConsole</code> 不会被插入到网页中。大概功能如下图：</p>
+<div class="figure left" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/vconsole1.png" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/vconsole1.png" style="width:320px;" alt=""></a></div>
+<div class="figure right" style="width:320px;"><a class="fancybox" href="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/vconsole2.png" title="" data-fancybox-group="travel" target="_blank" rel="external"><img class="fig-img" src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/mobile-debug/vconsole2.png" style="width:320px;" alt=""></a></div><div style="clear:both;"></div>
+<p>看起来很完美，但是有个小缺点：网络请求，需要刷新页面，可是很多内嵌的 <code>H5</code> 页面是没有机会刷新页面的，所以功能失效。</p>
 <h4 id="九、场景分析"><a href="#九、场景分析" class="headerlink" title="九、场景分析"></a>九、场景分析</h4><div class="alert warning"><p>既然移动端调试有这么多种方案，那在实际操作中，我该如何取舍？</p>
 </div>
+<p>说了这么多钟方案，这里总结一下各个方案的适用场景，根据不同的场景去选择最佳的调试方案，这样才能更快速的输出，<code>Carry</code> 全场：</p>
+<p>1.<code>Safari</code>：<code>iPhone</code> 调试利器，查错改样式首选；<br>2.<code>iOS</code> 模拟器：不需要真机，适合调试 <code>Webview</code> 和 <code>H5</code> 有频繁交互的功能页面；<br>3.<code>Charles</code>： <code>Mac OS</code> 系统首选的抓包工具，适合查看、控制网络请求，分析数据情况；<br>4.<code>Fiddler</code>：适合 <code>Windows</code> 平台，与 <code>Charles</code> 类似，查看、控制网络请求，分析数据情况；<br>5.<code>Spy-Debugger</code>： 移动端调试的利器，便捷的远程调试手机页面、抓包工具；<br>6.<code>Whistle</code>：基于 <code>Node</code> 实现的跨平台 <code>Web</code> 调试代理工具；<br>7.<code>Chrome Remote Devices</code>：依赖 <code>Chrome</code> 来进行远程调试，适合安卓手机远程调试静态页；<br>8.<code>localhost</code> 转 <code>ip</code>：真机调试，适合远程调试静态页面；<br>9.<code>vConsole</code>：内置于项目，打印移动端日志，查看网络请求以及查看 <code>Cookie</code> 和 <code>Storage</code>；</p>
 <h4 id="十、白屏处理"><a href="#十、白屏处理" class="headerlink" title="十、白屏处理"></a>十、白屏处理</h4><ul>
 <li>方案分析 ☆</li>
 <li>代码注释法 ☆</li>
