@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>Mac下查看端口占用情况 - Jartto&#39;s blog</title>
+    <title>打造你的专属 Chrome 插件（一） - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,20 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
-<meta name="keywords" content="mac,linux">
+    <meta name="description" content="不得不说 Chrome 给前端带来了无限的可能，Chrome 插件更是如虎添翼，让开发者有了更大的操作权限。这样，我们就可以做很多有趣的事情了。">
+<meta name="keywords" content="chrome,extensions">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Mac下查看端口占用情况">
-<meta property="og:url" content="http://jartto.wang/2016/09/28/check-the-system-port-of-mac/index.html">
+<meta property="og:title" content="打造你的专属 Chrome 插件（一）">
+<meta property="og:url" content="http://jartto.wang/2018/11/10/chrome-extensions-1/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
+<meta property="og:description" content="不得不说 Chrome 给前端带来了无限的可能，Chrome 插件更是如虎添翼，让开发者有了更大的操作权限。这样，我们就可以做很多有趣的事情了。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-13T00:58:46.000Z">
+<meta property="og:image" content="http://jartto.wang/2018/11/10/chrome-extensions-1/index.html#">
+<meta property="og:updated_time" content="2018-11-13T01:30:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下查看端口占用情况">
-<meta name="twitter:description" content="当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。">
+<meta name="twitter:title" content="打造你的专属 Chrome 插件（一）">
+<meta name="twitter:description" content="不得不说 Chrome 给前端带来了无限的可能，Chrome 插件更是如虎添翼，让开发者有了更大的操作权限。这样，我们就可以做很多有趣的事情了。">
+<meta name="twitter:image" content="http://jartto.wang/2018/11/10/chrome-extensions-1/index.html#">
     
     
         
@@ -38,8 +40,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/mac.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://7xvi3w.com1.z0.glb.clouddn.com/mac.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/logo.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/logo.png" />
     
     
     
@@ -235,13 +237,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            Mac下查看端口占用情况
+            打造你的专属 Chrome 插件（一）
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-28T20:08:32+08:00">
+    <time itemprop="datePublished" datetime="2018-11-10T22:18:21+08:00">
 	  
-		    2016/9月/28 20:08:32
+		    2018/11月/10 22:18:21
     	
     </time>
     
@@ -263,26 +265,36 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>当你兴致冲冲的写完代码，准备在服务器上一览网站的容貌时，突然电脑告诉你，服务器启动异常。嗯？那肿么办？来看看我的悲催历程。<br><a id="more"></a></p>
-<h4 id="一、问题由来："><a href="#一、问题由来：" class="headerlink" title="一、问题由来："></a>一、问题由来：</h4><p>当我想在本地启动一个http-server来查看静态网页的时候，发现服务并不能被启动。查看原因后，得知：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: listen EADDRINUSE 0.0.0.0:8080</div></pre></td></tr></table></figure></p>
-<h4 id="二、分析问题："><a href="#二、分析问题：" class="headerlink" title="二、分析问题："></a>二、分析问题：</h4><div class="alert info"><p>看到错误，我们很容易就判断出来了，很明显，8080端口被占用了。</p>
+            <p>不得不说 Chrome 给前端带来了无限的可能，Chrome 插件更是如虎添翼，让开发者有了更大的操作权限。这样，我们就可以做很多有趣的事情了。<br><a id="more"></a></p>
+<h4 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h4><p>对于很多开发者来说，通篇的概念可能会让人感到厌烦。所以，咱们先绕开一些预备知识，进行简单的实践。采用「自顶向下」的学习方式，我们先来看一个具型的东西，稍后再逐步深入概念和内在原理。</p>
+<div class="alert success"><p>本文将会一步步去搭建一个 Chrome 插件开发环境，采用 React 来实现基本功能。</p>
 </div>
-<p>解决思路有两个：<br>其一，修改http-server服务器端口号；<br><a href="http://www.cnblogs.com/lucker/p/4108838.html" target="_blank" rel="external">查阅文档</a>命令行直接输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http-server -p 6666</div></pre></td></tr></table></figure></p>
-<p>好的，http-server不能启动的问题解决了，可是我并不打算收手👻</p>
-<p>其二，我想查看8080端口被谁占用了。</p>
-<p>那么问题来了，mac下如何查看端口被占用情况呢？众所周知，mac os是Unix内核的桌面版操作系统，Linux是类Unix操作系统。</p>
-<div class="alert success"><p>bingo！问题转嫁了，如何查看linux端口号情况？</p>
+<h4 id="二、简单了解"><a href="#二、简单了解" class="headerlink" title="二、简单了解"></a>二、简单了解</h4><p><code>Chrome</code> 插件是一系列文件的集合，这些文件包括 <code>HTML</code>文件、<code>CSS</code>样式文件、<code>JavaScript</code>脚本文件、图片等静态文件以及 <code>manifest.json</code>。</p>
+<p>说白了就是：<code>Chrome</code> 扩展更像是一个运行于本地的网站，只是它可以利用 <code>Chrome</code> 平台提供的丰富的接口，获得更加全面的信息，进行更加复杂的操作。</p>
+<h4 id="三、创建项目"><a href="#三、创建项目" class="headerlink" title="三、创建项目"></a>三、创建项目</h4><div class="alert info"><p>因为选择了采用 React 来开发，所以我们可以使用脚手架来生成最基本的项目结构。</p>
 </div>
-<h4 id="三、查看端口号"><a href="#三、查看端口号" class="headerlink" title="三、查看端口号"></a>三、查看端口号</h4><p>我查到了这个：<br>可以使用netstat命令。netstat命令可以显示网络连接，路由表，接口状态，伪装连接，网络链路信息和组播成员组等信息。<br>命令格式：netstat [选项]<br>常用参数：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">netstat [-AaLlnW] [-f address_family | -p protocol]</div><div class="line">netstat [-gilns] [-f address_family]</div><div class="line">netstat -i | -I interface [-w <span class="built_in">wait</span>] [-abdgRt]</div><div class="line">netstat -s [-s] [-f address_family | -p protocol] [-w <span class="built_in">wait</span>]</div><div class="line">netstat -i | -I interface -s [-f address_family | -p protocol]</div><div class="line">netstat -m [-m]</div><div class="line">netstat -r [-Aaln] [-f address_family]</div><div class="line">netstat -rs [-s]</div></pre></td></tr></table></figure></p>
-<p>都是什么意思呢，一不做二不休，我来一个个试一下。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#列出所有端口</span></div><div class="line">netstat </div><div class="line"></div><div class="line"><span class="comment">#列出所有 tcp 端口 </span></div><div class="line">netstat -at</div><div class="line"></div><div class="line"><span class="comment">#显示网络接口列表</span></div><div class="line">netstat -i</div><div class="line"></div><div class="line"><span class="comment">#显示网络工作信息统计表</span></div><div class="line">netstat -s</div><div class="line"></div><div class="line"><span class="comment">#显示伪装的网络连线</span></div><div class="line">netstat -m</div><div class="line"></div><div class="line"><span class="comment">#显示核心路由信息</span></div><div class="line">netstat -r</div><div class="line"></div><div class="line"><span class="comment">#显示合并的信息</span></div><div class="line">netstat -rs</div><div class="line">routing:</div><div class="line">       	0 bad routing redirects</div><div class="line">       	0 dynamically created routes</div><div class="line">       	0 new gateways due to redirects</div><div class="line">       	4294944612 destinations found unreachable</div><div class="line">       	0 uses of a wildcard route</div><div class="line">       	8 routes not <span class="keyword">in</span> table but not freed</div></pre></td></tr></table></figure></p>
-<h4 id="四、查看某一端口占用情况："><a href="#四、查看某一端口占用情况：" class="headerlink" title="四、查看某一端口占用情况："></a>四、查看某一端口占用情况：</h4><p>进一步可以使用lsof命令显示占用该端口的进程情况 。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#命令格式：lsof -i :端口</span></div><div class="line">lsof -i:8080</div></pre></td></tr></table></figure></p>
-<p>控制台输出如下信息：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">COMMAND   PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME</div><div class="line">nginx     634 Jartto    6u  IPv4 0x8800c1295e443e43      0t0  TCP *:http-alt (LISTEN)</div><div class="line">nginx     635 Jartto    6u  IPv4 0x8800c1295e443e43      0t0  TCP *:http-alt (LISTEN)</div><div class="line">WeChat  93768 Jartto  119u  IPv6 0x8800c12977474f33      0t0  TCP 192.168.1.*</div></pre></td></tr></table></figure></p>
-<h4 id="五、如何杀掉进程？"><a href="#五、如何杀掉进程？" class="headerlink" title="五、如何杀掉进程？"></a>五、如何杀掉进程？</h4><p>查看进程，命令行输入：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | more</div></pre></td></tr></table></figure></p>
-<p>找到需要杀掉的进程，执行：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 pid</div></pre></td></tr></table></figure></p>
-<p>某种情况下，我们也可以根据进程名称来杀进程，如下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 name</div></pre></td></tr></table></figure></p>
-<h4 id="六、数据太多？"><a href="#六、数据太多？" class="headerlink" title="六、数据太多？"></a>六、数据太多？</h4><p>在尝试netstat的各种命令过程中，控制台给出的都是满满的一屏。有没有更好的展现方式，或过滤选项呢？可以试试<a href="">awk</a>和<a href="http://jartto.wang/2016/10/12/grasp-linux-grep/">grep</a>。</p>
-<p>这里就不展开讨论了，后续我会补充相关文章，此处先占个坑吧！</p>
-<h4 id="七、参考文档"><a href="#七、参考文档" class="headerlink" title="七、参考文档"></a>七、参考文档</h4><p>1.<a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html" target="_blank" rel="external">netstat详解</a><br>2.<a href="http://man.linuxde.net/netstat" target="_blank" rel="external">netstat命令</a></p>
+<p>首先，安装 <code>create-react-app</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g create-react-app</div></pre></td></tr></table></figure></p>
+<p>然后，初始化项目：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create-react-app chrome-extension</div></pre></td></tr></table></figure></p>
+<p>接着修改文件：<code>mainfest.json</code>：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"manifest_version"</span>: <span class="number">2</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"MyChromeExt"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"My first chrome extension."</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"icons"</span>: &#123;</div><div class="line">    <span class="attr">"16"</span>: <span class="string">"img/icon-16.png"</span>,</div><div class="line">    <span class="attr">"128"</span>: <span class="string">"img/icon-128.png"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"browser_action"</span>: &#123;</div><div class="line">    <span class="attr">"default_icon"</span>: &#123;</div><div class="line">      <span class="attr">"19"</span>: <span class="string">"img/icon-19.png"</span>,</div><div class="line">      <span class="attr">"38"</span>: <span class="string">"img/icon-38.png"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"default_title"</span>: <span class="string">"MyChromeExt"</span>,</div><div class="line">    <span class="attr">"default_popup"</span>: <span class="string">"index.html"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"permissions"</span>: [<span class="string">"tabs"</span>],</div><div class="line">  <span class="attr">"background"</span>: &#123;</div><div class="line">    <span class="attr">"scripts"</span>: [</div><div class="line">      <span class="string">"background.js"</span></div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>找到几个 <code>icon</code>，放入 <code>image</code> 目录下。</p>
+<h4 id="四、构建"><a href="#四、构建" class="headerlink" title="四、构建"></a>四、构建</h4><p>按照上面的步骤，我们开发了一个极其简单的功能，打个包先：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn build</div></pre></td></tr></table></figure></p>
+<div class="alert danger"><p>注意观察 <code>dist</code> 目录下的文件变化。</p>
+</div>
+<h4 id="五、如何运行"><a href="#五、如何运行" class="headerlink" title="五、如何运行"></a>五、如何运行</h4><p><code>Chrome</code> 浏览器打开：<code>chrome://extensions</code>，选择安装插件。看到如下图：<br><img src="#" alt="chrome 插件安装"></p>
+<h4 id="六、异常"><a href="#六、异常" class="headerlink" title="六、异常"></a>六、异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Refused to execute inline script because it violates the following Content Security Policy directive: &quot;script-src &apos;self&apos; blob: filesystem: chrome-extension-resource:&quot;. Either the &apos;unsafe-inline&apos; keyword, a hash (&apos;sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk=&apos;), or a nonce (&apos;nonce-...&apos;) is required to enable inline execution.</div></pre></td></tr></table></figure>
+<h4 id="七、异常"><a href="#七、异常" class="headerlink" title="七、异常"></a>七、异常</h4><ul>
+<li><code>background</code> 层，<code>chrome</code> 插件底层，控制整个 <code>chrome</code> 插件的大脑，具有最高权限；</li>
+<li><code>content</code> 层，<code>content-script</code> 脚本工作平台，本质上是 <code>chrome</code> 插件脚本注入层，权限最低只能影响页面<code>DOM</code> ，不能跨域操作，但是可以通过 <code>chrome.runtime.sendMessage</code> 与 <code>background</code> 层交互；</li>
+<li><code>popup/option</code> 层，<code>UI</code> 交互层，权限中等，可以直接使用 <code>background</code> 的实例对象，也可以通过消息与 <code>content</code> 层交互。</li>
+</ul>
+<h4 id="八、关于调试"><a href="#八、关于调试" class="headerlink" title="八、关于调试"></a>八、关于调试</h4><ul>
+<li><code>popup.html</code> 调试： 右键点击 <code>popup</code> 图标，选择「审查弹出内容」；</li>
+<li><code>content_script</code> 调试：<code>devtool -&gt; sources -&gt; Content scripts</code>；</li>
+<li><code>background</code> 调试： <code>chrome://extensions/</code> 激活开发者模式，点击对应插件「检查视图」后的「背景页」；</li>
+</ul>
+<h4 id="九、验证，打包"><a href="#九、验证，打包" class="headerlink" title="九、验证，打包"></a>九、验证，打包</h4><p>1.验证<br>打开网址：<code>chrome://extensions/</code>，选择开发者模式，选择加载已解压的扩展程序…，选择我们编写的根目录即可，如果出现类似文章开头展示的最终效果，并能实现想要实现的功能，表示验证成功；如果失败，请修改代码，重新执行此验证流程。</p>
+<p>2.打包<br>打开网址：<code>chrome://extensions/</code>，选择开发者模式，选择打包扩展程序…，选择根目录，下面的 <code>key</code> 为空即可，最后选择打包扩展程序即可；如果打包失败，请根据错误提示信息修正，如果打包成功，会在与根目录同级的目录中生成 <code>CRX</code> 插件文件和 <code>PEM 秘钥</code> 文件。</p>
+<h4 id="十、发布"><a href="#十、发布" class="headerlink" title="十、发布"></a>十、发布</h4><p>未完～</p>
 
             
         </div>
@@ -296,7 +308,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/linux/">linux</a> <a class="tag tag--primary tag--small t-link" href="/tags/mac/">mac</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/chrome/">chrome</a> <a class="tag tag--primary tag--small t-link" href="/tags/extensions/">extensions</a>
 
             </div>
         
@@ -305,7 +317,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/"  data-tooltip="关于html中的base标签">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/12/outline-of-CSP/"  data-tooltip="CSP 概要">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -313,7 +325,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/15/grasp-a-js-template-engine/" data-tooltip="掌握js模板引擎">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/01/mobile-debug/" data-tooltip="H5 移动调试全攻略">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -328,26 +340,20 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -361,12 +367,6 @@
 
 
         <div><img style="border-radius:3px;" src="http://7xvi3w.com1.z0.glb.clouddn.com/layout_0100110.jpg" width="100%" alt="请 Jartto 喝杯茶，亦或是给他一个简单的项目需求"/></div>
-        
-            
-                <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-            
         
     </div>
 </article>
@@ -395,7 +395,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/01/about-html-base-tag/"  data-tooltip="关于html中的base标签">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/12/outline-of-CSP/"  data-tooltip="CSP 概要">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -403,7 +403,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/09/15/grasp-a-js-template-engine/" data-tooltip="掌握js模板引擎">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/01/mobile-debug/" data-tooltip="H5 移动调试全攻略">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -418,26 +418,20 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -454,17 +448,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2016/09/28/check-the-system-port-of-mac/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/10/chrome-extensions-1/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -519,25 +513,6 @@
     <!--SCRIPTS-->
 <script src="/assets/js/script-iygerex9hjtoatg1qpkyynried4qfoahrey3ag4td7adc7eosz0qqf9eieo9.min.js"></script>
 <!--SCRIPTS END-->
-
-    
-        <script>
-             var disqus_config = function () {
-                 this.page.url = 'http://jartto.wang/2016/09/28/check-the-system-port-of-mac/';
-                 
-                    this.page.identifier = '2016/09/28/check-the-system-port-of-mac/';
-                                  
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = 'jartto';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-    
 
 
 
