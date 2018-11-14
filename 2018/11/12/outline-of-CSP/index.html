@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="在开发 Chrome 插件的时候，遇到了 CSP 问题。源于对 CSP 的一知半解，所以折腾了不少时间，索性系统的学习，于是整理此文。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-13T01:33:01.000Z">
+<meta property="og:updated_time" content="2018-11-14T01:16:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSP 概要">
 <meta name="twitter:description" content="在开发 Chrome 插件的时候，遇到了 CSP 问题。源于对 CSP 的一知半解，所以折腾了不少时间，索性系统的学习，于是整理此文。">
@@ -264,8 +264,67 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>在开发 Chrome 插件的时候，遇到了 CSP 问题。源于对 CSP 的一知半解，所以折腾了不少时间，索性系统的学习，于是整理此文。<br><a id="more"></a></p>
-<h4 id="一、起因"><a href="#一、起因" class="headerlink" title="一、起因"></a>一、起因</h4><p><code>Chrome</code> 扩展和应用都使用了 <code>CSP（Content Security Policy）</code> 声明可以引用哪些资源，虽然之前我们并没有涉及到 <code>CSP</code> 的内容，但是 <code>Chrome</code> 扩展和应用会在我们创建时提供一个默认的值，对于 <code>Chrome</code> 扩展来说是<code>script-src &#39;self&#39;; object-src &#39;self&#39;</code>。上面的 <code>CSP</code> 规则表示只能引用自身（同域下）的 <code>JavaScript</code> 文件和自身的 <code>object</code> 元素（如 <code>Flash</code> 等），其他资源未做限定。</p>
+<h4 id="一、起因"><a href="#一、起因" class="headerlink" title="一、起因"></a>一、起因</h4><p>我们先来看一个异常：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Refused to execute inline script because it violates the following Content Security Policy directive: &quot;script-src &apos;self&apos; blob: filesystem: chrome-extension-resource:&quot;. Either the &apos;unsafe-inline&apos; keyword, a hash (&apos;sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk=&apos;), or a nonce (&apos;nonce-...&apos;) is required to enable inline execution.</div></pre></td></tr></table></figure></p>
+<p><code>Chrome</code> 扩展和应用都使用了 <code>CSP（Content Security Policy）</code> 声明可以引用哪些资源，虽然之前我们并没有涉及到 <code>CSP</code> 的内容，但是 <code>Chrome</code> 扩展和应用会在我们创建时提供一个默认的值，对于 <code>Chrome</code> 扩展来说是<code>script-src &#39;self&#39;; object-src &#39;self&#39;</code>。上面的 <code>CSP</code> 规则表示只能引用自身（同域下）的 <code>JavaScript</code> 文件和自身的 <code>object</code> 元素（如 <code>Flash</code> 等），其他资源未做限定。</p>
 <h4 id="二、什么是-CSP"><a href="#二、什么是-CSP" class="headerlink" title="二、什么是 CSP"></a>二、什么是 CSP</h4><p><code>CSP（Content Security Policy）</code>，内容安全策略，<code>CSP</code> 通常是在 <code>header</code> 或者 <code>HTML</code> 的 <code>meta</code> 标签中定义的，它声明了一系列可以被当前网页合法引用的资源，如果不在 <code>CSP</code> 声明的合法范围内，浏览器会拒绝引用这些资源，<code>CSP</code> 的主要目的是防止跨站脚本攻击（<code>XSS</code>）。</p>
+<p>通俗来说：<code>CSP</code> 的实质就是白名单制度，开发者明确告诉客户端，哪些外部资源可以加载和执行，等同于提供白名单。它的实现和执行全部由浏览器完成，开发者只需提供配置。</p>
+<h4 id="三、启用-CSP"><a href="#三、启用-CSP" class="headerlink" title="三、启用 CSP"></a>三、启用 CSP</h4><ul>
+<li>通过 <code>HTTP</code> 头信息的 <code>Content-Security-Policy</code> 的字段</li>
+<li><p>通过网页的 <code>&lt;meta&gt;</code> 标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:”&gt;</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>脚本：只信任当前域名</p>
+</li>
+<li><object>标签：不信任任何 <code>URL</code>，即不加载任何资源</object></li>
+<li>样式表：只信任 <code>cdn.example.org</code> 和 <code>third-party.org</code></li>
+<li>框架（<code>frame</code>）：必须使用HTTPS协议加载</li>
+<li>其他资源：没有限制</li>
+</ul>
+<h4 id="四、详细参数"><a href="#四、详细参数" class="headerlink" title="四、详细参数"></a>四、详细参数</h4><ul>
+<li>script-src：外部脚本</li>
+<li>style-src：样式表</li>
+<li>img-src：图像</li>
+<li>media-src：媒体文件（音频和视频）</li>
+<li>font-src：字体文件</li>
+<li>object-src：插件（比如 <code>Flash</code>）</li>
+<li>child-src：框架</li>
+<li>frame-ancestors：嵌入的外部资源（比如<code>&lt;frame&gt;</code>、<code>&lt;iframe&gt;</code>、<code>&lt;embed&gt;</code> 和 <code>&lt;applet&gt;</code>）</li>
+<li>connect-src：<code>HTTP</code> 连接（通过 <code>XHR</code>、<code>WebSockets</code>、<code>EventSource</code> 等）</li>
+<li>worker-src：<code>worker</code> 脚本</li>
+<li>manifest-src：<code>manifest</code> 文件</li>
+</ul>
+<h4 id="五、补充"><a href="#五、补充" class="headerlink" title="五、补充"></a>五、补充</h4><p>1.<code>default-src</code> 用来设置上面各个选项的默认值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy: default-src &apos;self&apos;</div></pre></td></tr></table></figure></p>
+<div class="alert info"><p>上面代码限制所有的外部资源，都只能从当前域名加载。</p>
+</div>
+<p>如果同时设置某个单项限制（比如 <code>font-src</code>  ）和 <code>default-src</code>，前者会覆盖后者，即字体文件会采用 <code>font-src</code> 的值，其他资源依然采用 <code>default-src</code> 的值。</p>
+<p>2.<code>URL</code> 限制<br>有时，网页会跟其他 <code>URL</code> 发生联系，这时也可以加以限制。</p>
+<ul>
+<li>frame-ancestors：限制嵌入框架的网页</li>
+<li>base-uri：限制 <code>&lt;base#href&gt;</code></li>
+<li>form-action：限制 <code>&lt;form#action&gt;</code></li>
+</ul>
+<p>其他一些安全相关的功能，也放在了 <code>CSP</code> 里面。</p>
+<ul>
+<li>block-all-mixed-content：HTTPS 网页不得加载 HTTP 资源（浏览器已经默认开启）</li>
+<li>upgrade-insecure-requests：自动将网页上所有加载外部资源的 HTTP 链接换成 HTTPS 协议</li>
+<li>plugin-types：限制可以使用的插件格式</li>
+<li>sandbox：浏览器行为的限制，比如不能有弹出窗口等。</li>
+</ul>
+<h4 id="六、高级"><a href="#六、高级" class="headerlink" title="六、高级"></a>六、高级</h4><p>有时，我们不仅希望防止 <code>XSS</code>，还希望记录此类行为。<code>report-uri</code> 就用来告诉浏览器，应该把注入行为报告给哪个网址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy: default-src &apos;self&apos;; ...; report-uri /my_amazing_csp_report_parser;</div></pre></td></tr></table></figure></p>
+<p>浏览器会使用 <code>POST</code> 方法，发送一个 <code>JSON</code> 对象，下面是一个例子。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"csp-report"</span>: &#123;</div><div class="line">    <span class="attr">"document-uri"</span>: <span class="string">"http://example.org/page.html"</span>,</div><div class="line">    <span class="attr">"referrer"</span>: <span class="string">"http://evil.example.com/"</span>,</div><div class="line">    <span class="attr">"blocked-uri"</span>: <span class="string">"http://evil.example.com/evil.js"</span>,</div><div class="line">    <span class="attr">"violated-directive"</span>: <span class="string">"script-src 'self' https://apis.google.com"</span>,</div><div class="line">    <span class="attr">"original-policy"</span>: <span class="string">"script-src 'self' https://apis.google.com; report-uri http://example.org/my_amazing_csp_report_parser"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>除了常规值，<code>script-src</code> 还可以设置一些特殊值。注意，下面这些值都必须放在单引号里面。</p>
+<ul>
+<li><code>unsafe-inline</code>：允许执行页面内嵌的 <code>&lt;script&gt;</code> 标签和事件监听函数</li>
+<li><code>unsafe-eval</code>：允许将字符串当作代码执行，比如使用 <code>eval</code>、<code>setTimeout</code>、<code>setInterval</code> 和 <code>Function</code> 等函数。</li>
+<li><code>nonce</code> ：每次 <code>HTTP</code> 回应给出一个授权 <code>token</code>，页面内嵌脚本必须有这个 <code>token</code>，才会执行</li>
+<li><code>hash</code> ：列出允许执行的脚本代码的 <code>Hash</code> 值，页面内嵌脚本的哈希值只有吻合的情况下，才能执行。</li>
+</ul>
+<p><code>nonce</code> 值的例子如下，服务器发送网页的时候，告诉浏览器一个随机生成的 <code>token</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy: script-src &apos;nonce-EDNnf03nceIOfn39fn3e9h3sdfa’</div></pre></td></tr></table></figure></p>
+<p>页面内嵌脚本，必须有这个 <code>token</code> 才能执行。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nonce</span>=<span class="string">EDNnf03nceIOfn39fn3e9h3sdfa</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="comment">// some code</span></span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>hash</code> 值的例子如下，服务器给出一个允许执行的代码的 <code>hash</code> 值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy: script-src &apos;sha256-qznLcsROx4GACP2dm0UCKCzCG-HiZ1guq6ZZDob_Tng=‘</div></pre></td></tr></table></figure></p>
+<p>下面的代码就会允许执行，因为hash值相符。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">'Hello, world.'</span>);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<div class="alert warning"><p>注意，计算hash值的时候，<code>&lt;script&gt;</code> 标签不算在内。</p>
+</div>
 
             
         </div>
