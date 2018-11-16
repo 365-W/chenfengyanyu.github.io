@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>重写 Audio 样式 - Jartto&#39;s blog</title>
+    <title>HTML5 之地理定位（Geolocation） - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,20 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
-<meta name="keywords" content="css,html5,audio,style">
+    <meta name="description" content="很久前研究过 HTML5 Geolocation，最近整理 F2E-Awesome 的时候，发现缺少相关的文章，所以按照自己的使用经验整理了此篇文章。">
+<meta name="keywords" content="chrome,extensions">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="重写 Audio 样式">
-<meta property="og:url" content="http://jartto.wang/2018/04/25/rewrite-audio-style/index.html">
+<meta property="og:title" content="HTML5 之地理定位（Geolocation）">
+<meta property="og:url" content="http://jartto.wang/2018/11/16/html5-geolocation/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
+<meta property="og:description" content="很久前研究过 HTML5 Geolocation，最近整理 F2E-Awesome 的时候，发现缺少相关的文章，所以按照自己的使用经验整理了此篇文章。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-29T01:26:28.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/geolocation/canuse.png">
+<meta property="og:updated_time" content="2018-11-16T01:28:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重写 Audio 样式">
-<meta name="twitter:description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
+<meta name="twitter:title" content="HTML5 之地理定位（Geolocation）">
+<meta name="twitter:description" content="很久前研究过 HTML5 Geolocation，最近整理 F2E-Awesome 的时候，发现缺少相关的文章，所以按照自己的使用经验整理了此篇文章。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/geolocation/canuse.png">
     
     
         
@@ -38,8 +40,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/audio0.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/audio0.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/geolocation/logo.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/geolocation/logo.png" />
     
     
     
@@ -235,13 +237,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            重写 Audio 样式
+            HTML5 之地理定位（Geolocation）
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2018-04-25T08:26:16+08:00">
+    <time itemprop="datePublished" datetime="2018-11-16T08:55:31+08:00">
 	  
-		    2018/4月/25 08:26:16
+		    2018/11月/16 08:55:31
     	
     </time>
     
@@ -263,30 +265,30 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。<br><a id="more"></a><br>本文将围绕如何通过 <code>CSS</code> 来修改 <code>HTML5</code> 的默认样式，撇开 <code>JS</code> 实现方式。当然，后续还会推出一篇文章：<a href="#">打造与众不同的 Audio 播放器</a>，先占个坑吧！</p>
-<h4 id="一、Audio-结构"><a href="#一、Audio-结构" class="headerlink" title="一、Audio 结构"></a>一、Audio 结构</h4><p>Audio 的用法很简单，插入下面的代码，一个原生音频播放器就完成了：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>=<span class="string">"controls"</span> <span class="attr">preload</span>=<span class="string">"auto"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"jartto.ogg"</span> <span class="attr">type</span>=<span class="string">"audio/ogg"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"jartto.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span> /&gt;</span></div><div class="line">Your browser does not support the audio element.</div><div class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="二、属性一览"><a href="#二、属性一览" class="headerlink" title="二、属性一览"></a>二、属性一览</h4><ul>
-<li>autoplay：如果出现该属性，则音频在就绪后马上播放。</li>
-<li>controls：如果出现该属性，则向用户显示控件，比如播放按钮。</li>
-<li>loop：如果出现该属性，则每当音频结束时重新开始播放。</li>
-<li>preload：如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性。</li>
-<li>src：要播放的音频的 URL。</li>
-</ul>
-<p>更多详情，请参考文档：<a href="http://www.w3school.com.cn/html5/tag_audio.asp" target="_blank" rel="external">HTML5 Audio 标签</a></p>
-<h4 id="三、问题窘境"><a href="#三、问题窘境" class="headerlink" title="三、问题窘境"></a>三、问题窘境</h4><p>当我们打开开发者工具审查 <code>Audio</code> 元素的时候，除了 <code>Audio</code> 标签，什么也看不到。这时候，肯定有人想这么改：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">audio</span> &#123;</div><div class="line">  // todo...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然而，并没有什么卵用。</p>
-<div class="alert warning"><p>那么问题来了，如果只通过修改样式，能不能达到修改音频播放器的外观的功能呢？</p>
+            <p>很久前研究过 HTML5 Geolocation，最近整理 <a href="https://github.com/f2e-awesome/knowledge" target="_blank" rel="external">F2E-Awesome</a> 的时候，发现缺少相关的文章，所以按照自己的使用经验整理了此篇文章。<br><a id="more"></a></p>
+<h4 id="一、应用场景："><a href="#一、应用场景：" class="headerlink" title="一、应用场景："></a>一、应用场景：</h4><p>附近商家定位；计算行走路程；<code>GPS</code> 导航；</p>
+<p>请求一个位置信息，如果用户同意，浏览器就会返回位置信息，该位置信息是通过支持 <code>HTML5</code> 地理定位功能的底层设备提供给浏览器。位置信息由纬度／经度坐标和一些其他的元数据组成。有了这些位置信息就可以构建引人注意目的位置感知类应用程序。</p>
+<h4 id="二、简单示例"><a href="#二、简单示例" class="headerlink" title="二、简单示例"></a>二、简单示例</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>,loadDemo,<span class="literal">true</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadDemo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(navigator.geolocation)&#123;</div><div class="line">        navigator.geolocation.watchPosition(</div><div class="line">            updateLocation,</div><div class="line">            handleLocationError,</div><div class="line">            &#123;<span class="attr">maximumAge</span>:<span class="number">20000</span>&#125;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateLocation</span>(<span class="params">position</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> latitude = position.coords.latitude;</div><div class="line">    <span class="keyword">var</span> longitude = position.coords.longitude;</div><div class="line">    <span class="keyword">var</span> accuracy = position.coords.accuracy;</div><div class="line">    <span class="keyword">var</span> timestamp = position.timestamp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="三、兼容性"><a href="#三、兼容性" class="headerlink" title="三、兼容性"></a>三、兼容性</h4><p><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/geolocation/canuse.png" alt="geolocation"></p>
+<h4 id="四、相关-API"><a href="#四、相关-API" class="headerlink" title="四、相关 API"></a>四、相关 API</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Geolocation/Using_geolocation" target="_blank" rel="external">MDN</a></p>
+<p>先打印：</p>
+<div class="alert info"><p>两种类型的定位请求API：单次定位请求和重复性的位置更新请求；</p>
 </div>
-<h4 id="四、最终方案"><a href="#四、最终方案" class="headerlink" title="四、最终方案"></a>四、最终方案</h4><p>答案是肯定的，我们来覆写 Audio 内置的一些全局样式，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">audio::-webkit-media-controls-panel</div><div class="line"></div><div class="line">audio::-webkit-media-controls-mute-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-play-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-timeline-container</div><div class="line"></div><div class="line">audio::-webkit-media-controls-current-time-display</div><div class="line"></div><div class="line">audio::-webkit-media-controls-time-remaining-display</div><div class="line"></div><div class="line">audio::-webkit-media-controls-timeline</div><div class="line"></div><div class="line">audio::-webkit-media-controls-volume-slider-container</div><div class="line"></div><div class="line">audio::-webkit-media-controls-volume-slider</div><div class="line"></div><div class="line">audio::-webkit-media-controls-seek-back-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-seek-forward-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-fullscreen-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-rewind-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-return-to-realtime-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-toggle-closed-captions-button</div></pre></td></tr></table></figure></p>
-<p>嗯，意思很明了，就这么干。看起来并没有什么挑战，这仅仅只是开始！</p>
-<h4 id="五、新的问题"><a href="#五、新的问题" class="headerlink" title="五、新的问题"></a>五、新的问题</h4><p>我们碰到了新的问题，具体如下：</p>
-<ol>
-<li>播放／暂停 按钮不能替换；</li>
-<li>播放进度 slider 和 声音 slider 无法修改样式；</li>
-</ol>
-<p>怎么办，这是个问题，距离设计师与众不同的音频播放器就差一步之遥了！</p>
-<h4 id="六、继续探索"><a href="#六、继续探索" class="headerlink" title="六、继续探索"></a>六、继续探索</h4><p>首先，突破点在于能否找到一个 <code>pause</code> 的样式类，来解决上述问题一。<br>其次，play 和 pause 如何触发图片互换。</p>
-<p>我们知道，通过 <code>audio::-webkit-media-controls-play-button</code> 可以重新定义播放按钮的外观样式。</p>
+<p>三个方法：<br>1.<code>getCurrentPosition</code><br>获取用户当前定位位置，这会异步地请求获取用户位置，并查询定位硬件来获取最新信息。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(navigator.geolocation)&#123;</div><div class="line">    navigator.geolocation.watchPosition(</div><div class="line">    updateLocation,</div><div class="line">    handleLocationError,</div><div class="line">    &#123;<span class="attr">maximumAge</span>:<span class="number">20000</span>&#125;</div><div class="line">    );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>需要注意的是：有 <code>GPS</code> 的设备可能需要一分钟或更久来获取 <code>GPS</code> 定位，在这种情况下 <code>getCurrentPosition()</code> 会返回低精度数据（基于 <code>IP</code> 的定位或 <code>Wi-Fi</code> 定位）。</p>
+<p>2.<code>watchPosition</code><br>您可以设定一个回调函数来响应定位数据发生的变更（设备发生了移动，或获取到了更高精度的地理位置信息），它与 <code>getCurrentPosition()</code> 接受相同的参数，但回调函数会被调用多次。错误回调函数与 <code>getCurrentPosition()</code> 中一样是可选的，也会被多次调用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> watchID = navigator.geolocation.watchPosition(<span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;</div><div class="line">  do_something(position.coords.latitude, position.coords.longitude);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>3.<code>clearWatch</code><br><code>watchPosition()</code> 函数会返回一个 <code>ID</code>，唯一地标记该位置监视器。您可以将这个 <code>ID</code> 传给 <code>clearWatch()</code> 函数来停止监视用户位置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">navigator.geolocation.clearWatch(watchID);</div></pre></td></tr></table></figure></p>
+<h4 id="五、警告"><a href="#五、警告" class="headerlink" title="五、警告"></a>五、警告</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[Deprecation] getCurrentPosition() and watchPosition() no longer work on insecure origins. To use this feature, you should consider switching your application to a secure origin, such as HTTPS. See https://goo.gl/rStTGz for more details.</div></pre></td></tr></table></figure>
+<p>在 <code>IOS 10</code> 中，苹果对 <code>webkit</code> 定位权限进行了修改，所有定位请求的页面必须是 <code>https</code> 协议的。如果是非 <code>https</code> 网页，在 <code>http</code> 协议下通过 <code>html5</code> 原生定位接口会返回错误，也就是无法正常定位到用户的具体位置，而已经支持 <code>https</code> 的网站则不会受影响。</p>
+<div class="alert warning"><p>经测试，本地 <code>file</code> 文件或者是启动服务器，都会直接返回拒绝服务。</p>
+</div>
+<h4 id="六、定位原理"><a href="#六、定位原理" class="headerlink" title="六、定位原理"></a>六、定位原理</h4><div class="alert info"><p>那么浏览器是如何实现定位的呢，原理又是如何？</p>
+</div>
+<p>1.<code>IP</code> 定位<br>每一台连上网路的电脑都具有一个独一无二的 <code>IP</code> 位址，经由 <code>IP</code> 位址可以反查出电脑位置，但是结果并不精确，而且很容易到受到 <code>ISP</code> 的 <code>IP</code> 分配机制影响，而造成误差。</p>
+<p>2.<code>GPS</code> 定位<br><code>GPS</code> 是我们最常听到的定位技术，它是利用卫星来定位，可以很精确的侦测到使用者位置。但是要玩 <code>GPS</code>，行动装置一定要有 <code>GPS</code> 模组，而且尽管 <code>GPS</code> 非常精准，还是会有技术上的局限，比如在侦测位置时，<code>GPS</code> 的感应器要位于视线范围内（line of sight），因此在有很多高楼大厦、或者是障碍物的地方，<code>GPS</code> 反而没有办法运作自如。</p>
+<p>3.<code>Wi-Fi</code> 三角测量定位<br>这个定位技术可以说是为都会区而设的，因为热闹的大都市通常会有不少 <code>Wi-Fi</code> 热点，定位供应商可以根据这些热点的相对位置、距离等建立一个资料库。<code>Wi-Fi</code> 三角测量适用于 <code>GPS</code> 无法渗透的地方，不过缺点是需要经常更新资料库。</p>
+<p>4.基地台三角测量定位<br>借助基地台之间的相对位置，可以定位出用户在哪里，只要你的手机收得到讯号，就能定位。 一般来说，这四种技术的准确性由高而低分别是：<code>GPS</code> 定位、<code>Wi-Fi</code> 三角测量、基地台三角测量、<code>IP</code> 定位。但还是要视环境而定，比如你到没有 <code>Wi-Fi</code> 热点的地方、或是手机信号不好，定位效果当然也会受影响。</p>
+<p><a href="http://www.iefans.net/liulanqi-zhidao-weizhi/" target="_blank" rel="external">为什么浏览器知道你在哪里</a></p>
 
             
         </div>
@@ -300,7 +302,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/audio/">audio</a> <a class="tag tag--primary tag--small t-link" href="/tags/css/">css</a> <a class="tag tag--primary tag--small t-link" href="/tags/html5/">html5</a> <a class="tag tag--primary tag--small t-link" href="/tags/style/">style</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/chrome/">chrome</a> <a class="tag tag--primary tag--small t-link" href="/tags/extensions/">extensions</a>
 
             </div>
         
@@ -309,7 +311,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/29/audition-of-f2e-2/"  data-tooltip="前端反思录（二）－不要让软实力成为短板">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -317,7 +319,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/30/grasp-http2-0/" data-tooltip="掌握 HTTP2.0">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/12/outline-of-CSP/" data-tooltip="CSP 概要">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -332,17 +334,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -387,7 +389,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/29/audition-of-f2e-2/"  data-tooltip="前端反思录（二）－不要让软实力成为短板">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -395,7 +397,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/30/grasp-http2-0/" data-tooltip="掌握 HTTP2.0">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/12/outline-of-CSP/" data-tooltip="CSP 概要">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -410,17 +412,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -440,17 +442,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/16/html5-geolocation/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

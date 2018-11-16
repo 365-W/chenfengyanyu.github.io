@@ -27,8 +27,8 @@
 <meta property="og:description" content="不得不说 Chrome 给前端带来了无限的可能，Chrome 插件更是如虎添翼，让开发者有了更大的操作权限。这样，我们就可以做很多有趣的事情了。">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/extnsions.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/extnsions.png">
-<meta property="og:updated_time" content="2018-11-15T01:04:16.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/show.png">
+<meta property="og:updated_time" content="2018-11-16T01:00:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="打造你的专属 Chrome 插件（一）">
 <meta name="twitter:description" content="不得不说 Chrome 给前端带来了无限的可能，Chrome 插件更是如虎添翼，让开发者有了更大的操作权限。这样，我们就可以做很多有趣的事情了。">
@@ -288,7 +288,7 @@
 <h4 id="五、如何运行"><a href="#五、如何运行" class="headerlink" title="五、如何运行"></a>五、如何运行</h4><p><code>Chrome</code> 浏览器打开：<code>chrome://extensions</code>，选择「加载已解压的扩展程序」。看到如下图：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/extnsions.png" alt="chrome 插件安装"></p>
 <div class="alert warning"><p>需要注意：将插件目录指向我们上文构建出的 <code>dist</code> 目录。</p>
 </div>
-<p>安装完之后，页面和页头工具栏都会出现我们新开发的插件，如下图：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/extnsions.png" alt="chrome 插件演示"></p>
+<p>安装完之后，页面和页头工具栏都会出现我们新开发的插件，如下图：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/chrome/show.png" alt="chrome 插件演示"></p>
 <h4 id="六、异常"><a href="#六、异常" class="headerlink" title="六、异常"></a>六、异常</h4><p>奇怪的是，插件导入后，并没有运行，我们看到了如下的警告：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Refused to execute inline script because it violates the following Content Security Policy directive: &quot;script-src &apos;self&apos; blob: filesystem: chrome-extension-resource:&quot;. Either the &apos;unsafe-inline&apos; keyword, a hash (&apos;sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk=&apos;), or a nonce (&apos;nonce-...&apos;) is required to enable inline execution.</div></pre></td></tr></table></figure></p>
 <p>大概意思是违反了 <code>CSP</code> 原则，这里大概提一下，详细请看另一篇文章：<a href="http://jartto.wang/2018/11/12/outline-of-CSP/">CSP 概要</a> </p>
 <p><code>CSP（Content Security Policy）</code>，内容安全策略，<code>CSP</code> 通常是在 <code>Header</code> 或者 <code>HTML</code> 的 <code>Meta</code> 标签中定义的，它声明了一系列可以被当前网页合法引用的资源，如果不在 <code>CSP</code> 声明的合法范围内，浏览器会拒绝引用这些资源，<code>CSP</code> 的主要目的是防止跨站脚本攻击（<code>XSS</code>）。</p>
