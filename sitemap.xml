@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/11/12/outline-of-CSP/</loc>
+    
+    <lastmod>2018-11-17T11:12:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2018/11/16/html5-geolocation/</loc>
     
     <lastmod>2018-11-16T01:28:46.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://jartto.wang/2018/11/10/chrome-extensions-1/</loc>
     
     <lastmod>2018-11-16T01:00:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2018/11/12/outline-of-CSP/</loc>
-    
-    <lastmod>2018-11-14T01:16:17.000Z</lastmod>
     
   </url>
   
