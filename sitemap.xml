@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/11/17/about-ast/</loc>
+    
+    <lastmod>2018-11-20T01:18:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2018/11/20/js-exception-handling/</loc>
+    
+    <lastmod>2018-11-17T11:51:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2018/11/12/outline-of-CSP/</loc>
     
     <lastmod>2018-11-17T11:12:00.000Z</lastmod>

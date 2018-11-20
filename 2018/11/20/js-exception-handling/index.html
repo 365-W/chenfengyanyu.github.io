@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>重写 Audio 样式 - Jartto&#39;s blog</title>
+    <title>如何优雅处理前端异常？ - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,web 前端开发,博客,">
@@ -18,18 +18,18 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
-<meta name="keywords" content="css,html5,audio,style">
+    <meta name="description" content="前端一直是距离用户最近的一层，随着产品的日益完善，我们会更加注重用户体验，而前端异常却如鲠在喉，甚是烦人。">
+<meta name="keywords" content="js,exception,error">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="重写 Audio 样式">
-<meta property="og:url" content="http://jartto.wang/2018/04/25/rewrite-audio-style/index.html">
+<meta property="og:title" content="如何优雅处理前端异常？">
+<meta property="og:url" content="http://jartto.wang/2018/11/20/js-exception-handling/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
+<meta property="og:description" content="前端一直是距离用户最近的一层，随着产品的日益完善，我们会更加注重用户体验，而前端异常却如鲠在喉，甚是烦人。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-29T01:26:28.000Z">
+<meta property="og:updated_time" content="2018-11-17T11:51:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重写 Audio 样式">
-<meta name="twitter:description" content="众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。">
+<meta name="twitter:title" content="如何优雅处理前端异常？">
+<meta name="twitter:description" content="前端一直是距离用户最近的一层，随着产品的日益完善，我们会更加注重用户体验，而前端异常却如鲠在喉，甚是烦人。">
     
     
         
@@ -38,8 +38,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/audio0.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/audio0.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/js-exception/except.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/js-exception/except.png" />
     
     
     
@@ -235,19 +235,19 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            重写 Audio 样式
+            如何优雅处理前端异常？
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2018-04-25T08:26:16+08:00">
+    <time itemprop="datePublished" datetime="2018-11-20T22:12:15+08:00">
 	  
-		    2018/4月/25 08:26:16
+		    2018/11月/20 22:12:15
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+    <a class="category-link" href="/categories/异常处理/">异常处理</a>
 
 
     
@@ -263,31 +263,8 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>众所周知，HTML5 已经可以很好的支持 Audio 和 Vedio 了，我们可以方便的在网页添加多媒体控件。然而，设计师总是与众不同，修改 Audio 默认样式已成常态。<br><a id="more"></a><br>本文将围绕如何通过 <code>CSS</code> 来修改 <code>HTML5</code> 的默认样式，撇开 <code>JS</code> 实现方式。当然，后续还会推出一篇文章：<a href="#">打造与众不同的 Audio 播放器</a>，先占个坑吧！</p>
-<h4 id="一、Audio-结构"><a href="#一、Audio-结构" class="headerlink" title="一、Audio 结构"></a>一、Audio 结构</h4><p>Audio 的用法很简单，插入下面的代码，一个原生音频播放器就完成了：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>=<span class="string">"controls"</span> <span class="attr">preload</span>=<span class="string">"auto"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"jartto.ogg"</span> <span class="attr">type</span>=<span class="string">"audio/ogg"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"jartto.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span> /&gt;</span></div><div class="line">Your browser does not support the audio element.</div><div class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="二、属性一览"><a href="#二、属性一览" class="headerlink" title="二、属性一览"></a>二、属性一览</h4><ul>
-<li>autoplay：如果出现该属性，则音频在就绪后马上播放。</li>
-<li>controls：如果出现该属性，则向用户显示控件，比如播放按钮。</li>
-<li>loop：如果出现该属性，则每当音频结束时重新开始播放。</li>
-<li>preload：如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性。</li>
-<li>src：要播放的音频的 URL。</li>
-</ul>
-<p>更多详情，请参考文档：<a href="http://www.w3school.com.cn/html5/tag_audio.asp" target="_blank" rel="external">HTML5 Audio 标签</a></p>
-<h4 id="三、问题窘境"><a href="#三、问题窘境" class="headerlink" title="三、问题窘境"></a>三、问题窘境</h4><p>当我们打开开发者工具审查 <code>Audio</code> 元素的时候，除了 <code>Audio</code> 标签，什么也看不到。这时候，肯定有人想这么改：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">audio</span> &#123;</div><div class="line">  // todo...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然而，并没有什么卵用。</p>
-<div class="alert warning"><p>那么问题来了，如果只通过修改样式，能不能达到修改音频播放器的外观的功能呢？</p>
-</div>
-<h4 id="四、最终方案"><a href="#四、最终方案" class="headerlink" title="四、最终方案"></a>四、最终方案</h4><p>答案是肯定的，我们来覆写 Audio 内置的一些全局样式，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">audio::-webkit-media-controls-panel</div><div class="line"></div><div class="line">audio::-webkit-media-controls-mute-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-play-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-timeline-container</div><div class="line"></div><div class="line">audio::-webkit-media-controls-current-time-display</div><div class="line"></div><div class="line">audio::-webkit-media-controls-time-remaining-display</div><div class="line"></div><div class="line">audio::-webkit-media-controls-timeline</div><div class="line"></div><div class="line">audio::-webkit-media-controls-volume-slider-container</div><div class="line"></div><div class="line">audio::-webkit-media-controls-volume-slider</div><div class="line"></div><div class="line">audio::-webkit-media-controls-seek-back-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-seek-forward-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-fullscreen-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-rewind-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-return-to-realtime-button</div><div class="line"></div><div class="line">audio::-webkit-media-controls-toggle-closed-captions-button</div></pre></td></tr></table></figure></p>
-<p>嗯，意思很明了，就这么干。看起来并没有什么挑战，这仅仅只是开始！</p>
-<h4 id="五、新的问题"><a href="#五、新的问题" class="headerlink" title="五、新的问题"></a>五、新的问题</h4><p>我们碰到了新的问题，具体如下：</p>
-<ol>
-<li>播放／暂停 按钮不能替换；</li>
-<li>播放进度 slider 和 声音 slider 无法修改样式；</li>
-</ol>
-<p>怎么办，这是个问题，距离设计师与众不同的音频播放器就差一步之遥了！</p>
-<h4 id="六、继续探索"><a href="#六、继续探索" class="headerlink" title="六、继续探索"></a>六、继续探索</h4><p>首先，突破点在于能否找到一个 <code>pause</code> 的样式类，来解决上述问题一。<br>其次，play 和 pause 如何触发图片互换。</p>
-<p>我们知道，通过 <code>audio::-webkit-media-controls-play-button</code> 可以重新定义播放按钮的外观样式。</p>
-
+            <p>前端一直是距离用户最近的一层，随着产品的日益完善，我们会更加注重用户体验，而前端异常却如鲠在喉，甚是烦人。<br><a id="more"></a></p>
+<h4 id="一、异常分类"><a href="#一、异常分类" class="headerlink" title="一、异常分类"></a>一、异常分类</h4><h4 id="二、异常处理"><a href="#二、异常处理" class="headerlink" title="二、异常处理"></a>二、异常处理</h4><h4 id="三、异常上报"><a href="#三、异常上报" class="headerlink" title="三、异常上报"></a>三、异常上报</h4><h4 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h4>
             
         </div>
     </div>
@@ -300,7 +277,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/audio/">audio</a> <a class="tag tag--primary tag--small t-link" href="/tags/css/">css</a> <a class="tag tag--primary tag--small t-link" href="/tags/html5/">html5</a> <a class="tag tag--primary tag--small t-link" href="/tags/style/">style</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/error/">error</a> <a class="tag tag--primary tag--small t-link" href="/tags/exception/">exception</a> <a class="tag tag--primary tag--small t-link" href="/tags/js/">js</a>
 
             </div>
         
@@ -309,7 +286,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/29/audition-of-f2e-2/"  data-tooltip="前端反思录（二）－不要让软实力成为短板">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -317,7 +294,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/30/grasp-http2-0/" data-tooltip="掌握 HTTP2.0">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/17/about-ast/" data-tooltip="AST 抽象语法树">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -332,17 +309,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -387,7 +364,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/29/audition-of-f2e-2/"  data-tooltip="前端反思录（二）－不要让软实力成为短板">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -395,7 +372,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/30/grasp-http2-0/" data-tooltip="掌握 HTTP2.0">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/17/about-ast/" data-tooltip="AST 抽象语法树">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -410,17 +387,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -440,17 +417,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/04/25/rewrite-audio-style/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/20/js-exception-handling/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
