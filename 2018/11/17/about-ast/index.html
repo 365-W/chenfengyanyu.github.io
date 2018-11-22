@@ -19,7 +19,7 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="提起 AST 抽象语法树，大家可能并不感冒。但是提到它的使用场景，也许会让你大吃一惊。原来它一直在你左右与你相伴，而你却不知。">
-<meta name="keywords" content="AST">
+<meta name="keywords" content="AST,Babel">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="AST 抽象语法树">
 <meta property="og:url" content="http://jartto.wang/2018/11/17/about-ast/index.html">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/ast/ast4.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/ast/ast5.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/ast/ast6.png">
-<meta property="og:updated_time" content="2018-11-21T00:45:51.000Z">
+<meta property="og:updated_time" content="2018-11-21T00:50:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AST 抽象语法树">
 <meta name="twitter:description" content="提起 AST 抽象语法树，大家可能并不感冒。但是提到它的使用场景，也许会让你大吃一惊。原来它一直在你左右与你相伴，而你却不知。">
@@ -351,7 +351,7 @@
 </div></p>
 <p>了解这这些过程，我们回头再来参悟一下之前的示例代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">'babel-core'</span>); <span class="comment">//babel核心解析库</span></div><div class="line"><span class="keyword">const</span> t = <span class="built_in">require</span>(<span class="string">'babel-types'</span>); <span class="comment">//babel类型转化库</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> code = <span class="string">`let sum = (a, b)=&gt;&#123;return a+b&#125;`</span>;</div><div class="line"><span class="keyword">let</span> ArrowPlugins = &#123;</div><div class="line"><span class="comment">//访问者模式</span></div><div class="line">  visitor: &#123;</div><div class="line">  <span class="comment">//捕获匹配的API</span></div><div class="line">    ArrowFunctionExpression(path) &#123;</div><div class="line">      <span class="keyword">let</span> &#123; node &#125; = path;</div><div class="line">      <span class="keyword">let</span> body = node.body;</div><div class="line">      <span class="keyword">let</span> params = node.params;</div><div class="line">      <span class="keyword">let</span> r = t.functionExpression(<span class="literal">null</span>, params, body, <span class="literal">false</span>, <span class="literal">false</span>);</div><div class="line">      path.replaceWith(r);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> d = babel.transform(code, &#123;</div><div class="line">  plugins: [</div><div class="line">    ArrowPlugins</div><div class="line">  ]</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(d.code);</div></pre></td></tr></table></figure></p>
 <p>是不是发现突然简单易懂了。</p>
-<h4 id="七、关于遍历"><a href="#七、关于遍历" class="headerlink" title="七、关于遍历"></a>七、关于遍历</h4><p>想要转换 AST 你需要进行递归的<a href="https://en.wikipedia.org/wiki/Tree_traversal" target="_blank" rel="external">树形遍历</a>。</p>
+<h4 id="七、关于遍历"><a href="#七、关于遍历" class="headerlink" title="七、关于遍历"></a>七、关于遍历</h4><p>想要转换 <code>AST</code> 你需要进行递归的<a href="https://en.wikipedia.org/wiki/Tree_traversal" target="_blank" rel="external">树形遍历</a>。</p>
 <p>比方说我们有一个 <code>FunctionDeclaration</code> 类型。它有几个属性：<code>id</code>，<code>params</code>，和 <code>body</code>，每一个都有一些内嵌节点。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  type: "FunctionDeclaration",</div><div class="line">  id: &#123;</div><div class="line">    type: "Identifier",</div><div class="line">    name: "square"</div><div class="line">  &#125;,</div><div class="line">  params: [&#123;</div><div class="line">    type: "Identifier",</div><div class="line">    name: "n"</div><div class="line">  &#125;],</div><div class="line">  body: &#123;</div><div class="line">    type: "BlockStatement",</div><div class="line">    body: [&#123;</div><div class="line">      type: "ReturnStatement",</div><div class="line">      argument: &#123;</div><div class="line">        type: "BinaryExpression",</div><div class="line">        operator: "*",</div><div class="line">        left: &#123;</div><div class="line">          type: "Identifier",</div><div class="line">          name: "n"</div><div class="line">        &#125;,</div><div class="line">        right: &#123;</div><div class="line">          type: "Identifier",</div><div class="line">          name: "n"</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>按照上面的代码结构，我们来说一下具体流程：<br>1.首先我们从 <code>FunctionDeclaration</code> 开始并且我们知道它的内部属性（即：<code>id</code>，<code>params</code>，<code>body</code>），所以我们依次访问每一个属性及它们的子节点；</p>
 <p>2.然后我们来到 <code>id</code>，它是一个 <code>Identifier</code>。<code>Identifier</code> 没有任何子节点属性，所以我们继续；</p>
@@ -378,7 +378,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/AST/">AST</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/AST/">AST</a> <a class="tag tag--primary tag--small t-link" href="/tags/Babel/">Babel</a>
 
             </div>
         
