@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jartto.wang/2018/11/25/about-devops/</loc>
+    
+    <lastmod>2018-11-30T15:32:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jartto.wang/2018/11/01/mobile-debug/</loc>
+    
+    <lastmod>2018-11-30T15:03:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jartto.wang/2018/11/22/algorithm1/</loc>
     
     <lastmod>2018-11-25T08:34:31.000Z</lastmod>
@@ -61,13 +75,6 @@
     <loc>http://jartto.wang/2017/11/01/range-slider-for-jquery/</loc>
     
     <lastmod>2018-11-12T02:56:41.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jartto.wang/2018/11/01/mobile-debug/</loc>
-    
-    <lastmod>2018-11-12T02:06:35.000Z</lastmod>
     
   </url>
   
