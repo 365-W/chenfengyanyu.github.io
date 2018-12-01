@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>DevOps 简介 - Jartto&#39;s blog</title>
+    <title>算法图解笔记2-数组和链表 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
-        <meta name="keywords" content="Jartto,web 前端开发,博客,">
+        <meta name="keywords" content="Jartto,Web 前端开发,博客,">
     
     
         <link rel="icon" href="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png">
@@ -18,20 +18,22 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="头一次听到这个东西，真的是一脸懵逼。感觉应该类似项目管理中的一些理念，却又不是很清晰。那么到底有没有联系呢？">
-<meta name="keywords" content="devops">
+    <meta name="description" content="继续上文的脚步，我们来看看。。。。">
+<meta name="keywords" content="algorithm">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="DevOps 简介">
-<meta property="og:url" content="http://jartto.wang/2018/11/25/about-devops/index.html">
+<meta property="og:title" content="算法图解笔记2-数组和链表">
+<meta property="og:url" content="http://jartto.wang/2018/11/25/algorithm2/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="头一次听到这个东西，真的是一脸懵逼。感觉应该类似项目管理中的一些理念，却又不是很清晰。那么到底有没有联系呢？">
+<meta property="og:description" content="继续上文的脚步，我们来看看。。。。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/devops/circle.png">
-<meta property="og:updated_time" content="2018-11-30T15:36:41.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array3.png">
+<meta property="og:updated_time" content="2018-12-01T15:47:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DevOps 简介">
-<meta name="twitter:description" content="头一次听到这个东西，真的是一脸懵逼。感觉应该类似项目管理中的一些理念，却又不是很清晰。那么到底有没有联系呢？">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/devops/circle.png">
+<meta name="twitter:title" content="算法图解笔记2-数组和链表">
+<meta name="twitter:description" content="继续上文的脚步，我们来看看。。。。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array1.png">
     
     
         
@@ -40,8 +42,8 @@
         <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/layout_header.png"/>
     
     
-        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/devops/logo.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/devops/logo.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/logo.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/logo.png" />
     
     
     
@@ -237,19 +239,19 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            DevOps 简介
+            算法图解笔记2-数组和链表
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2018-11-25T16:38:05+08:00">
+    <time itemprop="datePublished" datetime="2018-11-25T23:38:56+08:00">
 	  
-		    2018/11月/25 16:38:05
+		    2018/11月/25 23:38:56
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/技术博文/">技术博文</a>
+    <a class="category-link" href="/categories/算法实践/">算法实践</a>
 
 
     
@@ -265,66 +267,31 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>头一次听到这个东西，真的是一脸懵逼。感觉应该类似项目管理中的一些理念，却又不是很清晰。那么到底有没有联系呢？<br><a id="more"></a></p>
-<h4 id="一、是什么？"><a href="#一、是什么？" class="headerlink" title="一、是什么？"></a>一、是什么？</h4><p><a href="https://baike.baidu.com/item/devops/2613029?fr=aladdin" target="_blank" rel="external">百度百科</a>中是这么定义的：<code>DevOps</code>（ <code>Development</code> 和 <code>Operations</code> 的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（ <code>QA</code> ）部门之间的沟通、协作与整合。</p>
-<p>它是一种重视「软件开发人员（<code>Dev</code>）」和「<code>IT</code> 运维技术人员（<code>Ops</code>）」之间沟通合作的文化、运动或惯例。透过自动化软件交付和架构变更的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。</p>
-<div class="alert info"><p>为了按时交付软件产品和服务，开发和运营工作必须紧密合作。</p>
+            <p>继续<a href="http://jartto.wang/2018/11/22/algorithm1/">上文</a>的脚步，我们来看看。。。。<br><a id="more"></a></p>
+<h4 id="一、计算机内存的工作原理"><a href="#一、计算机内存的工作原理" class="headerlink" title="一、计算机内存的工作原理"></a>一、计算机内存的工作原理</h4><p>为了更好的理解数组和链表，我们先来简单介绍一下计算机内存的工作原理。</p>
+<div class="alert success"><p>简单来说：计算机就像是很多抽屉的集合体，每个抽屉都有地址。</p>
 </div>
-<h4 id="二、常见开发模型"><a href="#二、常见开发模型" class="headerlink" title="二、常见开发模型"></a>二、常见开发模型</h4><p>看了专业的解释，我们不难理解到，<code>DevOps</code> 是一种开发模型。那么什么是开发模型，又有哪些常见的开发模型呢？<br>1.什么是开发模型？</p>
-<p>2.常见的开发模型</p>
-<ul>
-<li>瀑布式开发</li>
-<li>敏捷开发</li>
-<li>DevOps</li>
-</ul>
-<h4 id="三、化繁为简"><a href="#三、化繁为简" class="headerlink" title="三、化繁为简"></a>三、化繁为简</h4><p><code>DevOps</code> 一词的来自于 <code>Development</code> 和 <code>Operations</code> 的组合，突出重视软件开发人员和运维人员的沟通合作，通过自动化流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p>
-<div class="alert info"><p>DevOps 是为了填补开发端和运维端之间的信息鸿沟，改善团队之间的协作关系。</p>
+<p>需要将数据存储到内存时，你请求计算机提供存储空间，计算机给你一个存储地址。需要存储多项数据时，有两种基本方式：数组和链表。</p>
+<h4 id="二、数组"><a href="#二、数组" class="headerlink" title="二、数组"></a>二、数组</h4><div class="alert info"><p>我们先不看概念，来个小例子简单认识一下。</p>
 </div>
-<p>不过需要澄清的一点是，从开发到运维，中间还有测试环节。<code>DevOps</code> 其实包含了三个部分：开发、测试和运维。</p>
-<p>专家们总结出了下面这个 <code>DevOps</code> 能力图，良好的闭环可以大大增加整体的产出：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/devops/circle.png" alt="circle"></p>
-<h4 id="四、使用场景"><a href="#四、使用场景" class="headerlink" title="四、使用场景"></a>四、使用场景</h4><p>以下几方面因素可能促使一个组织引入 <code>DevOps</code>：<br>1、使用敏捷或其他软件开发过程与方法；<br>2、业务负责人要求加快产品交付的速率；<br>3、虚拟化和云计算基础设施（可能来自内部或外部供应商）日益普遍；<br>4、数据中心自动化技术和配置管理工具的普及；<br>5、有一种观点认为，占主导地位的传统美国式管理风格（斯隆模型 vs 丰田模型）会导致「烟囱式自动化」，从而造成开发与运营之间的鸿沟，因此需要 <code>DevOps</code> 能力来克服由此引发的问题。</p>
-<div class="alert info"><p>DevOps 经常被描述为「开发团队与运营团队之间更具协作性、更高效的关系」。</p>
+<p>假设我们要编写一个管理待办事项的应用程序，为此需要将这些待办事项存储在内存中。我们先将待办事项存储在数组中。使用数组意味着所有待办事项在内存中都是相连的（紧靠在一起的）。<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array1.png" alt="array1"></p>
+<p>现在假设你要添加第四个待办事项，但后面的那个抽屉放着别人的东西！在这种情况下，你需要请求计算机重新分配一块可容纳 4 个待办事项的内存，再将所有待办事项都移到那里。</p>
+<div class="alert warning"><p>那么问题来了，如果我又有了第 5 个待办事项，这时候，又得进行一次大转移。</p>
 </div>
-<p>由于团队间协作关系的改善，整个组织的效率因此得到提升，伴随频繁变化而来的生产环境的风险也能得到降低。</p>
-<h4 id="五、DevOps-对应用程序发布的影响"><a href="#五、DevOps-对应用程序发布的影响" class="headerlink" title="五、DevOps 对应用程序发布的影响"></a>五、DevOps 对应用程序发布的影响</h4><div class="alert danger"><p>在很多企业中，应用程序发布是一项涉及多个团队、压力很大、风险很高的活动。</p>
+<p>那么有没有什么解决方案呢？答案是肯定的，但是并不完美。譬如，我们直接申请 10 个内存单元，这样就可以继续6，7，8，9，10。</p>
+<p>这是一个不错的权变措施，但是它存在如下两个缺点：<br>1.你额外请求的位置可能根本用不上，这将浪费内存。你没有使用，别人也用不了。<br>2.待办事项超过 10 个后，你还得转移。</p>
+<div class="alert danger"><p>看起来我们的方案并不完美，那么有什么好的办法吗？</p>
 </div>
-<p>然而在具备 <code>DevOps</code> 能力的组织中，应用程序发布的风险很低，原因如下：</p>
-<ul>
-<li><p>减少变更范围<br>与传统的瀑布式开发模型相比，采用敏捷或迭代式开发意味着更频繁的发布、每次发布包含的变化更少。由于部署经常进行，因此每次部署不会对生产系统造成巨大影响，应用程序会以平滑的速率逐渐生长。</p>
-</li>
-<li><p>加强发布协调<br>靠强有力的发布协调人来弥合开发与运营之间的技能鸿沟和沟通鸿沟；采用电子数据表、电话会议、即时消息、企业门户（<code>wiki</code>、<code>sharepoint</code>）等协作工具来确保所有相关人员理解变更的内容并全力合作。</p>
-</li>
-<li><p>自动化<br>强大的部署自动化手段确保部署任务的可重复性、减少部署出错的可能性。</p>
-</li>
-</ul>
-<p>与传统开发方法那种大规模的、不频繁的发布（通常以季度或年为单位）相比，敏捷方法大大提升了发布频率（通常以天或周为单位），同时也增大了出错的概率。</p>
-<h4 id="六、DevOps-又有啥不同？它有什么好处？"><a href="#六、DevOps-又有啥不同？它有什么好处？" class="headerlink" title="六、DevOps 又有啥不同？它有什么好处？"></a>六、DevOps 又有啥不同？它有什么好处？</h4><p>减少变更范围与传统的瀑布式开发模型相比，采用敏捷或迭代式开发意味着更频繁的发布、每次发布包含的变化更少。由于部署经常进行，因此每次部署不会对生产系统造成巨大影响，应用程序会以平滑的速率逐渐生长。</p>
-<div class="alert info"><p>加强发布协调靠强有力的发布协调人来弥合开发与运营之间的技能鸿沟和沟通鸿沟。</p>
+<h4 id="三、链表"><a href="#三、链表" class="headerlink" title="三、链表"></a>三、链表</h4><div class="alert info"><p>链表中的元素可存储在内存的任何地方。</p>
 </div>
-<p>这里需要明确两点认识：<br>1.开发是由功能性需求（通常与业务需求直接相关）驱动的。<br>2.运营是由非功能性需求（例如可获得性、可靠性、性能等）驱动的。</p>
-<h4 id="七、精益-7-原则"><a href="#七、精益-7-原则" class="headerlink" title="七、精益 7 原则"></a>七、精益 7 原则</h4><ul>
-<li>杜绝浪费</li>
-<li>内建质量</li>
-<li>创建知识(放大学习)</li>
-<li>延迟决策(尽量延迟决定)</li>
-<li>快速交付</li>
-<li>尊重人员(团队授权)</li>
-<li>全局优化</li>
-</ul>
-<h4 id="八、DevOps-八荣八耻"><a href="#八、DevOps-八荣八耻" class="headerlink" title="八、DevOps 八荣八耻"></a>八、DevOps 八荣八耻</h4><p>偶然在网上看到了这个，觉得很形象，所以拿过来（感谢原作者）：</p>
-<ul>
-<li>以可配置为荣，以硬编码为耻。</li>
-<li>以系统互备为荣，以系统单点为耻。</li>
-<li>以随时可重启为荣，以不能迁移为耻。</li>
-<li>以整体交付为荣，以部分交付为耻。</li>
-<li>以无状态为荣，以特殊化为耻。</li>
-<li>以自动化工具为荣，以人肉操作为耻。</li>
-<li>以无人值守为荣，以人工介入为耻。</li>
-</ul>
-<p>真正理解上面这些规则，你才能熟练的应用于项目开发。</p>
-<h4 id="九、反思"><a href="#九、反思" class="headerlink" title="九、反思"></a>九、反思</h4><p>在了解 <code>DevOps</code> 之后，我陷入了深深的恐惧之中。总以为可以通过不断学习技术来弥补短板，然而现实并非如此。越是努力的学习，越是发现自己掌控之外的东西数不胜数。</p>
-<p>所以，有时间真得去琢磨琢磨项目管理相关内容了。唯有博览群书，才能博学多才！</p>
-<h4 id="十、参考"><a href="#十、参考" class="headerlink" title="十、参考"></a>十、参考</h4><p><a href="https://baike.baidu.com/item/devops/2613029?fr=aladdin" target="_blank" rel="external">1.百度百科</a><br><a href="https://www.cnblogs.com/liufei1983/p/7152013.html" target="_blank" rel="external">2.DevOps简介</a><br><a href="https://www.cnblogs.com/jetzhang/p/6068773.html" target="_blank" rel="external">3.一分钟了解DevOps</a><br><a href="https://www.cnblogs.com/servicehot/p/6510199.html" target="_blank" rel="external">4.Devops 到底是什么？</a></p>
+<p>我们继续用上面的例子：<br><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array2.png" alt="array2"></p>
+<div class="alert info"><p>链表的每个元素都存储了下一个元素的地址，从而使一系列随机的内存地址串在一起。</p>
+</div>
+<p><img src="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/algorithm/array3.png" alt="array3"></p>
+<p>这犹如寻宝游戏。你前往第一个地址，那里有一张纸条写着“下一个元素的地址为123”。因此，你前往地址123，那里又有一张纸条，写着“下一个元素的地址为847”，以此类推。在链表中添加元素很容易：只需将其放入内存，并将其地址存储到前一个元素中。</p>
+<div class="alert success"><p>只要有足够的内存空间，就能为链表分配内存。</p>
+</div>
+<p>链表的优势在插入元素方面，那数组的优势又是什么呢？</p>
 
             
         </div>
@@ -338,7 +305,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/devops/">devops</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/algorithm/">algorithm</a>
 
             </div>
         
@@ -347,7 +314,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/30/about-devops/"  data-tooltip="DevOps 简介">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -355,7 +322,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/22/algorithm1/" data-tooltip="算法图解笔记1一二分查找和大O表示法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/22/algorithm1/" data-tooltip="算法图解笔记1-二分查找和大O表示法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -370,17 +337,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -425,7 +392,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/30/about-devops/"  data-tooltip="DevOps 简介">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -433,7 +400,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/22/algorithm1/" data-tooltip="算法图解笔记1一二分查找和大O表示法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/11/22/algorithm1/" data-tooltip="算法图解笔记1-二分查找和大O表示法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -448,17 +415,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -478,17 +445,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/25/about-devops/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2018/11/25/algorithm2/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
