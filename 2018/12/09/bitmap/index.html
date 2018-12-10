@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jartto&#39;s blog">
 <meta property="og:description" content="和朋友聊天，说到了大数据存储和查找方式，朋友提到了「位图」。结果我满脑子都是「位图-矢量图」，「矢量图-位图」。难道此「位图」非彼「位图」？">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-09T11:26:34.000Z">
+<meta property="og:updated_time" content="2018-12-10T01:22:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="究竟什么是位图？">
 <meta name="twitter:description" content="和朋友聊天，说到了大数据存储和查找方式，朋友提到了「位图」。结果我满脑子都是「位图-矢量图」，「矢量图-位图」。难道此「位图」非彼「位图」？">
@@ -264,7 +264,15 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>和朋友聊天，说到了大数据存储和查找方式，朋友提到了「位图」。结果我满脑子都是「位图-矢量图」，「矢量图-位图」。难道此「位图」非彼「位图」？<br><a id="more"></a></p>
-<h4 id="一、此「位图」非彼「位图」"><a href="#一、此「位图」非彼「位图」" class="headerlink" title="一、此「位图」非彼「位图」"></a>一、此「位图」非彼「位图」</h4><h4 id="二、位图"><a href="#二、位图" class="headerlink" title="二、位图"></a>二、位图</h4><h4 id="三、矢量图"><a href="#三、矢量图" class="headerlink" title="三、矢量图"></a>三、矢量图</h4><h4 id="四、位图的存储格式"><a href="#四、位图的存储格式" class="headerlink" title="四、位图的存储格式"></a>四、位图的存储格式</h4><h4 id="五、面试题：100-100-的-canvas-占多少内存？"><a href="#五、面试题：100-100-的-canvas-占多少内存？" class="headerlink" title="五、面试题：100*100 的 canvas 占多少内存？"></a>五、面试题：100*100 的 canvas 占多少内存？</h4><h4 id="六、扩展：数码相机原理"><a href="#六、扩展：数码相机原理" class="headerlink" title="六、扩展：数码相机原理"></a>六、扩展：数码相机原理</h4><h4 id="七、计算机-32-位和-64-位操作系统"><a href="#七、计算机-32-位和-64-位操作系统" class="headerlink" title="七、计算机 32 位和 64 位操作系统"></a>七、计算机 32 位和 64 位操作系统</h4><h4 id="八、数据结构之位图（bitmap）"><a href="#八、数据结构之位图（bitmap）" class="headerlink" title="八、数据结构之位图（bitmap）"></a>八、数据结构之位图（bitmap）</h4><p>位图<code>bitmap</code> 是一种非常常用的结构，在索引，数据压缩等方面有广泛应用。</p>
+<h4 id="一、此「位图」非彼「位图」"><a href="#一、此「位图」非彼「位图」" class="headerlink" title="一、此「位图」非彼「位图」"></a>一、此「位图」非彼「位图」</h4><p>为什么会有这样的疑惑，那是因为：位图可能是一种图片类型，也可能是数据结构的 <code>bitmap</code>。我们会逐一来剖析位图，从这两个角度入手，全面掌握位图概念。</p>
+<div class="alert success"><p>技术是一个很微妙的东西，一旦你发现它，就会无意的捕捉到更多点点滴滴。</p>
+</div>
+<h4 id="二、位图"><a href="#二、位图" class="headerlink" title="二、位图"></a>二、位图</h4><p>位图，又称为点阵图像、像素图或栅格图像，是由像素（图片元素）的单个点组成。这些点可以进行不同的排列和染色以构成图样。<br><div class="alert info"><p>位图的单位：像素（Pixel）</p>
+</div></p>
+<p>像素（Pixel）：指可以表现亮度甚至色彩变化的一个点，是构成数字图像的最小单位。像素具有大小相同、明暗和颜色的变化。特点是有固定的位置和特定的颜色值。</p>
+<p>位图有以下特点：<br>1.位图图像善于重现颜色的细微层次，能够制作出色彩和亮度变化丰富的图像；<br>2.文件庞大，不能随意缩放；<br>3.打印和输出的精度是有限的；<br>4.图形面积越大，文件的字节数越多；<br>5.文件的色彩越丰富，文件的字节数越多。</p>
+<p>位图的文件类型很多，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*.bmp、*.pcx、*.gif、*.jpg、*.tif</div><div class="line">*.psd、kodak photo</div><div class="line">*.pcd、corel photo</div><div class="line">*.cpt</div></pre></td></tr></table></figure></p>
+<h4 id="三、矢量图"><a href="#三、矢量图" class="headerlink" title="三、矢量图"></a>三、矢量图</h4><h4 id="四、位图的存储格式"><a href="#四、位图的存储格式" class="headerlink" title="四、位图的存储格式"></a>四、位图的存储格式</h4><h4 id="五、面试题：100-100-的-canvas-占多少内存？"><a href="#五、面试题：100-100-的-canvas-占多少内存？" class="headerlink" title="五、面试题：100*100 的 canvas 占多少内存？"></a>五、面试题：100*100 的 canvas 占多少内存？</h4><h4 id="六、扩展：数码相机原理"><a href="#六、扩展：数码相机原理" class="headerlink" title="六、扩展：数码相机原理"></a>六、扩展：数码相机原理</h4><h4 id="七、计算机-32-位和-64-位操作系统"><a href="#七、计算机-32-位和-64-位操作系统" class="headerlink" title="七、计算机 32 位和 64 位操作系统"></a>七、计算机 32 位和 64 位操作系统</h4><h4 id="八、数据结构之位图（bitmap）"><a href="#八、数据结构之位图（bitmap）" class="headerlink" title="八、数据结构之位图（bitmap）"></a>八、数据结构之位图（bitmap）</h4><p>位图<code>bitmap</code> 是一种非常常用的结构，在索引，数据压缩等方面有广泛应用。</p>
 <h4 id="九、海量数据解决思路"><a href="#九、海量数据解决思路" class="headerlink" title="九、海量数据解决思路"></a>九、海量数据解决思路</h4><h4 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h4><h4 id="十一、参考"><a href="#十一、参考" class="headerlink" title="十一、参考"></a>十一、参考</h4>
             
         </div>
