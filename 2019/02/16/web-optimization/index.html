@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/web-optimization/speed7.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/web-optimization/opt3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/web-optimization/speed8.png">
-<meta property="og:updated_time" content="2019-02-20T13:44:04.000Z">
+<meta property="og:updated_time" content="2019-02-20T13:58:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网站优化实战">
 <meta name="twitter:description" content="网站优化是前端开发的重中之重，但是优化细节却十分繁杂。没有好的思路，优化很难高效的开展。本文将以实际网站来做参考，手把手教你如何一步步做好网站优化。">
@@ -408,7 +408,7 @@
 <p>更多详情，请参考<a href="https://segmentfault.com/a/1190000013767948" target="_blank" rel="external">前端性能优化—关键渲染路径</a>。</p>
 <p>12.最大限度地减少主线程工作<br>考虑减少为解析、编译和执行 <code>JS</code> 而花费的时间。我们可以提供较小的 <code>JS</code> 负载来实现此目标。</p>
 <p>13.最优配置 <code>nginx</code><br>a. <code>gzip</code> 配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">gzip  on;</div><div class="line">gzip_min_length  1k;</div><div class="line">gzip_buffers     4 8k;</div><div class="line">gzip_http_version 1.1;</div><div class="line">gzip_comp_level 4;</div><div class="line">gzip_types text/plain text/css application/json image/png image/x-icon application/javascript application/x-javascript text/javascript text/xml application/xml application/xml+rss text/cache-manifest application/octet-stream;</div><div class="line">gzip_vary on;</div></pre></td></tr></table></figure></p>
-<p>b. <code>nginx</code> 开启缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">location ~.*\.(html|htm|js|css|gif|jpg|jpeg|png|bmp|swf|ico|json|otf)$ &#123;</div><div class="line">  root /var/www/jartto_web/;</div><div class="line">  index index.html;</div><div class="line">  expires 1d;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>b. <code>nginx</code> 开启缓存<br>如果你对浏览器缓存还不太清楚，欢迎移步<a href="http://jartto.wang/2019/02/14/web-cache/">聊一聊浏览器缓存机制</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">location ~.*\.(html|htm|js|css|gif|jpg|jpeg|png|bmp|swf|ico|json|otf)$ &#123;</div><div class="line">  root /var/www/jartto_web/;</div><div class="line">  index index.html;</div><div class="line">  expires 1d;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <div class="alert info"><p>Nginx 能非常有效地直接处理静态内容。在静态文件和 Nginx 在同一主机的情况下，这种特性尤为有用。</p>
 </div>
 <h4 id="四、效果如何？"><a href="#四、效果如何？" class="headerlink" title="四、效果如何？"></a>四、效果如何？</h4><div class="alert warning"><p>优化前：网站评分 27 ，首次内容绘制 6.9 秒</p>
