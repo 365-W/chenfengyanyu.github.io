@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="baidu-site-verification" content="bJPvLdWAu8" />
     <meta name="generator" content="Jartto&#39;s blog">
-    <title>算法图解4 - 散列表 - Jartto&#39;s blog</title>
+    <title>算法图解5 - 图和广度优先搜索 - Jartto&#39;s blog</title>
     <meta name="author" content="Jartto">
     
         <meta name="keywords" content="Jartto,Web 前端开发,博客,">
@@ -18,18 +18,21 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="听到散列表，第一时间想到 Python 中的 Dict，可是我们是前端。那么散列表在 JS 中是如何描述的呢？这节，我们来一探究竟。">
+    <meta name="description" content="一直以来总是把「数据结构」和「算法」分的很开，认为图，链表都应该属于数据结构领域。然后当看到书的后面章节时，才发现有些东西并不需要明显的界限。">
 <meta name="keywords" content="algorithm">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="算法图解4 - 散列表">
-<meta property="og:url" content="http://jartto.wang/2019/02/20/algorithm4/index.html">
+<meta property="og:title" content="算法图解5 - 图和广度优先搜索">
+<meta property="og:url" content="http://jartto.wang/2019/02/22/algorithm5/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="听到散列表，第一时间想到 Python 中的 Dict，可是我们是前端。那么散列表在 JS 中是如何描述的呢？这节，我们来一探究竟。">
+<meta property="og:description" content="一直以来总是把「数据结构」和「算法」分的很开，认为图，链表都应该属于数据结构领域。然后当看到书的后面章节时，才发现有些东西并不需要明显的界限。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-04-05T14:20:19.000Z">
+<meta property="og:image" content="http://jartto.wang/2019/02/22/algorithm5/index.html#">
+<meta property="og:image" content="http://jartto.wang/2019/02/22/algorithm5/index.html#">
+<meta property="og:updated_time" content="2019-04-05T14:33:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法图解4 - 散列表">
-<meta name="twitter:description" content="听到散列表，第一时间想到 Python 中的 Dict，可是我们是前端。那么散列表在 JS 中是如何描述的呢？这节，我们来一探究竟。">
+<meta name="twitter:title" content="算法图解5 - 图和广度优先搜索">
+<meta name="twitter:description" content="一直以来总是把「数据结构」和「算法」分的很开，认为图，链表都应该属于数据结构领域。然后当看到书的后面章节时，才发现有些东西并不需要明显的界限。">
+<meta name="twitter:image" content="http://jartto.wang/2019/02/22/algorithm5/index.html#">
     
     
         
@@ -235,13 +238,13 @@
         <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            算法图解4 - 散列表
+            算法图解5 - 图和广度优先搜索
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2019-02-20T21:53:37+08:00">
+    <time itemprop="datePublished" datetime="2019-02-22T22:53:23+08:00">
 	  
-		    2019/2月/20 21:53:37
+		    2019/2月/22 22:53:23
     	
     </time>
     
@@ -263,35 +266,13 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>听到散列表，第一时间想到 <code>Python</code> 中的 <code>Dict</code>，可是我们是前端。那么散列表在 JS 中是如何描述的呢？这节，我们来一探究竟。<br><a id="more"></a></p>
-<h4 id="一、散列表"><a href="#一、散列表" class="headerlink" title="一、散列表"></a>一、散列表</h4><div class="alert info"><p>使用散列函数和数组创建了一种被称为散列表 hash table 的数据结构。</p>
+            <p>一直以来总是把「数据结构」和「算法」分的很开，认为图，链表都应该属于数据结构领域。然后当看到书的后面章节时，才发现有些东西并不需要明显的界限。<br><a id="more"></a></p>
+<h4 id="一、图是什么？"><a href="#一、图是什么？" class="headerlink" title="一、图是什么？"></a>一、图是什么？</h4><div class="alert info"><p>图模拟一组连接。</p>
 </div>
-<p><code>Python</code> 提供的散列表实现为字典 ，你可使用函数 <code>dict</code> 来创建散列表。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">book = dict()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>book[<span class="string">"jartto"</span>] = <span class="number">0.67</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>book[<span class="string">"milk"</span>] = <span class="number">1.49</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>book[<span class="string">"avocado"</span>] = <span class="number">1.49</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> book</div><div class="line"></div><div class="line">&#123;<span class="string">'avocado'</span>: <span class="number">1.49</span>, <span class="string">'jartto'</span>: <span class="number">0.67</span>, <span class="string">'milk'</span>: <span class="number">1.49</span>&#125;</div></pre></td></tr></table></figure></p>
-<p>散列表由键和值组成。在前面的散列表 <code>book</code> 中，键为商品名，值为商品价格。散列表将键映射到值。</p>
-<p>那么 JS 中如何实现呢？<br><div class="alert success"><p>其实 Map 对应的就是散列表，一种 Hash Map 结构。</p>
-</div><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> book = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">book.set(<span class="string">'jartto'</span>, <span class="number">0.67</span>);</div><div class="line">book.set(<span class="string">'milk'</span>, <span class="number">1.49</span>);</div><div class="line">book.set(<span class="string">'avocado'</span>, <span class="number">1.49</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(book); <span class="comment">// &#123;"jartto" =&gt; 0.67, "milk" =&gt; 1.49, "avocado" =&gt; 1.49&#125;</span></div><div class="line"></div><div class="line">book.get(<span class="string">'jartto'</span>); <span class="comment">// 0.67</span></div></pre></td></tr></table></figure></p>
-<h4 id="二、散列表特性"><a href="#二、散列表特性" class="headerlink" title="二、散列表特性"></a>二、散列表特性</h4><p>1.散列函数总是将同样的输入映射到相同的索引。<br>2.散列函数将不同的输入映射到不同的索引。<br>3.散列函数知道数组有多大，只返回有效的索引。如果数组包含 5 个元素，散列函数就不会返回无效索引 100。</p>
-<div class="alert warning"><p>注意：对于同样的输入，散列表必须返回同样的输出。</p>
-</div>
-<h4 id="三、请问下面哪些散列函数是一致的？"><a href="#三、请问下面哪些散列函数是一致的？" class="headerlink" title="三、请问下面哪些散列函数是一致的？"></a>三、请问下面哪些散列函数是一致的？</h4><p>1.<code>f(x) = 1</code> 　←——无论输入是什么，都返回 1<br>2.<code>f(x) = rand()</code> 　←——每次都返回一个随机数<br>3.<code>f(x) = next_empty_slot()</code> 　←——返回散列表中下一个空位置的索引<br>4.<code>f(x) = len(x)</code> 　←——将字符串的长度用作索引</p>
-<h4 id="四、防止重复"><a href="#四、防止重复" class="headerlink" title="四、防止重复"></a>四、防止重复</h4><p>假设我们要做一个投票统计，每个人只允许投票一次，为此，首先创建一个散列表，用于记录已投票的人。有人来投票时，检查他是否在散列表中。</p>
-<div class="alert danger"><p>书中均为 Python 实现，这里我们都转为 JS 实现。</p>
-</div>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> voted = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkVoter</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(voted.has(name)) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'kick them out!'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        voted.set(name, <span class="literal">true</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'let them vote!'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">checkVoter(<span class="string">'jartto'</span>) <span class="comment">// let them vote!</span></div><div class="line">checkVoter(<span class="string">'jartto'</span>) <span class="comment">// kick them out!</span></div></pre></td></tr></table></figure>
-<h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h4><p>这里总结一下，散列表适合用于：<br>1.模拟映射关系；<br>2.防止重复；<br>3.缓存/记住数据，以免服务器再通过处理来生成它们。</p>
-<p>注意：<br>1.散列函数很重要。前面的散列函数将所有的键都映射到一个位置，而最理想的情况是，散列函数将键均匀地映射到散列表的不同位置。<br>2.如果散列表存储的链表很长，散列表的速度将急剧下降。然而，如果使用的散列函数很好 ，这些链表就不会很长！</p>
-<h4 id="六、补充：性能"><a href="#六、补充：性能" class="headerlink" title="六、补充：性能"></a>六、补充：性能</h4><p>散列表的性能：<br>1.查找：平均 O(1)，最糟 O(n)<br>2.插入：平均 O(1)，最糟 O(n)<br>3.删除：平均 O(1)，最糟 O(n)</p>
-<div class="alert info"><p>在平均情况下，散列表执行各种操作的时间都为 O(1)。</p>
-</div>
-<h4 id="七、散列表实现原理"><a href="#七、散列表实现原理" class="headerlink" title="七、散列表实现原理"></a>七、散列表实现原理</h4><p>这里，我们需要理解两个概念：</p>
-<ul>
-<li>装填因子：散列表使用数组来存储数据，因此你需要计算数组中被占用的位置数。</li>
-<li>调整长度：装填因子大于 1，就意味着有数据是没有存储位置的。</li>
-</ul>
-<p>一旦填装因子开始增大，就需要在散列表中添加位置，这被称为调整长度 <code>resizing</code>。通常将数组增长一倍。</p>
-<div class="alert success"><p>填装因子越低，发生冲突的可能性越小，散列表的性能越高。</p>
-</div>
-<p>一个不错的经验规则是：一旦填装因子大于 <code>0.7</code>，就调整散列表的长度。良好的散列函数让数组中的值呈均匀分布。糟糕的散列函数让值扎堆，导致大量的冲突。</p>
+<p>是不是觉得很抽象？别着急，我们打个比方，朋友一起打牌，我们要记录谁欠谁钱：<br><img src="#" alt="friend"></p>
+<p>欠钱关系可能如下所示：<br><img src="#" alt="money"></p>
+<p>好了，是时候引出我们的概念：<br>1.图由节点 <code>node</code> 和边 <code>edge</code> 组成。<br>2.一个节点可能与众多节点直接相连，这些节点被称为邻居。<br>在前面的欠钱图中，<code>Rama</code> 是 <code>Alex</code> 的邻居。<code>Adit</code> 不是 <code>Alex</code> 的邻居，因为他们不直接相连。但 <code>Adit</code> 既是 <code>Rama</code> 的邻居，又是 <code>Tom</code> 的邻居。<br>3.图用于模拟不同的东西是如何相连的。</p>
+<h4 id="二、图的表示"><a href="#二、图的表示" class="headerlink" title="二、图的表示"></a>二、图的表示</h4><p>我们可以用散列表来表示图，那么在 <code>JS</code> 中呢，当然就是 <code>Hash Map</code> 了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> graph = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">graph.set(<span class="string">'jartto'</span>, [<span class="string">'alice'</span>, <span class="string">'bob'</span>, <span class="string">'claire'</span>]);</div><div class="line">graph.set(<span class="string">'alice'</span>, []);</div><div class="line">graph.set(<span class="string">'bob'</span>, []);</div><div class="line">graph.set(<span class="string">'claire'</span>, []);</div><div class="line"></div><div class="line">graph.get(<span class="string">'jartto’); // ["alice", "bob", "claire"]</span></div></pre></td></tr></table></figure></p>
 
             
         </div>
@@ -314,7 +295,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/22/algorithm5/"  data-tooltip="算法图解5 - 图和广度优先搜索">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -322,7 +303,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/16/web-optimization/" data-tooltip="网站优化实战">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/20/algorithm4/" data-tooltip="算法图解4 - 散列表">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -337,17 +318,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -392,7 +373,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/22/algorithm5/"  data-tooltip="算法图解5 - 图和广度优先搜索">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -400,7 +381,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/16/web-optimization/" data-tooltip="网站优化实战">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/20/algorithm4/" data-tooltip="算法图解4 - 散列表">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -415,17 +396,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -445,17 +426,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2019/02/20/algorithm4/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://jartto.wang/2019/02/22/algorithm5/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
