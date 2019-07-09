@@ -18,21 +18,21 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="当我们一起维护一个开源项目的时候，你肯定想知道那些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款好用工具。">
+    <meta name="description" content="当我们维护一个开源项目的时候，你肯定想知道哪些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款。">
 <meta name="keywords" content="git,stats,git_stats">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Git 代码统计">
 <meta property="og:url" content="http://jartto.wang/2019/07/09/git-stats/index.html">
 <meta property="og:site_name" content="Jartto&#39;s blog">
-<meta property="og:description" content="当我们一起维护一个开源项目的时候，你肯定想知道那些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款好用工具。">
+<meta property="og:description" content="当我们维护一个开源项目的时候，你肯定想知道哪些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款。">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/git/code.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/git/gitstats.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/git/activity.png">
-<meta property="og:updated_time" content="2019-07-09T08:29:02.176Z">
+<meta property="og:updated_time" content="2019-07-09T08:34:23.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 代码统计">
-<meta name="twitter:description" content="当我们一起维护一个开源项目的时候，你肯定想知道那些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款好用工具。">
+<meta name="twitter:description" content="当我们维护一个开源项目的时候，你肯定想知道哪些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/chenfengyanyu/my-web-accumulation/master/images/git/code.png">
     
     
@@ -245,7 +245,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>当我们一起维护一个开源项目的时候，你肯定想知道那些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款好用工具。<br><a id="more"></a></p>
+            <p>当我们维护一个开源项目的时候，你肯定想知道哪些人比较活跃，哪些人贡献比较多。这时候就需要一个简单易用的工具，下面我来介绍几款。<br><a id="more"></a></p>
 <h4 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h4><p>目前大部分的项目可能都会用到 <code>Git</code> 来做代码管理，那么我们在不断的修改项目的过程中，可能会关注如下几个问题：</p>
 <p>1.每个参与者贡献代码量，按劳分配某些资源🙈；<br>2.参与者的代码增删量，提交次数等；<br>3.统计活跃度；</p>
 <div class="alert info"><p>那么，如何来对代码量做统计呢？</p>
@@ -257,7 +257,7 @@
 <p>3.查看排名前 5 的贡献者：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=&apos;%aN&apos; | sort | uniq -c | sort -k1 -n -r | head -n 5</span><br></pre></td></tr></table></figure></p>
 <div class="alert success"><p>更多 <code>log</code> 操作可以请移步：<a href="https://segmentfault.com/a/1190000008542123" target="_blank" rel="noopener">Git 代码统计</a>。</p>
 </div>
-<p>这时候，你可能在想：有没有省时省力的方式呢，顺便帮我生成报告。答案是肯定的，下面我们来看看如何使用 <code>git_stats</code>。</p>
+<p>这时候，你可能在想：有没有省时省力的方式呢，顺便帮我生成报告。答案是肯定的，是时候请出我们的 <code>git_stats</code> 了。</p>
 <h4 id="三、使用-git-stats"><a href="#三、使用-git-stats" class="headerlink" title="三、使用 git_stats"></a>三、使用 git_stats</h4><p>1.首先，我们需要全局安装 <code>git_stats</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install git_stats</span><br></pre></td></tr></table></figure></p>
 <p>2.接下来，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git_stats generate</span><br></pre></td></tr></table></figure></p>
 <p>3.打开 <code>git_stats</code> 目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> git_stats &amp;&amp; open index.html</span><br></pre></td></tr></table></figure></p>
